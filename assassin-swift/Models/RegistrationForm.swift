@@ -31,7 +31,7 @@ class RegistrationForm: NSObject, FXForm {
              *  Account section 
              **/
             
-            [FXFormFieldKey: "registration.account.field.email",
+            [FXFormFieldKey: "registration.account.field.email".localized,
                 FXFormFieldHeader: "registration.header.account".localized],
             
             "registration.account.field.password".localized,
@@ -41,14 +41,15 @@ class RegistrationForm: NSObject, FXForm {
              *  Details section 
              **/
             
-            [FXFormFieldKey: "registration.details.field.name",
+            [FXFormFieldKey: "registration.details.field.name".localized,
                 FXFormFieldHeader: "registration.header.details".localized,
                 "textField.autocapitalizationType": UITextAutocapitalizationType.Words.rawValue],
             
             "registration.details.field.codeName".localized,
             
-            [FXFormFieldKey: "registration.details.field.gender",
-                FXFormFieldOptions: ["registration.gender.options.male".localized, "registration.gender.options.male".localized]],
+            [FXFormFieldKey: "registration.details.field.gender".localized,
+                FXFormFieldOptions: ["registration.gender.options.male".localized,
+                    "registration.gender.options.female".localized]],
             
             "registration.details.field.age".localized,
             "registration.details.field.height".localized,
@@ -60,7 +61,7 @@ class RegistrationForm: NSObject, FXForm {
     
     func extraFields() -> [AnyObject]! {
         return [
-            [FXFormFieldCell: RegisterButtonCell.self, FXFormFieldHeader: "", FXFormFieldAction: ""],
+            [FXFormFieldCell: RegisterButtonCell.self, FXFormFieldHeader: "", FXFormFieldAction: "register:"],
         ]
     }
 

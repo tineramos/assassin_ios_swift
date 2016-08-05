@@ -24,5 +24,5 @@
 "registration.details.field.height" = "height";
 "registration.details.field.profilePhoto" = "profilePhoto";
 
-"registration.gender.options.female" = "female";
-"registration.gender.options.male" = "male";
+"registration.gender.options.male" = "Male";
+"registration.gender.options.female" = "Female";
