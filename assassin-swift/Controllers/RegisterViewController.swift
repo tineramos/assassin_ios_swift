@@ -19,8 +19,6 @@ class RegisterViewController: FXFormViewController {
     func register(cell: FXFormFieldCellProtocol) {
         
         // TODO: add registration user API
-        // extract details
-        print("register button pressed!")
         
         let form = cell.field.form as! RegistrationForm
         
@@ -47,6 +45,10 @@ class RegisterViewController: FXFormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
 }

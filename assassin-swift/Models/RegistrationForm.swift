@@ -27,17 +27,8 @@ class RegistrationForm: NSObject, FXForm {
         
         var keys = [String]()
         
-        for i in 0 ..< fields().count {
-            var keyString:String!
-            let object = fields()[i]
-            if object.isKindOfClass(NSDictionary) {
-                let fieldDictionary = object as! Dictionary <String, AnyObject>
-                keyString = fieldDictionary[FXFormFieldKey] as! String
-            }
-            else {
-                keyString = object as! String
-            }
-            keys.append(keyString)
+        for object in fields() {
+            keys.append(object[FXFormFieldKey] as! String)
         }
         
         return keys
@@ -55,8 +46,8 @@ class RegistrationForm: NSObject, FXForm {
             [FXFormFieldKey: "registration.account.field.email".localized,
                 FXFormFieldHeader: "registration.header.account".localized],
             
-            "registration.account.field.password".localized,
-            "registration.account.field.repeatPassword".localized,
+            [FXFormFieldKey: "registration.account.field.password".localized],
+            [FXFormFieldKey: "registration.account.field.repeatPassword".localized],
             
             /**
              *  Details section 
@@ -77,9 +68,9 @@ class RegistrationForm: NSObject, FXForm {
                 FXFormFieldOptions: ["registration.gender.options.male".localized,
                     "registration.gender.options.female".localized]],
             
-            "registration.details.field.age".localized,
-            "registration.details.field.height".localized,
-            "registration.details.field.profilePhoto".localized,
+            [FXFormFieldKey: "registration.details.field.age".localized],
+            [FXFormFieldKey: "registration.details.field.height".localized],
+            [FXFormFieldKey: "registration.details.field.profilePhoto".localized],
         
         ]
         
