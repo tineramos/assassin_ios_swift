@@ -21,6 +21,7 @@
 		54D2D30F1D541FC100546C46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D30E1D541FC100546C46 /* StringExtension.swift */; };
 		54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3101D54288800546C46 /* RegisterButtonCell.swift */; };
 		54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D3121D54290700546C46 /* RegisterButtonCell.xib */; };
+		54D2D3161D54343200546C46 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3151D54343200546C46 /* Helper.swift */; };
 		BFB64711640762938976892B /* Pods_AssassinSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		54D2D30E1D541FC100546C46 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		54D2D3101D54288800546C46 /* RegisterButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterButtonCell.swift; path = Controllers/RegisterButtonCell.swift; sourceTree = "<group>"; };
 		54D2D3121D54290700546C46 /* RegisterButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterButtonCell.xib; path = Controllers/RegisterButtonCell.xib; sourceTree = "<group>"; };
+		54D2D3151D54343200546C46 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		D03D133BCF1FD3F319A6D566 /* Pods-AssassinSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssassinSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 				546D7D701D53FD410031FF90 /* Supporting Files */,
 				54D2D30C1D541F2F00546C46 /* Localizable.strings */,
 				54D2D30E1D541FC100546C46 /* StringExtension.swift */,
+				54D2D3151D54343200546C46 /* Helper.swift */,
 			);
 			name = AssassinSwift;
 			path = "assassin-swift";
@@ -310,6 +313,7 @@
 				54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */,
 				546D7D581D53D26E0031FF90 /* GameViewController.swift in Sources */,
 				546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */,
+				54D2D3161D54343200546C46 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

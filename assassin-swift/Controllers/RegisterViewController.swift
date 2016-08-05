@@ -17,7 +17,12 @@ class RegisterViewController: FXFormViewController {
     func register(cell: FXFormFieldCellProtocol) {
         
         // TODO: add registration user API
+        // extract details
         print("register button pressed!")
+        
+        let form = cell.field.form as! RegistrationForm
+        
+        
         
     }
     
