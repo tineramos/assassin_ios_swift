@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D531D53D26D0031FF90 /* AppDelegate.swift */; };
+		546D7D581D53D26E0031FF90 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D571D53D26E0031FF90 /* GameViewController.swift */; };
+		546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D591D53D26E0031FF90 /* Main.storyboard */; };
+		546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5C1D53D26E0031FF90 /* Assets.xcassets */; };
+		546D7D601D53D26E0031FF90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5E1D53D26E0031FF90 /* LaunchScreen.storyboard */; };
+		546D7D6A1D53D2CF0031FF90 /* SensingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546D7D691D53D2CF0031FF90 /* SensingKit.framework */; };
+		546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */; };
+		547BBD701D541222004D171B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 547BBD6F1D541222004D171B /* Podfile */; };
+		54D2D3041D541BA700546C46 /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3031D541BA700546C46 /* FXForms.m */; };
+		54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3061D541CD700546C46 /* RegistrationForm.swift */; };
+		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
+		54D2D30F1D541FC100546C46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D30E1D541FC100546C46 /* StringExtension.swift */; };
+		54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3101D54288800546C46 /* RegisterButtonCell.swift */; };
+		54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D3121D54290700546C46 /* RegisterButtonCell.xib */; };
+		BFB64711640762938976892B /* Pods_AssassinSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		26996B8527A77998720B9743 /* Pods-AssassinSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.release.xcconfig"; sourceTree = "<group>"; };
+		546D7D501D53D26D0031FF90 /* AssassinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssassinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		546D7D531D53D26D0031FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		546D7D571D53D26E0031FF90 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		546D7D5A1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		546D7D5C1D53D26E0031FF90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		546D7D5F1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		546D7D611D53D26E0031FF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		546D7D691D53D2CF0031FF90 /* SensingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SensingKit.framework; sourceTree = "<group>"; };
+		546D7D6B1D53D3410031FF90 /* AssassinSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AssassinSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
+		547BBD6F1D541222004D171B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		54D2D3021D541BA700546C46 /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
+		54D2D3031D541BA700546C46 /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
+		54D2D3061D541CD700546C46 /* RegistrationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
+		54D2D30D1D541F3700546C46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		54D2D30E1D541FC100546C46 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		54D2D3101D54288800546C46 /* RegisterButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterButtonCell.swift; path = Controllers/RegisterButtonCell.swift; sourceTree = "<group>"; };
+		54D2D3121D54290700546C46 /* RegisterButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterButtonCell.xib; path = Controllers/RegisterButtonCell.xib; sourceTree = "<group>"; };
+		D03D133BCF1FD3F319A6D566 /* Pods-AssassinSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssassinSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		546D7D4D1D53D26D0031FF90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546D7D6A1D53D2CF0031FF90 /* SensingKit.framework in Frameworks */,
+				BFB64711640762938976892B /* Pods_AssassinSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40BFB2765D0177CAF5371F90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		546D7D471D53D26D0031FF90 = {
+			isa = PBXGroup;
+			children = (
+				546D7D521D53D26D0031FF90 /* AssassinSwift */,
+				547BBD6F1D541222004D171B /* Podfile */,
+				546D7D511D53D26D0031FF90 /* Products */,
+				B84D6F4B303A53D0ACCAE97C /* Pods */,
+				40BFB2765D0177CAF5371F90 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		546D7D511D53D26D0031FF90 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				546D7D501D53D26D0031FF90 /* AssassinSwift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		546D7D521D53D26D0031FF90 /* AssassinSwift */ = {
+			isa = PBXGroup;
+			children = (
+				546D7D531D53D26D0031FF90 /* AppDelegate.swift */,
+				546D7D591D53D26E0031FF90 /* Main.storyboard */,
+				546D7D721D53FD580031FF90 /* Controllers */,
+				54D2D3051D541C8800546C46 /* Models */,
+				54D2D3001D541BA700546C46 /* Vendors */,
+				546D7D711D53FD490031FF90 /* Framework */,
+				546D7D701D53FD410031FF90 /* Supporting Files */,
+				54D2D30C1D541F2F00546C46 /* Localizable.strings */,
+				54D2D30E1D541FC100546C46 /* StringExtension.swift */,
+			);
+			name = AssassinSwift;
+			path = "assassin-swift";
+			sourceTree = "<group>";
+		};
+		546D7D701D53FD410031FF90 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				546D7D6B1D53D3410031FF90 /* AssassinSwift-Bridging-Header.h */,
+				546D7D611D53D26E0031FF90 /* Info.plist */,
+				546D7D5E1D53D26E0031FF90 /* LaunchScreen.storyboard */,
+				546D7D5C1D53D26E0031FF90 /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		546D7D711D53FD490031FF90 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				546D7D691D53D2CF0031FF90 /* SensingKit.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		546D7D721D53FD580031FF90 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				54D2D3141D54291100546C46 /* Registration Controller */,
+				546D7D571D53D26E0031FF90 /* GameViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		54D2D3001D541BA700546C46 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				54D2D3011D541BA700546C46 /* FXForms */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		54D2D3011D541BA700546C46 /* FXForms */ = {
+			isa = PBXGroup;
+			children = (
+				54D2D3021D541BA700546C46 /* FXForms.h */,
+				54D2D3031D541BA700546C46 /* FXForms.m */,
+			);
+			path = FXForms;
+			sourceTree = "<group>";
+		};
+		54D2D3051D541C8800546C46 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54D2D3061D541CD700546C46 /* RegistrationForm.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		54D2D3141D54291100546C46 /* Registration Controller */ = {
+			isa = PBXGroup;
+			children = (
+				546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */,
+				54D2D3101D54288800546C46 /* RegisterButtonCell.swift */,
+				54D2D3121D54290700546C46 /* RegisterButtonCell.xib */,
+			);
+			name = "Registration Controller";
+			sourceTree = "<group>";
+		};
+		B84D6F4B303A53D0ACCAE97C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D03D133BCF1FD3F319A6D566 /* Pods-AssassinSwift.debug.xcconfig */,
+				26996B8527A77998720B9743 /* Pods-AssassinSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		546D7D4F1D53D26D0031FF90 /* AssassinSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 546D7D641D53D26E0031FF90 /* Build configuration list for PBXNativeTarget "AssassinSwift" */;
+			buildPhases = (
+				E7D0181CB7CDE4A35E92CE04 /* [CP] Check Pods Manifest.lock */,
+				546D7D4C1D53D26D0031FF90 /* Sources */,
+				546D7D4D1D53D26D0031FF90 /* Frameworks */,
+				546D7D4E1D53D26D0031FF90 /* Resources */,
+				8ED69050BD851ADF11EFACB6 /* [CP] Embed Pods Frameworks */,
+				1F687FCBBD9B22F21B70AFDB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AssassinSwift;
+			productName = "assassin-swift";
+			productReference = 546D7D501D53D26D0031FF90 /* AssassinSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		546D7D481D53D26D0031FF90 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Tine Ramos";
+				TargetAttributes = {
+					546D7D4F1D53D26D0031FF90 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = P77FGAZQUC;
+					};
+				};
+			};
+			buildConfigurationList = 546D7D4B1D53D26D0031FF90 /* Build configuration list for PBXProject "AssassinSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 546D7D471D53D26D0031FF90;
+			productRefGroup = 546D7D511D53D26D0031FF90 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				546D7D4F1D53D26D0031FF90 /* AssassinSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		546D7D4E1D53D26D0031FF90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */,
+				547BBD701D541222004D171B /* Podfile in Resources */,
+				546D7D601D53D26E0031FF90 /* LaunchScreen.storyboard in Resources */,
+				546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */,
+				54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */,
+				546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F687FCBBD9B22F21B70AFDB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8ED69050BD851ADF11EFACB6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7D0181CB7CDE4A35E92CE04 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		546D7D4C1D53D26D0031FF90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */,
+				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
+				54D2D30F1D541FC100546C46 /* StringExtension.swift in Sources */,
+				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
+				54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */,
+				546D7D581D53D26E0031FF90 /* GameViewController.swift in Sources */,
+				546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		546D7D591D53D26E0031FF90 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				546D7D5A1D53D26E0031FF90 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		546D7D5E1D53D26E0031FF90 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				546D7D5F1D53D26E0031FF90 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		54D2D30C1D541F2F00546C46 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				54D2D30D1D541F3700546C46 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		546D7D621D53D26E0031FF90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		546D7D631D53D26E0031FF90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		546D7D651D53D26E0031FF90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D03D133BCF1FD3F319A6D566 /* Pods-AssassinSwift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/assassin-swift",
+				);
+				INFOPLIST_FILE = "assassin-swift/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tine.assassin-swift";
+				PRODUCT_NAME = AssassinSwift;
+				SWIFT_OBJC_BRIDGING_HEADER = "assassin-swift/AssassinSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		546D7D661D53D26E0031FF90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26996B8527A77998720B9743 /* Pods-AssassinSwift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/assassin-swift",
+				);
+				INFOPLIST_FILE = "assassin-swift/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tine.assassin-swift";
+				PRODUCT_NAME = AssassinSwift;
+				SWIFT_OBJC_BRIDGING_HEADER = "assassin-swift/AssassinSwift-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		546D7D4B1D53D26D0031FF90 /* Build configuration list for PBXProject "AssassinSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				546D7D621D53D26E0031FF90 /* Debug */,
+				546D7D631D53D26E0031FF90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		546D7D641D53D26E0031FF90 /* Build configuration list for PBXNativeTarget "AssassinSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				546D7D651D53D26E0031FF90 /* Debug */,
+				546D7D661D53D26E0031FF90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 546D7D481D53D26D0031FF90 /* Project object */;
+}

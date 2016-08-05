@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  AssassinSwift
+
+  Created by Tine Ramos on 05/08/2016.
+  Copyright © 2016 Tine Ramos. All rights reserved.
+*/
+
+/*
+ Registration Fields
+ */
+
+"registration.header.account" = "Account";
+"registration.account.field.email" = "email";
+"registration.account.field.password" = "password";
+"registration.account.field.repeatPassword" = "repeatPassword";
+
+"registration.header.details" = "Details";
+"registration.details.field.name" = "name";
+"registration.details.field.codeName" = "codeName";
+"registration.details.field.course" = "course";
+"registration.details.field.gender" = "gender";
+"registration.details.field.age" = "age";
+"registration.details.field.height" = "height";
+"registration.details.field.profilePhoto" = "profilePhoto";
+
+"registration.gender.options.female" = "female";
+"registration.gender.options.male" = "male";
