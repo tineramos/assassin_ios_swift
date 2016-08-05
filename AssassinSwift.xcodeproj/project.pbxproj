@@ -101,8 +101,8 @@
 				546D7D711D53FD490031FF90 /* Framework */,
 				546D7D701D53FD410031FF90 /* Supporting Files */,
 				54D2D30C1D541F2F00546C46 /* Localizable.strings */,
-				54D2D30E1D541FC100546C46 /* StringExtension.swift */,
 				54D2D3151D54343200546C46 /* Helper.swift */,
+				54D2D30E1D541FC100546C46 /* StringExtension.swift */,
 			);
 			name = AssassinSwift;
 			path = "assassin-swift";

@@ -10,6 +10,8 @@ import UIKit
 
 class RegisterViewController: FXFormViewController {
     
+    var userDictionary = [String : String]()
+    
     override func awakeFromNib() {
         formController.form = RegistrationForm()
     }
@@ -22,7 +24,23 @@ class RegisterViewController: FXFormViewController {
         
         let form = cell.field.form as! RegistrationForm
         
+        for key in form.keyFields() {
+            
+            if let value = form.valueForKey(key) {
+                print("key: \(key)      value: \(value)")
+            }
+            else {
+                
+            }
+            
+        }
         
+        if form.password == form.repeatPassword {
+            print("same password")
+        }
+        else {
+            print("oops. password not match")
+        }
         
     }
     

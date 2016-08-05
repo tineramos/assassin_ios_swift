@@ -23,6 +23,27 @@ class RegistrationForm: NSObject, FXForm {
 
     var profilePhoto: UIImage?
     
+    func keyFields() -> [String]! {
+        
+        var keys = [String]()
+        
+        for i in 0 ..< fields().count {
+            var keyString:String!
+            let object = fields()[i]
+            if object.isKindOfClass(NSDictionary) {
+                let fieldDictionary = object as! Dictionary <String, AnyObject>
+                keyString = fieldDictionary[FXFormFieldKey] as! String
+            }
+            else {
+                keyString = object as! String
+            }
+            keys.append(keyString)
+        }
+        
+        return keys
+        
+    }
+    
     func fields() -> [AnyObject]! {
         
         return [
@@ -43,9 +64,14 @@ class RegistrationForm: NSObject, FXForm {
             
             [FXFormFieldKey: "registration.details.field.name".localized,
                 FXFormFieldHeader: "registration.header.details".localized,
-                "textField.autocapitalizationType": UITextAutocapitalizationType.Words.rawValue],
+                "textField.autocapitalizationType": UITextAutocapitalizationType.Words.rawValue,
+                "textField.autocorrectionType": UITextAutocorrectionType.No.rawValue,
+                "textField.spellCheckingType": UITextSpellCheckingType.No.rawValue],
             
-            "registration.details.field.codeName".localized,
+            [FXFormFieldKey: "registration.details.field.codeName".localized,
+                "textField.autocapitalizationType": UITextAutocapitalizationType.None.rawValue,
+                "textField.autocorrectionType": UITextAutocorrectionType.No.rawValue,
+                "textField.spellCheckingType": UITextSpellCheckingType.No.rawValue],
             
             [FXFormFieldKey: "registration.details.field.gender".localized,
                 FXFormFieldOptions: ["registration.gender.options.male".localized,
