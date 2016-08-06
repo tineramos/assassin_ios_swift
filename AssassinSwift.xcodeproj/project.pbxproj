@@ -15,6 +15,9 @@
 		546D7D6A1D53D2CF0031FF90 /* SensingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546D7D691D53D2CF0031FF90 /* SensingKit.framework */; };
 		546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */; };
 		547BBD701D541222004D171B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 547BBD6F1D541222004D171B /* Podfile */; };
+		54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1ED1D55896A00182262 /* MenuViewController.swift */; };
+		54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1EF1D5589D800182262 /* LoginViewController.swift */; };
+		54ABC1F21D55A34400182262 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1F11D55A34400182262 /* UIViewExtension.swift */; };
 		54D2D3041D541BA700546C46 /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3031D541BA700546C46 /* FXForms.m */; };
 		54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3061D541CD700546C46 /* RegistrationForm.swift */; };
 		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
@@ -38,6 +41,9 @@
 		546D7D6B1D53D3410031FF90 /* AssassinSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AssassinSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
 		547BBD6F1D541222004D171B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		54ABC1ED1D55896A00182262 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controllers/MenuViewController.swift; sourceTree = "<group>"; };
+		54ABC1EF1D5589D800182262 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
+		54ABC1F11D55A34400182262 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		54D2D3021D541BA700546C46 /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
 		54D2D3031D541BA700546C46 /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
 		54D2D3061D541CD700546C46 /* RegistrationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 				54D2D30C1D541F2F00546C46 /* Localizable.strings */,
 				54D2D3151D54343200546C46 /* Helper.swift */,
 				54D2D30E1D541FC100546C46 /* StringExtension.swift */,
+				54ABC1F11D55A34400182262 /* UIViewExtension.swift */,
 			);
 			name = AssassinSwift;
 			path = "assassin-swift";
@@ -131,6 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				54D2D3141D54291100546C46 /* Registration Controller */,
+				54ABC1EF1D5589D800182262 /* LoginViewController.swift */,
+				54ABC1ED1D55896A00182262 /* MenuViewController.swift */,
 				546D7D571D53D26E0031FF90 /* GameViewController.swift */,
 			);
 			name = Controllers;
@@ -308,11 +317,14 @@
 			files = (
 				546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */,
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
+				54ABC1F21D55A34400182262 /* UIViewExtension.swift in Sources */,
 				54D2D30F1D541FC100546C46 /* StringExtension.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
+				54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */,
 				54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */,
 				546D7D581D53D26E0031FF90 /* GameViewController.swift in Sources */,
 				546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */,
+				54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */,
 				54D2D3161D54343200546C46 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

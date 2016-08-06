@@ -21,14 +21,30 @@ class RegisterViewController: FXFormViewController {
         // TODO: add registration user API
         
         let form = cell.field.form as! RegistrationForm
+        checkIfValuesAreValid(form)
+    }
+    
+    
+    func checkIfValuesAreValid(form: RegistrationForm) {
         
         for key in form.keyFields() {
             
             if let value = form.valueForKey(key) {
-                print("key: \(key)      value: \(value)")
+                
+                if value is String {
+                    stringParameterValidator(value as! String, forKey: key)
+                }
+                else if value is Int {
+                    intParameterValidator(value as! Int, forKey: key)
+                }
+                else {
+                    // photo?
+                    print("photo may be??")
+                }
             }
             else {
-                
+                showError("\(key) has null value!!")
+                break
             }
             
         }
@@ -40,6 +56,39 @@ class RegisterViewController: FXFormViewController {
             print("oops. password not match")
         }
         
+    }
+    
+    func stringParameterValidator(string: String, forKey key: String) {
+        
+        if !string.isEmpty {
+            if key == "registration.account.field.email".localized &&
+                !Helper.isValidEmail(string) {
+                showError("EMAIL: INVALID FORMAT!!")
+            }
+        }
+        else {
+            showError("FIELD \(key) is EMPTYYYYY!!");
+        }
+        
+    }
+    
+    func intParameterValidator(value: Int, forKey key: String) {
+        if (key == "registration.details.field.age".localized ||
+            key == "registration.details.field.height".localized) &&
+            value == 0 {
+            showError("\(key) can not be zero!!")
+        }
+        else {
+            showError("nice! \(key) has value \(value)")
+        }
+    }
+    
+    func showError(message: String!) {
+        let alertController = UIAlertController.init(title:"", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
