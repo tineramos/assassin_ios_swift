@@ -18,8 +18,7 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         loginButton?.setRadius()
-        signupButton?.layer.borderColor = UIColor.whiteColor().CGColor
-        signupButton?.layer.borderWidth = 1;
+        signupButton?.setBorderColor(UIColor.whiteColor().CGColor)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)

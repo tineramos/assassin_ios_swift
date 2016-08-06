@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
+    <entity name="Defence" syncable="YES">
+        <attribute name="defenceId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="defenceName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Game" syncable="YES">
+        <attribute name="availableSlots" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dateFinished" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateStarted" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gameId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="gameStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="gameTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="joined" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="maxPlayers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="openUntil" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="playersJoined" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="game" inverseEntity="Player" syncable="YES"/>
+        <relationship name="winner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="gameWon" inverseEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="Player" syncable="YES">
+        <attribute name="playerId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="players" inverseEntity="Game" syncable="YES"/>
+        <relationship name="gameWon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="winner" inverseEntity="Game" syncable="YES"/>
+        <relationship name="kills" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="kills" inverseEntity="Player" syncable="YES"/>
+        <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="target" inverseEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="Profile" syncable="YES">
+        <attribute name="gamesWon" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="totalGamesPlayed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="profile" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="codeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="user" inverseEntity="Profile" syncable="YES"/>
+    </entity>
+    <entity name="Weapon" syncable="YES">
+        <attribute name="weaponId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="weaponName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-335" positionY="-33" width="128" height="163"/>
+        <element name="Profile" positionX="-333" positionY="153" width="128" height="103"/>
+        <element name="Game" positionX="-180" positionY="-90" width="128" height="223"/>
+        <element name="Player" positionX="34" positionY="-90" width="128" height="118"/>
+        <element name="Weapon" positionX="-99" positionY="99" width="128" height="75"/>
+        <element name="Defence" positionX="-90" positionY="108" width="128" height="75"/>
+    </elements>
+</model>

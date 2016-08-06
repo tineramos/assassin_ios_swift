@@ -20,10 +20,11 @@ class RegisterViewController: FXFormViewController {
         
         // TODO: add registration user API
         
-        let form = cell.field.form as! RegistrationForm
-        checkIfValuesAreValid(form)
+//        let form = cell.field.form as! RegistrationForm
+//        checkIfValuesAreValid(form)
+        self.performSegueWithIdentifier("setMenuSegue", sender: nil)
+        
     }
-    
     
     func checkIfValuesAreValid(form: RegistrationForm) {
         
