@@ -6,9 +6,22 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		549964E71D56F66100F574C4 /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 549964E81D56F66200F574C4 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				549964EB1D56F67200F574C4 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D531D53D26D0031FF90 /* AppDelegate.swift */; };
-		546D7D581D53D26E0031FF90 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D571D53D26E0031FF90 /* GameViewController.swift */; };
 		546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D591D53D26E0031FF90 /* Main.storyboard */; };
 		546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5C1D53D26E0031FF90 /* Assets.xcassets */; };
 		546D7D601D53D26E0031FF90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5E1D53D26E0031FF90 /* LaunchScreen.storyboard */; };
@@ -18,22 +31,23 @@
 		549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964A81D5694EF00F574C4 /* ProfileViewController.swift */; };
 		549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AC1D569A8B00F574C4 /* AboutViewController.swift */; };
 		549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */; };
-		549964B81D56A06600F574C4 /* AssassinSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 549964B61D56A06600F574C4 /* AssassinSwift.xcdatamodeld */; };
 		549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964DA1D56AC4700F574C4 /* DataManager.swift */; };
 		549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964DC1D56AC5600F574C4 /* CoreDataManager.swift */; };
 		549964E11D56BB6A00F574C4 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */; };
-		549964E41D56BBBC00F574C4 /* PlayingFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964E31D56BBBC00F574C4 /* PlayingFieldViewController.swift */; };
-		549964E61D56D64600F574C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964E51D56D64600F574C4 /* Constants.swift */; };
+		549964F01D56F77000F574C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964EC1D56F77000F574C4 /* Constants.swift */; };
+		549964F11D56F77000F574C4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964ED1D56F77000F574C4 /* Helper.swift */; };
+		549964F21D56F77000F574C4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964EE1D56F77000F574C4 /* StringExtension.swift */; };
+		549964F31D56F77000F574C4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964EF1D56F77000F574C4 /* UIViewExtension.swift */; };
+		549964F61D56F78300F574C4 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964F41D56F78300F574C4 /* GamePlayViewController.swift */; };
+		549964F71D56F78300F574C4 /* PlayingFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */; };
+		549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 549964F91D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld */; };
 		54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1ED1D55896A00182262 /* MenuViewController.swift */; };
 		54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1EF1D5589D800182262 /* LoginViewController.swift */; };
-		54ABC1F21D55A34400182262 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1F11D55A34400182262 /* UIViewExtension.swift */; };
 		54D2D3041D541BA700546C46 /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3031D541BA700546C46 /* FXForms.m */; };
 		54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3061D541CD700546C46 /* RegistrationForm.swift */; };
 		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
-		54D2D30F1D541FC100546C46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D30E1D541FC100546C46 /* StringExtension.swift */; };
 		54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3101D54288800546C46 /* RegisterButtonCell.swift */; };
 		54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D3121D54290700546C46 /* RegisterButtonCell.xib */; };
-		54D2D3161D54343200546C46 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3151D54343200546C46 /* Helper.swift */; };
 		BFB64711640762938976892B /* Pods_AssassinSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +55,6 @@
 		26996B8527A77998720B9743 /* Pods-AssassinSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.release.xcconfig"; sourceTree = "<group>"; };
 		546D7D501D53D26D0031FF90 /* AssassinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssassinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546D7D531D53D26D0031FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		546D7D571D53D26E0031FF90 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		546D7D5A1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		546D7D5C1D53D26E0031FF90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		546D7D5F1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,23 +66,24 @@
 		549964A81D5694EF00F574C4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		549964AC1D569A8B00F574C4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesTableViewCell.swift; path = Controllers/GamesTableViewCell.swift; sourceTree = "<group>"; };
-		549964B71D56A06600F574C4 /* AssassinSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AssassinSwift.xcdatamodel; sourceTree = "<group>"; };
 		549964DA1D56AC4700F574C4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = DataManager/DataManager.swift; sourceTree = "<group>"; };
 		549964DC1D56AC5600F574C4 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = DataManager/CoreDataManager.swift; sourceTree = "<group>"; };
 		549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayViewController.swift; path = Controllers/GamePlayViewController.swift; sourceTree = "<group>"; };
-		549964E31D56BBBC00F574C4 /* PlayingFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingFieldViewController.swift; sourceTree = "<group>"; };
-		549964E51D56D64600F574C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		549964EC1D56F77000F574C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Helpers/Constants.swift; sourceTree = "<group>"; };
+		549964ED1D56F77000F574C4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Helper.swift; path = Helpers/Helper.swift; sourceTree = "<group>"; };
+		549964EE1D56F77000F574C4 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Helpers/StringExtension.swift; sourceTree = "<group>"; };
+		549964EF1D56F77000F574C4 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = Helpers/UIViewExtension.swift; sourceTree = "<group>"; };
+		549964F41D56F78300F574C4 /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayViewController.swift; path = Controllers/GamePlayViewController.swift; sourceTree = "<group>"; };
+		549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayingFieldViewController.swift; path = Controllers/PlayingFieldViewController.swift; sourceTree = "<group>"; };
+		549964FA1D56F7AE00F574C4 /* AssassinSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AssassinSwift.xcdatamodel; sourceTree = "<group>"; };
 		54ABC1ED1D55896A00182262 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controllers/MenuViewController.swift; sourceTree = "<group>"; };
 		54ABC1EF1D5589D800182262 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
-		54ABC1F11D55A34400182262 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		54D2D3021D541BA700546C46 /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
 		54D2D3031D541BA700546C46 /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
 		54D2D3061D541CD700546C46 /* RegistrationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		54D2D30D1D541F3700546C46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		54D2D30E1D541FC100546C46 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		54D2D3101D54288800546C46 /* RegisterButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterButtonCell.swift; path = Controllers/RegisterButtonCell.swift; sourceTree = "<group>"; };
 		54D2D3121D54290700546C46 /* RegisterButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterButtonCell.xib; path = Controllers/RegisterButtonCell.xib; sourceTree = "<group>"; };
-		54D2D3151D54343200546C46 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		D03D133BCF1FD3F319A6D566 /* Pods-AssassinSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssassinSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,9 +133,9 @@
 			children = (
 				546D7D531D53D26D0031FF90 /* AppDelegate.swift */,
 				546D7D591D53D26E0031FF90 /* Main.storyboard */,
-				549964B61D56A06600F574C4 /* AssassinSwift.xcdatamodeld */,
 				546D7D721D53FD580031FF90 /* Controllers */,
 				549964DE1D56AC6000F574C4 /* Data Managers */,
+				549964F81D56F7AE00F574C4 /* CoreData */,
 				54D2D3051D541C8800546C46 /* Models */,
 				549964DF1D56AC6F00F574C4 /* Helpers */,
 				54D2D3001D541BA700546C46 /* Vendors */,
@@ -166,9 +180,9 @@
 		549964B21D569FC600F574C4 /* Games Controller */ = {
 			isa = PBXGroup;
 			children = (
-				546D7D571D53D26E0031FF90 /* GameViewController.swift */,
+				549964F41D56F78300F574C4 /* GamePlayViewController.swift */,
 				549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */,
-				549964E31D56BBBC00F574C4 /* PlayingFieldViewController.swift */,
+				549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */,
 				549964E21D56BB7600F574C4 /* Game Views */,
 			);
 			name = "Games Controller";
@@ -187,10 +201,10 @@
 			isa = PBXGroup;
 			children = (
 				54D2D30C1D541F2F00546C46 /* Localizable.strings */,
-				549964E51D56D64600F574C4 /* Constants.swift */,
-				54D2D3151D54343200546C46 /* Helper.swift */,
-				54D2D30E1D541FC100546C46 /* StringExtension.swift */,
-				54ABC1F11D55A34400182262 /* UIViewExtension.swift */,
+				549964EC1D56F77000F574C4 /* Constants.swift */,
+				549964ED1D56F77000F574C4 /* Helper.swift */,
+				549964EE1D56F77000F574C4 /* StringExtension.swift */,
+				549964EF1D56F77000F574C4 /* UIViewExtension.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -201,6 +215,14 @@
 				549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */,
 			);
 			name = "Game Views";
+			sourceTree = "<group>";
+		};
+		549964F81D56F7AE00F574C4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				549964F91D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		54D2D3001D541BA700546C46 /* Vendors */ = {
@@ -285,6 +307,10 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = P77FGAZQUC;
 					};
+					549964E71D56F66100F574C4 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = P77FGAZQUC;
+					};
 				};
 			};
 			buildConfigurationList = 546D7D4B1D53D26D0031FF90 /* Build configuration list for PBXProject "AssassinSwift" */;
@@ -301,6 +327,7 @@
 			projectRoot = "";
 			targets = (
 				546D7D4F1D53D26D0031FF90 /* AssassinSwift */,
+				549964E71D56F66100F574C4 /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -336,6 +363,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		549964EB1D56F67200F574C4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mogenerator -m AssassinSwift/CoreData/AssassinSwift.xcdatamodeld -O AssassinSwift/CoreData/Persistence/Temp --swift --template-var arc=true";
 		};
 		8ED69050BD851ADF11EFACB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -375,25 +415,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */,
-				549964E41D56BBBC00F574C4 /* PlayingFieldViewController.swift in Sources */,
+				549964F01D56F77000F574C4 /* Constants.swift in Sources */,
 				549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */,
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
-				54ABC1F21D55A34400182262 /* UIViewExtension.swift in Sources */,
+				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
+				549964F11D56F77000F574C4 /* Helper.swift in Sources */,
 				549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */,
 				549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */,
-				54D2D30F1D541FC100546C46 /* StringExtension.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
+				549964F61D56F78300F574C4 /* GamePlayViewController.swift in Sources */,
 				54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */,
+				549964F31D56F77000F574C4 /* UIViewExtension.swift in Sources */,
 				549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */,
 				54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */,
-				546D7D581D53D26E0031FF90 /* GameViewController.swift in Sources */,
 				546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */,
 				54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */,
-				549964E61D56D64600F574C4 /* Constants.swift in Sources */,
 				549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */,
-				54D2D3161D54343200546C46 /* Helper.swift in Sources */,
+				549964F71D56F78300F574C4 /* PlayingFieldViewController.swift in Sources */,
+				549964F21D56F77000F574C4 /* StringExtension.swift in Sources */,
 				549964E11D56BB6A00F574C4 /* GamePlayViewController.swift in Sources */,
-				549964B81D56A06600F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +595,20 @@
 			};
 			name = Release;
 		};
+		549964E91D56F66200F574C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		549964EA1D56F66200F574C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -576,15 +630,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		549964E81D56F66200F574C4 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				549964E91D56F66200F574C4 /* Debug */,
+				549964EA1D56F66200F574C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		549964B61D56A06600F574C4 /* AssassinSwift.xcdatamodeld */ = {
+		549964F91D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				549964B71D56A06600F574C4 /* AssassinSwift.xcdatamodel */,
+				549964FA1D56F7AE00F574C4 /* AssassinSwift.xcdatamodel */,
 			);
-			currentVersion = 549964B71D56A06600F574C4 /* AssassinSwift.xcdatamodel */;
+			currentVersion = 549964FA1D56F7AE00F574C4 /* AssassinSwift.xcdatamodel */;
 			path = AssassinSwift.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
