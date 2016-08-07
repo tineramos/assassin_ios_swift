@@ -9,15 +9,25 @@
 import UIKit
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    // Private Constants
+    struct Constants {
+        struct CellIdentifier {
+            static let gamesCellId = "gamesCellId"
+        }
+        
+        struct SegueIdentifier {
+            static let pushGameDetailSegue = "pushGameDetailSegue"
+        }
+    }
     
     @IBOutlet weak var tableView: UITableView?
-    
-    let gamesCellId = "gamesCellId"
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        DataManager.sharedManager.getGamesList()
+        
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -30,7 +40,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
         
         // TODO: add configure method in cell using Game core data entity
         
@@ -38,7 +48,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        // TODO: if game status is open/cancelled, no action
+        // TODO: push GameDetail if finished or ongoing
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

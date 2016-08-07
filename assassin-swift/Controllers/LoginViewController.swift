@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
 
     }
     
-    func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
     
