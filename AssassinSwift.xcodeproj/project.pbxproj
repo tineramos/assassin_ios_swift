@@ -18,8 +18,11 @@
 		549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964A81D5694EF00F574C4 /* ProfileViewController.swift */; };
 		549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AC1D569A8B00F574C4 /* AboutViewController.swift */; };
 		549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */; };
-		549964B11D569FC000F574C4 /* GamesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 549964AF1D569FC000F574C4 /* GamesTableViewCell.xib */; };
 		549964B81D56A06600F574C4 /* AssassinSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 549964B61D56A06600F574C4 /* AssassinSwift.xcdatamodeld */; };
+		549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964DA1D56AC4700F574C4 /* DataManager.swift */; };
+		549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964DC1D56AC5600F574C4 /* CoreDataManager.swift */; };
+		549964E11D56BB6A00F574C4 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */; };
+		549964E41D56BBBC00F574C4 /* PlayingFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964E31D56BBBC00F574C4 /* PlayingFieldViewController.swift */; };
 		54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1ED1D55896A00182262 /* MenuViewController.swift */; };
 		54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1EF1D5589D800182262 /* LoginViewController.swift */; };
 		54ABC1F21D55A34400182262 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1F11D55A34400182262 /* UIViewExtension.swift */; };
@@ -49,8 +52,11 @@
 		549964A81D5694EF00F574C4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		549964AC1D569A8B00F574C4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesTableViewCell.swift; path = Controllers/GamesTableViewCell.swift; sourceTree = "<group>"; };
-		549964AF1D569FC000F574C4 /* GamesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GamesTableViewCell.xib; path = Controllers/GamesTableViewCell.xib; sourceTree = "<group>"; };
 		549964B71D56A06600F574C4 /* AssassinSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AssassinSwift.xcdatamodel; sourceTree = "<group>"; };
+		549964DA1D56AC4700F574C4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = DataManager/DataManager.swift; sourceTree = "<group>"; };
+		549964DC1D56AC5600F574C4 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = DataManager/CoreDataManager.swift; sourceTree = "<group>"; };
+		549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayViewController.swift; path = Controllers/GamePlayViewController.swift; sourceTree = "<group>"; };
+		549964E31D56BBBC00F574C4 /* PlayingFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingFieldViewController.swift; sourceTree = "<group>"; };
 		54ABC1ED1D55896A00182262 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controllers/MenuViewController.swift; sourceTree = "<group>"; };
 		54ABC1EF1D5589D800182262 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		54ABC1F11D55A34400182262 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -113,14 +119,12 @@
 				546D7D591D53D26E0031FF90 /* Main.storyboard */,
 				549964B61D56A06600F574C4 /* AssassinSwift.xcdatamodeld */,
 				546D7D721D53FD580031FF90 /* Controllers */,
+				549964DE1D56AC6000F574C4 /* Data Managers */,
 				54D2D3051D541C8800546C46 /* Models */,
+				549964DF1D56AC6F00F574C4 /* Helpers */,
 				54D2D3001D541BA700546C46 /* Vendors */,
 				546D7D711D53FD490031FF90 /* Framework */,
 				546D7D701D53FD410031FF90 /* Supporting Files */,
-				54D2D30C1D541F2F00546C46 /* Localizable.strings */,
-				54D2D3151D54343200546C46 /* Helper.swift */,
-				54D2D30E1D541FC100546C46 /* StringExtension.swift */,
-				54ABC1F11D55A34400182262 /* UIViewExtension.swift */,
 			);
 			name = AssassinSwift;
 			path = "assassin-swift";
@@ -161,10 +165,39 @@
 			isa = PBXGroup;
 			children = (
 				546D7D571D53D26E0031FF90 /* GameViewController.swift */,
-				549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */,
-				549964AF1D569FC000F574C4 /* GamesTableViewCell.xib */,
+				549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */,
+				549964E31D56BBBC00F574C4 /* PlayingFieldViewController.swift */,
+				549964E21D56BB7600F574C4 /* Game Views */,
 			);
 			name = "Games Controller";
+			sourceTree = "<group>";
+		};
+		549964DE1D56AC6000F574C4 /* Data Managers */ = {
+			isa = PBXGroup;
+			children = (
+				549964DA1D56AC4700F574C4 /* DataManager.swift */,
+				549964DC1D56AC5600F574C4 /* CoreDataManager.swift */,
+			);
+			name = "Data Managers";
+			sourceTree = "<group>";
+		};
+		549964DF1D56AC6F00F574C4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				54D2D30C1D541F2F00546C46 /* Localizable.strings */,
+				54D2D3151D54343200546C46 /* Helper.swift */,
+				54D2D30E1D541FC100546C46 /* StringExtension.swift */,
+				54ABC1F11D55A34400182262 /* UIViewExtension.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		549964E21D56BB7600F574C4 /* Game Views */ = {
+			isa = PBXGroup;
+			children = (
+				549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */,
+			);
+			name = "Game Views";
 			sourceTree = "<group>";
 		};
 		54D2D3001D541BA700546C46 /* Vendors */ = {
@@ -278,7 +311,6 @@
 				547BBD701D541222004D171B /* Podfile in Resources */,
 				546D7D601D53D26E0031FF90 /* LaunchScreen.storyboard in Resources */,
 				546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */,
-				549964B11D569FC000F574C4 /* GamesTableViewCell.xib in Resources */,
 				54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */,
 				546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */,
 			);
@@ -340,8 +372,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */,
+				549964E41D56BBBC00F574C4 /* PlayingFieldViewController.swift in Sources */,
+				549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */,
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
 				54ABC1F21D55A34400182262 /* UIViewExtension.swift in Sources */,
+				549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */,
 				549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */,
 				54D2D30F1D541FC100546C46 /* StringExtension.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
@@ -353,6 +388,7 @@
 				54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */,
 				549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */,
 				54D2D3161D54343200546C46 /* Helper.swift in Sources */,
+				549964E11D56BB6A00F574C4 /* GamePlayViewController.swift in Sources */,
 				549964B81D56A06600F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

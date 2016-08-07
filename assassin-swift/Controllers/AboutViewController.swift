@@ -16,4 +16,8 @@ class AboutViewController: UIViewController {
         
     }
     
+    @IBAction func backButtonPressed() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
 }

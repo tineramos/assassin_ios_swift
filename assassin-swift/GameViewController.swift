@@ -7,34 +7,17 @@
 //
 
 import UIKit
-import QuartzCore
-import SceneKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView?
+    
+    let gamesCellId = "gamesCellId"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let sensing = SensingKitLib.sharedSensingKitLib()
-        
-        if sensing.isSensorAvailable(SKSensorType.Battery) {
-            
-            print("i has battery sensor hehehe ")
-            
-            sensing.registerSensor(SKSensorType.Battery)
-            
-            if sensing.isSensorRegistered(SKSensorType.Battery) {
-                sensing.subscribeToSensor(SKSensorType.Battery, withHandler: { (sensorType, sensorData) in
-                    let batteryData = sensorData as! SKBatteryData
-                    print("Battery Level: \(batteryData.level)")
-                })
-                
-                sensing.startContinuousSensingWithSensor(SKSensorType.Battery)
-            }
-            
-        }
+    
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -44,6 +27,28 @@ class GameViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
+        
+        // TODO: add configure method in cell using Game core data entity
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO: change numbers
+        return 1
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // TODO: change depend on the game status
+        return 3
     }
 
 }

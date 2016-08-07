@@ -14,4 +14,8 @@ extension String {
         return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), comment: "")
     }
     
+    func localized(comment: String) -> String {
+        return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), comment: comment)
+    }
+    
 }

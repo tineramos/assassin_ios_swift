@@ -26,3 +26,10 @@
 
 "registration.gender.options.male" = "Male";
 "registration.gender.options.female" = "Female";
+
+#pragma mark - ERRORS
+
+"registration.error.invalid.emailformat" = "Invalid email format.";
+"registration.error.password.notmatch" = "Password does not match.";
+"registration.error.string.isempty" = "can not be empty.";
+"registration.error.int.iszero" = "can not be zero.";

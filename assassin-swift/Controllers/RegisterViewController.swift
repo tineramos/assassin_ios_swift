@@ -11,6 +11,7 @@ import UIKit
 class RegisterViewController: FXFormViewController {
     
     var userDictionary = [String : String]()
+    var errorMessage: String?
     
     override func awakeFromNib() {
         formController.form = RegistrationForm()
@@ -20,68 +21,85 @@ class RegisterViewController: FXFormViewController {
         
         // TODO: add registration user API
         
-//        let form = cell.field.form as! RegistrationForm
-//        checkIfValuesAreValid(form)
-        self.performSegueWithIdentifier("setMenuSegue", sender: nil)
+        let form = cell.field.form as! RegistrationForm
         
+        if checkIfValuesAreValid(form) {
+            if form.password == form.repeatPassword {
+                self.performSegueWithIdentifier("setMenuSegue", sender: nil)
+            }
+            showError("Password does not match.")
+        }
+        else {
+            showError(errorMessage)
+        }
+
     }
     
-    func checkIfValuesAreValid(form: RegistrationForm) {
+    func checkIfValuesAreValid(form: RegistrationForm) -> Bool {
+        
+        var valid: Bool = true
         
         for key in form.keyFields() {
             
             if let value = form.valueForKey(key) {
                 
-                if value is String {
-                    stringParameterValidator(value as! String, forKey: key)
+                switch value {
+                case is String:
+                    valid = stringParameterValidator(value as! String, forKey: key)
+                    break
+                case is Int:
+                    valid = intParameterValidator(value as! Int, forKey: key)
+                    break
+                case is NSData:
+                    // add photo handler
+                    break
+                default:
+                    break
                 }
-                else if value is Int {
-                    intParameterValidator(value as! Int, forKey: key)
-                }
-                else {
-                    // photo?
-                    print("photo may be??")
-                }
+                
             }
             else {
-                showError("\(key) has null value!!")
-                break
+                errorMessage = "\(key) has null value!!"
+                return !valid
             }
             
         }
         
-        if form.password == form.repeatPassword {
-            print("same password")
-        }
-        else {
-            print("oops. password not match")
-        }
-        
+        return valid
     }
     
-    func stringParameterValidator(string: String, forKey key: String) {
+    func stringParameterValidator(string: String, forKey key: String) -> Bool {
+        
+        var valid: Bool = true
         
         if !string.isEmpty {
             if key == "registration.account.field.email".localized &&
                 !Helper.isValidEmail(string) {
-                showError("EMAIL: INVALID FORMAT!!")
+                showError("registration.error.invalid.emailformat".localized)
+                valid = false
             }
         }
         else {
             showError("FIELD \(key) is EMPTYYYYY!!");
+            valid = false
         }
+        
+        return valid
         
     }
     
-    func intParameterValidator(value: Int, forKey key: String) {
+    func intParameterValidator(value: Int, forKey key: String) -> Bool {
+        
+        var valid: Bool = true
+        
         if (key == "registration.details.field.age".localized ||
             key == "registration.details.field.height".localized) &&
             value == 0 {
             showError("\(key) can not be zero!!")
+            valid = false
         }
-        else {
-            showError("nice! \(key) has value \(value)")
-        }
+        
+        return valid
     }
     
     func showError(message: String!) {
