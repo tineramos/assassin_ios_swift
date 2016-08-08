@@ -30,6 +30,7 @@ class DataManager: AFHTTPSessionManager {
         super.init(baseURL: url, sessionConfiguration: configuration)
         self.requestSerializer = AFJSONRequestSerializer() as AFJSONRequestSerializer
         self.responseSerializer = AFJSONResponseSerializer() as AFJSONResponseSerializer
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,11 +39,16 @@ class DataManager: AFHTTPSessionManager {
     
     func signUp(params: NSDictionary, successBlock: VoidBlock, failureBlock: FailureBlock) {
         
-        self.POST("user/", parameters: params, progress: nil, success: { (task, response) in
-            print("response is: \(response)")
-            successBlock()
-            }) { (task, error) in
-                failureBlock(errorString: error.localizedDescription)
+        self.POST("user", parameters: params, progress: nil, success: { (task, response) in
+
+            CoreDataManager.sharedManager.setCurrentActiveUser(response as! NSDictionary, userBlock: { (user) -> (Void) in
+                successBlock()
+            }, failureBlock: { (errorString) -> (Void) in
+                failureBlock(errorString: errorString)
+            })
+        
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
         }
         
     }
@@ -52,8 +58,8 @@ class DataManager: AFHTTPSessionManager {
         self.GET("games", parameters: nil, progress: nil, success: { (task, response) in
             // TODO: save in CoreData bitch
             successBlock(array: response as! NSArray)
-            }) { (task, error) in
-                failureBlock(errorString: error.localizedDescription)
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
         }
         
     }
@@ -63,8 +69,8 @@ class DataManager: AFHTTPSessionManager {
         self.GET("weapons", parameters: nil, progress: nil, success: { (task, response) in
             // TODO: save list of weapons in core data bitch
             successBlock(array: response as! NSArray)
-            }) { (task, error) in
-                failureBlock(errorString: error.localizedDescription)
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
         }
         
     }
@@ -85,8 +91,8 @@ class DataManager: AFHTTPSessionManager {
         self.PUT("/player/changeWeapons/" + String(playerId), parameters: ["weapons": params], success: { (task, response) in
             // TODO: save list of defences in core data bitch
             successBlock()
-            }) { (task, error) in
-                failureBlock(errorString: error.localizedDescription)
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
         }
         
     }

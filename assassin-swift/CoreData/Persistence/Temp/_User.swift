@@ -11,6 +11,8 @@ public enum UserAttributes: String {
     case email = "email"
     case gender = "gender"
     case height = "height"
+    case name = "name"
+    case password = "password"
     case user_id = "user_id"
 }
 
@@ -60,6 +62,12 @@ public class _User: NSManagedObject {
 
     @NSManaged public
     var height: NSNumber?
+
+    @NSManaged public
+    var name: String?
+
+    @NSManaged public
+    var password: String?
 
     @NSManaged public
     var user_id: NSNumber?

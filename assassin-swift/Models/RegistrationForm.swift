@@ -53,13 +53,8 @@ class RegistrationForm: NSObject, FXForm {
              *  Details section 
              **/
             
-            [FXFormFieldKey: "registration.details.field.name".localized,
-                FXFormFieldHeader: "registration.header.details".localized,
-                "textField.autocapitalizationType": UITextAutocapitalizationType.Words.rawValue,
-                "textField.autocorrectionType": UITextAutocorrectionType.No.rawValue,
-                "textField.spellCheckingType": UITextSpellCheckingType.No.rawValue],
-            
             [FXFormFieldKey: "registration.details.field.codeName".localized,
+                FXFormFieldHeader: "registration.header.details".localized,
                 "textField.autocapitalizationType": UITextAutocapitalizationType.None.rawValue,
                 "textField.autocorrectionType": UITextAutocorrectionType.No.rawValue,
                 "textField.spellCheckingType": UITextSpellCheckingType.No.rawValue],

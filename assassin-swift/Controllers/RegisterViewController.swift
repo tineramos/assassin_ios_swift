@@ -19,17 +19,44 @@ class RegisterViewController: FXFormViewController {
     
     func register(cell: FXFormFieldCellProtocol) {
         
-        // TODO: add registration user API
-        
         let form = cell.field.form as! RegistrationForm
         
+        let params: [String: AnyObject] = [UserAttributes.email.rawValue: form.email!,
+                                           UserAttributes.password.rawValue: form.password!,
+                                           UserAttributes.name.rawValue: form.name!,
+                                           UserAttributes.code_name.rawValue: form.codeName!,
+                                           UserAttributes.gender.rawValue: form.gender == 0 ? "m" : "f",
+                                           UserAttributes.age.rawValue: form.age,
+                                           UserAttributes.height.rawValue: form.height,
+                                           UserAttributes.course.rawValue: form.course!]
+        
+        if form.password == form.repeatPassword {
+            DataManager.sharedManager.signUp(params, successBlock: { () -> (Void) in
+                self.performSegueWithIdentifier("setMenuSegue", sender: nil)
+            }) { (errorString) -> (Void) in
+                self.showError(errorString)
+            }
+        }
+        else {
+            showError("registration.error.password.notmatch".localized)
+        }
+
+    }
+    
+    func removedFunc(form: RegistrationForm) {
         if checkIfValuesAreValid(form) {
             if form.password == form.repeatPassword {
                 
-                DataManager.sharedManager.signUp(userDictionary, successBlock: { () -> (Void) in
-                    self.performSegueWithIdentifier("setMenuSegue", sender: nil)
-                    }, failureBlock: { (error: String!) -> (Void) in
-                        self.showError(error)
+                CoreDataManager.sharedManager.getCurrentActiveUser({ (user) -> (Void) in
+                    
+                    DataManager.sharedManager.signUp(self.userDictionary, successBlock: { () -> (Void) in
+                        self.performSegueWithIdentifier("setMenuSegue", sender: nil)
+                        }, failureBlock: { (error: String!) -> (Void) in
+                            self.showError(error)
+                    })
+                    
+                    }, failureBlock: { (errorString) -> (Void) in
+                        
                 })
                 
             }
@@ -40,7 +67,6 @@ class RegisterViewController: FXFormViewController {
         else {
             showError(errorMessage)
         }
-
     }
     
     func checkIfValuesAreValid(form: RegistrationForm) -> Bool {
@@ -107,6 +133,8 @@ class RegisterViewController: FXFormViewController {
     func intParameterValidator(value: Int, forKey key: String) -> Bool {
         
         var valid: Bool = true
+        
+        userDictionary[key] = value
         
         if (key == "registration.details.field.age".localized ||
             key == "registration.details.field.height".localized) &&

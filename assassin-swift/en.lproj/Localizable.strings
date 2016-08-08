@@ -16,7 +16,6 @@
 "registration.account.field.repeatPassword" = "repeatPassword";
 
 "registration.header.details" = "Details";
-"registration.details.field.name" = "name";
 "registration.details.field.codeName" = "codeName";
 "registration.details.field.course" = "course";
 "registration.details.field.gender" = "gender";

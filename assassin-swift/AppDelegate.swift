@@ -13,9 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var coreDataStack: CoreDataStack?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        setupCoreDataStack()
+        
         return true
     }
 
@@ -44,6 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
+    
+    func setupCoreDataStack() {
+        coreDataStack = nil
+        coreDataStack = CoreDataStack()
+        coreDataStack?.setup()
+    }
     
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.tine.sample" in the application's documents Application Support directory.
