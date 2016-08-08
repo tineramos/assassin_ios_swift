@@ -23,6 +23,18 @@ class RegistrationForm: NSObject, FXForm {
 
     var profilePhoto: UIImage?
     
+    func keyFields() -> [String]! {
+        
+        var keys = [String]()
+        
+        for object in fields() {
+            keys.append(object[FXFormFieldKey] as! String)
+        }
+        
+        return keys
+        
+    }
+    
     func fields() -> [AnyObject]! {
         
         return [
@@ -34,26 +46,27 @@ class RegistrationForm: NSObject, FXForm {
             [FXFormFieldKey: "registration.account.field.email".localized,
                 FXFormFieldHeader: "registration.header.account".localized],
             
-            "registration.account.field.password".localized,
-            "registration.account.field.repeatPassword".localized,
+            [FXFormFieldKey: "registration.account.field.password".localized],
+            [FXFormFieldKey: "registration.account.field.repeatPassword".localized],
             
             /**
              *  Details section 
              **/
             
-            [FXFormFieldKey: "registration.details.field.name".localized,
+            [FXFormFieldKey: "registration.details.field.codeName".localized,
                 FXFormFieldHeader: "registration.header.details".localized,
-                "textField.autocapitalizationType": UITextAutocapitalizationType.Words.rawValue],
-            
-            "registration.details.field.codeName".localized,
+                "textField.autocapitalizationType": UITextAutocapitalizationType.None.rawValue,
+                "textField.autocorrectionType": UITextAutocorrectionType.No.rawValue,
+                "textField.spellCheckingType": UITextSpellCheckingType.No.rawValue],
             
             [FXFormFieldKey: "registration.details.field.gender".localized,
                 FXFormFieldOptions: ["registration.gender.options.male".localized,
                     "registration.gender.options.female".localized]],
             
-            "registration.details.field.age".localized,
-            "registration.details.field.height".localized,
-            "registration.details.field.profilePhoto".localized,
+            [FXFormFieldKey: "registration.details.field.age".localized],
+            [FXFormFieldKey: "registration.details.field.height".localized],
+            [FXFormFieldKey: "registration.details.field.course".localized],
+//            [FXFormFieldKey: "registration.details.field.profilePhoto".localized],
         
         ]
         

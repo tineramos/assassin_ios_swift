@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Mogenerator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>assassin-swift.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>546D7D4F1D53D26D0031FF90</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>549964E71D56F66100F574C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

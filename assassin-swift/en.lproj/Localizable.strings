@@ -16,7 +16,6 @@
 "registration.account.field.repeatPassword" = "repeatPassword";
 
 "registration.header.details" = "Details";
-"registration.details.field.name" = "name";
 "registration.details.field.codeName" = "codeName";
 "registration.details.field.course" = "course";
 "registration.details.field.gender" = "gender";
@@ -26,3 +25,18 @@
 
 "registration.gender.options.male" = "Male";
 "registration.gender.options.female" = "Female";
+
+/*
+ Page Titles
+ */
+
+"page.title.games" = "Games";
+"page.title.profile" = "Profile";
+"page.title.about" = "About";
+
+#pragma mark - ERRORS
+
+"registration.error.invalid.emailformat" = "Invalid email format.";
+"registration.error.password.notmatch" = "Password does not match.";
+"registration.error.string.isempty" = "can not be empty.";
+"registration.error.int.iszero" = "can not be zero.";

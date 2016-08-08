@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="f72-KA-QIM" customClass="RegisterButtonCell" customModule="AssassinSwift" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="f72-KA-QIM" customClass="RegisterButtonCell" customModule="AssassinSwift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f72-KA-QIM" id="VQw-XQ-080">
@@ -27,13 +27,13 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="uCO-rB-swe" secondAttribute="trailing" id="Mna-eu-on8"/>
                     <constraint firstAttribute="bottom" secondItem="uCO-rB-swe" secondAttribute="bottom" id="Wer-en-OGF"/>
-                    <constraint firstAttribute="trailing" secondItem="uCO-rB-swe" secondAttribute="trailing" id="epF-8q-fm0"/>
                     <constraint firstItem="uCO-rB-swe" firstAttribute="top" secondItem="VQw-XQ-080" secondAttribute="top" id="fOH-D9-cOc"/>
-                    <constraint firstItem="uCO-rB-swe" firstAttribute="leading" secondItem="VQw-XQ-080" secondAttribute="leading" id="gom-CS-Lwl"/>
+                    <constraint firstItem="uCO-rB-swe" firstAttribute="leading" secondItem="VQw-XQ-080" secondAttribute="leading" id="m4F-ef-5uh"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="452" y="148"/>
+            <point key="canvasLocation" x="363" y="386"/>
         </tableViewCell>
     </objects>
 </document>
