@@ -1,25 +1,19 @@
 //
-//  GamePlayViewController.swift
+//  ChooseWeaponDefenceViewController.swift
 //  AssassinSwift
 //
-//  Created by Tine Ramos on 07/08/2016.
+//  Created by Tine Ramos on 08/08/2016.
 //  Copyright © 2016 Tine Ramos. All rights reserved.
 //
 
 import UIKit
 
-class GamePlayViewController: BaseViewController, UITableViewDataSource {
+class ChooseWeaponDefenceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var gameId: Int = 0
-    
     struct Constants {
         
         struct CellIdentifier {
-            static let playerCellId = "playerCellId"
-        }
-        
-        struct SegueIdentifier {
-            static let joinGameSegue = "joinGameSegue"
+            static let playerCellId = "weaponDefenceCellId"
         }
         
     }
@@ -28,14 +22,8 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "Title")
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,31 +41,34 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource {
     
     // MARK: - TableView DataSource Methods
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO: if game status is open/cancelled, no action
-        // TODO: push GameDetail if finished or ongoing
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: change numbers
-        return 1
+        return 5
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // TODO: change depend on the game status
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "The section"
+        if section == 0 {
+            return "Weapon"
+        }
+        return "Defence"
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.playerCellId, forIndexPath: indexPath) as! GamesTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.playerCellId, forIndexPath: indexPath)
         
         // TODO: add configure method in cell using Game core data entity
         
         return cell
+    }
+    
+    // MARK: - TableView Delegate Methods
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+        cell.accessoryType = ((cell.accessoryType == .None) ? .Checkmark: .None)
     }
 
 }

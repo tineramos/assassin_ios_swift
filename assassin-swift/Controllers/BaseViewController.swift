@@ -62,7 +62,7 @@ class BaseViewController: UIViewController {
         
         // create and customise the title view of the page
         let titleLabel = UILabel(frame: CGRectMake(0, 0, 200, 40))
-        titleLabel.font = UIFont(name: Constants().font, size: 40.0)
+        titleLabel.font = UIFont(name: Constants.fontCourierNewBold, size: 40.0)
         titleLabel.textColor = titleColor
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.text = title.uppercaseString

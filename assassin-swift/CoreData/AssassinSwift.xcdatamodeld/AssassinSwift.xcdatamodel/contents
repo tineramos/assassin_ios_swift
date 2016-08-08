@@ -21,7 +21,6 @@
         <relationship name="winner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Winner" inverseName="game" inverseEntity="Winner" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES">
-        <attribute name="health_points" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="is_eliminated" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="kills_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="player_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -79,15 +78,15 @@
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="winner" inverseEntity="Game" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Defence" positionX="412" positionY="-243" width="128" height="88"/>
-        <element name="Game" positionX="-189" positionY="-49" width="128" height="238"/>
-        <element name="Player" positionX="16" positionY="-27" width="128" height="163"/>
-        <element name="PlayerDefences" positionX="205" positionY="-243" width="128" height="118"/>
-        <element name="PlayerWeapons" positionX="205" positionY="126" width="128" height="103"/>
-        <element name="Profile" positionX="-378" positionY="72" width="128" height="103"/>
-        <element name="Target" positionX="252" positionY="-90" width="128" height="148"/>
-        <element name="User" positionX="-569" positionY="45" width="128" height="163"/>
-        <element name="Weapon" positionX="394" positionY="135" width="128" height="88"/>
-        <element name="Winner" positionX="16" positionY="162" width="128" height="88"/>
+        <element name="Defence" positionX="223" positionY="-241" width="128" height="88"/>
+        <element name="Game" positionX="-360" positionY="-40" width="128" height="238"/>
+        <element name="Player" positionX="-155" positionY="-18" width="128" height="148"/>
+        <element name="PlayerDefences" positionX="34" positionY="-234" width="128" height="118"/>
+        <element name="PlayerWeapons" positionX="34" positionY="135" width="128" height="103"/>
+        <element name="Profile" positionX="-191" positionY="-207" width="128" height="103"/>
+        <element name="Target" positionX="81" positionY="-81" width="128" height="148"/>
+        <element name="User" positionX="-371" positionY="-243" width="128" height="163"/>
+        <element name="Weapon" positionX="223" positionY="135" width="128" height="88"/>
+        <element name="Winner" positionX="-155" positionY="171" width="128" height="88"/>
     </elements>
 </model>

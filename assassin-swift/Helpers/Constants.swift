@@ -16,6 +16,6 @@ struct Constants {
         
     }
     
-    let font = "CourierNewPS-BoldMT"
+    static let fontCourierNewBold = "CourierNewPS-BoldMT"
     
 }

@@ -28,7 +28,7 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
     
         DataManager.sharedManager.getGamesList({ (gamesList: NSArray!) -> (Void) in
             // add methods!
-//            self.tableView?.reloadData()
+            self.tableView?.reloadData()
             
             print("games: \n \(gamesList)")
             
@@ -48,6 +48,8 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
+    
+    // MARK: - TableView DataSource Methods
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // TODO: if game status is open/cancelled, no action
@@ -76,4 +78,10 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
         return "The section"
     }
 
+    // MARK: - TableView Delegate Methods
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
 }

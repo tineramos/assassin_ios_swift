@@ -33,6 +33,8 @@ class ProfileViewController: BaseViewController, UITableViewDataSource, UITableV
         showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "page.title.profile".localized)
     }
     
+    // MARK: - TableView DataSource Methods
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // TODO: if game status is open/cancelled, no action
         // TODO: push GameDetail if finished or ongoing
@@ -53,11 +55,17 @@ class ProfileViewController: BaseViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! ProfileGameTableViewCell
         
         // TODO: add configure method in cell using Game core data entity
         
         return cell
+    }
+    
+    // MARK: - TableView Delegate Methods
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
     
 }

@@ -31,6 +31,8 @@
 		547BBD701D541222004D171B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 547BBD6F1D541222004D171B /* Podfile */; };
 		5491E8361D58021500BA7E8D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8351D58021500BA7E8D /* BaseViewController.swift */; };
 		5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8371D5816AF00BA7E8D /* ProfileGameTableViewCell.swift */; };
+		5491E83C1D5834A700BA7E8D /* PlayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E83B1D5834A700BA7E8D /* PlayersTableViewCell.swift */; };
+		5491E8401D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E83F1D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift */; };
 		549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964A81D5694EF00F574C4 /* ProfileViewController.swift */; };
 		549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AC1D569A8B00F574C4 /* AboutViewController.swift */; };
 		549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */; };
@@ -68,6 +70,8 @@
 		547BBD6F1D541222004D171B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		5491E8351D58021500BA7E8D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		5491E8371D5816AF00BA7E8D /* ProfileGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileGameTableViewCell.swift; path = Controllers/ProfileGameTableViewCell.swift; sourceTree = "<group>"; };
+		5491E83B1D5834A700BA7E8D /* PlayersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersTableViewCell.swift; path = Controllers/PlayersTableViewCell.swift; sourceTree = "<group>"; };
+		5491E83F1D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseWeaponDefenceViewController.swift; path = Controllers/ChooseWeaponDefenceViewController.swift; sourceTree = "<group>"; };
 		549964A81D5694EF00F574C4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		549964AC1D569A8B00F574C4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesTableViewCell.swift; path = Controllers/GamesTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				5410FA771D57272D0092D36F /* GameViewController.swift */,
 				549964F41D56F78300F574C4 /* GamePlayViewController.swift */,
 				549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */,
+				5491E83F1D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift */,
 				549964E21D56BB7600F574C4 /* Game Views */,
 			);
 			name = "Games Controller";
@@ -236,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */,
+				5491E83B1D5834A700BA7E8D /* PlayersTableViewCell.swift */,
 			);
 			name = "Game Views";
 			sourceTree = "<group>";
@@ -442,6 +448,7 @@
 				549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */,
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
 				5491E8361D58021500BA7E8D /* BaseViewController.swift in Sources */,
+				5491E8401D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift in Sources */,
 				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
 				549964F11D56F77000F574C4 /* Helper.swift in Sources */,
 				549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */,
@@ -454,6 +461,7 @@
 				549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */,
 				54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */,
 				546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */,
+				5491E83C1D5834A700BA7E8D /* PlayersTableViewCell.swift in Sources */,
 				54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */,
 				549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */,
 				549964F71D56F78300F574C4 /* PlayingFieldViewController.swift in Sources */,
