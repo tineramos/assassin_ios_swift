@@ -27,6 +27,12 @@
 "registration.gender.options.male" = "Male";
 "registration.gender.options.female" = "Female";
 
+/*
+ Page Titles
+ */
+
+"page.title.about" = "About";
+
 #pragma mark - ERRORS
 
 "registration.error.invalid.emailformat" = "Invalid email format.";

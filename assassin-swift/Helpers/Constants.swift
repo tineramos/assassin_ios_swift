@@ -10,9 +10,12 @@ import Foundation
 
 struct Constants {
     
-    // TODO: add constants
-    struct DataManager {
-        let BASE_URL = "localhost:8000/api/v1/assassin/"
+    struct CoreDataModel {
+        
+        
+        
     }
+    
+    let font = "CourierNewPS-BoldMT"
     
 }

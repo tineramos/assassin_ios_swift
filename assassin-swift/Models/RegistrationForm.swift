@@ -70,7 +70,8 @@ class RegistrationForm: NSObject, FXForm {
             
             [FXFormFieldKey: "registration.details.field.age".localized],
             [FXFormFieldKey: "registration.details.field.height".localized],
-            [FXFormFieldKey: "registration.details.field.profilePhoto".localized],
+            [FXFormFieldKey: "registration.details.field.course".localized],
+//            [FXFormFieldKey: "registration.details.field.profilePhoto".localized],
         
         ]
         

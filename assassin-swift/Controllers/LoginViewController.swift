@@ -25,12 +25,14 @@ class LoginViewController: UIViewController {
 
     }
     
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBarHidden = true
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {

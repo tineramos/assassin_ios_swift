@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: BaseViewController {
     
     @IBOutlet weak var playButton: UIButton?
     @IBOutlet weak var profileButton: UIButton?
@@ -22,17 +22,19 @@ class MenuViewController: UIViewController {
         profileButton?.setBorderColor(UIColor.whiteColor().CGColor)
         aboutButton?.setBorderColor(UIColor.whiteColor().CGColor)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        navigationMode = NavigationBar.Hidden
+        
+        super.viewWillAppear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

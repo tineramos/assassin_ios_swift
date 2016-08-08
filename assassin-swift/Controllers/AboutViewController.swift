@@ -8,14 +8,19 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class AboutViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func backButtonPressed() {
-        self.navigationController?.popViewControllerAnimated(true)
+    override func viewWillAppear(animated: Bool) {
+        
+        navigationMode = NavigationBar.Shown
+        backButtonType = BackButton.Black
+        pageTitle = "page.title.about".localized
+        
+        super.viewWillAppear(animated)
     }
     
 }

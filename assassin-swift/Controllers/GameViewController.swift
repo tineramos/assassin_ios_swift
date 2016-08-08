@@ -26,12 +26,29 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        DataManager.sharedManager.getGamesList()
+        DataManager.sharedManager.getGamesList({ (gamesList: NSArray!) -> (Void) in
+            // add methods!
+            self.tableView?.reloadData()
+            
+            print("games: \n \(gamesList)")
+            
+            }) { (error) -> (Void) in
+                print(error)
+                // show error
+        }
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBarHidden = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBarHidden = true
     }
     
     override func didReceiveMemoryWarning() {

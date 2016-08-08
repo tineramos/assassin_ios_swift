@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5410FA781D57272D0092D36F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410FA771D57272D0092D36F /* GameViewController.swift */; };
 		546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D531D53D26D0031FF90 /* AppDelegate.swift */; };
 		546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D591D53D26E0031FF90 /* Main.storyboard */; };
 		546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5C1D53D26E0031FF90 /* Assets.xcassets */; };
@@ -28,12 +29,12 @@
 		546D7D6A1D53D2CF0031FF90 /* SensingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546D7D691D53D2CF0031FF90 /* SensingKit.framework */; };
 		546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */; };
 		547BBD701D541222004D171B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 547BBD6F1D541222004D171B /* Podfile */; };
+		5491E8361D58021500BA7E8D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8351D58021500BA7E8D /* BaseViewController.swift */; };
 		549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964A81D5694EF00F574C4 /* ProfileViewController.swift */; };
 		549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AC1D569A8B00F574C4 /* AboutViewController.swift */; };
 		549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */; };
 		549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964DA1D56AC4700F574C4 /* DataManager.swift */; };
 		549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964DC1D56AC5600F574C4 /* CoreDataManager.swift */; };
-		549964E11D56BB6A00F574C4 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */; };
 		549964F01D56F77000F574C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964EC1D56F77000F574C4 /* Constants.swift */; };
 		549964F11D56F77000F574C4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964ED1D56F77000F574C4 /* Helper.swift */; };
 		549964F21D56F77000F574C4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964EE1D56F77000F574C4 /* StringExtension.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		26996B8527A77998720B9743 /* Pods-AssassinSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.release.xcconfig"; sourceTree = "<group>"; };
+		5410FA771D57272D0092D36F /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Controllers/GameViewController.swift; sourceTree = "<group>"; };
 		546D7D501D53D26D0031FF90 /* AssassinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssassinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546D7D531D53D26D0031FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		546D7D5A1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,12 +65,12 @@
 		546D7D6B1D53D3410031FF90 /* AssassinSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AssassinSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
 		547BBD6F1D541222004D171B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		5491E8351D58021500BA7E8D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		549964A81D5694EF00F574C4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		549964AC1D569A8B00F574C4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesTableViewCell.swift; path = Controllers/GamesTableViewCell.swift; sourceTree = "<group>"; };
 		549964DA1D56AC4700F574C4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = DataManager/DataManager.swift; sourceTree = "<group>"; };
 		549964DC1D56AC5600F574C4 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = DataManager/CoreDataManager.swift; sourceTree = "<group>"; };
-		549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayViewController.swift; path = Controllers/GamePlayViewController.swift; sourceTree = "<group>"; };
 		549964EC1D56F77000F574C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Helpers/Constants.swift; sourceTree = "<group>"; };
 		549964ED1D56F77000F574C4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Helper.swift; path = Helpers/Helper.swift; sourceTree = "<group>"; };
 		549964EE1D56F77000F574C4 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Helpers/StringExtension.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		546D7D721D53FD580031FF90 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5491E8351D58021500BA7E8D /* BaseViewController.swift */,
 				54ABC1ED1D55896A00182262 /* MenuViewController.swift */,
 				549964A81D5694EF00F574C4 /* ProfileViewController.swift */,
 				549964AC1D569A8B00F574C4 /* AboutViewController.swift */,
@@ -180,8 +183,8 @@
 		549964B21D569FC600F574C4 /* Games Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5410FA771D57272D0092D36F /* GameViewController.swift */,
 				549964F41D56F78300F574C4 /* GamePlayViewController.swift */,
-				549964E01D56BB6A00F574C4 /* GamePlayViewController.swift */,
 				549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */,
 				549964E21D56BB7600F574C4 /* Game Views */,
 			);
@@ -414,10 +417,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5410FA781D57272D0092D36F /* GameViewController.swift in Sources */,
 				546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */,
 				549964F01D56F77000F574C4 /* Constants.swift in Sources */,
 				549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */,
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
+				5491E8361D58021500BA7E8D /* BaseViewController.swift in Sources */,
 				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
 				549964F11D56F77000F574C4 /* Helper.swift in Sources */,
 				549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */,
@@ -433,7 +438,6 @@
 				549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */,
 				549964F71D56F78300F574C4 /* PlayingFieldViewController.swift in Sources */,
 				549964F21D56F77000F574C4 /* StringExtension.swift in Sources */,
-				549964E11D56BB6A00F574C4 /* GamePlayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,6 +641,7 @@
 				549964EA1D56F66200F574C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

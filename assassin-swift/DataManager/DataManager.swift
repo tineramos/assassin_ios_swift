@@ -16,7 +16,7 @@ class DataManager: AFHTTPSessionManager {
         let BASE_URL = "http://localhost:8000/api/v1/assassin/"
     }
     
-    static let sharedInstance = DataManager(baseURL: NSURL(string: DataManagerConstants.init().BASE_URL))
+    static let sharedInstance = DataManager(baseURL: NSURL(string: DataManagerConstants().BASE_URL))
     
     class var sharedManager: DataManager {
         return sharedInstance
@@ -37,14 +37,23 @@ class DataManager: AFHTTPSessionManager {
     }
     
     // TODO: add public methods!!
-
-    func getGamesList() {
-        self.GET("games", parameters: nil, progress: nil, success: { (task, response) in
-            
-            // TODO: hahahaha format response bitch!!
-            print(response)
+    
+    func signUp(params: NSDictionary, successBlock: (Void) -> (Void), failureBlock: (error: String) -> (Void)) {
+        
+        self.POST("user/", parameters: params, progress: nil, success: { (task, response) in
+            print("response is: \(response)")
+            successBlock()
             }) { (task, error) in
-                print(error.localizedDescription)
+                failureBlock(error: error.localizedDescription)
+        }
+    }
+
+    func getGamesList(successBlock: (gamesList: NSArray!) -> (Void), failureBlock: (error: String) -> (Void)) {
+        self.GET("games", parameters: nil, progress: nil, success: { (task, response) in
+            // TODO: save in CoreData bitch
+            successBlock(gamesList: response as! NSArray)
+            }) { (task, error) in
+                failureBlock(error: error.localizedDescription)
         }
     }
 }

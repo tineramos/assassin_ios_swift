@@ -10,7 +10,7 @@ import UIKit
 
 class RegisterViewController: FXFormViewController {
     
-    var userDictionary = [String : String]()
+    var userDictionary = [String : AnyObject]()
     var errorMessage: String?
     
     override func awakeFromNib() {
@@ -25,9 +25,17 @@ class RegisterViewController: FXFormViewController {
         
         if checkIfValuesAreValid(form) {
             if form.password == form.repeatPassword {
-                self.performSegueWithIdentifier("setMenuSegue", sender: nil)
+                
+                DataManager.sharedManager.signUp(userDictionary, successBlock: { () -> (Void) in
+                    self.performSegueWithIdentifier("setMenuSegue", sender: nil)
+                    }, failureBlock: { (error: String!) -> (Void) in
+                        self.showError(error)
+                })
+                
             }
-            showError("Password does not match.")
+            else {
+                showError("registration.error.password.notmatch".localized)
+            }
         }
         else {
             showError(errorMessage)
@@ -59,18 +67,26 @@ class RegisterViewController: FXFormViewController {
                 
             }
             else {
-                errorMessage = "\(key) has null value!!"
-                return !valid
+                if key == "registration.details.field.profilePhoto".localized {
+                    return valid
+                }
+                else {
+                    errorMessage = "\(key) has null value!!"
+                    return !valid
+                }
             }
             
         }
         
         return valid
+        
     }
     
     func stringParameterValidator(string: String, forKey key: String) -> Bool {
         
         var valid: Bool = true
+        
+        userDictionary[key] = string
         
         if !string.isEmpty {
             if key == "registration.account.field.email".localized &&
@@ -115,8 +131,10 @@ class RegisterViewController: FXFormViewController {
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBarHidden = false
     }
 
 }
