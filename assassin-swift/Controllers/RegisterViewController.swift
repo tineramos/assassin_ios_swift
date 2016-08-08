@@ -23,7 +23,6 @@ class RegisterViewController: FXFormViewController {
         
         let params: [String: AnyObject] = [UserAttributes.email.rawValue: form.email!,
                                            UserAttributes.password.rawValue: form.password!,
-                                           UserAttributes.name.rawValue: form.name!,
                                            UserAttributes.code_name.rawValue: form.codeName!,
                                            UserAttributes.gender.rawValue: form.gender == 0 ? "m" : "f",
                                            UserAttributes.age.rawValue: form.age,
