@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
+    <entity name="Assassin" syncable="YES">
+        <attribute name="game_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="player_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="defences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlayerDefences" inverseName="player" inverseEntity="PlayerDefences" syncable="YES"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="assassin" inverseEntity="Profile" syncable="YES"/>
+        <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Target" inverseName="assassin" inverseEntity="Target" syncable="YES"/>
+        <relationship name="weapons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlayerWeapons" inverseName="player" inverseEntity="PlayerWeapons" syncable="YES"/>
+    </entity>
     <entity name="Defence" representedClassName="Defence" syncable="YES">
         <attribute name="defence_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="defence_name" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,28 +32,26 @@
         <attribute name="is_eliminated" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="kills_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="player_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="defences" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PlayerDefences" inverseName="player" inverseEntity="PlayerDefences" syncable="YES"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="players" inverseEntity="Game" syncable="YES"/>
-        <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Target" inverseName="assassin" inverseEntity="Target" syncable="YES"/>
-        <relationship name="weapons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlayerWeapons" inverseName="player" inverseEntity="PlayerWeapons" syncable="YES"/>
     </entity>
     <entity name="PlayerDefences" representedClassName="PlayerDefences" syncable="YES">
         <attribute name="authorize_usage" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="in_use" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="defence" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Defence" inverseName="playerDefence" inverseEntity="Defence" syncable="YES"/>
-        <relationship name="player" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Player" inverseName="defences" inverseEntity="Player" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Assassin" inverseName="defences" inverseEntity="Assassin" syncable="YES"/>
     </entity>
     <entity name="PlayerWeapons" representedClassName="PlayerWeapons" syncable="YES">
         <attribute name="in_use" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shots_left" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="weapons" inverseEntity="Player" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Assassin" inverseName="weapons" inverseEntity="Assassin" syncable="YES"/>
         <relationship name="weapon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weapon" inverseName="playerWeapon" inverseEntity="Weapon" syncable="YES"/>
     </entity>
     <entity name="Profile" representedClassName="Profile" syncable="YES">
         <attribute name="average_kill_per_game" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="games_won_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="total_games_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="assassin" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Assassin" inverseName="profile" inverseEntity="Assassin" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="profile" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Target" representedClassName="Target" syncable="YES">
@@ -55,7 +61,7 @@
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="target_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="assassin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="target" inverseEntity="Player" syncable="YES"/>
+        <relationship name="assassin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Assassin" inverseName="target" inverseEntity="Assassin" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -78,15 +84,16 @@
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="winner" inverseEntity="Game" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Defence" positionX="223" positionY="-241" width="128" height="88"/>
-        <element name="Game" positionX="-360" positionY="-40" width="128" height="238"/>
-        <element name="Player" positionX="-155" positionY="-18" width="128" height="148"/>
-        <element name="PlayerDefences" positionX="34" positionY="-234" width="128" height="118"/>
-        <element name="PlayerWeapons" positionX="34" positionY="135" width="128" height="103"/>
-        <element name="Profile" positionX="-191" positionY="-207" width="128" height="103"/>
-        <element name="Target" positionX="81" positionY="-81" width="128" height="148"/>
-        <element name="User" positionX="-371" positionY="-243" width="128" height="163"/>
-        <element name="Weapon" positionX="223" positionY="135" width="128" height="88"/>
-        <element name="Winner" positionX="-155" positionY="171" width="128" height="88"/>
+        <element name="Defence" positionX="270" positionY="-241" width="128" height="88"/>
+        <element name="Game" positionX="-450" positionY="-346" width="128" height="238"/>
+        <element name="Player" positionX="-270" positionY="-310" width="128" height="103"/>
+        <element name="PlayerDefences" positionX="88" positionY="-271" width="128" height="118"/>
+        <element name="PlayerWeapons" positionX="90" positionY="50" width="128" height="103"/>
+        <element name="Profile" positionX="-279" positionY="-22" width="128" height="118"/>
+        <element name="Target" positionX="90" positionY="-117" width="128" height="148"/>
+        <element name="User" positionX="-452" positionY="-54" width="128" height="163"/>
+        <element name="Weapon" positionX="268" positionY="47" width="128" height="88"/>
+        <element name="Winner" positionX="-270" positionY="-180" width="128" height="88"/>
+        <element name="Assassin" positionX="-101" positionY="-72" width="128" height="133"/>
     </elements>
 </model>

@@ -33,6 +33,26 @@
 		5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8371D5816AF00BA7E8D /* ProfileGameTableViewCell.swift */; };
 		5491E83C1D5834A700BA7E8D /* PlayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E83B1D5834A700BA7E8D /* PlayersTableViewCell.swift */; };
 		5491E8401D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E83F1D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift */; };
+		5491E8581D586D0500BA7E8D /* _Defence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8431D586D0500BA7E8D /* _Defence.swift */; };
+		5491E8591D586D0500BA7E8D /* _Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8441D586D0500BA7E8D /* _Game.swift */; };
+		5491E85A1D586D0500BA7E8D /* _Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8451D586D0500BA7E8D /* _Player.swift */; };
+		5491E85B1D586D0500BA7E8D /* _PlayerDefences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8461D586D0500BA7E8D /* _PlayerDefences.swift */; };
+		5491E85C1D586D0500BA7E8D /* _PlayerWeapons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8471D586D0500BA7E8D /* _PlayerWeapons.swift */; };
+		5491E85D1D586D0500BA7E8D /* _Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8481D586D0500BA7E8D /* _Profile.swift */; };
+		5491E85E1D586D0500BA7E8D /* _Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8491D586D0500BA7E8D /* _Target.swift */; };
+		5491E85F1D586D0500BA7E8D /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E84A1D586D0500BA7E8D /* _User.swift */; };
+		5491E8601D586D0500BA7E8D /* _Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E84B1D586D0500BA7E8D /* _Weapon.swift */; };
+		5491E8611D586D0500BA7E8D /* _Winner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E84C1D586D0500BA7E8D /* _Winner.swift */; };
+		5491E8621D586D0500BA7E8D /* Defence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E84E1D586D0500BA7E8D /* Defence.swift */; };
+		5491E8631D586D0500BA7E8D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E84F1D586D0500BA7E8D /* Game.swift */; };
+		5491E8641D586D0500BA7E8D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8501D586D0500BA7E8D /* Player.swift */; };
+		5491E8651D586D0500BA7E8D /* PlayerDefences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8511D586D0500BA7E8D /* PlayerDefences.swift */; };
+		5491E8661D586D0500BA7E8D /* PlayerWeapons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8521D586D0500BA7E8D /* PlayerWeapons.swift */; };
+		5491E8671D586D0500BA7E8D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8531D586D0500BA7E8D /* Profile.swift */; };
+		5491E8681D586D0500BA7E8D /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8541D586D0500BA7E8D /* Target.swift */; };
+		5491E8691D586D0500BA7E8D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8551D586D0500BA7E8D /* User.swift */; };
+		5491E86A1D586D0500BA7E8D /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8561D586D0500BA7E8D /* Weapon.swift */; };
+		5491E86B1D586D0500BA7E8D /* Winner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8571D586D0500BA7E8D /* Winner.swift */; };
 		549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964A81D5694EF00F574C4 /* ProfileViewController.swift */; };
 		549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AC1D569A8B00F574C4 /* AboutViewController.swift */; };
 		549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */; };
@@ -72,6 +92,26 @@
 		5491E8371D5816AF00BA7E8D /* ProfileGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileGameTableViewCell.swift; path = Controllers/ProfileGameTableViewCell.swift; sourceTree = "<group>"; };
 		5491E83B1D5834A700BA7E8D /* PlayersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersTableViewCell.swift; path = Controllers/PlayersTableViewCell.swift; sourceTree = "<group>"; };
 		5491E83F1D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseWeaponDefenceViewController.swift; path = Controllers/ChooseWeaponDefenceViewController.swift; sourceTree = "<group>"; };
+		5491E8431D586D0500BA7E8D /* _Defence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Defence.swift; sourceTree = "<group>"; };
+		5491E8441D586D0500BA7E8D /* _Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Game.swift; sourceTree = "<group>"; };
+		5491E8451D586D0500BA7E8D /* _Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Player.swift; sourceTree = "<group>"; };
+		5491E8461D586D0500BA7E8D /* _PlayerDefences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _PlayerDefences.swift; sourceTree = "<group>"; };
+		5491E8471D586D0500BA7E8D /* _PlayerWeapons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _PlayerWeapons.swift; sourceTree = "<group>"; };
+		5491E8481D586D0500BA7E8D /* _Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Profile.swift; sourceTree = "<group>"; };
+		5491E8491D586D0500BA7E8D /* _Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Target.swift; sourceTree = "<group>"; };
+		5491E84A1D586D0500BA7E8D /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
+		5491E84B1D586D0500BA7E8D /* _Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Weapon.swift; sourceTree = "<group>"; };
+		5491E84C1D586D0500BA7E8D /* _Winner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Winner.swift; sourceTree = "<group>"; };
+		5491E84E1D586D0500BA7E8D /* Defence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defence.swift; sourceTree = "<group>"; };
+		5491E84F1D586D0500BA7E8D /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5491E8501D586D0500BA7E8D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		5491E8511D586D0500BA7E8D /* PlayerDefences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDefences.swift; sourceTree = "<group>"; };
+		5491E8521D586D0500BA7E8D /* PlayerWeapons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerWeapons.swift; sourceTree = "<group>"; };
+		5491E8531D586D0500BA7E8D /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		5491E8541D586D0500BA7E8D /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		5491E8551D586D0500BA7E8D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5491E8561D586D0500BA7E8D /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		5491E8571D586D0500BA7E8D /* Winner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Winner.swift; sourceTree = "<group>"; };
 		549964A81D5694EF00F574C4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		549964AC1D569A8B00F574C4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesTableViewCell.swift; path = Controllers/GamesTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,6 +244,49 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		5491E8411D586D0500BA7E8D /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				5491E8421D586D0500BA7E8D /* Temp */,
+				5491E84D1D586D0500BA7E8D /* User */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		5491E8421D586D0500BA7E8D /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				5491E8431D586D0500BA7E8D /* _Defence.swift */,
+				5491E8441D586D0500BA7E8D /* _Game.swift */,
+				5491E8451D586D0500BA7E8D /* _Player.swift */,
+				5491E8461D586D0500BA7E8D /* _PlayerDefences.swift */,
+				5491E8471D586D0500BA7E8D /* _PlayerWeapons.swift */,
+				5491E8481D586D0500BA7E8D /* _Profile.swift */,
+				5491E8491D586D0500BA7E8D /* _Target.swift */,
+				5491E84A1D586D0500BA7E8D /* _User.swift */,
+				5491E84B1D586D0500BA7E8D /* _Weapon.swift */,
+				5491E84C1D586D0500BA7E8D /* _Winner.swift */,
+			);
+			path = Temp;
+			sourceTree = "<group>";
+		};
+		5491E84D1D586D0500BA7E8D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5491E84E1D586D0500BA7E8D /* Defence.swift */,
+				5491E84F1D586D0500BA7E8D /* Game.swift */,
+				5491E8501D586D0500BA7E8D /* Player.swift */,
+				5491E8511D586D0500BA7E8D /* PlayerDefences.swift */,
+				5491E8521D586D0500BA7E8D /* PlayerWeapons.swift */,
+				5491E8531D586D0500BA7E8D /* Profile.swift */,
+				5491E8541D586D0500BA7E8D /* Target.swift */,
+				5491E8551D586D0500BA7E8D /* User.swift */,
+				5491E8561D586D0500BA7E8D /* Weapon.swift */,
+				5491E8571D586D0500BA7E8D /* Winner.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		549964B21D569FC600F574C4 /* Games Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +332,7 @@
 		549964F81D56F7AE00F574C4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				5491E8411D586D0500BA7E8D /* Persistence */,
 				549964F91D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -403,7 +487,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mogenerator -m AssassinSwift/CoreData/AssassinSwift.xcdatamodeld -O AssassinSwift/CoreData/Persistence/Temp --swift --template-var arc=true";
+			shellScript = "mogenerator -m assassin-swift/CoreData/AssassinSwift.xcdatamodeld -O assassin-swift/CoreData/Persistence/Temp --swift --template-var arc=true";
 		};
 		8ED69050BD851ADF11EFACB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -443,10 +527,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5410FA781D57272D0092D36F /* GameViewController.swift in Sources */,
+				5491E8671D586D0500BA7E8D /* Profile.swift in Sources */,
+				5491E8651D586D0500BA7E8D /* PlayerDefences.swift in Sources */,
 				546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */,
 				549964F01D56F77000F574C4 /* Constants.swift in Sources */,
 				549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */,
+				5491E86B1D586D0500BA7E8D /* Winner.swift in Sources */,
+				5491E85F1D586D0500BA7E8D /* _User.swift in Sources */,
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
+				5491E8681D586D0500BA7E8D /* Target.swift in Sources */,
+				5491E8611D586D0500BA7E8D /* _Winner.swift in Sources */,
 				5491E8361D58021500BA7E8D /* BaseViewController.swift in Sources */,
 				5491E8401D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift in Sources */,
 				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
@@ -455,17 +545,31 @@
 				5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */,
 				549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
+				5491E86A1D586D0500BA7E8D /* Weapon.swift in Sources */,
+				5491E85E1D586D0500BA7E8D /* _Target.swift in Sources */,
+				5491E85A1D586D0500BA7E8D /* _Player.swift in Sources */,
+				5491E8691D586D0500BA7E8D /* User.swift in Sources */,
+				5491E8661D586D0500BA7E8D /* PlayerWeapons.swift in Sources */,
 				549964F61D56F78300F574C4 /* GamePlayViewController.swift in Sources */,
 				54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */,
+				5491E8631D586D0500BA7E8D /* Game.swift in Sources */,
 				549964F31D56F77000F574C4 /* UIViewExtension.swift in Sources */,
+				5491E8621D586D0500BA7E8D /* Defence.swift in Sources */,
 				549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */,
+				5491E8591D586D0500BA7E8D /* _Game.swift in Sources */,
 				54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */,
 				546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */,
+				5491E85D1D586D0500BA7E8D /* _Profile.swift in Sources */,
+				5491E8581D586D0500BA7E8D /* _Defence.swift in Sources */,
 				5491E83C1D5834A700BA7E8D /* PlayersTableViewCell.swift in Sources */,
 				54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */,
 				549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */,
+				5491E85B1D586D0500BA7E8D /* _PlayerDefences.swift in Sources */,
+				5491E85C1D586D0500BA7E8D /* _PlayerWeapons.swift in Sources */,
 				549964F71D56F78300F574C4 /* PlayingFieldViewController.swift in Sources */,
+				5491E8601D586D0500BA7E8D /* _Weapon.swift in Sources */,
 				549964F21D56F77000F574C4 /* StringExtension.swift in Sources */,
+				5491E8641D586D0500BA7E8D /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
