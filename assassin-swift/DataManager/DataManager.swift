@@ -36,68 +36,68 @@ class DataManager: AFHTTPSessionManager {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func signUp(params: NSDictionary, successBlock: (Void) -> (Void), failureBlock: (error: String) -> (Void)) {
+    func signUp(params: NSDictionary, successBlock: VoidBlock, failureBlock: FailureBlock) {
         
         self.POST("user/", parameters: params, progress: nil, success: { (task, response) in
             print("response is: \(response)")
             successBlock()
             }) { (task, error) in
-                failureBlock(error: error.localizedDescription)
+                failureBlock(errorString: error.localizedDescription)
         }
         
     }
-
-    func getGamesList(successBlock: (gamesList: NSArray!) -> (Void), failureBlock: (error: String) -> (Void)) {
+    
+    func getGamesList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
         self.GET("games", parameters: nil, progress: nil, success: { (task, response) in
             // TODO: save in CoreData bitch
-            successBlock(gamesList: response as! NSArray)
+            successBlock(array: response as! NSArray)
             }) { (task, error) in
-                failureBlock(error: error.localizedDescription)
+                failureBlock(errorString: error.localizedDescription)
         }
         
     }
     
-    func getWeaponsList(successBlock: (weaponsList: NSArray!) -> (Void), failureBlock:(error: String) -> (Void)) {
+    func getWeaponsList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
         self.GET("weapons", parameters: nil, progress: nil, success: { (task, response) in
             // TODO: save list of weapons in core data bitch
-            successBlock(weaponsList: response as! NSArray)
+            successBlock(array: response as! NSArray)
             }) { (task, error) in
-                failureBlock(error: error.localizedDescription)
+                failureBlock(errorString: error.localizedDescription)
         }
         
     }
     
-    func getDefencesList(successBlock: (defencesList: NSArray!) -> (Void), failureBlock:(error: String) -> (Void)) {
+    func getDefencesList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
         self.GET("defences", parameters: nil, progress: nil, success: { (task, response) in
             // TODO: save list of defences in core data bitch
-            successBlock(defencesList: response as! NSArray)
+            successBlock(array: response as! NSArray)
         }) { (task, error) in
-            failureBlock(error: error.localizedDescription)
+            failureBlock(errorString: error.localizedDescription)
         }
         
     }
     
-    func updateWeapons(playerId: Int, params: NSArray, successBlock: (Void) -> (Void), failureBlock: (error: String) -> (Void)) {
+    func updateWeapons(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
        
         self.PUT("/player/changeWeapons/" + String(playerId), parameters: ["weapons": params], success: { (task, response) in
             // TODO: save list of defences in core data bitch
             successBlock()
             }) { (task, error) in
-                failureBlock(error: error.localizedDescription)
+                failureBlock(errorString: error.localizedDescription)
         }
         
     }
     
-    func updateDefences(playerId: Int, params: NSArray, successBlock: (Void) -> (Void), failureBlock: (error: String) -> (Void)) {
+    func updateDefences(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
         
         self.PUT("/player/changeDefences/" + String(playerId), parameters: ["defences": params], success: { (task, response) in
             // TODO: save list of defences in core data bitch
             successBlock()
         }) { (task, error) in
-            failureBlock(error: error.localizedDescription)
+            failureBlock(errorString: error.localizedDescription)
         }
         
     }

@@ -53,6 +53,8 @@
 		5491E8691D586D0500BA7E8D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8551D586D0500BA7E8D /* User.swift */; };
 		5491E86A1D586D0500BA7E8D /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8561D586D0500BA7E8D /* Weapon.swift */; };
 		5491E86B1D586D0500BA7E8D /* Winner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8571D586D0500BA7E8D /* Winner.swift */; };
+		5491E86D1D5876BF00BA7E8D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E86C1D5876BF00BA7E8D /* CoreDataStack.swift */; };
+		5491E86F1D587E5D00BA7E8D /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E86E1D587E5D00BA7E8D /* Blocks.swift */; };
 		549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964A81D5694EF00F574C4 /* ProfileViewController.swift */; };
 		549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AC1D569A8B00F574C4 /* AboutViewController.swift */; };
 		549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */; };
@@ -112,6 +114,8 @@
 		5491E8551D586D0500BA7E8D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5491E8561D586D0500BA7E8D /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		5491E8571D586D0500BA7E8D /* Winner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Winner.swift; sourceTree = "<group>"; };
+		5491E86C1D5876BF00BA7E8D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = DataManager/CoreDataStack.swift; sourceTree = "<group>"; };
+		5491E86E1D587E5D00BA7E8D /* Blocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Blocks.swift; path = Helpers/Blocks.swift; sourceTree = "<group>"; };
 		549964A81D5694EF00F574C4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		549964AC1D569A8B00F574C4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesTableViewCell.swift; path = Controllers/GamesTableViewCell.swift; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 			children = (
 				549964DA1D56AC4700F574C4 /* DataManager.swift */,
 				549964DC1D56AC5600F574C4 /* CoreDataManager.swift */,
+				5491E86C1D5876BF00BA7E8D /* CoreDataStack.swift */,
 			);
 			name = "Data Managers";
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				54D2D30C1D541F2F00546C46 /* Localizable.strings */,
 				549964EC1D56F77000F574C4 /* Constants.swift */,
 				549964ED1D56F77000F574C4 /* Helper.swift */,
+				5491E86E1D587E5D00BA7E8D /* Blocks.swift */,
 				549964EE1D56F77000F574C4 /* StringExtension.swift */,
 				549964EF1D56F77000F574C4 /* UIViewExtension.swift */,
 			);
@@ -332,8 +338,8 @@
 		549964F81D56F7AE00F574C4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				5491E8411D586D0500BA7E8D /* Persistence */,
 				549964F91D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld */,
+				5491E8411D586D0500BA7E8D /* Persistence */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				549964F11D56F77000F574C4 /* Helper.swift in Sources */,
 				549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */,
 				5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */,
+				5491E86F1D587E5D00BA7E8D /* Blocks.swift in Sources */,
 				549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
 				5491E86A1D586D0500BA7E8D /* Weapon.swift in Sources */,
@@ -556,6 +563,7 @@
 				549964F31D56F77000F574C4 /* UIViewExtension.swift in Sources */,
 				5491E8621D586D0500BA7E8D /* Defence.swift in Sources */,
 				549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */,
+				5491E86D1D5876BF00BA7E8D /* CoreDataStack.swift in Sources */,
 				5491E8591D586D0500BA7E8D /* _Game.swift in Sources */,
 				54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */,
 				546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */,
