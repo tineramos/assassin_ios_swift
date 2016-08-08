@@ -15,12 +15,8 @@ class AboutViewController: BaseViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        navigationMode = NavigationBar.Shown
-        backButtonType = BackButton.Black
-        pageTitle = "page.title.about".localized
-        
         super.viewWillAppear(animated)
+        showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "page.title.about".localized)
     }
     
 }

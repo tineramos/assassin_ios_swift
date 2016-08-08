@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GameViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     // Private Constants
     struct Constants {
@@ -28,7 +28,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
         DataManager.sharedManager.getGamesList({ (gamesList: NSArray!) -> (Void) in
             // add methods!
-            self.tableView?.reloadData()
+//            self.tableView?.reloadData()
             
             print("games: \n \(gamesList)")
             
@@ -41,27 +41,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBarHidden = false
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.navigationController?.navigationBarHidden = true
+        showNavigationBarWithBackButtonType(BackButton.White, andTitle: "page.title.games".localized)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
-        
-        // TODO: add configure method in cell using Game core data entity
-        
-        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -76,7 +61,19 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // TODO: change depend on the game status
-        return 3
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
+        
+        // TODO: add configure method in cell using Game core data entity
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "The section"
     }
 
 }

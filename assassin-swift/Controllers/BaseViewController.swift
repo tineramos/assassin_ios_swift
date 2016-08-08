@@ -19,11 +19,6 @@ enum BackButton {
 }
 
 class BaseViewController: UIViewController {
-
-    // default value
-    var navigationMode = NavigationBar.Shown
-    var backButtonType = BackButton.Black
-    var pageTitle: String! = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,16 +29,6 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        switch navigationMode {
-        case .Hidden:
-            self.navigationController?.navigationBarHidden = true
-            break
-        case .Shown:
-            self.navigationController?.navigationBarHidden = false
-            createCustomNavigationBarWithTitle(pageTitle);
-            break
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,16 +36,19 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func createCustomNavigationBarWithTitle(title: String) {
+    func showNavigationBarWithBackButtonType(backButtonType: BackButton!, andTitle title: String!) {
+        self.navigationController?.navigationBarHidden = false
         
         self.navigationItem.hidesBackButton = true
         var backImage = UIImage(named: "back-icon-black")
+        var titleColor = UIColor.blackColor()
         
         if backButtonType == .White {
             backImage = UIImage(named: "back-icon-white")
+            titleColor = UIColor.whiteColor()
         }
         
-        let backButton = UIButton(frame: CGRectMake(0, 0, 58, 58))
+        let backButton = UIButton(frame: CGRectMake(0, 0, 50, 50))
         backButton.setImage(backImage, forState: UIControlState.Normal)
         backButton.addTarget(self, action: #selector(backButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
         let backBarButtonItem = UIBarButtonItem(customView: backButton)
@@ -73,12 +61,16 @@ class BaseViewController: UIViewController {
         navBar?.translucent = true
         
         // create and customise the title view of the page
-        let titleLabel = UILabel(frame: CGRectMake(0, 0, 200, 50))
-        titleLabel.font = UIFont(name: Constants().font, size: 50.0)
-        titleLabel.textColor = UIColor.blackColor()
+        let titleLabel = UILabel(frame: CGRectMake(0, 0, 200, 40))
+        titleLabel.font = UIFont(name: Constants().font, size: 40.0)
+        titleLabel.textColor = titleColor
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.text = title.uppercaseString
         navigationItem.titleView = titleLabel
+    }
+    
+    func hideNavigationBar() {
+        self.navigationController?.navigationBarHidden = true
     }
     
     func backButtonPressed() {

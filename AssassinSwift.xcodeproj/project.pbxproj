@@ -30,6 +30,7 @@
 		546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */; };
 		547BBD701D541222004D171B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 547BBD6F1D541222004D171B /* Podfile */; };
 		5491E8361D58021500BA7E8D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8351D58021500BA7E8D /* BaseViewController.swift */; };
+		5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491E8371D5816AF00BA7E8D /* ProfileGameTableViewCell.swift */; };
 		549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964A81D5694EF00F574C4 /* ProfileViewController.swift */; };
 		549964AD1D569A8B00F574C4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AC1D569A8B00F574C4 /* AboutViewController.swift */; };
 		549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */; };
@@ -66,6 +67,7 @@
 		546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
 		547BBD6F1D541222004D171B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		5491E8351D58021500BA7E8D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
+		5491E8371D5816AF00BA7E8D /* ProfileGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileGameTableViewCell.swift; path = Controllers/ProfileGameTableViewCell.swift; sourceTree = "<group>"; };
 		549964A81D5694EF00F574C4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		549964AC1D569A8B00F574C4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		549964AE1D569FC000F574C4 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesTableViewCell.swift; path = Controllers/GamesTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,12 +174,30 @@
 			children = (
 				5491E8351D58021500BA7E8D /* BaseViewController.swift */,
 				54ABC1ED1D55896A00182262 /* MenuViewController.swift */,
-				549964A81D5694EF00F574C4 /* ProfileViewController.swift */,
 				549964AC1D569A8B00F574C4 /* AboutViewController.swift */,
 				54D2D3141D54291100546C46 /* Registration Controller */,
+				5491E8391D5816B500BA7E8D /* Profile Controller */,
 				549964B21D569FC600F574C4 /* Games Controller */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		5491E8391D5816B500BA7E8D /* Profile Controller */ = {
+			isa = PBXGroup;
+			children = (
+				549964A81D5694EF00F574C4 /* ProfileViewController.swift */,
+				5491E8371D5816AF00BA7E8D /* ProfileGameTableViewCell.swift */,
+			);
+			name = "Profile Controller";
+			sourceTree = "<group>";
+		};
+		5491E83A1D5816C900BA7E8D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				54D2D3101D54288800546C46 /* RegisterButtonCell.swift */,
+				54D2D3121D54290700546C46 /* RegisterButtonCell.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		549964B21D569FC600F574C4 /* Games Controller */ = {
@@ -258,8 +278,7 @@
 			children = (
 				54ABC1EF1D5589D800182262 /* LoginViewController.swift */,
 				546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */,
-				54D2D3101D54288800546C46 /* RegisterButtonCell.swift */,
-				54D2D3121D54290700546C46 /* RegisterButtonCell.xib */,
+				5491E83A1D5816C900BA7E8D /* Views */,
 			);
 			name = "Registration Controller";
 			sourceTree = "<group>";
@@ -426,6 +445,7 @@
 				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
 				549964F11D56F77000F574C4 /* Helper.swift in Sources */,
 				549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */,
+				5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */,
 				549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
 				549964F61D56F78300F574C4 /* GamePlayViewController.swift in Sources */,

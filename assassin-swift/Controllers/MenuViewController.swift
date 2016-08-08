@@ -24,10 +24,8 @@ class MenuViewController: BaseViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        navigationMode = NavigationBar.Hidden
-        
         super.viewWillAppear(animated)
+        hideNavigationBar()
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView?
     
     // Private Constants
     struct Constants {
@@ -24,19 +26,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
-    @IBAction func backButtonPressed() {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
-        
-        // TODO: add configure method in cell using Game core data entity
-        
-        return cell
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "page.title.profile".localized)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -52,6 +46,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // TODO: change depend on the game status
         return 3
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "The section"
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
+        
+        // TODO: add configure method in cell using Game core data entity
+        
+        return cell
     }
     
 }

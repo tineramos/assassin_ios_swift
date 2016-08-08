@@ -31,6 +31,8 @@
  Page Titles
  */
 
+"page.title.games" = "Games";
+"page.title.profile" = "Profile";
 "page.title.about" = "About";
 
 #pragma mark - ERRORS
