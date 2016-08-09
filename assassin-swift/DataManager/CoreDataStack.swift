@@ -15,9 +15,16 @@ class CoreDataStack: NSObject {
         static let kPersistentStoreFileName = "AssassinSwift.sqlite"
     }
     
-    func setup() {
+    static let sharedInstance = CoreDataStack()
+    
+    class var sharedManager: CoreDataStack {
+        return sharedInstance
+    }
+    
+    override init() {
+        super.init()
         MagicalRecord.enableShorthandMethods()
-        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed(Constants.kPersistentStoreFileName)
+        MagicalRecord.setupAutoMigratingCoreDataStack()
     }
     
     func clearCoreDataState() {

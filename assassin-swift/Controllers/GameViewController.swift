@@ -22,15 +22,19 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     @IBOutlet weak var tableView: UITableView?
+    
+    var gamesList: [Game] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        DataManager.sharedManager.getGamesList({ (gamesList: NSArray!) -> (Void) in
-            // add methods!
-            self.tableView?.reloadData()
+        DataManager.sharedManager.getGamesList({ (array: NSArray!) -> (Void) in
             
-            print("games: \n \(gamesList)")
+            let user = User.getUser()
+            print("CODENAME: \(user?.code_name)")
+            
+            self.gamesList = array as! [Game]
+            self.tableView?.reloadData()
             
             }) { (error) -> (Void) in
                 print(error)
@@ -51,14 +55,9 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
     
     // MARK: - TableView DataSource Methods
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO: if game status is open/cancelled, no action
-        // TODO: push GameDetail if finished or ongoing
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: change numbers
-        return 1
+        return gamesList.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -70,18 +69,19 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
         
         // TODO: add configure method in cell using Game core data entity
-        
+        cell.configureCell(gamesList[indexPath.row])
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "The section"
-    }
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "The section"
+//    }
 
     // MARK: - TableView Delegate Methods
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // TODO: if game status is open/cancelled, no action
+        // TODO: push GameDetail if finished or ongoing
     }
     
 }

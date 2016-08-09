@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CoreDataManager.hasUserLoggedIn { (hasUser) -> (Void) in
             if hasUser {
-                self.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController")
+                let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController")
+                let navigationController = UINavigationController.init(rootViewController: menuViewController)
+                self.window?.rootViewController = navigationController
             }
             else {
                 self.window?.rootViewController = storyboard.instantiateInitialViewController()
@@ -61,9 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     func setupCoreDataStack() {
-        coreDataStack = nil
         coreDataStack = CoreDataStack()
-        coreDataStack?.setup()
     }
     
     lazy var applicationDocumentsDirectory: NSURL = {

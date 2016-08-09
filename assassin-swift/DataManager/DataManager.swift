@@ -55,9 +55,13 @@ class DataManager: AFHTTPSessionManager {
     
     func getGamesList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
-        self.GET("games", parameters: nil, progress: nil, success: { (task, response) in
-            // TODO: save in CoreData bitch
-            successBlock(array: response as! NSArray)
+        self.GET("games", parameters: nil, progress: nil, success: { (task, response) in            
+            CoreDataManager.sharedManager.saveGamesList(response as! NSArray, successBlock: { (array) -> (Void) in
+                successBlock(array: array)
+            }, failureBlock: { (errorString) -> (Void) in
+                failureBlock(errorString: errorString)
+            })
+            
         }) { (task, error) in
             failureBlock(errorString: error.localizedDescription)
         }

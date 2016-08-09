@@ -46,6 +46,9 @@
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="191" y="20" width="41" height="20"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -458,7 +461,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="8EP-ah-wEl"/>
                     <connections>
-                        <segue destination="A9X-XP-Bmz" kind="showDetail" identifier="setMenuSegue" id="blz-pd-JFB"/>
+                        <segue destination="A9X-XP-Bmz" kind="show" identifier="setMenuSegue" action="showDetailViewController:sender:" id="blz-pd-JFB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfO-Xr-IOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1254,7 +1257,7 @@
         <image name="ninja-app-black-cut" width="192" height="151"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Scz-Al-76G"/>
+        <segue reference="blz-pd-JFB"/>
         <segue reference="y35-0b-eKA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,9 +13,6 @@ import MagicalRecord
 
 class CoreDataManager: NSObject {
     
-    var managedObjectContext: NSManagedObjectContext?
-    var persistentStoreCoordinator: NSPersistentStoreCoordinator?
-    
     static let sharedInstance = CoreDataManager()
     
     class var sharedManager: CoreDataManager {
@@ -24,15 +21,13 @@ class CoreDataManager: NSObject {
     
     override init() {
         super.init()
-        managedObjectContext = ((UIApplication.sharedApplication().delegate) as! AppDelegate).managedObjectContext
-        managedObjectContext?.undoManager = nil
     }
     
     // MARK: User methods
     
     func setCurrentActiveUser(params: NSDictionary, userBlock: UserBlock, failureBlock: FailureBlock) {
-        
-        MagicalRecord.saveWithBlock({ (context) in
+
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in
             
             let newUser = User.init(managedObjectContext: context)
             
@@ -45,7 +40,7 @@ class CoreDataManager: NSObject {
                 userBlock(user: User.getUser())
             }
             else {
-                failureBlock(errorString: "User entity not create")
+                failureBlock(errorString: "User not saved")
             }
         }
         
@@ -55,11 +50,29 @@ class CoreDataManager: NSObject {
         let currentUser = User.getUser()
         completion(bool: (currentUser != nil))
     }
-//    
-//    func saveContext(completion: BoolBlock) {
-//        managedObjectContext?.MR_saveToPersistentStoreWithCompletion({ (success, error) in
-//            completion(bool: success)
-//        })
-//    }
+    
+    // MARK: Games method
+    
+    func saveGamesList(gamesList: NSArray, successBlock: ArrayBlock, failureBlock: FailureBlock) {
 
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            for dictionary in gamesList {
+                Game.populateUserWithDictionary(dictionary as! NSDictionary, inContext: context)
+            }
+        }
+        
+        successBlock(array: Game.MR_findAll()!)
+        
+    }
+    
+    /*
+     
+     NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in
+     
+     }) { (success, error) in
+     
+     }
+     
+     */
+    
 }

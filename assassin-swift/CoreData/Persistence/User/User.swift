@@ -1,7 +1,5 @@
 import Foundation
 
-import MagicalRecord
-
 @objc(User)
 public class User: _User {
 	// Custom logic goes here.
@@ -12,6 +10,11 @@ public class User: _User {
     
     func populateUserWithDictionary(dictionary: NSDictionary) -> (User) {
         for (key, value) in dictionary {
+            
+            if !self.respondsToSelector(NSSelectorFromString(key as! String)) {
+                continue
+            }
+            
             setValue(value, forKey: key as! String)
         }
         return self

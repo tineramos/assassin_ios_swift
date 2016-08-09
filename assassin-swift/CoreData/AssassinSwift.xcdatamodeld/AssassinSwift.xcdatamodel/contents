@@ -19,7 +19,7 @@
         <attribute name="date_started" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="game_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="game_location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="game_status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="game_status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="game_title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="joined" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="max_players" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -87,7 +87,7 @@
     <elements>
         <element name="Assassin" positionX="-101" positionY="-72" width="128" height="133"/>
         <element name="Defence" positionX="270" positionY="-241" width="128" height="88"/>
-        <element name="Game" positionX="-450" positionY="-346" width="128" height="238"/>
+        <element name="Game" positionX="-450" positionY="-346" width="128" height="240"/>
         <element name="Player" positionX="-270" positionY="-310" width="128" height="103"/>
         <element name="PlayerDefences" positionX="88" positionY="-271" width="128" height="118"/>
         <element name="PlayerWeapons" positionX="90" positionY="50" width="128" height="103"/>
