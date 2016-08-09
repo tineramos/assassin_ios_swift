@@ -30,9 +30,6 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
     
         DataManager.sharedManager.getGamesList({ (array: NSArray!) -> (Void) in
             
-            let user = User.getUser()
-            print("CODENAME: \(user?.code_name)")
-            
             self.gamesList = array as! [Game]
             self.tableView?.reloadData()
             
@@ -53,6 +50,23 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
         // Release any cached data, images, etc that aren't in use.
     }
     
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.SegueIdentifier.pushGameDetailSegue {
+            
+            let selectedGame = sender as! Game
+            let gameDetailVC = segue.destinationViewController as! GamePlayViewController
+            gameDetailVC.gameId = (selectedGame.game_id?.integerValue)!
+            
+        }
+        
+     }
+
+    
     // MARK: - TableView DataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,16 +86,12 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
         cell.configureCell(gamesList[indexPath.row])
         return cell
     }
-    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "The section"
-//    }
 
     // MARK: - TableView Delegate Methods
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO: if game status is open/cancelled, no action
-        // TODO: push GameDetail if finished or ongoing
+        let game = gamesList[indexPath.row]
+        performSegueWithIdentifier(Constants.SegueIdentifier.pushGameDetailSegue, sender: game)
     }
     
 }

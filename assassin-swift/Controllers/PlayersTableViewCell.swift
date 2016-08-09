@@ -10,9 +10,9 @@ import UIKit
 
 class PlayersTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var codeName: UILabel?
-    @IBOutlet weak var killsCount: UILabel?
-    @IBOutlet weak var isEliminated: UILabel?
+    @IBOutlet weak var codeNameLabel: UILabel?
+    @IBOutlet weak var killsCountLabel: UILabel?
+    @IBOutlet weak var isEliminatedLabel: UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +23,12 @@ class PlayersTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureCellWithPlayer(player: Player) {
+        
+        codeNameLabel?.text = player
+        
     }
 
 }

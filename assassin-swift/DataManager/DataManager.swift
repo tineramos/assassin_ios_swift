@@ -53,6 +53,8 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
+    // MARK: Games methods
+    
     func getGamesList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
         self.GET("games", parameters: nil, progress: nil, success: { (task, response) in            
@@ -67,6 +69,32 @@ class DataManager: AFHTTPSessionManager {
         }
         
     }
+    
+    func getGameDetailOfId(gameId: Int, successBlock: GameBlock, failureBlock: FailureBlock) {
+        
+//        let user = User.getUser()!
+//        let path = String(format: "game/gameId/\(gameId)/userId/\(user.user_id)")
+        let path = String(format: "game/gameId/\(gameId)/userId/1")
+        
+        self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
+            
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
+    func joinGameWithId(gameId: Int, userId: Int, weapons: NSArray, defences: NSArray, successBlock: DictionaryBlock, failureBlock: FailureBlock) {
+        
+        let params = [GameAttributes.game_id.rawValue: gameId,
+                      UserAttributes.user_id.rawValue: userId,
+                      ]
+        
+        
+        self.POST("game/join", parameters: <#T##AnyObject?#>, progress: <#T##((NSProgress) -> Void)?##((NSProgress) -> Void)?##(NSProgress) -> Void#>, success: <#T##((NSURLSessionDataTask, AnyObject?) -> Void)?##((NSURLSessionDataTask, AnyObject?) -> Void)?##(NSURLSessionDataTask, AnyObject?) -> Void#>, failure: <#T##((NSURLSessionDataTask?, NSError) -> Void)?##((NSURLSessionDataTask?, NSError) -> Void)?##(NSURLSessionDataTask?, NSError) -> Void#>)
+        
+    }
+    // MARK:
     
     func getWeaponsList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         

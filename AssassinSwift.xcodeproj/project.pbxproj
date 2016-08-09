@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		5410FA781D57272D0092D36F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410FA771D57272D0092D36F /* GameViewController.swift */; };
+		54507BDA1D5A24300030ECEA /* _Assassin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BD91D5A24300030ECEA /* _Assassin.swift */; };
+		54507BDC1D5A243C0030ECEA /* Assassin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDB1D5A243C0030ECEA /* Assassin.swift */; };
 		546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D531D53D26D0031FF90 /* AppDelegate.swift */; };
 		546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D591D53D26E0031FF90 /* Main.storyboard */; };
 		546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5C1D53D26E0031FF90 /* Assets.xcassets */; };
@@ -81,6 +83,8 @@
 /* Begin PBXFileReference section */
 		26996B8527A77998720B9743 /* Pods-AssassinSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.release.xcconfig"; sourceTree = "<group>"; };
 		5410FA771D57272D0092D36F /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Controllers/GameViewController.swift; sourceTree = "<group>"; };
+		54507BD91D5A24300030ECEA /* _Assassin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Assassin.swift; sourceTree = "<group>"; };
+		54507BDB1D5A243C0030ECEA /* Assassin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assassin.swift; sourceTree = "<group>"; };
 		546D7D501D53D26D0031FF90 /* AssassinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssassinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546D7D531D53D26D0031FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		546D7D5A1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		5491E8421D586D0500BA7E8D /* Temp */ = {
 			isa = PBXGroup;
 			children = (
+				54507BD91D5A24300030ECEA /* _Assassin.swift */,
 				5491E8431D586D0500BA7E8D /* _Defence.swift */,
 				5491E8441D586D0500BA7E8D /* _Game.swift */,
 				5491E8451D586D0500BA7E8D /* _Player.swift */,
@@ -279,6 +284,7 @@
 		5491E84D1D586D0500BA7E8D /* User */ = {
 			isa = PBXGroup;
 			children = (
+				54507BDB1D5A243C0030ECEA /* Assassin.swift */,
 				5491E84E1D586D0500BA7E8D /* Defence.swift */,
 				5491E84F1D586D0500BA7E8D /* Game.swift */,
 				5491E8501D586D0500BA7E8D /* Player.swift */,
@@ -551,6 +557,7 @@
 				5491E8401D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift in Sources */,
 				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
 				549964F11D56F77000F574C4 /* Helper.swift in Sources */,
+				54507BDC1D5A243C0030ECEA /* Assassin.swift in Sources */,
 				549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */,
 				5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */,
 				5491E86F1D587E5D00BA7E8D /* Blocks.swift in Sources */,
@@ -565,6 +572,7 @@
 				54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */,
 				5491E8631D586D0500BA7E8D /* Game.swift in Sources */,
 				549964F31D56F77000F574C4 /* UIViewExtension.swift in Sources */,
+				54507BDA1D5A24300030ECEA /* _Assassin.swift in Sources */,
 				5491E8621D586D0500BA7E8D /* Defence.swift in Sources */,
 				549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */,
 				5491E86D1D5876BF00BA7E8D /* CoreDataStack.swift in Sources */,

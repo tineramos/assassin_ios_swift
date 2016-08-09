@@ -7,6 +7,7 @@ import CoreData
 public enum PlayerAttributes: String {
     case is_eliminated = "is_eliminated"
     case kills_count = "kills_count"
+    case player_code_name = "player_code_name"
     case player_id = "player_id"
 }
 
@@ -44,6 +45,9 @@ public class _Player: NSManagedObject {
 
     @NSManaged public
     var kills_count: NSNumber?
+
+    @NSManaged public
+    var player_code_name: String?
 
     @NSManaged public
     var player_id: NSNumber?

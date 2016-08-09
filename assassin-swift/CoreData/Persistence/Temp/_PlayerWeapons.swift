@@ -48,7 +48,7 @@ public class _PlayerWeapons: NSManagedObject {
     // MARK: - Relationships
 
     @NSManaged public
-    var player: NSManagedObject?
+    var player: Assassin?
 
     @NSManaged public
     var weapon: Weapon?

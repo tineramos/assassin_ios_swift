@@ -73,13 +73,13 @@ extension _Profile {
         self.assassin = mutable.copy() as! NSSet
     }
 
-    func addAssassinObject(value: NSManagedObject) {
+    func addAssassinObject(value: Assassin) {
         let mutable = self.assassin.mutableCopy() as! NSMutableSet
         mutable.addObject(value)
         self.assassin = mutable.copy() as! NSSet
     }
 
-    func removeAssassinObject(value: NSManagedObject) {
+    func removeAssassinObject(value: Assassin) {
         let mutable = self.assassin.mutableCopy() as! NSMutableSet
         mutable.removeObject(value)
         self.assassin = mutable.copy() as! NSSet

@@ -30,7 +30,7 @@ class GamesTableViewCell: UITableViewCell {
     func configureCell(game: Game) {
         gameTitle?.text = game.game_title
         gameStatus?.text = game.game_status
-        players?.text = NSString(format: "\(game.players_joined!)/\(game.max_players!) players") as String
+        players?.text = game.getPlayerTitle()
     }
     
 }

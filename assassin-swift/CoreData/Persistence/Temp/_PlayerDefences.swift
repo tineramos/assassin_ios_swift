@@ -55,7 +55,7 @@ public class _PlayerDefences: NSManagedObject {
     var defence: Defence?
 
     @NSManaged public
-    var player: NSManagedObject?
+    var player: Assassin?
 
 }
 
