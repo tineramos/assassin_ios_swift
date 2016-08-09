@@ -7,7 +7,9 @@
 //
 
 import UIKit
+
 import CoreData
+import MagicalRecord
 
 class CoreDataManager: NSObject {
     
@@ -28,38 +30,36 @@ class CoreDataManager: NSObject {
     
     // MARK: User methods
     
-    func getCurrentActiveUser(successBlock: UserBlock, failureBlock: FailureBlock) {
-        
-        let userFetchRequest = NSFetchRequest(entityName: User.entityName())
-        userFetchRequest.fetchLimit = 1
-        
-        do {
-            let fetchedUser = try managedObjectContext?.executeFetchRequest(userFetchRequest) as? [User]
-            
-            if fetchedUser?.count == 1 {
-                successBlock(user: fetchedUser![0])
-            }
-            else {
-                successBlock(user: User.MR_createEntity()!)
-            }
-            
-        }
-        catch {
-            failureBlock(errorString: "Can not fetch user: \(error)")
-        }
-    }
-    
     func setCurrentActiveUser(params: NSDictionary, userBlock: UserBlock, failureBlock: FailureBlock) {
         
-        getCurrentActiveUser({ (newUser: User) -> (Void) in
+        MagicalRecord.saveWithBlock({ (context) in
             
-            newUser.insertUserWithDictionary(params["user"] as! NSDictionary)
-            userBlock(user: newUser)
+            let newUser = User.init(managedObjectContext: context)
             
-        }) { (errorString) -> (Void) in
-            failureBlock(errorString: errorString)
+            if newUser != nil {
+                newUser!.populateUserWithDictionary(params["user"] as! NSDictionary)
+            }
+            
+        }) { (success, error) in
+            if success {
+                userBlock(user: User.getUser())
+            }
+            else {
+                failureBlock(errorString: "User entity not create")
+            }
         }
         
     }
+    
+    class func hasUserLoggedIn(completion: BoolBlock) {
+        let currentUser = User.getUser()
+        completion(bool: (currentUser != nil))
+    }
+//    
+//    func saveContext(completion: BoolBlock) {
+//        managedObjectContext?.MR_saveToPersistentStoreWithCompletion({ (success, error) in
+//            completion(bool: success)
+//        })
+//    }
 
 }

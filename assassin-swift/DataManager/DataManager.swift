@@ -40,7 +40,7 @@ class DataManager: AFHTTPSessionManager {
     func signUp(params: NSDictionary, successBlock: VoidBlock, failureBlock: FailureBlock) {
         
         self.POST("user", parameters: params, progress: nil, success: { (task, response) in
-
+            
             CoreDataManager.sharedManager.setCurrentActiveUser(response as! NSDictionary, userBlock: { (user) -> (Void) in
                 successBlock()
             }, failureBlock: { (errorString) -> (Void) in

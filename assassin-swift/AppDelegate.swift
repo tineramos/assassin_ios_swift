@@ -20,6 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupCoreDataStack()
         
+        let storyboard = UIStoryboard.init(name: "Main", bundle: NSBundle.mainBundle())
+        
+        CoreDataManager.hasUserLoggedIn { (hasUser) -> (Void) in
+            if hasUser {
+                self.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController")
+            }
+            else {
+                self.window?.rootViewController = storyboard.instantiateInitialViewController()
+            }
+        }
+        
         return true
     }
 

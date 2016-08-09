@@ -13,4 +13,4 @@ typealias StringBlock = (string: String) -> (Void)
 typealias DictionaryBlock = (dictionary: NSDictionary) -> (Void)
 typealias BoolBlock = (bool: Bool) -> (Void)
 
-typealias UserBlock = (user: User) -> (Void)
+typealias UserBlock = (user: User?) -> (Void)
