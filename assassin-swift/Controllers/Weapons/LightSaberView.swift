@@ -7,10 +7,14 @@
 //
 
 import UIKit
-import SceneKit
+import AVFoundation
 
-class LightSaberView: SCNView {
+class LightSaberView: UIView {
 
+    let captureSession = AVCaptureSession()
+    
+    var captureDevice: AVCaptureDevice?
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -19,6 +23,12 @@ class LightSaberView: SCNView {
     }
     */
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
 }

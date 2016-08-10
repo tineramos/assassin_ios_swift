@@ -20,10 +20,13 @@ class WeaponsViewController: BaseViewController {
 
     var weaponsList: [Weapon] = []
     
+    lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+//        openiBeaconProximity()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -36,7 +39,6 @@ class WeaponsViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -48,6 +50,9 @@ class WeaponsViewController: BaseViewController {
     */
     
     @IBAction func weaponButtonPressed(sender: UIButton) {
+        
+        sensingKit.stopContinuousSensingWithAllRegisteredSensors()
+        
         print("the tag: \(sender.tag)")
         
         let weaponTag = WeaponType(rawValue: sender.tag)!
@@ -65,6 +70,97 @@ class WeaponsViewController: BaseViewController {
         default:
             break
         }
+    }
+    
+    func openAccelerometer() {
+        
+        if sensingKit.isSensorAvailable(.Accelerometer) {
+            
+            print("I has Accelerometer!!")
+            
+            sensingKit.registerSensor(.Accelerometer)
+            
+            if sensingKit.isSensorRegistered(.Accelerometer) {
+                
+                sensingKit.subscribeToSensor(.Accelerometer, withHandler: { (sensorType, sensorData) in
+                    
+                    let accelerometerData = sensorData as! SKAccelerometerData
+                    print("===== ACCELEROMETER =====");
+                    print("x: %f", accelerometerData.acceleration.x);
+                    print("y: %f", accelerometerData.acceleration.y);
+                    print("z: %f", accelerometerData.acceleration.z);
+                    
+                })
+                
+                sensingKit.startContinuousSensingWithSensor(.Accelerometer)
+                
+            }
+            
+        }
+        
+    }
+    
+    func openGyroscope() {
+        
+        if sensingKit.isSensorAvailable(.Gyroscope) {
+            
+            print("I has Gyroscope!!")
+            
+            sensingKit.registerSensor(.Gyroscope)
+            
+            if sensingKit.isSensorRegistered(.Gyroscope) {
+                
+                sensingKit.subscribeToSensor(.Gyroscope, withHandler: { (sensorType, sensorData) in
+                    
+                    let gyroscopeData = sensorData as! SKGyroscopeData
+                    print("===== ACCELEROMETER =====");
+                    print("x: %f", gyroscopeData.rotationRate.x);
+                    print("y: %f", gyroscopeData.rotationRate.y);
+                    print("z: %f", gyroscopeData.rotationRate.z);
+                    
+                })
+                
+                sensingKit.startContinuousSensingWithSensor(.Gyroscope)
+                
+            }
+            
+        }
+        
+    }
+    
+    func openiBeaconProximity() {
+        
+        if sensingKit.isSensorAvailable(.iBeaconProximity) {
+            
+            let uuid = NSUUID.init(UUIDString: Constants.kAssassinUUID)
+            
+            let config: SKiBeaconProximityConfiguration = SKiBeaconProximityConfiguration.init(UUID: uuid)
+            config.mode = .ScanAndBroadcast
+            config.major = 1    //  game_id
+            config.minor = 1    //  player_id
+            
+            print("I has iBeaconProximity!!")
+            
+            sensingKit.registerSensor(.iBeaconProximity)
+            
+            if sensingKit.isSensorRegistered(.iBeaconProximity) {
+                
+                sensingKit.subscribeToSensor(.iBeaconProximity, withHandler: { (sensorType, sensorData) in
+                    
+                    let iBeaconData = sensorData as! SKiBeaconDeviceData
+                    print("iBeaconData: \(iBeaconData.proximityString)")
+                    print("DATA: \(sensorData.dictionaryData)")
+                    
+                    // if minor == target_id
+                    
+                })
+                
+                sensingKit.startContinuousSensingWithSensor(.Gyroscope)
+                
+            }
+            
+        }
+        
     }
     
 }

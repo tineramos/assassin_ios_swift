@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import SceneKit
+import AVFoundation
 
-class NerfGunView: SCNView {
+class NerfGunView: UIView {
 
     /*
     // Only override drawRect: if you perform custom drawing.

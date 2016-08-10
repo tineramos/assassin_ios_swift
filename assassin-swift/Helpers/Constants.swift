@@ -18,4 +18,6 @@ struct Constants {
     
     static let fontCourierNewBold = "CourierNewPS-BoldMT"
     
+    static let kAssassinUUID = "E7737784-23AB-41F7-8BCD-76C41978F0B7"
+    
 }
