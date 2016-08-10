@@ -64,7 +64,7 @@ public class _Game: NSManagedObject {
     var game_location: String?
 
     @NSManaged public
-    var game_status: NSNumber?
+    var game_status: String?
 
     @NSManaged public
     var game_title: String?

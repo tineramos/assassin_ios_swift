@@ -3,16 +3,15 @@
 //  AssassinSwift
 //
 //  Created by Tine Ramos on 07/08/2016.
-//  Copyright © 2016 Tine Ramos. All rights reserved.
+//  Copyright © 2016 Queen Mary University of London. All rights reserved.
 //
 
 import UIKit
+
 import CoreData
+import MagicalRecord
 
 class CoreDataManager: NSObject {
-    
-    var managedObjectContext: NSManagedObjectContext?
-    var persistentStoreCoordinator: NSPersistentStoreCoordinator?
     
     static let sharedInstance = CoreDataManager()
     
@@ -22,44 +21,58 @@ class CoreDataManager: NSObject {
     
     override init() {
         super.init()
-        managedObjectContext = ((UIApplication.sharedApplication().delegate) as! AppDelegate).managedObjectContext
-        managedObjectContext?.undoManager = nil
     }
     
     // MARK: User methods
     
-    func getCurrentActiveUser(successBlock: UserBlock, failureBlock: FailureBlock) {
-        
-        let userFetchRequest = NSFetchRequest(entityName: User.entityName())
-        userFetchRequest.fetchLimit = 1
-        
-        do {
-            let fetchedUser = try managedObjectContext?.executeFetchRequest(userFetchRequest) as? [User]
+    func setCurrentActiveUser(params: NSDictionary, userBlock: UserBlock, failureBlock: FailureBlock) {
+
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in
             
-            if fetchedUser?.count == 1 {
-                successBlock(user: fetchedUser![0])
+            let newUser = User.init(managedObjectContext: context)
+            
+            if newUser != nil {
+                newUser!.populateUserWithDictionary(params["user"] as! NSDictionary)
+            }
+            
+        }) { (success, error) in
+            if success {
+                userBlock(user: User.getUser())
             }
             else {
-                successBlock(user: User.MR_createEntity()!)
+                failureBlock(errorString: "User not saved")
             }
-            
         }
-        catch {
-            failureBlock(errorString: "Can not fetch user: \(error)")
-        }
+        
     }
     
-    func setCurrentActiveUser(params: NSDictionary, userBlock: UserBlock, failureBlock: FailureBlock) {
-        
-        getCurrentActiveUser({ (newUser: User) -> (Void) in
-            
-            newUser.insertUserWithDictionary(params["user"] as! NSDictionary)
-            userBlock(user: newUser)
-            
-        }) { (errorString) -> (Void) in
-            failureBlock(errorString: errorString)
+    class func hasUserLoggedIn(completion: BoolBlock) {
+        let currentUser = User.getUser()
+        completion(bool: (currentUser != nil))
+    }
+    
+    // MARK: Games method
+    
+    func saveGamesList(gamesList: NSArray, successBlock: ArrayBlock, failureBlock: FailureBlock) {
+
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            for dictionary in gamesList {
+                Game.populateUserWithDictionary(dictionary as! NSDictionary, inContext: context)
+            }
         }
         
+        successBlock(array: Game.MR_findAll()!)
+        
     }
-
+    
+    /*
+     
+     NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in
+     
+     }) { (success, error) in
+     
+     }
+     
+     */
+    
 }

@@ -63,7 +63,7 @@ public class _Target: NSManagedObject {
     // MARK: - Relationships
 
     @NSManaged public
-    var assassin: NSManagedObject?
+    var assassin: Assassin?
 
 }
 

@@ -3,7 +3,7 @@
 //  AssassinSwift
 //
 //  Created by Tine Ramos on 04/08/2016.
-//  Copyright © 2016 Tine Ramos. All rights reserved.
+//  Copyright © 2016 Queen Mary University of London. All rights reserved.
 //
 
 import UIKit
@@ -43,29 +43,27 @@ class RegisterViewController: FXFormViewController {
     }
     
     func removedFunc(form: RegistrationForm) {
+        
         if checkIfValuesAreValid(form) {
+            
             if form.password == form.repeatPassword {
                 
-                CoreDataManager.sharedManager.getCurrentActiveUser({ (user) -> (Void) in
-                    
-                    DataManager.sharedManager.signUp(self.userDictionary, successBlock: { () -> (Void) in
-                        self.performSegueWithIdentifier("setMenuSegue", sender: nil)
-                        }, failureBlock: { (error: String!) -> (Void) in
-                            self.showError(error)
-                    })
-                    
-                    }, failureBlock: { (errorString) -> (Void) in
-                        
+                DataManager.sharedManager.signUp(self.userDictionary, successBlock: { () -> (Void) in
+                    self.performSegueWithIdentifier("setMenuSegue", sender: nil)
+                    }, failureBlock: { (error: String!) -> (Void) in
+                        self.showError(error)
                 })
                 
             }
             else {
                 showError("registration.error.password.notmatch".localized)
             }
+            
         }
         else {
             showError(errorMessage)
         }
+        
     }
     
     func checkIfValuesAreValid(form: RegistrationForm) -> Bool {

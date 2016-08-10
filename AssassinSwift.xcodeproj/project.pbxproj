@@ -22,6 +22,12 @@
 
 /* Begin PBXBuildFile section */
 		5410FA781D57272D0092D36F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410FA771D57272D0092D36F /* GameViewController.swift */; };
+		5423B70A1D5AA4750042BAB6 /* LightSaberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5423B7091D5AA4750042BAB6 /* LightSaberView.swift */; };
+		5423B70C1D5ABC1C0042BAB6 /* NerfGunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5423B70B1D5ABC1C0042BAB6 /* NerfGunView.swift */; };
+		54507BDA1D5A24300030ECEA /* _Assassin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BD91D5A24300030ECEA /* _Assassin.swift */; };
+		54507BDC1D5A243C0030ECEA /* Assassin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDB1D5A243C0030ECEA /* Assassin.swift */; };
+		54507BDE1D5A3FCA0030ECEA /* DefencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */; };
+		54507BE01D5A3FD80030ECEA /* WeaponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */; };
 		546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D531D53D26D0031FF90 /* AppDelegate.swift */; };
 		546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D591D53D26E0031FF90 /* Main.storyboard */; };
 		546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5C1D53D26E0031FF90 /* Assets.xcassets */; };
@@ -69,6 +75,7 @@
 		549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 549964F91D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld */; };
 		54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1ED1D55896A00182262 /* MenuViewController.swift */; };
 		54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1EF1D5589D800182262 /* LoginViewController.swift */; };
+		54B6B6CB1D599B85001E7804 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6B6CA1D599B85001E7804 /* Parser.swift */; };
 		54D2D3041D541BA700546C46 /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3031D541BA700546C46 /* FXForms.m */; };
 		54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3061D541CD700546C46 /* RegistrationForm.swift */; };
 		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
@@ -80,6 +87,12 @@
 /* Begin PBXFileReference section */
 		26996B8527A77998720B9743 /* Pods-AssassinSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.release.xcconfig"; sourceTree = "<group>"; };
 		5410FA771D57272D0092D36F /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Controllers/GameViewController.swift; sourceTree = "<group>"; };
+		5423B7091D5AA4750042BAB6 /* LightSaberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightSaberView.swift; path = Controllers/Weapons/LightSaberView.swift; sourceTree = "<group>"; };
+		5423B70B1D5ABC1C0042BAB6 /* NerfGunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NerfGunView.swift; path = Controllers/Weapons/NerfGunView.swift; sourceTree = "<group>"; };
+		54507BD91D5A24300030ECEA /* _Assassin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Assassin.swift; sourceTree = "<group>"; };
+		54507BDB1D5A243C0030ECEA /* Assassin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assassin.swift; sourceTree = "<group>"; };
+		54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefencesViewController.swift; path = Controllers/DefencesViewController.swift; sourceTree = "<group>"; };
+		54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeaponsViewController.swift; path = Controllers/WeaponsViewController.swift; sourceTree = "<group>"; };
 		546D7D501D53D26D0031FF90 /* AssassinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssassinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546D7D531D53D26D0031FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		546D7D5A1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +143,7 @@
 		549964FA1D56F7AE00F574C4 /* AssassinSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AssassinSwift.xcdatamodel; sourceTree = "<group>"; };
 		54ABC1ED1D55896A00182262 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controllers/MenuViewController.swift; sourceTree = "<group>"; };
 		54ABC1EF1D5589D800182262 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
+		54B6B6CA1D599B85001E7804 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Helpers/Parser.swift; sourceTree = "<group>"; };
 		54D2D3021D541BA700546C46 /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
 		54D2D3031D541BA700546C46 /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
 		54D2D3061D541CD700546C46 /* RegistrationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
@@ -159,6 +173,15 @@
 				DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5423B70D1D5AD9DF0042BAB6 /* Weapons */ = {
+			isa = PBXGroup;
+			children = (
+				5423B7091D5AA4750042BAB6 /* LightSaberView.swift */,
+				5423B70B1D5ABC1C0042BAB6 /* NerfGunView.swift */,
+			);
+			name = Weapons;
 			sourceTree = "<group>";
 		};
 		546D7D471D53D26D0031FF90 = {
@@ -260,6 +283,7 @@
 		5491E8421D586D0500BA7E8D /* Temp */ = {
 			isa = PBXGroup;
 			children = (
+				54507BD91D5A24300030ECEA /* _Assassin.swift */,
 				5491E8431D586D0500BA7E8D /* _Defence.swift */,
 				5491E8441D586D0500BA7E8D /* _Game.swift */,
 				5491E8451D586D0500BA7E8D /* _Player.swift */,
@@ -277,6 +301,7 @@
 		5491E84D1D586D0500BA7E8D /* User */ = {
 			isa = PBXGroup;
 			children = (
+				54507BDB1D5A243C0030ECEA /* Assassin.swift */,
 				5491E84E1D586D0500BA7E8D /* Defence.swift */,
 				5491E84F1D586D0500BA7E8D /* Game.swift */,
 				5491E8501D586D0500BA7E8D /* Player.swift */,
@@ -298,7 +323,10 @@
 				549964F41D56F78300F574C4 /* GamePlayViewController.swift */,
 				549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */,
 				5491E83F1D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift */,
+				54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */,
+				54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */,
 				549964E21D56BB7600F574C4 /* Game Views */,
+				5423B70D1D5AD9DF0042BAB6 /* Weapons */,
 			);
 			name = "Games Controller";
 			sourceTree = "<group>";
@@ -322,6 +350,7 @@
 				5491E86E1D587E5D00BA7E8D /* Blocks.swift */,
 				549964EE1D56F77000F574C4 /* StringExtension.swift */,
 				549964EF1D56F77000F574C4 /* UIViewExtension.swift */,
+				54B6B6CA1D599B85001E7804 /* Parser.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -419,7 +448,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Tine Ramos";
+				ORGANIZATIONNAME = "Queen Mary University of London";
 				TargetAttributes = {
 					546D7D4F1D53D26D0031FF90 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -532,7 +561,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5423B70C1D5ABC1C0042BAB6 /* NerfGunView.swift in Sources */,
 				5410FA781D57272D0092D36F /* GameViewController.swift in Sources */,
+				54B6B6CB1D599B85001E7804 /* Parser.swift in Sources */,
 				5491E8671D586D0500BA7E8D /* Profile.swift in Sources */,
 				5491E8651D586D0500BA7E8D /* PlayerDefences.swift in Sources */,
 				546D7D6F1D53FB9A0031FF90 /* RegisterViewController.swift in Sources */,
@@ -547,10 +578,13 @@
 				5491E8401D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift in Sources */,
 				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
 				549964F11D56F77000F574C4 /* Helper.swift in Sources */,
+				54507BDC1D5A243C0030ECEA /* Assassin.swift in Sources */,
 				549964DD1D56AC5600F574C4 /* CoreDataManager.swift in Sources */,
 				5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */,
 				5491E86F1D587E5D00BA7E8D /* Blocks.swift in Sources */,
 				549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */,
+				54507BDE1D5A3FCA0030ECEA /* DefencesViewController.swift in Sources */,
+				54507BE01D5A3FD80030ECEA /* WeaponsViewController.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
 				5491E86A1D586D0500BA7E8D /* Weapon.swift in Sources */,
 				5491E85E1D586D0500BA7E8D /* _Target.swift in Sources */,
@@ -561,6 +595,7 @@
 				54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */,
 				5491E8631D586D0500BA7E8D /* Game.swift in Sources */,
 				549964F31D56F77000F574C4 /* UIViewExtension.swift in Sources */,
+				54507BDA1D5A24300030ECEA /* _Assassin.swift in Sources */,
 				5491E8621D586D0500BA7E8D /* Defence.swift in Sources */,
 				549964A91D5694EF00F574C4 /* ProfileViewController.swift in Sources */,
 				5491E86D1D5876BF00BA7E8D /* CoreDataStack.swift in Sources */,
@@ -578,6 +613,7 @@
 				5491E8601D586D0500BA7E8D /* _Weapon.swift in Sources */,
 				549964F21D56F77000F574C4 /* StringExtension.swift in Sources */,
 				5491E8641D586D0500BA7E8D /* Player.swift in Sources */,
+				5423B70A1D5AA4750042BAB6 /* LightSaberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

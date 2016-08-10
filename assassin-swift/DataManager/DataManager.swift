@@ -3,7 +3,7 @@
 //  AssassinSwift
 //
 //  Created by Tine Ramos on 07/08/2016.
-//  Copyright © 2016 Tine Ramos. All rights reserved.
+//  Copyright © 2016 Queen Mary University of London. All rights reserved.
 //
 
 import UIKit
@@ -40,7 +40,7 @@ class DataManager: AFHTTPSessionManager {
     func signUp(params: NSDictionary, successBlock: VoidBlock, failureBlock: FailureBlock) {
         
         self.POST("user", parameters: params, progress: nil, success: { (task, response) in
-
+            
             CoreDataManager.sharedManager.setCurrentActiveUser(response as! NSDictionary, userBlock: { (user) -> (Void) in
                 successBlock()
             }, failureBlock: { (errorString) -> (Void) in
@@ -53,16 +53,53 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
+    // MARK: Games methods
+    
     func getGamesList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
-        self.GET("games", parameters: nil, progress: nil, success: { (task, response) in
-            // TODO: save in CoreData bitch
-            successBlock(array: response as! NSArray)
+        self.GET("games", parameters: nil, progress: nil, success: { (task, response) in            
+            CoreDataManager.sharedManager.saveGamesList(response as! NSArray, successBlock: { (array) -> (Void) in
+                successBlock(array: array)
+            }, failureBlock: { (errorString) -> (Void) in
+                failureBlock(errorString: errorString)
+            })
+            
         }) { (task, error) in
             failureBlock(errorString: error.localizedDescription)
         }
         
     }
+    
+    func getGameDetailOfId(gameId: Int, successBlock: GameBlock, failureBlock: FailureBlock) {
+        
+//        let user = User.getUser()!
+//        let path = String(format: "game/gameId/\(gameId)/userId/\(user.user_id)")
+        let path = String(format: "game/gameId/\(gameId)/userId/1")
+        
+        self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
+            
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
+    func joinGameWithId(gameId: Int, userId: Int, weapons: NSArray, defences: NSArray, successBlock: DictionaryBlock, failureBlock: FailureBlock) {
+        
+        let params = [GameAttributes.game_id.rawValue: gameId,
+                      UserAttributes.user_id.rawValue: userId,
+                      AssassinRelationships.weapons.rawValue: weapons,
+                      AssassinRelationships.defences.rawValue: defences]
+        
+        self.POST("game/join", parameters: params, progress: nil, success: { (task, response) in
+            //
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
+    // MARK:
     
     func getWeaponsList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         

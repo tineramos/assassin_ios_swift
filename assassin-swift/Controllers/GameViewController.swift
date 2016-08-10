@@ -3,7 +3,7 @@
 //  assassin-swift
 //
 //  Created by Tine Ramos on 04/08/2016.
-//  Copyright (c) 2016 Tine Ramos. All rights reserved.
+//  Copyright (c) 2016 Queen Mary University of London. All rights reserved.
 //
 
 import UIKit
@@ -22,15 +22,16 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     @IBOutlet weak var tableView: UITableView?
+    
+    var gamesList: [Game] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        DataManager.sharedManager.getGamesList({ (gamesList: NSArray!) -> (Void) in
-            // add methods!
-            self.tableView?.reloadData()
+        DataManager.sharedManager.getGamesList({ (array: NSArray!) -> (Void) in
             
-            print("games: \n \(gamesList)")
+            self.gamesList = array as! [Game]
+            self.tableView?.reloadData()
             
             }) { (error) -> (Void) in
                 print(error)
@@ -49,16 +50,28 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
         // Release any cached data, images, etc that aren't in use.
     }
     
-    // MARK: - TableView DataSource Methods
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.SegueIdentifier.pushGameDetailSegue {
+            
+            let selectedGame = sender as! Game
+            let gameDetailVC = segue.destinationViewController as! GamePlayViewController
+            gameDetailVC.gameId = (selectedGame.game_id?.integerValue)!
+            
+        }
+        
+     }
+
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO: if game status is open/cancelled, no action
-        // TODO: push GameDetail if finished or ongoing
-    }
+    // MARK: - TableView DataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: change numbers
-        return 1
+        return gamesList.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -70,18 +83,15 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.gamesCellId, forIndexPath: indexPath) as! GamesTableViewCell
         
         // TODO: add configure method in cell using Game core data entity
-        
+        cell.configureCell(gamesList[indexPath.row])
         return cell
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "The section"
     }
 
     // MARK: - TableView Delegate Methods
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let game = gamesList[indexPath.row]
+        performSegueWithIdentifier(Constants.SegueIdentifier.pushGameDetailSegue, sender: game)
     }
     
 }
