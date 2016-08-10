@@ -49,6 +49,22 @@ class WeaponsViewController: BaseViewController {
     
     @IBAction func weaponButtonPressed(sender: UIButton) {
         print("the tag: \(sender.tag)")
+        
+        let weaponTag = WeaponType(rawValue: sender.tag)!
+        
+        switch weaponTag {
+        case .NerfGun:
+            // TODO: show nerf gun simulation
+            break
+        case .Poison:
+            // TODO: show poison simulation
+            break
+        case .Lightsaber:
+            // TODO: show lightsaber simulation
+            break
+        default:
+            break
+        }
     }
     
 }

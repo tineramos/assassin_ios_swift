@@ -3,11 +3,11 @@ import Foundation
 import CoreData
 
 enum GameStatus: String {
-    case Open = "Open"
-    case Finished = "Finished"
-    case Ongoing = "Ongoing"
-    case Cancelled = "Cancelled"
-    case Closed = "Closed"
+    case Open = "open"
+    case Finished = "finished"
+    case Ongoing = "ongoing"
+    case Cancelled = "cancelled"
+    case Closed = "closed"
 }
 
 @objc(Game)
@@ -56,15 +56,17 @@ public class Game: _Game {
         
         var returnString = ""
         
-        switch game_status! {
-        case GameStatus.Open.rawValue:
-            returnString = String(format: "\(available_slots) available slots")
+        let status = GameStatus(rawValue: game_status!)!
+        
+        switch status {
+        case .Open:
+            returnString = String(format: "\(available_slots!) available slots")
             break
-        case GameStatus.Finished.rawValue:
-            returnString = String(format: "\(players_joined) players")
+        case .Finished:
+            returnString = String(format: "\(players_joined!) players")
             break
-        case GameStatus.Ongoing.rawValue:
-            returnString = String(format: "\(players_joined)/\(max_players) players joined")
+        case .Ongoing:
+            returnString = String(format: "\(players_joined!)/\(max_players!) players joined")
             break
         default:
             break
@@ -77,15 +79,17 @@ public class Game: _Game {
     func getStatusColor() -> UIColor {
         
         var color = UIColor.blackColor()
-    
-        switch game_status! {
-        case GameStatus.Open.rawValue:
+        
+        let status = GameStatus(rawValue: game_status!)!
+        
+        switch status {
+        case .Open:
             color = UIColor.greenColor()
             break
-        case GameStatus.Finished.rawValue:
+        case .Finished:
             color = UIColor.blueColor()
             break
-        case GameStatus.Ongoing.rawValue:
+        case .Ongoing:
             color = UIColor.yellowColor()
             break
         default:

@@ -98,6 +98,7 @@ class DataManager: AFHTTPSessionManager {
         }
         
     }
+    
     // MARK:
     
     func getWeaponsList(successBlock: ArrayBlock, failureBlock: FailureBlock) {

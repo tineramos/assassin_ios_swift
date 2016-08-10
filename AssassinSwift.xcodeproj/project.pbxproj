@@ -175,6 +175,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5423B70D1D5AD9DF0042BAB6 /* Weapons */ = {
+			isa = PBXGroup;
+			children = (
+				5423B7091D5AA4750042BAB6 /* LightSaberView.swift */,
+				5423B70B1D5ABC1C0042BAB6 /* NerfGunView.swift */,
+			);
+			name = Weapons;
+			sourceTree = "<group>";
+		};
 		546D7D471D53D26D0031FF90 = {
 			isa = PBXGroup;
 			children = (
@@ -317,8 +326,7 @@
 				54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */,
 				54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */,
 				549964E21D56BB7600F574C4 /* Game Views */,
-				5423B7091D5AA4750042BAB6 /* LightSaberView.swift */,
-				5423B70B1D5ABC1C0042BAB6 /* NerfGunView.swift */,
+				5423B70D1D5AD9DF0042BAB6 /* Weapons */,
 			);
 			name = "Games Controller";
 			sourceTree = "<group>";
