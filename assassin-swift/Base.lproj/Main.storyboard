@@ -144,6 +144,40 @@
             </objects>
             <point key="canvasLocation" x="3000" y="262.5"/>
         </scene>
+        <!--Weapons View Controller-->
+        <scene sceneID="pGL-TM-14u">
+            <objects>
+                <viewController storyboardIdentifier="WeaponsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="goJ-Ut-ZzT" customClass="WeaponsViewController" customModule="AssassinSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cVX-mu-FC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="vKg-Av-uCD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xwc-Vs-isy">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5H-yB-GEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3688.5" y="262.5"/>
+        </scene>
+        <!--Defences View Controller-->
+        <scene sceneID="HH8-jB-6uY">
+            <objects>
+                <viewController storyboardIdentifier="DefencesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U3b-aB-JHp" customClass="DefencesViewController" customModule="AssassinSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yI1-Aa-Ckn"/>
+                        <viewControllerLayoutGuide type="bottom" id="tyQ-vp-s8y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ssz-jj-64T">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7U-kV-aRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4393.5" y="262.5"/>
+        </scene>
         <!--Game Play View Controller-->
         <scene sceneID="CVp-Qp-bwq">
             <objects>
@@ -409,15 +443,15 @@
                                 <exclude reference="gSd-hP-Hly"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="3Sm-1n-ebB"/>
-                                <exclude reference="Gid-ar-pAv"/>
-                                <exclude reference="geN-WM-Jeh"/>
+                                <exclude reference="b3W-Xb-qAQ"/>
+                                <exclude reference="fzt-Rl-YXB"/>
+                                <exclude reference="VdD-WL-npq"/>
                                 <exclude reference="KOf-sV-PmX"/>
                                 <exclude reference="Pb7-d0-Gn6"/>
                                 <exclude reference="Uax-4B-mEZ"/>
-                                <exclude reference="VdD-WL-npq"/>
-                                <exclude reference="b3W-Xb-qAQ"/>
-                                <exclude reference="fzt-Rl-YXB"/>
+                                <exclude reference="3Sm-1n-ebB"/>
+                                <exclude reference="Gid-ar-pAv"/>
+                                <exclude reference="geN-WM-Jeh"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -427,15 +461,15 @@
                                 <include reference="gSd-hP-Hly"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="3Sm-1n-ebB"/>
-                                <include reference="Gid-ar-pAv"/>
-                                <include reference="geN-WM-Jeh"/>
+                                <include reference="b3W-Xb-qAQ"/>
+                                <include reference="fzt-Rl-YXB"/>
+                                <include reference="VdD-WL-npq"/>
                                 <include reference="KOf-sV-PmX"/>
                                 <include reference="Pb7-d0-Gn6"/>
                                 <include reference="Uax-4B-mEZ"/>
-                                <include reference="VdD-WL-npq"/>
-                                <include reference="b3W-Xb-qAQ"/>
-                                <include reference="fzt-Rl-YXB"/>
+                                <include reference="3Sm-1n-ebB"/>
+                                <include reference="Gid-ar-pAv"/>
+                                <include reference="geN-WM-Jeh"/>
                             </mask>
                         </variation>
                     </view>

@@ -3,7 +3,7 @@
 //  AssassinSwift
 //
 //  Created by Tine Ramos on 07/08/2016.
-//  Copyright © 2016 Tine Ramos. All rights reserved.
+//  Copyright © 2016 Queen Mary University of London. All rights reserved.
 //
 
 import UIKit
@@ -88,10 +88,14 @@ class DataManager: AFHTTPSessionManager {
         
         let params = [GameAttributes.game_id.rawValue: gameId,
                       UserAttributes.user_id.rawValue: userId,
-                      ]
+                      AssassinRelationships.weapons.rawValue: weapons,
+                      AssassinRelationships.defences.rawValue: defences]
         
-        
-        self.POST("game/join", parameters: <#T##AnyObject?#>, progress: <#T##((NSProgress) -> Void)?##((NSProgress) -> Void)?##(NSProgress) -> Void#>, success: <#T##((NSURLSessionDataTask, AnyObject?) -> Void)?##((NSURLSessionDataTask, AnyObject?) -> Void)?##(NSURLSessionDataTask, AnyObject?) -> Void#>, failure: <#T##((NSURLSessionDataTask?, NSError) -> Void)?##((NSURLSessionDataTask?, NSError) -> Void)?##(NSURLSessionDataTask?, NSError) -> Void#>)
+        self.POST("game/join", parameters: params, progress: nil, success: { (task, response) in
+            //
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
         
     }
     // MARK:
