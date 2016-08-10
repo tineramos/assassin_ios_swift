@@ -30,7 +30,7 @@ class GamesTableViewCell: UITableViewCell {
     func configureCell(game: Game) {
         gameTitle?.text = game.game_title
         gameStatus?.text = game.game_status
-        players?.text = game.getPlayerTitle()
+        players?.text = game.getPlayersTitle()
     }
     
 }

@@ -27,7 +27,7 @@ class PlayersTableViewCell: UITableViewCell {
     
     func configureCellWithPlayer(player: Player) {
         
-        codeNameLabel?.text = player
+        
         
     }
 

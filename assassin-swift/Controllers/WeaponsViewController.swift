@@ -8,7 +8,15 @@
 
 import UIKit
 
-class WeaponsViewController: UIViewController {
+enum WeaponType: Int {
+    case NerfGun    = 101
+    case Poison     = 102
+    case Lightsaber = 103
+    case Bomb       = 104
+    case Tripwire   = 105
+}
+
+class WeaponsViewController: BaseViewController {
 
     var weaponsList: [Weapon] = []
     
@@ -16,6 +24,11 @@ class WeaponsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "")
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,5 +46,9 @@ class WeaponsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func weaponButtonPressed(sender: UIButton) {
+        print("the tag: \(sender.tag)")
+    }
     
 }
