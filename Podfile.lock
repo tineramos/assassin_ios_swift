@@ -17,18 +17,18 @@ PODS:
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
-  - Masonry (1.0.1)
+  - SnapKit (0.15.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - MagicalRecord
-  - Masonry
+  - SnapKit (~> 0.15.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
-  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
 
-PODFILE CHECKSUM: fdf90f176badfb25d3380005f8df89d56e1dc87f
+PODFILE CHECKSUM: 0e51287fc6369f9bcfff11b92beecc86bbc34070
 
 COCOAPODS: 1.0.1

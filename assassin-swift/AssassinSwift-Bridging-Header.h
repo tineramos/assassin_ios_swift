@@ -8,7 +8,4 @@
 
 #import <SensingKit/SensingKitLib.h>
 
-#define MAS_SHORTHAND
-//#import <Masonry/Masonry.h>
-
 #import "FXForms.h"

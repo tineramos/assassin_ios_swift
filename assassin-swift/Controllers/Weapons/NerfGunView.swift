@@ -9,8 +9,6 @@
 import UIKit
 import AVFoundation
 
-import Masonry
-
 class NerfGunView: UIView {
 
     let captureSession = AVCaptureSession()
