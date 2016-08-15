@@ -56,7 +56,6 @@ class WeaponsViewController: BaseViewController {
     
     @IBAction func weaponButtonPressed(sender: UIButton) {
         
-        
         sensingKit.stopContinuousSensingWithAllRegisteredSensors()
         
         weaponView?.subviews.forEach({ $0.removeFromSuperview() })
@@ -82,7 +81,9 @@ class WeaponsViewController: BaseViewController {
             weaponView?.addSubview(lightSaberView!)
             lightSaberView?.start()
             break
-        default:
+        case .Bomb:
+            break
+        case .Tripwire:
             break
         }
     }

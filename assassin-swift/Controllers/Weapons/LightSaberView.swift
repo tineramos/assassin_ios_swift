@@ -57,17 +57,14 @@ class LightSaberView: UIView {
                     if accelerationZ < -0.5 {
                         print("LEFT swing")
                         print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
-                        
-                        self.swingSound?.volume = 0.5
-                        self.swingSound?.play()
                     }
                     else if accelerationY > 0.5 {
                         print("RIGHT swing")
                         print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
-                        
-                        self.swingSound?.volume = 0.5
-                        self.swingSound?.play()
                     }
+                    
+                    self.swingSound?.volume = 0.5
+                    self.swingSound?.play()
                     
                 }
                 
@@ -79,29 +76,13 @@ class LightSaberView: UIView {
         
     }
     
-    private func playSound(nameOfAudioFileInAssetCatalog: String) {
-        var alarmAudioPlayer: AVAudioPlayer?
-        if let sound = NSDataAsset(name: nameOfAudioFileInAssetCatalog) {
-            do {
-                try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-                try! AVAudioSession.sharedInstance().setActive(true)
-                try alarmAudioPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeWAVE)
-                alarmAudioPlayer!.play()
-            } catch {
-                print("error initializing AVAudioPlayer")
-            }
-        }
-    }
-    
     func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  {
-        //1
+        
         let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
         let url = NSURL.fileURLWithPath(path!)
         
-        //2
         var audioPlayer:AVAudioPlayer?
         
-        // 3
         do {
             try audioPlayer = AVAudioPlayer(contentsOfURL: url)
         } catch {

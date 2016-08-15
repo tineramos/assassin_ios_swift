@@ -6,8 +6,8 @@ target 'AssassinSwift' do
   use_frameworks!
 
   # Pods for AssassinSwift
-pod 'Masonry'
 pod 'AFNetworking', '~> 3.0'
 pod 'MagicalRecord'
+pod 'SnapKit', '~> 0.15.0'
 
 end

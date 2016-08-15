@@ -104,7 +104,7 @@
 		546D7D691D53D2CF0031FF90 /* SensingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SensingKit.framework; sourceTree = "<group>"; };
 		546D7D6B1D53D3410031FF90 /* AssassinSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AssassinSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		546D7D6E1D53FB9A0031FF90 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
-		547BBD6F1D541222004D171B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		547BBD6F1D541222004D171B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5491E8351D58021500BA7E8D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		5491E8371D5816AF00BA7E8D /* ProfileGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileGameTableViewCell.swift; path = Controllers/ProfileGameTableViewCell.swift; sourceTree = "<group>"; };
 		5491E83B1D5834A700BA7E8D /* PlayersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersTableViewCell.swift; path = Controllers/PlayersTableViewCell.swift; sourceTree = "<group>"; };
