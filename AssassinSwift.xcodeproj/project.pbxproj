@@ -73,6 +73,7 @@
 		549964F61D56F78300F574C4 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964F41D56F78300F574C4 /* GamePlayViewController.swift */; };
 		549964F71D56F78300F574C4 /* PlayingFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */; };
 		549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 549964F91D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld */; };
+		54A397851D616EE200362F7A /* swing.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 54A397841D616EE200362F7A /* swing.WAV */; };
 		54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1ED1D55896A00182262 /* MenuViewController.swift */; };
 		54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1EF1D5589D800182262 /* LoginViewController.swift */; };
 		54B6B6CB1D599B85001E7804 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6B6CA1D599B85001E7804 /* Parser.swift */; };
@@ -142,6 +143,7 @@
 		549964F41D56F78300F574C4 /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayViewController.swift; path = Controllers/GamePlayViewController.swift; sourceTree = "<group>"; };
 		549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayingFieldViewController.swift; path = Controllers/PlayingFieldViewController.swift; sourceTree = "<group>"; };
 		549964FA1D56F7AE00F574C4 /* AssassinSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AssassinSwift.xcdatamodel; sourceTree = "<group>"; };
+		54A397841D616EE200362F7A /* swing.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swing.WAV; sourceTree = "<group>"; };
 		54ABC1ED1D55896A00182262 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controllers/MenuViewController.swift; sourceTree = "<group>"; };
 		54ABC1EF1D5589D800182262 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		54B6B6CA1D599B85001E7804 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Helpers/Parser.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				549964DE1D56AC6000F574C4 /* Data Managers */,
 				549964F81D56F7AE00F574C4 /* CoreData */,
 				54D2D3051D541C8800546C46 /* Models */,
+				54A397821D616EE200362F7A /* Resources */,
 				549964DF1D56AC6F00F574C4 /* Helpers */,
 				54D2D3001D541BA700546C46 /* Vendors */,
 				546D7D711D53FD490031FF90 /* Framework */,
@@ -376,6 +379,22 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		54A397821D616EE200362F7A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				54A397831D616EE200362F7A /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		54A397831D616EE200362F7A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				54A397841D616EE200362F7A /* swing.WAV */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		54D2D3001D541BA700546C46 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +510,7 @@
 				547BBD701D541222004D171B /* Podfile in Resources */,
 				546D7D601D53D26E0031FF90 /* LaunchScreen.storyboard in Resources */,
 				546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */,
+				54A397851D616EE200362F7A /* swing.WAV in Resources */,
 				54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */,
 				546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */,
 			);

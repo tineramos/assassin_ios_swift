@@ -56,7 +56,10 @@ class WeaponsViewController: BaseViewController {
     
     @IBAction func weaponButtonPressed(sender: UIButton) {
         
+        
         sensingKit.stopContinuousSensingWithAllRegisteredSensors()
+        
+        weaponView?.subviews.forEach({ $0.removeFromSuperview() })
         
         print("the tag: \(sender.tag)")
         
@@ -64,7 +67,6 @@ class WeaponsViewController: BaseViewController {
         
         switch weaponTag {
         case .NerfGun:
-            // TODO: show nerf gun simulation
             nerfGunView = NerfGunView.init(frame: (weaponView?.frame)!)
             weaponView?.addSubview(nerfGunView!)
             nerfGunView?.start()
@@ -74,15 +76,29 @@ class WeaponsViewController: BaseViewController {
             openGyroscope()
             break
         case .Lightsaber:
-            openDeviceMotion()
-            // TODO: show lightsaber simulation
+            registerDeviceMotion()
+            
+            lightSaberView = LightSaberView.init(frame: (weaponView?.frame)!)
+            weaponView?.addSubview(lightSaberView!)
+            lightSaberView?.start()
             break
         default:
             break
         }
     }
     
-    // MARK: Mobile Sensors
+    func registerDeviceMotion() {
+        
+        if sensingKit.isSensorRegistered(.DeviceMotion) {
+            return
+        }
+        
+        if sensingKit.isSensorAvailable(.DeviceMotion) {
+            let config: SKDeviceMotionConfiguration = SKDeviceMotionConfiguration.init()
+            config.sampleRate = Constants.eventFrequency
+            sensingKit.registerSensor(.DeviceMotion, withConfiguration: config)
+        }
+    }
     
     func openAccelerometer() {
         
@@ -260,16 +276,16 @@ class WeaponsViewController: BaseViewController {
         
     }
     
-    // MARK:
-    
-    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        print("BEGAN")
-        print("motion: \(motion) with event: \(event)")
-    }
-    
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        print("ENDED")
-        print("motion: \(motion) with event: \(event)")
-    }
-    
+//    // MARK:
+//    
+//    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
+//        print("BEGAN")
+//        print("motion: \(motion) with event: \(event)")
+//    }
+//    
+//    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+//        print("ENDED")
+//        print("motion: \(motion) with event: \(event)")
+//    }
+//    
 }

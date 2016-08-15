@@ -14,8 +14,11 @@ class LightSaberView: UIView {
     let captureSession = AVCaptureSession()
     
     var captureDevice: AVCaptureDevice?
+    var swingSound: AVAudioPlayer?
     
     var sensing = WeaponsViewController().sensingKit
+    
+//    let swing = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("swing", ofType: "wav")!)
     
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -27,6 +30,11 @@ class LightSaberView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        if let swingSound = self.setupAudioPlayerWithFile("swing", type: "WAV") {
+            self.swingSound = swingSound
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,7 +49,25 @@ class LightSaberView: UIView {
                 
                 let data = sensorData as! SKDeviceMotionData
                 
-                if data.userAcceleration.x > 2.0 {
+                let accelerationX = data.userAcceleration.x
+                let accelerationY = data.userAcceleration.y
+                let accelerationZ = data.userAcceleration.z
+                
+                if accelerationX > 0.5 {
+                    if accelerationZ < -0.5 {
+                        print("LEFT swing")
+                        print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
+                        
+                        self.swingSound?.volume = 0.5
+                        self.swingSound?.play()
+                    }
+                    else if accelerationY > 0.5 {
+                        print("RIGHT swing")
+                        print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
+                        
+                        self.swingSound?.volume = 0.5
+                        self.swingSound?.play()
+                    }
                     
                 }
                 
@@ -51,6 +77,38 @@ class LightSaberView: UIView {
             
         }
         
+    }
+    
+    private func playSound(nameOfAudioFileInAssetCatalog: String) {
+        var alarmAudioPlayer: AVAudioPlayer?
+        if let sound = NSDataAsset(name: nameOfAudioFileInAssetCatalog) {
+            do {
+                try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try! AVAudioSession.sharedInstance().setActive(true)
+                try alarmAudioPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeWAVE)
+                alarmAudioPlayer!.play()
+            } catch {
+                print("error initializing AVAudioPlayer")
+            }
+        }
+    }
+    
+    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  {
+        //1
+        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
+        let url = NSURL.fileURLWithPath(path!)
+        
+        //2
+        var audioPlayer:AVAudioPlayer?
+        
+        // 3
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+        } catch {
+            print("Player not available")
+        }
+        
+        return audioPlayer
     }
     
 }
