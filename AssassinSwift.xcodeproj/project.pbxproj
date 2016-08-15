@@ -81,6 +81,7 @@
 		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
 		54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3101D54288800546C46 /* RegisterButtonCell.swift */; };
 		54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D3121D54290700546C46 /* RegisterButtonCell.xib */; };
+		54E508E91D5DB91A006005B5 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E508E81D5DB91A006005B5 /* Motion.swift */; };
 		BFB64711640762938976892B /* Pods_AssassinSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +151,7 @@
 		54D2D30D1D541F3700546C46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54D2D3101D54288800546C46 /* RegisterButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterButtonCell.swift; path = Controllers/RegisterButtonCell.swift; sourceTree = "<group>"; };
 		54D2D3121D54290700546C46 /* RegisterButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterButtonCell.xib; path = Controllers/RegisterButtonCell.xib; sourceTree = "<group>"; };
+		54E508E81D5DB91A006005B5 /* Motion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Motion.swift; path = Helpers/Motion.swift; sourceTree = "<group>"; };
 		D03D133BCF1FD3F319A6D566 /* Pods-AssassinSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssassinSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -351,6 +353,7 @@
 				549964EE1D56F77000F574C4 /* StringExtension.swift */,
 				549964EF1D56F77000F574C4 /* UIViewExtension.swift */,
 				54B6B6CA1D599B85001E7804 /* Parser.swift */,
+				54E508E81D5DB91A006005B5 /* Motion.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
 				5491E8681D586D0500BA7E8D /* Target.swift in Sources */,
 				5491E8611D586D0500BA7E8D /* _Winner.swift in Sources */,
+				54E508E91D5DB91A006005B5 /* Motion.swift in Sources */,
 				5491E8361D58021500BA7E8D /* BaseViewController.swift in Sources */,
 				5491E8401D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift in Sources */,
 				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
@@ -746,7 +750,10 @@
 				);
 				INFOPLIST_FILE = "assassin-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tine.assassin-swift";
 				PRODUCT_NAME = AssassinSwift;
 				SWIFT_OBJC_BRIDGING_HEADER = "assassin-swift/AssassinSwift-Bridging-Header.h";
@@ -768,7 +775,10 @@
 				);
 				INFOPLIST_FILE = "assassin-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tine.assassin-swift";
 				PRODUCT_NAME = AssassinSwift;
 				SWIFT_OBJC_BRIDGING_HEADER = "assassin-swift/AssassinSwift-Bridging-Header.h";

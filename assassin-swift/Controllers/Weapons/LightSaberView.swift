@@ -15,6 +15,8 @@ class LightSaberView: UIView {
     
     var captureDevice: AVCaptureDevice?
     
+    var sensing = WeaponsViewController().sensingKit
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -29,6 +31,26 @@ class LightSaberView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func start() {
+        
+        if sensing.isSensorRegistered(.DeviceMotion) {
+            
+            sensing.subscribeToSensor(.DeviceMotion, withHandler: { (sensorType, sensorData) in
+                
+                let data = sensorData as! SKDeviceMotionData
+                
+                if data.userAcceleration.x > 2.0 {
+                    
+                }
+                
+            })
+            
+            sensing.startContinuousSensingWithSensor(.DeviceMotion)
+            
+        }
+        
     }
     
 }

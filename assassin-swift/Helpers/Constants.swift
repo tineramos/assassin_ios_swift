@@ -20,4 +20,6 @@ struct Constants {
     
     static let kAssassinUUID = "E7737784-23AB-41F7-8BCD-76C41978F0B7"
     
+    static let eventFrequency: UInt = 5 //60
+    
 }
