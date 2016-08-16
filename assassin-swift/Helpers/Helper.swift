@@ -8,6 +8,8 @@
 
 import UIKit
 
+import AVFoundation
+
 class Helper: NSObject {
 
     func isNull(obj: AnyObject?) -> Bool {
@@ -20,5 +22,21 @@ class Helper: NSObject {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluateWithObject(email)
+    }
+    
+    class func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  {
+        
+        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
+        let url = NSURL.fileURLWithPath(path!)
+        
+        var audioPlayer:AVAudioPlayer?
+        
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+        } catch {
+            print("Player not available")
+        }
+        
+        return audioPlayer
     }
 }

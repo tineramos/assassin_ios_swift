@@ -23,27 +23,27 @@ class WeaponsViewController: BaseViewController {
 
     var weaponsList: [Weapon] = []
     var currentWeapon: WeaponType?
-    
-    @IBOutlet weak var weaponView: UIView?
-    
-    var nerfGunView: NerfGunView?
-    var lightSaberView: LightSaberView?
-    var bombView: BombView?
-    
+        
     let captureSession = AVCaptureSession()
-    
     var captureDevice: AVCaptureDevice?
     
     var captureView: UIView!
     var captureLayer: AVCaptureVideoPreviewLayer!
     
+    var swingSound: AVAudioPlayer?
+    
     lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
+    
+    @IBOutlet weak var weaponView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        uncomment when bluetooth is available
 //        openiBeaconProximity()
+        if let swingSound = Helper.setupAudioPlayerWithFile("swing", type: "WAV") {
+            self.swingSound = swingSound
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -163,15 +163,13 @@ class WeaponsViewController: BaseViewController {
     
     func poisonSimulation() {
         
-        
     }
     
     // MARK: Lightsaber methods
     
     func lightsaberSimulation() {
         registerDeviceMotion()
-        
-        
+        startSensorsForLightsaber()
     }
     
     // MARK: Bomb methods
@@ -190,6 +188,43 @@ class WeaponsViewController: BaseViewController {
         // when tripwire is planted, send coordinates to game host
     }
     
+    // MARK: Sensing
+    
+    func startSensorsForLightsaber() {
+        
+        if sensingKit.isSensorRegistered(.DeviceMotion) {
+            
+            sensingKit.subscribeToSensor(.DeviceMotion, withHandler: { (sensorType, sensorData) in
+                
+                let data = sensorData as! SKDeviceMotionData
+                
+                let accelerationX = data.userAcceleration.x
+                let accelerationY = data.userAcceleration.y
+                let accelerationZ = data.userAcceleration.z
+                
+                if accelerationX > 0.5 {
+                    if accelerationZ < -0.5 {
+                        print("LEFT swing")
+                        print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
+                    }
+                    else if accelerationY > 0.5 {
+                        print("RIGHT swing")
+                        print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
+                    }
+                    
+                    self.swingSound?.volume = 0.5
+                    self.swingSound?.play()
+                    
+                }
+                
+            })
+            
+            sensingKit.startContinuousSensingWithSensor(.DeviceMotion)
+            
+        }
+        
+    }
+    
     // MARK: Register Sensors
     
     func registerDeviceMotion() {
@@ -205,66 +240,31 @@ class WeaponsViewController: BaseViewController {
         }
     }
     
-    func openAccelerometer() {
+    func openLocation() {
         
-        if sensingKit.isSensorAvailable(.Accelerometer) {
+        if sensingKit.isSensorAvailable(.Location) {
             
-            print("I has Accelerometer!!")
+            sensingKit.registerSensor(.Location)
             
-            sensingKit.registerSensor(.Accelerometer)
-            
-            if sensingKit.isSensorRegistered(.Accelerometer) {
+            if sensingKit.isSensorRegistered(.Location) {
                 
-                sensingKit.subscribeToSensor(.Accelerometer, withHandler: { (sensorType, sensorData) in
+                sensingKit.subscribeToSensor(.Location, withHandler: { (sensorType, sensorData) in
                     
-                    let accelerometerData = sensorData as! SKAccelerometerData
-                    print("===== ACCELEROMETER =====");
-                    print("x: \(accelerometerData.acceleration.x)");
-                    print("y: \(accelerometerData.acceleration.y)");
-                    print("z: \(accelerometerData.acceleration.z)");
+                    let locationData = sensorData as! SKLocationData
+                    print("latitude: \(locationData.location.coordinate.latitude)")
+                    print("longitude: \(locationData.location.coordinate.longitude)")
                     
                 })
-                 
-                sensingKit.startContinuousSensingWithSensor(.Accelerometer)
                 
             }
+            
+            sensingKit.startContinuousSensingWithSensor(.Location)
             
         }
         
     }
     
-    func openGyroscope() {
-        
-        if sensingKit.isSensorAvailable(.Gyroscope) {
-            
-            print("I has Gyroscope!!")
-            
-            let config: SKGyroscopeConfiguration = SKGyroscopeConfiguration.init()
-            config.sampleRate = Constants.eventFrequency
-            
-            sensingKit.registerSensor(.Gyroscope, withConfiguration: config)
-            
-            if sensingKit.isSensorRegistered(.Gyroscope) {
-                
-                sensingKit.subscribeToSensor(.Gyroscope, withHandler: { (sensorType, sensorData) in
-                    
-                    let gyroscopeData = sensorData as! SKGyroscopeData
-                    print("===== GYROSCOPE =====");
-                    print("x: \(gyroscopeData.rotationRate.x)");
-                    print("y: \(gyroscopeData.rotationRate.y)");
-                    print("z: \(gyroscopeData.rotationRate.z)");
-                    
-                    
-                    
-                })
-                
-                sensingKit.startContinuousSensingWithSensor(.Gyroscope)
-                
-            }
-            
-        }
-        
-    }
+    // MARK: iBeacon
     
     func openiBeaconProximity() {
         
@@ -296,30 +296,6 @@ class WeaponsViewController: BaseViewController {
                 sensingKit.startContinuousSensingWithSensor(.Location)
                 
             }
-            
-        }
-        
-    }
-    
-    func openLocation() {
-        
-        if sensingKit.isSensorAvailable(.Location) {
-            
-            sensingKit.registerSensor(.Location)
-            
-            if sensingKit.isSensorRegistered(.Location) {
-                
-                sensingKit.subscribeToSensor(.Location, withHandler: { (sensorType, sensorData) in
-                    
-                    let locationData = sensorData as! SKLocationData
-                    print("latitude: \(locationData.location.coordinate.latitude)")
-                    print("longitude: \(locationData.location.coordinate.longitude)")
-                    
-                })
-                
-            }
-            
-            sensingKit.startContinuousSensingWithSensor(.Location)
             
         }
         
