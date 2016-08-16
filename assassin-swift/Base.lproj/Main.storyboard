@@ -47,9 +47,6 @@
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="191" y="20" width="41" height="20"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -440,8 +437,7 @@
                                                             <exclude reference="nU5-JT-CvB"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="17" width="58" height="25"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="nU5-JT-CvB"/>
                                                         </mask>
@@ -462,8 +458,7 @@
                                                             <exclude reference="S8j-XX-UzO"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="132" y="17" width="100" height="25"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="BfV-TA-f3j"/>
                                                             <include reference="S8j-XX-UzO"/>
@@ -485,8 +480,7 @@
                                                             <exclude reference="KLJ-Hn-fPy"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="74" y="17" width="50" height="25"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="ILR-r6-LKc"/>
                                                             <include reference="KLJ-Hn-fPy"/>
@@ -975,8 +969,8 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="HsI-du-7vM"/>
-                                    <constraint firstAttribute="height" constant="100" id="jep-6w-QZZ"/>
+                                    <constraint firstAttribute="width" constant="50" id="HsI-du-7vM"/>
+                                    <constraint firstAttribute="height" constant="50" id="jep-6w-QZZ"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="weapon-icon"/>
                                 <variation key="default">
@@ -995,17 +989,39 @@
                                     <segue destination="goJ-Ut-ZzT" kind="show" id="79U-ek-LGU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sn5-Eb-Fbu">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BoU-c0-hZ6"/>
+                                    <constraint firstAttribute="width" constant="50" id="mkO-6r-lxj"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BoU-c0-hZ6"/>
+                                        <exclude reference="mkO-6r-lxj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="BoU-c0-hZ6"/>
+                                        <include reference="mkO-6r-lxj"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6nz-HH-fDu" firstAttribute="top" secondItem="33z-8u-pkn" secondAttribute="bottom" constant="8" id="10k-H7-Lx3"/>
                             <constraint firstItem="33z-8u-pkn" firstAttribute="leading" secondItem="QIw-dG-XqY" secondAttribute="leadingMargin" constant="30" id="3Jf-LE-0zn"/>
+                            <constraint firstItem="6nz-HH-fDu" firstAttribute="leading" secondItem="33z-8u-pkn" secondAttribute="leading" id="SDz-HI-Q2z"/>
                             <constraint firstItem="3EC-SC-vM9" firstAttribute="top" secondItem="fs1-xZ-L4o" secondAttribute="bottom" constant="8" id="UUf-LM-Yp7"/>
+                            <constraint firstItem="sn5-Eb-Fbu" firstAttribute="top" secondItem="33z-8u-pkn" secondAttribute="bottom" constant="8" id="WOV-Nf-hmX"/>
                             <constraint firstItem="33z-8u-pkn" firstAttribute="top" secondItem="3EC-SC-vM9" secondAttribute="bottom" constant="14" id="hqi-2j-pF6"/>
                             <constraint firstItem="3EC-SC-vM9" firstAttribute="centerX" secondItem="fs1-xZ-L4o" secondAttribute="centerX" id="kFt-5l-hDa"/>
                             <constraint firstItem="fs1-xZ-L4o" firstAttribute="top" secondItem="23i-wy-NoL" secondAttribute="bottom" constant="50" id="kRA-FG-oOM"/>
                             <constraint firstItem="fs1-xZ-L4o" firstAttribute="centerX" secondItem="QIw-dG-XqY" secondAttribute="centerX" id="mZn-DY-mhB"/>
-                            <constraint firstItem="6nz-HH-fDu" firstAttribute="centerX" secondItem="QIw-dG-XqY" secondAttribute="centerX" id="pY9-Rc-c7A"/>
+                            <constraint firstItem="sn5-Eb-Fbu" firstAttribute="trailing" secondItem="33z-8u-pkn" secondAttribute="trailing" id="uUd-87-fAu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="33z-8u-pkn" secondAttribute="trailing" constant="30" id="zXc-uU-SG3"/>
                         </constraints>
                         <variation key="default">
@@ -1014,16 +1030,19 @@
                                 <exclude reference="3EC-SC-vM9"/>
                                 <exclude reference="33z-8u-pkn"/>
                                 <exclude reference="6nz-HH-fDu"/>
+                                <exclude reference="sn5-Eb-Fbu"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="mZn-DY-mhB"/>
-                                <exclude reference="10k-H7-Lx3"/>
-                                <exclude reference="pY9-Rc-c7A"/>
                                 <exclude reference="UUf-LM-Yp7"/>
                                 <exclude reference="kFt-5l-hDa"/>
                                 <exclude reference="3Jf-LE-0zn"/>
                                 <exclude reference="hqi-2j-pF6"/>
                                 <exclude reference="zXc-uU-SG3"/>
+                                <exclude reference="10k-H7-Lx3"/>
+                                <exclude reference="SDz-HI-Q2z"/>
+                                <exclude reference="WOV-Nf-hmX"/>
+                                <exclude reference="uUd-87-fAu"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1032,16 +1051,19 @@
                                 <include reference="3EC-SC-vM9"/>
                                 <include reference="33z-8u-pkn"/>
                                 <include reference="6nz-HH-fDu"/>
+                                <include reference="sn5-Eb-Fbu"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="mZn-DY-mhB"/>
-                                <include reference="10k-H7-Lx3"/>
-                                <include reference="pY9-Rc-c7A"/>
                                 <include reference="UUf-LM-Yp7"/>
                                 <include reference="kFt-5l-hDa"/>
                                 <include reference="3Jf-LE-0zn"/>
                                 <include reference="hqi-2j-pF6"/>
                                 <include reference="zXc-uU-SG3"/>
+                                <include reference="10k-H7-Lx3"/>
+                                <include reference="SDz-HI-Q2z"/>
+                                <include reference="WOV-Nf-hmX"/>
+                                <include reference="uUd-87-fAu"/>
                             </mask>
                         </variation>
                     </view>
@@ -1535,24 +1557,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC5-NT-Ooe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1354.5" y="-467.25"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Uz6-D8-zkT">
-            <objects>
-                <viewController id="5Wv-MM-RKO" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cwf-WY-PZQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Iao-Sa-Ds1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FJ8-aT-XL1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ROO-KK-n8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4477.5" y="-420.75"/>
         </scene>
     </scenes>
     <resources>

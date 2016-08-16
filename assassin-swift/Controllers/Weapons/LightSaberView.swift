@@ -18,8 +18,6 @@ class LightSaberView: UIView {
     
     var sensing = WeaponsViewController().sensingKit
     
-//    let swing = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("swing", ofType: "wav")!)
-    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

@@ -8,6 +8,9 @@
 
 import UIKit
 
+import SpriteKit
+import AVFoundation
+
 enum WeaponType: Int {
     case NerfGun    = 101
     case Poison     = 102
@@ -19,24 +22,40 @@ enum WeaponType: Int {
 class WeaponsViewController: BaseViewController {
 
     var weaponsList: [Weapon] = []
+    var currentWeapon: WeaponType?
     
     @IBOutlet weak var weaponView: UIView?
     
     var nerfGunView: NerfGunView?
     var lightSaberView: LightSaberView?
+    var bombView: BombView?
+    
+    let captureSession = AVCaptureSession()
+    
+    var captureDevice: AVCaptureDevice?
+    
+    var captureView: UIView!
+    var captureLayer: AVCaptureVideoPreviewLayer!
     
     lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+//        uncomment when bluetooth is available
 //        openiBeaconProximity()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        initializeSetup()
+        openCameraPreview()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,48 +64,133 @@ class WeaponsViewController: BaseViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    // MARK: camera
+    
+    func initializeSetup() {
+        
+        captureView = UIView.init(frame: weaponView!.frame)
+        captureView.bounds = weaponView!.bounds
+        weaponView!.addSubview(captureView)
+        weaponView!.sendSubviewToBack(captureView)
+        
     }
-    */
+    
+    func openCameraPreview() {
+        
+        captureSession.sessionPreset = AVCaptureSessionPresetHigh
+        
+        let camera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        
+        if camera == nil {
+            return
+        }
+        
+        do {
+            
+            let deviceInput = try AVCaptureDeviceInput.init(device: camera)
+            captureSession.addInput(deviceInput)
+            
+            captureLayer = AVCaptureVideoPreviewLayer.init(session: captureSession)
+            captureLayer.frame = captureView.bounds
+            captureLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            captureView.layer.addSublayer(captureLayer)
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                self.captureSession.startRunning()
+            })
+            
+        }
+        catch let error as NSError {
+            print("Error opening camera preview: \(error)")
+        }
+        
+    }
+    
+    // MARK: Weapon Selection
     
     @IBAction func weaponButtonPressed(sender: UIButton) {
         
-        sensingKit.stopContinuousSensingWithAllRegisteredSensors()
-        
-        weaponView?.subviews.forEach({ $0.removeFromSuperview() })
-        
-        print("the tag: \(sender.tag)")
-        
         let weaponTag = WeaponType(rawValue: sender.tag)!
+        
+        if weaponTag == currentWeapon {
+            return
+        }
+        
+        currentWeapon = weaponTag
+        sensingKit.stopContinuousSensingWithAllRegisteredSensors()
+        captureView?.subviews.forEach({ $0.removeFromSuperview() })
         
         switch weaponTag {
         case .NerfGun:
-            nerfGunView = NerfGunView.init(frame: (weaponView?.frame)!)
-            weaponView?.addSubview(nerfGunView!)
-            nerfGunView?.start()
+            nerfGunSimulation()
             break
         case .Poison:
-            // TODO: show poison simulation
-            openGyroscope()
+            poisonSimulation()
             break
         case .Lightsaber:
-            registerDeviceMotion()
-            
-            lightSaberView = LightSaberView.init(frame: (weaponView?.frame)!)
-            weaponView?.addSubview(lightSaberView!)
-            lightSaberView?.start()
+            lightsaberSimulation()
             break
         case .Bomb:
+            bombSimulation()
             break
         case .Tripwire:
+            tripwireSimulation()
             break
         }
     }
+    
+    // MARK: NerfGun methods
+    
+    func nerfGunSimulation() {
+        
+        let crosshairImageView = UIImageView.init(image: UIImage.init(named: "crosshair-nerfgun"))
+        crosshairImageView.frame = CGRectMake(0, 0, 50, 50)
+        crosshairImageView.center = weaponView!.center
+        captureView.addSubview(crosshairImageView)
+        
+    }
+    
+    // MARK: Poison methods
+    
+    func poisonSimulation() {
+        
+        
+    }
+    
+    // MARK: Lightsaber methods
+    
+    func lightsaberSimulation() {
+        registerDeviceMotion()
+        
+        
+    }
+    
+    // MARK: Bomb methods
+    
+    func bombSimulation() {
+        openLocation()
+        
+        // when bomb is planted, send coordinates to game host
+    }
+    
+    // MARK: Tripwire methods
+    
+    func tripwireSimulation() {
+        openLocation()
+        
+        // when tripwire is planted, send coordinates to game host
+    }
+    
+    // MARK: Register Sensors
     
     func registerDeviceMotion() {
         
@@ -162,62 +266,6 @@ class WeaponsViewController: BaseViewController {
         
     }
     
-    func openDeviceMotion() {
-        
-        if sensingKit.isSensorAvailable(.DeviceMotion) {
-            
-            print("I has Device Motion!!")
-            
-            let config: SKDeviceMotionConfiguration = SKDeviceMotionConfiguration.init()
-            config.sampleRate = Constants.eventFrequency
-            
-            
-            sensingKit.registerSensor(.DeviceMotion, withConfiguration: config)
-            
-            if sensingKit.isSensorRegistered(.DeviceMotion ) {
-                
-                print("\(SKDeviceMotionData.csvHeader())")
-                
-                sensingKit.subscribeToSensor(.DeviceMotion, withHandler: { (sensorType, sensorData) in
-                    
-                    let motionDeviceData = sensorData as! SKDeviceMotionData
-                    
-                    print("\n--------------------------")
-                    
-//                    print("***** ATTITUDE *****");
-//                    print("roll: ", motionDeviceData.attitude.roll);
-//                    print("pitch: ", motionDeviceData.attitude.pitch);
-//                    print("yaw: ", motionDeviceData.attitude.yaw);
-//
-//                    print("\n***** ROTATION RATE *****");
-//                    print("x: ", motionDeviceData.rotationRate.x);
-//                    print("y: ", motionDeviceData.rotationRate.y);
-//                    print("z: ", motionDeviceData.rotationRate.z);
-//
-//                    print("\n***** ACCELEROMETER *****");
-//                    print("x: ", motionDeviceData.userAcceleration.x);
-//                    print("y: ", motionDeviceData.userAcceleration.y);
-//                    print("z: ", motionDeviceData.userAcceleration.z);
-//
-//                    print("\n***** GRAVITY *****");
-                    print("x: ", motionDeviceData.gravity.x);
-//                    print("y: ", motionDeviceData.gravity.y);
-                    print("z: ", motionDeviceData.gravity.z);
-                    
-//                    print("\(motionDeviceData.dictionaryData)")
-                    
-                })
-                
-            }
-            
-            sensingKit.startContinuousSensingWithSensor(.DeviceMotion)
-            
-        }
-        
-    }
-    
-    // MARK: Location/Proximity
-    
     func openiBeaconProximity() {
         
         if sensingKit.isSensorAvailable(.iBeaconProximity) {
@@ -277,16 +325,11 @@ class WeaponsViewController: BaseViewController {
         
     }
     
-//    // MARK:
-//    
-//    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
-//        print("BEGAN")
-//        print("motion: \(motion) with event: \(event)")
-//    }
-//    
-//    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-//        print("ENDED")
-//        print("motion: \(motion) with event: \(event)")
-//    }
-//    
+    func stopCameraPreview() {
+        
+        captureSession.stopRunning()
+        captureLayer.removeFromSuperlayer()
+        captureLayer = nil
+        
+    }
 }

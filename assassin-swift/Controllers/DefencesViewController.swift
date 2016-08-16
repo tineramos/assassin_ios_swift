@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum DefenceType: Int {
+    case Armour     = 201
+    case Shield     = 202
+    case GasMask    = 203
+    case hpPotion   = 204
+    case Detector   = 205
+}
+
 class DefencesViewController: UIViewController {
 
     var defencesList: [Defence] = []

@@ -70,6 +70,7 @@ class BaseViewController: UIViewController {
     }
     
     func hideNavigationBar() {
+        self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBarHidden = true
     }
     
