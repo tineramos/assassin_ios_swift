@@ -29,6 +29,7 @@
 		545EC8441D63017F0045E067 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545EC8431D63017F0045E067 /* SceneKit.framework */; };
 		545EC8471D631B490045E067 /* saber-off.wav in Resources */ = {isa = PBXBuildFile; fileRef = 545EC8451D631B490045E067 /* saber-off.wav */; };
 		545EC8481D631B490045E067 /* saber-on.wav in Resources */ = {isa = PBXBuildFile; fileRef = 545EC8461D631B490045E067 /* saber-on.wav */; };
+		545EC84A1D6322600045E067 /* LightsaberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EC8491D6322600045E067 /* LightsaberView.swift */; };
 		546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D531D53D26D0031FF90 /* AppDelegate.swift */; };
 		546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D591D53D26E0031FF90 /* Main.storyboard */; };
 		546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5C1D53D26E0031FF90 /* Assets.xcassets */; };
@@ -97,6 +98,7 @@
 		545EC8431D63017F0045E067 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		545EC8451D631B490045E067 /* saber-off.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "saber-off.wav"; sourceTree = "<group>"; };
 		545EC8461D631B490045E067 /* saber-on.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "saber-on.wav"; sourceTree = "<group>"; };
+		545EC8491D6322600045E067 /* LightsaberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightsaberView.swift; path = Controllers/Weapons/LightsaberView.swift; sourceTree = "<group>"; };
 		546D7D501D53D26D0031FF90 /* AssassinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssassinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546D7D531D53D26D0031FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		546D7D5A1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */,
+				545EC8491D6322600045E067 /* LightsaberView.swift */,
 				54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */,
 			);
 			name = "Weapons Controller";
@@ -640,6 +643,7 @@
 				5491E85C1D586D0500BA7E8D /* _PlayerWeapons.swift in Sources */,
 				549964F71D56F78300F574C4 /* PlayingFieldViewController.swift in Sources */,
 				5491E8601D586D0500BA7E8D /* _Weapon.swift in Sources */,
+				545EC84A1D6322600045E067 /* LightsaberView.swift in Sources */,
 				549964F21D56F77000F574C4 /* StringExtension.swift in Sources */,
 				5491E8641D586D0500BA7E8D /* Player.swift in Sources */,
 			);

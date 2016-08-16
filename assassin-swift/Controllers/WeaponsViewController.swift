@@ -30,21 +30,14 @@ class WeaponsViewController: BaseViewController {
     var captureView: UIView!
     var captureLayer: AVCaptureVideoPreviewLayer!
     
-    // lightsaber
-    var swingSound: AVAudioPlayer?
-    var saberOn: AVAudioPlayer?
-    var saberOff: AVAudioPlayer?
-    var hiltButton = UIButton.init(type: .Custom)
-    var lightsaberGlow = UIImageView.init(image: UIImage.init(named: "lightsaber-glow"))
-    
-    var isLsOn: Bool! = false
-    
     let captureViewTag: Int = 1024
     
     lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
     
     @IBOutlet weak var weaponView: UIView?
     @IBOutlet weak var sceneView: SCNView?
+    
+    var lightsaberView: LightsaberView?
     
     var cameraNode: SCNNode!
     
@@ -54,13 +47,10 @@ class WeaponsViewController: BaseViewController {
         setupSceneView()
         setupCamera()
         
+        registerDeviceMotion()
+        
 //        TODO: uncomment when bluetooth is available
 //        openiBeaconProximity()
-
-        swingSound = Helper.setupAudioPlayerWithFile("swing", type: "WAV")
-        saberOn = Helper.setupAudioPlayerWithFile("saber-on", type: "wav")
-        saberOff = Helper.setupAudioPlayerWithFile("saber-off", type: "wav")
-        
     }
     
     func setupSceneView() {
@@ -156,7 +146,6 @@ class WeaponsViewController: BaseViewController {
         }
         
         currentWeapon = weaponTag
-        sensingKit.stopContinuousSensingWithAllRegisteredSensors()
         
         weaponView?.subviews.forEach({
             if $0.tag != captureViewTag {
@@ -187,6 +176,8 @@ class WeaponsViewController: BaseViewController {
     
     func nerfGunSimulation() {
         
+        sceneView?.hidden = false
+        
         let crosshairImageView = UIImageView.init(image: UIImage.init(named: "crosshair-nerfgun"))
         crosshairImageView.frame = CGRectMake(0, 0, 50, 50)
         crosshairImageView.center = weaponView!.center
@@ -206,102 +197,12 @@ class WeaponsViewController: BaseViewController {
         
         sceneView?.hidden = true
         
-        registerDeviceMotion()
-        startSensorsForLightsaber()
-        addLightsaberElements()
-        
-    }
-    
-    func startSensorsForLightsaber() {
-        
-        if sensingKit.isSensorRegistered(.DeviceMotion) {
-            
-            sensingKit.subscribeToSensor(.DeviceMotion, withHandler: { (sensorType, sensorData) in
-                
-                let data = sensorData as! SKDeviceMotionData
-                
-                let accelerationX = data.userAcceleration.x
-                let accelerationY = data.userAcceleration.y
-                let accelerationZ = data.userAcceleration.z
-                
-                if accelerationX > 0.5 {
-                    
-//                    self.turnOnFlash()
-                    
-                    if accelerationZ < -0.5 {
-                        print("LEFT swing")
-                        print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
-                    }
-                    else if accelerationY > 0.5 {
-                        print("RIGHT swing")
-                        print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
-                    }
-                    
-                    self.swingSound?.volume = 0.5
-                    self.swingSound?.play()
-                    
-//                    self.performSelector(#selector(self.turnOffFlash), withObject: nil, afterDelay: 0.5)
-                    
-                }
-                
-            })
-            
-            sensingKit.startContinuousSensingWithSensor(.DeviceMotion)
-            
+        if lightsaberView == nil {
+            lightsaberView = LightsaberView.init(frame: weaponView!.frame)
         }
         
-    }
-    
-    func addLightsaberElements() {
-        
-        let hiltImage = UIImage.init(named: "lightsaber-hilt")
-        
-        hiltButton.frame = CGRectMake(CGRectGetMidX(weaponView!.frame), CGRectGetMaxY(weaponView!.frame) - 90.0, 15.0, 70.0)
-        hiltButton.setBackgroundImage(hiltImage!, forState: .Normal)
-        hiltButton.addTarget(self, action: #selector(hiltIsPressed), forControlEvents: .TouchUpInside)
-        hiltButton.adjustsImageWhenHighlighted = false
-        weaponView?.addSubview(hiltButton)
-        
-        lightsaberGlow.frame = CGRectMake(CGRectGetMinX(hiltButton.frame) - 5, 0.0, 25.0, 0.0)
-        
-    }
-    
-    func hiltIsPressed() {
-        
-        if isLsOn == true {
-            print("turn off lightsaber")
-            
-            saberOff?.play()
-            
-            UIView.animateWithDuration(0.8, animations: {
-                var f = self.lightsaberGlow.frame
-                f.origin.y = CGRectGetMinY(self.hiltButton.frame) + 5
-                f.size.height = 0
-                self.lightsaberGlow.frame = f
-            }, completion: { (finished) in
-                self.lightsaberGlow.removeFromSuperview()
-            })
-            
-        }
-        else {
-            print("turn on lightsaber")
-            
-            saberOn?.play()
-            
-            UIView.animateWithDuration(0.8, animations: {
-                var f = self.lightsaberGlow.frame
-                f.origin.y = CGRectGetMinY(self.hiltButton.frame) - 245.0
-                f.size.height = 250.0
-                self.lightsaberGlow.frame = f
-            }, completion: { (finished) in
-                self.weaponView?.addSubview(self.lightsaberGlow)
-                self.weaponView?.insertSubview(self.lightsaberGlow, belowSubview: self.hiltButton)
-            })
-            
-        }
-        
-        isLsOn = !isLsOn
-        
+        weaponView!.addSubview(lightsaberView!)
+        lightsaberView?.start()
     }
     
     // MARK: Bomb methods
@@ -359,11 +260,6 @@ class WeaponsViewController: BaseViewController {
     // MARK: Register Sensors
     
     func registerDeviceMotion() {
-        
-        if sensingKit.isSensorRegistered(.DeviceMotion) {
-            return
-        }
-        
         if sensingKit.isSensorAvailable(.DeviceMotion) {
             let config: SKDeviceMotionConfiguration = SKDeviceMotionConfiguration.init()
             config.sampleRate = Constants.eventFrequency
