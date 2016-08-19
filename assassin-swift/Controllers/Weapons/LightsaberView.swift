@@ -10,6 +10,8 @@ import UIKit
 
 import AVFoundation
 
+import SnapKit
+
 class LightsaberView: UIView {
     
     // lightsaber
@@ -49,7 +51,7 @@ class LightsaberView: UIView {
         addLightsaberElements()
     }
     
-    func startSensorsForLightsaber() {
+    func startSensorForLightsaber() {
         
         if sensingKit.isSensorRegistered(.DeviceMotion) {
             
@@ -99,6 +101,13 @@ class LightsaberView: UIView {
         hiltButton.adjustsImageWhenHighlighted = false
         addSubview(hiltButton)
         
+//        hiltButton.snp_makeConstraints { (make) in
+//            make.left.equalTo(self.snp_centerX)
+//            make.top.equalTo(CGRectGetMaxY(self.frame)).offset(-90)
+//            make.width.equalTo(15.0)
+//            make.height.equalTo(70.0)
+//        }
+        
         lightsaberGlow.frame = CGRectMake(CGRectGetMinX(hiltButton.frame) - 5, 0.0, 25.0, 0.0)
         lightsaberGlow.removeFromSuperview()
         
@@ -116,14 +125,14 @@ class LightsaberView: UIView {
                 f.origin.y = CGRectGetMinY(self.hiltButton.frame) + 5
                 f.size.height = 0
                 self.lightsaberGlow.frame = f
-                }, completion: { (finished) in
-                    self.lightsaberGlow.removeFromSuperview()
+            }, completion: { (finished) in
+                self.lightsaberGlow.removeFromSuperview()
             })
             
         }
         else {
             
-            startSensorsForLightsaber()
+            startSensorForLightsaber()
             saberOn?.play()
             
             UIView.animateWithDuration(0.8, animations: {
@@ -131,9 +140,9 @@ class LightsaberView: UIView {
                 f.origin.y = CGRectGetMinY(self.hiltButton.frame) - 245.0
                 f.size.height = 250.0
                 self.lightsaberGlow.frame = f
-                }, completion: { (finished) in
-                    self.addSubview(self.lightsaberGlow)
-                    self.insertSubview(self.lightsaberGlow, belowSubview: self.hiltButton)
+            }, completion: { (finished) in
+                self.addSubview(self.lightsaberGlow)
+                self.insertSubview(self.lightsaberGlow, belowSubview: self.hiltButton)
             })
             
         }

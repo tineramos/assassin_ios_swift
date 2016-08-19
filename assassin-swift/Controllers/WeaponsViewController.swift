@@ -11,6 +11,8 @@ import UIKit
 import SceneKit
 import AVFoundation
 
+import SnapKit
+
 enum WeaponType: Int {
     case NerfGun    = 101
     case Poison     = 102
@@ -40,6 +42,8 @@ class WeaponsViewController: BaseViewController {
     var lightsaberView: LightsaberView?
     
     var cameraNode: SCNNode!
+    
+    var poisonScene = PoisonScene()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,11 +151,8 @@ class WeaponsViewController: BaseViewController {
         
         currentWeapon = weaponTag
         
-        weaponView?.subviews.forEach({
-            if $0.tag != captureViewTag {
-                $0.removeFromSuperview()
-            }
-        })
+        cleanWeaponView()
+        cleanScene()
         
         switch weaponTag {
         case .NerfGun:
@@ -180,15 +181,26 @@ class WeaponsViewController: BaseViewController {
         
         let crosshairImageView = UIImageView.init(image: UIImage.init(named: "crosshair-nerfgun"))
         crosshairImageView.frame = CGRectMake(0, 0, 50, 50)
-        crosshairImageView.center = weaponView!.center
+        crosshairImageView.center = (weaponView?.center)!
         weaponView!.addSubview(crosshairImageView)
         
+        // warning: uncomment when running in the device
+//        crosshairImageView.snp_makeConstraints { (make) in
+//            make.width.equalTo(50.0)
+//            make.height.equalTo(50.0)
+//            make.center.equalTo((weaponView?.snp_center)!)
+//        }
+//
+//        let nerfBullet = SCNMaterial.init()
+//        nerfBullet.diffuse.contents = UIImage.init(named: "")
     }
     
     // MARK: Poison methods
     
     func poisonSimulation() {
-        
+        poisonScene.display()
+        poisonScene.rootNode.addChildNode(cameraNode)
+        sceneView?.scene = poisonScene
     }
     
     // MARK: Lightsaber methods
@@ -334,5 +346,23 @@ class WeaponsViewController: BaseViewController {
         captureLayer.removeFromSuperlayer()
         captureLayer = nil
         
+    }
+    
+    func cleanWeaponView() {
+        weaponView?.subviews.forEach({
+            if $0.tag != captureViewTag {
+                $0.removeFromSuperview()
+            }
+        })
+    }
+    
+    func cleanScene() {
+        if sceneView?.scene == nil {
+            return
+        }
+        
+        for node in (sceneView?.scene?.rootNode.childNodes)! {
+            node.removeFromParentNode()
+        }
     }
 }
