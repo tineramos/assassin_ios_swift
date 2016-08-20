@@ -29,6 +29,7 @@
         <relationship name="winner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Winner" inverseName="game" inverseEntity="Winner" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES">
+        <attribute name="health_points" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="is_eliminated" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="kills_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="player_code_name" optional="YES" attributeType="String" syncable="YES"/>
@@ -89,7 +90,7 @@
         <element name="Assassin" positionX="-101" positionY="-72" width="128" height="133"/>
         <element name="Defence" positionX="270" positionY="-241" width="128" height="88"/>
         <element name="Game" positionX="-450" positionY="-346" width="128" height="240"/>
-        <element name="Player" positionX="-270" positionY="-310" width="128" height="118"/>
+        <element name="Player" positionX="-270" positionY="-310" width="128" height="133"/>
         <element name="PlayerDefences" positionX="88" positionY="-271" width="128" height="118"/>
         <element name="PlayerWeapons" positionX="90" positionY="50" width="128" height="103"/>
         <element name="Profile" positionX="-279" positionY="-22" width="128" height="118"/>

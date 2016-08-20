@@ -10,8 +10,7 @@ import UIKit
 
 class GamePlayViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var gameId: Int = 0
-    var playerList: [Player] = []
+    var currentGame: Game!
     
     @IBOutlet weak var gameTitleLabel: UILabel?
     @IBOutlet weak var gameLocationLabel: UILabel?
@@ -35,10 +34,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        joinButton?.setBorderColor(UIColor.blackColor().CGColor)
-
-        // Do any additional setup after loading the view.
-        getGameDetails()
+        setupViewForStatus()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -51,26 +47,43 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
     
+    func setupViewForStatus() {
+        
+        let status = GameStatus(rawValue: currentGame.game_status!)!
+        
+        switch status {
+        case .Open:
+            tableView?.hidden = true
+            joinButton?.hidden = false
+            joinButton?.setBorderColor(UIColor.blackColor().CGColor)
+            break
+        default:
+            tableView?.hidden =  false
+            joinButton?.hidden = true
+            
+            getGameDetails()
+            break
+        }
+        
+    }
+    
     func getGameDetails() {
         
-        DataManager.sharedManager.getGameDetailOfId(gameId, successBlock: { (game) -> (Void) in
+        let gameId = currentGame!.game_id?.integerValue
+        
+        DataManager.sharedManager.getGameDetailOfId(gameId!, successBlock: { (game) -> (Void) in
+            
+            self.currentGame = game
             
             self.gameTitleLabel?.text = game?.game_title
             self.gameLocationLabel?.text = game?.game_location
             
-            let status = game?.game_status!.capitalizedString
+            let status = game?.game_status!
             self.gameStatusLabel?.text = status
             self.gameStatusLabel?.textColor = game?.getStatusColor()
             self.playersLabel?.text = game?.getPlayersTitle()
             
-            if status == GameStatus.Open.rawValue {
-                // show join button
-                self.joinButton?.hidden = false
-                self.tableView?.hidden = true
-            }
-            else {
-                self.tableView?.reloadData()
-            }
+            self.tableView?.reloadData()
             
         }) { (errorString) -> (Void) in
             print("ERROR: \(errorString)")
@@ -80,18 +93,24 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBAction func joinGameButtonPressed() {
         
-        
+        if ((currentGame.availableSlotsInt() > 0)) {
+            // display weapon and defence options
+        }
+        else {
+            // display alert for max_players reached
+        }
         
     }
     
     // MARK: - TableView DataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return playerList.count
+        return currentGame.players.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.playerCellId, forIndexPath: indexPath) as! PlayersTableViewCell
+        let playerList = currentGame?.players.allObjects as! [Player]
         cell.configureCellWithPlayer(playerList[indexPath.row])
         return cell
     }

@@ -5,6 +5,7 @@ import Foundation
 import CoreData
 
 public enum PlayerAttributes: String {
+    case health_points = "health_points"
     case is_eliminated = "is_eliminated"
     case kills_count = "kills_count"
     case player_code_name = "player_code_name"
@@ -39,6 +40,9 @@ public class _Player: NSManagedObject {
     }
 
     // MARK: - Properties
+
+    @NSManaged public
+    var health_points: NSNumber?
 
     @NSManaged public
     var is_eliminated: NSNumber?

@@ -337,8 +337,8 @@
 			children = (
 				5410FA771D57272D0092D36F /* GameViewController.swift */,
 				549964F41D56F78300F574C4 /* GamePlayViewController.swift */,
-				549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */,
 				5491E83F1D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift */,
+				549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */,
 				549964E21D56BB7600F574C4 /* Game Views */,
 			);
 			name = "Games Controller";

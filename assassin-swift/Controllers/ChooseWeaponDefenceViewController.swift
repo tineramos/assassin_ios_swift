@@ -11,12 +11,13 @@ import UIKit
 class ChooseWeaponDefenceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     struct Constants {
-        
         struct CellIdentifier {
             static let playerCellId = "weaponDefenceCellId"
         }
-        
     }
+    
+    var weaponsList: [Weapon] = []
+    var defenceList: [Defence] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,10 @@ class ChooseWeaponDefenceViewController: UIViewController, UITableViewDataSource
     // MARK: - TableView DataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if section == 0 {
+            return weaponsList.count
+        }
+        return defenceList.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -60,6 +64,15 @@ class ChooseWeaponDefenceViewController: UIViewController, UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.playerCellId, forIndexPath: indexPath)
         
         // TODO: add configure method in cell using Game core data entity
+        let row = indexPath.row
+        if indexPath.section == 0 {
+            let weapon = weaponsList[row]
+            cell.textLabel?.text = weapon.weapon_name
+        }
+        else {
+            let defence = defenceList[row]
+            cell.textLabel?.text = defence.defence_name
+        }
         
         return cell
     }

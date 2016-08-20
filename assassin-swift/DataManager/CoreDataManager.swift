@@ -54,15 +54,19 @@ class CoreDataManager: NSObject {
     // MARK: Games method
     
     func saveGamesList(gamesList: NSArray, successBlock: ArrayBlock, failureBlock: FailureBlock) {
-
         NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
             for dictionary in gamesList {
-                Game.populateUserWithDictionary(dictionary as! NSDictionary, inContext: context)
+                Game.populateGameWithDictionary(dictionary as! NSDictionary, inContext: context)
             }
         }
-        
         successBlock(array: Game.MR_findAll()!)
-        
+    }
+    
+    func saveGameInfo(gameDictionary: NSDictionary, successBlock: GameBlock, failureBlock: FailureBlock) {
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            let gameDetail = Game.populateGameWithDetails(gameDictionary, inContext: context)
+            successBlock(game: gameDetail)
+        }
     }
     
     /*

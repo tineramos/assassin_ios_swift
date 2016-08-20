@@ -33,9 +33,9 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
             self.gamesList = array as! [Game]
             self.tableView?.reloadData()
             
-            }) { (error) -> (Void) in
-                print(error)
-                // show error
+        }) { (error) -> (Void) in
+            print(error)
+            // show error
         }
         
     }
@@ -60,7 +60,7 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
             
             let selectedGame = sender as! Game
             let gameDetailVC = segue.destinationViewController as! GamePlayViewController
-            gameDetailVC.gameId = (selectedGame.game_id?.integerValue)!
+            gameDetailVC.currentGame = selectedGame
             
         }
         
@@ -70,7 +70,6 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
     // MARK: - TableView DataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: change numbers
         return gamesList.count
     }
     

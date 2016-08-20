@@ -27,7 +27,9 @@ class PlayersTableViewCell: UITableViewCell {
     
     func configureCellWithPlayer(player: Player) {
         
-        
+        codeNameLabel?.text = player.player_code_name!
+        killsCountLabel?.text = "\(player.kills_count!)"
+        isEliminatedLabel?.text = "\(player.is_eliminated!)"
         
     }
 

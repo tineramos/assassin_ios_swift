@@ -24,7 +24,7 @@ public class Game: _Game {
         }
     }
     
-    class func populateUserWithDictionary(dictionary: NSDictionary, inContext context: NSManagedObjectContext) {
+    class func populateGameWithDictionary(dictionary: NSDictionary, inContext context: NSManagedObjectContext) -> Game {
         
         let gameId = dictionary[GameAttributes.game_id.rawValue] as! Int
         let newGame = getGameWithId(gameId, inContext: context)
@@ -40,7 +40,6 @@ public class Game: _Game {
                 key == GameAttributes.open_until.rawValue {
                 
                 // format dates
-                
                 let dateValue = Parser.dateFromString(value as! String)
                 newGame.setValue(dateValue, forKey: key)
             }
@@ -50,6 +49,35 @@ public class Game: _Game {
             
         }
         
+        return newGame
+        
+    }
+    
+    class func populateGameWithDetails(dictionary: NSDictionary, inContext context: NSManagedObjectContext) -> Game {
+        
+        let gameDictionary = dictionary["game"] as! NSDictionary
+        let game = Game.populateGameWithDictionary(gameDictionary, inContext: context)
+        
+        let playerArray = dictionary["players"] as! NSArray
+        Game.populateGameWithPlayers(playerArray, inGame: game, inContext: context)
+        
+        game.joined = dictionary[GameAttributes.joined.rawValue] as! Bool
+        return game
+        
+    }
+    
+    class func populateGameWithPlayers(array: NSArray, inGame game: Game, inContext context: NSManagedObjectContext) {
+        
+        // remove all players and update
+        game.players.allObjects.forEach {
+            (game.removePlayersObject($0 as! Player))
+        }
+        
+        for dictionary in array {
+            let player = Player.populatePlayerWithDictionary(dictionary as! NSDictionary, inContext: context)
+            game.addPlayersObject(player)
+        }
+
     }
     
     func getPlayersTitle() -> String {
@@ -90,7 +118,7 @@ public class Game: _Game {
             color = UIColor.blueColor()
             break
         case .Ongoing:
-            color = UIColor.yellowColor()
+            color = UIColor.purpleColor()
             break
         default:
             break
@@ -98,6 +126,18 @@ public class Game: _Game {
         
         return color
         
+    }
+    
+    func playerJoinedInt() -> Int {
+        return (players_joined?.integerValue)!
+    }
+    
+    func maxPlayersInt() -> Int {
+        return (max_players?.integerValue)!
+    }
+    
+    func availableSlotsInt() -> Int {
+        return (available_slots?.integerValue)!
     }
     
 }

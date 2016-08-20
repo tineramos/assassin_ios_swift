@@ -77,19 +77,25 @@ class DataManager: AFHTTPSessionManager {
         let path = String(format: "game/gameId/\(gameId)/userId/1")
         
         self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
-            
+            CoreDataManager.sharedManager.saveGameInfo(response as! NSDictionary, successBlock: { (game) -> (Void) in
+                successBlock(game: game)
+            }, failureBlock: { (errorString) -> (Void) in
+                failureBlock(errorString: errorString)
+            })
         }) { (task, error) in
             failureBlock(errorString: error.localizedDescription)
         }
         
     }
     
-    func joinGameWithId(gameId: Int, userId: Int, weapons: NSArray, defences: NSArray, successBlock: DictionaryBlock, failureBlock: FailureBlock) {
+    func joinGameWithId(gameId: NSNumber, weapons: NSArray, defences: NSArray, successBlock: DictionaryBlock, failureBlock: FailureBlock) {
+        
+        let user = User.MR_findFirst() as User!
         
         let params = [GameAttributes.game_id.rawValue: gameId,
-                      UserAttributes.user_id.rawValue: userId,
+                      UserAttributes.user_id.rawValue: user.user_id!,
                       AssassinRelationships.weapons.rawValue: weapons,
-                      AssassinRelationships.defences.rawValue: defences]
+                      AssassinRelationships.defences.rawValue: defences] as NSDictionary
         
         self.POST("game/join", parameters: params, progress: nil, success: { (task, response) in
             //
