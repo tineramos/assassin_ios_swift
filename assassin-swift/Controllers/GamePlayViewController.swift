@@ -20,7 +20,6 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     @IBOutlet weak var joinButton: UIButton?
     
     struct Constants {
-        
         struct CellIdentifier {
             static let playerCellId = "playerCellId"
         }
@@ -29,18 +28,16 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
             static let joinGameSegue = "joinGameSegue"
             static let presentOptionSegue = "presentWeaponDefenceSegue"
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getGameDetails()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "Details")
+        showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "")
+        getGameDetails()
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,8 +53,8 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         // Pass the selected object to the new view controller.
         if segue.identifier == Constants.SegueIdentifier.presentOptionSegue {
             let navigation = segue.destinationViewController as! UINavigationController
-            
-            print(navigation.viewControllers)
+            let chooseWeaponVC = navigation.viewControllers.first as! ChooseWeaponDefenceViewController
+            chooseWeaponVC.game = currentGame
         }
      }
     

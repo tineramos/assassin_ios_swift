@@ -88,17 +88,40 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
-    func joinGameWithId(gameId: NSNumber, weapons: NSArray, defences: NSArray, successBlock: DictionaryBlock, failureBlock: FailureBlock) {
+    func joinGame(game: Game, weapons: NSArray, defences: NSArray, successBlock: BoolBlock, failureBlock: FailureBlock) {
         
-        let user = User.MR_findFirst() as User!
+//        let user = User.MR_findFirst() as User!
         
-        let params = [GameAttributes.game_id.rawValue: gameId,
-                      UserAttributes.user_id.rawValue: user.user_id!,
+        let params = [GameAttributes.game_id.rawValue: game.game_id!,
+                      UserAttributes.user_id.rawValue: 1,
                       AssassinRelationships.weapons.rawValue: weapons,
                       AssassinRelationships.defences.rawValue: defences] as NSDictionary
         
         self.POST("game/join", parameters: params, progress: nil, success: { (task, response) in
-            //
+            let dictionary = response as! NSDictionary
+            
+            if (dictionary["success"] as! Bool) == true {
+                
+                let playerId = dictionary["player_id"] as! Int
+                
+                CoreDataManager.sharedManager.savePlayerWithId(playerId, successBlock: { (player) -> (Void) in
+                    
+                    if player != nil {
+                        game.addPlayersObject(player!)
+                        successBlock(bool: true)
+                    }
+                    
+                    failureBlock(errorString: "Player object not created.")
+                    
+                    }, failureBlock: { (errorString) -> (Void) in
+                        failureBlock(errorString: errorString)
+                })
+                
+            }
+            else {
+                failureBlock(errorString: "Can not join game.")
+            }
+            
         }) { (task, error) in
             failureBlock(errorString: error.localizedDescription)
         }

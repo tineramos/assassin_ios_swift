@@ -94,6 +94,13 @@ class CoreDataManager: NSObject {
         successBlock(array: Defence.MR_findAll()!)
     }
     
+    func savePlayerWithId(playerId: Int, successBlock: PlayerBlock, failureBlock: FailureBlock) {
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            Player.insertPlayerObjectWithId(playerId, inContext: context)
+        }
+        successBlock(player: Player.MR_findFirstByAttribute(PlayerAttributes.player_id.rawValue, withValue: playerId))
+    }
+    
     /*
      
      NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in

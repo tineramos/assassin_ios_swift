@@ -6,6 +6,12 @@ import CoreData
 public class Player: _Player {
 	// Custom logic goes here.
     
+    class func insertPlayerObjectWithId(playerId: Int, inContext context: NSManagedObjectContext) -> Player {
+        let player = Player.init(managedObjectContext: context) as Player!
+        player.setValue(playerId, forKey: PlayerAttributes.player_id.rawValue)
+        return player
+    }
+    
     class func getPlayerWithId(playerId: Int, inContext context: NSManagedObjectContext) -> Player {
         
         if let player = Player.MR_findFirstByAttribute(PlayerAttributes.player_id.rawValue, withValue: playerId, inContext: context) {

@@ -27,22 +27,13 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        DataManager.sharedManager.getGamesList({ (array: NSArray!) -> (Void) in
-            
-            self.gamesList = array as! [Game]
-            self.tableView?.reloadData()
-            
-        }) { (error) -> (Void) in
-            print(error)
-            // show error
-        }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         showNavigationBarWithBackButtonType(BackButton.White, andTitle: "page.title.games".localized)
+        
+        getGamesList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,6 +57,17 @@ class GameViewController: BaseViewController, UITableViewDataSource, UITableView
         
      }
 
+    func getGamesList() {
+        DataManager.sharedManager.getGamesList({ (array: NSArray!) -> (Void) in
+            
+            self.gamesList = array as! [Game]
+            self.tableView?.reloadData()
+            
+        }) { (error) -> (Void) in
+            print(error)
+            // show error
+        }
+    }
     
     // MARK: - TableView DataSource Methods
     

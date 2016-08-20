@@ -14,8 +14,18 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
         static let playerCellId = "weaponDefenceCellId"
     }
     
+    struct Limits {
+        static let maxWeapon = 3
+        static let maxDefence = 3
+    }
+    
     var weaponsList: [Weapon] = []
     var defenceList: [Defence] = []
+    
+    var chosenWeapons: [Int] = []
+    var chosenDefences: [Int] = []
+    
+    var game: Game!
     
     @IBOutlet weak var tableView: UITableView?
     
@@ -80,7 +90,26 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
     }
     
     func joinGame() {
-        print("hello join game please!")
+
+        if chosenWeapons.count < Limits.maxWeapon && chosenDefences.count < Limits.maxDefence {
+            return
+        }
+        
+        DataManager.sharedManager.joinGame(game,
+                                           weapons: chosenWeapons,
+                                           defences: chosenDefences,
+                                           successBlock: { (bool) -> (Void) in
+            if bool {
+                self.navigationController?.dismissViewControllerAnimated(true, completion: {
+                    
+                })
+                
+            }
+            
+        }) { (errorString) -> (Void) in
+            print(errorString)
+        }
+        
     }
     
     /*
@@ -108,33 +137,76 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Weapon"
+            return "Weapons"
         }
-        return "Defence"
+        return "Defences"
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.playerCellId, forIndexPath: indexPath)
         
-        // TODO: add configure method in cell using Game core data entity
         let row = indexPath.row
         if indexPath.section == 0 {
             let weapon = weaponsList[row]
             cell.textLabel?.text = weapon.weapon_name
+            lookUpElement((weapon.weapon_id?.integerValue)!, inArray: chosenWeapons, onCell: cell)
         }
         else {
             let defence = defenceList[row]
             cell.textLabel?.text = defence.defence_name
+            lookUpElement((defence.defence_id?.integerValue)!, inArray: chosenDefences, onCell: cell)
         }
         
         return cell
+    }
+    
+    func lookUpElement(row: Int, inArray array: NSArray, onCell cell: UITableViewCell) {
+        
+        if array.containsObject(row) {
+            cell.accessoryType = .Checkmark
+        }
+        else {
+            cell.accessoryType = .None
+        }
+        
     }
     
     // MARK: - TableView Delegate Methods
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
-        cell.accessoryType = ((cell.accessoryType == .None) ? .Checkmark: .None)
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        if cell.accessoryType == .None {
+            
+            if section == 0 {
+                if chosenWeapons.count < Limits.maxWeapon {
+                    let weapon = weaponsList[row]
+                    cell.accessoryType = .Checkmark
+                    chosenWeapons.append((weapon.weapon_id?.integerValue)!) // add 1 to match with defence/weapon_id
+                }
+            }
+            else {
+                if chosenDefences.count < Limits.maxDefence {
+                    let defence = defenceList[row]
+                    cell.accessoryType = .Checkmark
+                    chosenDefences.append((defence.defence_id?.integerValue)!)
+                }
+            }
+        }
+        else {
+            cell.accessoryType = .None
+            
+            if section == 0 {
+                let weapon = weaponsList[row]
+                chosenWeapons = chosenWeapons.filter{$0 != (weapon.weapon_id?.integerValue)!}
+            }
+            else {
+                let defence = defenceList[row]
+                chosenDefences = chosenDefences.filter{$0 != (defence.defence_id?.integerValue)!}
+            }
+        }
     }
 
 }

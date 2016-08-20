@@ -15,3 +15,4 @@ typealias BoolBlock = (bool: Bool) -> (Void)
 
 typealias UserBlock = (user: User?) -> (Void)
 typealias GameBlock = (game: Game?) -> (Void)
+typealias PlayerBlock = (player: Player?) -> (Void)
