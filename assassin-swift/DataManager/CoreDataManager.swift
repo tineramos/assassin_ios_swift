@@ -64,9 +64,13 @@ class CoreDataManager: NSObject {
     
     func saveGameInfo(gameDictionary: NSDictionary, successBlock: GameBlock, failureBlock: FailureBlock) {
         NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
-            let gameDetail = Game.populateGameWithDetails(gameDictionary, inContext: context)
-            successBlock(game: gameDetail)
+            Game.populateGameWithDetails(gameDictionary, inContext: context)
         }
+        
+        let dictionary = gameDictionary["game"] as! NSDictionary
+        let gameId = dictionary[GameAttributes.game_id.rawValue] as! Int
+        let gameDetail = Game.MR_findFirstByAttribute(GameAttributes.game_id.rawValue, withValue: gameId)
+        successBlock(game: gameDetail)
     }
     
     // MARK: Weapons and Defences

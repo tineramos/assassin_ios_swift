@@ -35,7 +35,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupViewForStatus()
+        getGameDetails()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -74,8 +74,6 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         default:
             tableView?.hidden =  false
             joinButton?.hidden = true
-            
-            getGameDetails()
             break
         }
         
@@ -97,7 +95,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
             self.gameStatusLabel?.textColor = game?.getStatusColor()
             self.playersLabel?.text = game?.getPlayersTitle()
             
-            self.tableView?.reloadData()
+            self.setupViewForStatus()
             
         }) { (errorString) -> (Void) in
             print("ERROR: \(errorString)")

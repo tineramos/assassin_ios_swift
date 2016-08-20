@@ -129,15 +129,15 @@ public class Game: _Game {
     }
     
     func playerJoinedInt() -> Int {
-        return (players_joined?.integerValue)!
+        return (players_joined!.integerValue)
     }
     
     func maxPlayersInt() -> Int {
-        return (max_players?.integerValue)!
+        return (max_players!.integerValue)
     }
     
     func availableSlotsInt() -> Int {
-        return (available_slots?.integerValue)!
+        return (available_slots!.integerValue)
     }
     
 }
