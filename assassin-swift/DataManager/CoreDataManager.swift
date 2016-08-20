@@ -69,6 +69,27 @@ class CoreDataManager: NSObject {
         }
     }
     
+    // MARK: Weapons and Defences
+    
+    func saveWeaponsList(weaponsList: NSArray, successBlock: ArrayBlock, failureBlock: FailureBlock) {
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            for dictionary in weaponsList {
+                Weapon.populateWeaponWithDictionary(dictionary as! NSDictionary, inContext: context)
+            }
+        }
+        successBlock(array: Weapon.MR_findAll()!)
+    }
+    
+    
+    func saveDefencesList(defenceList: NSArray, successBlock: ArrayBlock, failureBlock: FailureBlock) {
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            for dictionary in defenceList {
+                Defence.populateDefenceWithDictionary(dictionary as! NSDictionary, inContext: context)
+            }
+        }
+        successBlock(array: Defence.MR_findAll()!)
+    }
+    
     /*
      
      NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in

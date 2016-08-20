@@ -27,6 +27,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         
         struct SegueIdentifier {
             static let joinGameSegue = "joinGameSegue"
+            static let presentOptionSegue = "presentWeaponDefenceSegue"
         }
         
     }
@@ -46,6 +47,19 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.SegueIdentifier.presentOptionSegue {
+            let navigation = segue.destinationViewController as! UINavigationController
+            
+            print(navigation.viewControllers)
+        }
+     }
     
     func setupViewForStatus() {
         
@@ -95,6 +109,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         
         if ((currentGame.availableSlotsInt() > 0)) {
             // display weapon and defence options
+            performSegueWithIdentifier(Constants.SegueIdentifier.presentOptionSegue, sender: nil)
         }
         else {
             // display alert for max_players reached

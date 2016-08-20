@@ -110,8 +110,11 @@ class DataManager: AFHTTPSessionManager {
     func getWeaponsList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
         self.GET("weapons", parameters: nil, progress: nil, success: { (task, response) in
-            // TODO: save list of weapons in core data bitch
-            successBlock(array: response as! NSArray)
+            CoreDataManager.sharedManager.saveWeaponsList(response as! NSArray, successBlock: { (array) -> (Void) in
+                successBlock(array: array)
+            }, failureBlock: { (errorString) -> (Void) in
+                failureBlock(errorString: errorString)
+            })
         }) { (task, error) in
             failureBlock(errorString: error.localizedDescription)
         }
@@ -121,8 +124,11 @@ class DataManager: AFHTTPSessionManager {
     func getDefencesList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
         self.GET("defences", parameters: nil, progress: nil, success: { (task, response) in
-            // TODO: save list of defences in core data bitch
-            successBlock(array: response as! NSArray)
+            CoreDataManager.sharedManager.saveDefencesList(response as! NSArray, successBlock: { (array) -> (Void) in
+                successBlock(array: array)
+            }, failureBlock: { (errorString) -> (Void) in
+                failureBlock(errorString: errorString)
+            })
         }) { (task, error) in
             failureBlock(errorString: error.localizedDescription)
         }

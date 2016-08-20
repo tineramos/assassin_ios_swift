@@ -16,9 +16,12 @@ enum NavigationBar {
 enum BackButton {
     case Black
     case White
+    case Close
 }
 
 class BaseViewController: UIViewController {
+    
+    var leftBarButtonType: BackButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +35,26 @@ class BaseViewController: UIViewController {
     func showNavigationBarWithBackButtonType(backButtonType: BackButton!, andTitle title: String!) {
         self.navigationController?.navigationBarHidden = false
         
+        leftBarButtonType = backButtonType
         self.navigationItem.hidesBackButton = true
-        var backImage = UIImage(named: "back-icon-black")
+        
+        var backImageName: String
         var titleColor = UIColor.blackColor()
         
-        if backButtonType == .White {
-            backImage = UIImage(named: "back-icon-white")
+        switch backButtonType! {
+        case .White:
+            backImageName = "back-icon-white"
             titleColor = UIColor.whiteColor()
+            break
+        case .Black:
+            backImageName = "back-icon-black"
+            break
+        case .Close:
+            backImageName = "icon-close"
+            break
         }
+        
+        let backImage = UIImage(named: backImageName)
         
         let backButton = UIButton(frame: CGRectMake(0, 0, 50, 50))
         backButton.setImage(backImage, forState: UIControlState.Normal)
@@ -68,7 +83,13 @@ class BaseViewController: UIViewController {
     }
     
     func backButtonPressed() {
-        self.navigationController?.popViewControllerAnimated(true)
+        if leftBarButtonType == .Close {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    
     }
     
     /*

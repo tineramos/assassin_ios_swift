@@ -8,28 +8,81 @@
 
 import UIKit
 
-class ChooseWeaponDefenceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
-    struct Constants {
-        struct CellIdentifier {
-            static let playerCellId = "weaponDefenceCellId"
-        }
+    struct CellIdentifier {
+        static let playerCellId = "weaponDefenceCellId"
     }
     
     var weaponsList: [Weapon] = []
     var defenceList: [Defence] = []
     
+    @IBOutlet weak var tableView: UITableView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        getWeaponList()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        showNavigationBarWithBackButtonType(BackButton.Close, andTitle: "")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        addTableViewFooter()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func addTableViewFooter() {
+        
+        let footerView = UIView.init(frame: CGRectMake(0, 0, CGRectGetWidth(tableView!.frame), 60.0))
+//        footerView.snp_makeConstraints { (make) in
+//            make.width.equalTo(CGRectGetWidth(tableView!.frame))
+//            make.height.equalTo(60.0)
+//        }
+        
+        let submitButton = UIButton(type: .Custom)
+        submitButton.setTitle("Submit", forState: .Normal)
+        submitButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        submitButton.titleLabel?.font = UIFont(name: Constants.fontCourierNewBold, size: 17)
+        submitButton.frame = CGRectMake(0, 0, 250, 40)
+        submitButton.addTarget(self, action: #selector(joinGame), forControlEvents: .TouchUpInside)
+        submitButton.setBorderColor(UIColor.blackColor().CGColor)
+        submitButton.center = footerView.center
+        
+        footerView.addSubview(submitButton)
+        
+        tableView!.tableFooterView = footerView
+    }
 
+    func getWeaponList() {
+        DataManager.sharedManager.getWeaponsList({ (array) -> (Void) in
+            self.weaponsList = array as! [Weapon]
+            self.getDefenceList()
+        }) { (errorString) -> (Void) in
+            print(errorString)
+        }
+    }
+    
+    func getDefenceList() {
+        DataManager.sharedManager.getDefencesList({ (array) -> (Void) in
+            self.defenceList = array as! [Defence]
+            self.tableView?.reloadData()
+        }) { (errorString) -> (Void) in
+            print(errorString)
+        }
+    }
+    
+    func joinGame() {
+        print("hello join game please!")
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -61,7 +114,7 @@ class ChooseWeaponDefenceViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.playerCellId, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.playerCellId, forIndexPath: indexPath)
         
         // TODO: add configure method in cell using Game core data entity
         let row = indexPath.row

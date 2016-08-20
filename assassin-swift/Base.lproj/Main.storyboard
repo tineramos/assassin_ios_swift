@@ -644,6 +644,7 @@
                         <outlet property="joinButton" destination="gSd-hP-Hly" id="HBB-KW-9Px"/>
                         <outlet property="playersLabel" destination="r5g-sV-eln" id="9BV-dw-HY7"/>
                         <outlet property="tableView" destination="2V3-m1-EJd" id="VN5-Rq-MrR"/>
+                        <segue destination="ICO-xh-1kz" kind="presentation" identifier="presentWeaponDefenceSegue" id="ulD-ox-ii3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zI2-Jy-PAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -662,43 +663,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PsD-Jm-KYh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your weapons and defences for this game." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h81-yp-K7r">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aqU-9c-h2X">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="weaponDefenceCellId" rowHeight="60" id="cuh-1u-tOg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="weaponDefenceCellId" rowHeight="60" id="KeC-iv-dfW">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cuh-1u-tOg" id="8a5-sw-ZDI">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="59"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KeC-iv-dfW" id="TBr-Rf-RBY">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
-                                </variation>
                                 <connections>
-                                    <outlet property="dataSource" destination="sCf-Cw-cUl" id="P5f-Xp-5Pg"/>
-                                    <outlet property="delegate" destination="sCf-Cw-cUl" id="3Go-Es-YHZ"/>
+                                    <outlet property="dataSource" destination="sCf-Cw-cUl" id="TwO-6k-N97"/>
+                                    <outlet property="delegate" destination="sCf-Cw-cUl" id="aTP-EN-BGt"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aqU-9c-h2X" firstAttribute="leading" secondItem="9yX-Hg-H8D" secondAttribute="leading" id="FQS-mq-Cdh"/>
+                            <constraint firstItem="h81-yp-K7r" firstAttribute="top" secondItem="pbf-eU-ULP" secondAttribute="bottom" constant="8" id="Iaf-UI-Ryt"/>
+                            <constraint firstItem="aqU-9c-h2X" firstAttribute="top" secondItem="h81-yp-K7r" secondAttribute="bottom" constant="8" id="S9M-sd-TAq"/>
+                            <constraint firstItem="h81-yp-K7r" firstAttribute="leading" secondItem="9yX-Hg-H8D" secondAttribute="leading" constant="20" id="ZhP-Ag-jsG"/>
+                            <constraint firstItem="ubP-LG-MIE" firstAttribute="top" secondItem="aqU-9c-h2X" secondAttribute="bottom" id="hDD-CP-vez"/>
+                            <constraint firstAttribute="trailing" secondItem="h81-yp-K7r" secondAttribute="trailing" constant="20" id="uTH-tB-UNA"/>
+                            <constraint firstAttribute="trailing" secondItem="aqU-9c-h2X" secondAttribute="trailing" id="yAc-RJ-SGH"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="PsD-Jm-KYh"/>
+                                <exclude reference="h81-yp-K7r"/>
+                                <exclude reference="aqU-9c-h2X"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Iaf-UI-Ryt"/>
+                                <exclude reference="ZhP-Ag-jsG"/>
+                                <exclude reference="uTH-tB-UNA"/>
+                                <exclude reference="FQS-mq-Cdh"/>
+                                <exclude reference="S9M-sd-TAq"/>
+                                <exclude reference="yAc-RJ-SGH"/>
+                                <exclude reference="hDD-CP-vez"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="PsD-Jm-KYh"/>
+                                <include reference="h81-yp-K7r"/>
+                                <include reference="aqU-9c-h2X"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Iaf-UI-Ryt"/>
+                                <include reference="ZhP-Ag-jsG"/>
+                                <include reference="uTH-tB-UNA"/>
+                                <include reference="FQS-mq-Cdh"/>
+                                <include reference="S9M-sd-TAq"/>
+                                <include reference="yAc-RJ-SGH"/>
+                                <include reference="hDD-CP-vez"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="cAP-qQ-aDW"/>
+                    <connections>
+                        <outlet property="tableView" destination="aqU-9c-h2X" id="CGt-gs-LkD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oju-YB-c0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3709.5" y="992.25"/>
+            <point key="canvasLocation" x="4627.5" y="992.25"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="mjR-Hg-GPp">
@@ -1580,6 +1616,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC5-NT-Ooe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1354.5" y="-467.25"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OOS-by-kik">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ICO-xh-1kz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CDY-Rp-KC8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sCf-Cw-cUl" kind="relationship" relationship="rootViewController" id="wsb-oj-Xu8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z49-zA-71y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3709.5" y="992.25"/>
         </scene>
     </scenes>
     <resources>
