@@ -74,7 +74,7 @@ class DataManager: AFHTTPSessionManager {
         
 //        let user = User.getUser()!
 //        let path = String(format: "game/gameId/\(gameId)/userId/\(user.user_id)")
-        let path = String(format: "game/gameId/\(gameId)/userId/1")
+        let path = String(format: "game/gameId/\(gameId)/userId/\(Constants.userId)")
         
         self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
             CoreDataManager.sharedManager.saveGameInfo(response as! NSDictionary, successBlock: { (game) -> (Void) in
@@ -93,7 +93,7 @@ class DataManager: AFHTTPSessionManager {
 //        let user = User.MR_findFirst() as User!
         
         let params = [GameAttributes.game_id.rawValue: game.game_id!,
-                      UserAttributes.user_id.rawValue: 1,
+                      UserAttributes.user_id.rawValue: Constants.userId,
                       AssassinRelationships.weapons.rawValue: weapons,
                       AssassinRelationships.defences.rawValue: defences] as NSDictionary
         
