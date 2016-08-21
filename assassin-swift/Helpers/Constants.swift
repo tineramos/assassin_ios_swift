@@ -22,6 +22,6 @@ struct Constants {
     
     static let eventFrequency: UInt = 5 //60
     
-    static let userId: Int = 1
+    static let userId: Int = 3
     
 }

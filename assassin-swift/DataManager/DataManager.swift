@@ -128,6 +128,31 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
+    func leaveGame(playerId: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
+        
+        self.DELETE("game/leave/\(playerId)", parameters: nil, success: { (task, response) in
+            
+            let dictionary = response as! NSDictionary
+            let success = dictionary["success"] as! Bool
+            
+            if success {
+                CoreDataManager.sharedManager.deletePlayerWithId(playerId, successBlock: { (bool) -> (Void) in
+                    successBlock(bool: bool)
+                    }, failureBlock: { (errorString) -> (Void) in
+                        failureBlock(errorString: errorString)
+                })
+            }
+            else {
+                
+            }
+            
+            
+            }) { (task, error) in
+                failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
     // MARK:
     
     func getWeaponsList(successBlock: ArrayBlock, failureBlock: FailureBlock) {

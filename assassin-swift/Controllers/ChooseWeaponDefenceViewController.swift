@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum DisplayMode {
+    case Weapon
+    case Defence
+    case WeaponAndDefence
+}
+
 class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     struct CellIdentifier {
@@ -27,11 +33,24 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
     
     var game: Game!
     
+    var displayMode: DisplayMode = .WeaponAndDefence
+    
     @IBOutlet weak var tableView: UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getWeaponList()
+        
+        if displayMode == .Defence {
+            getDefenceList()
+        }
+        else if displayMode == .Weapon {
+            getWeaponList()
+        }
+        else {
+            getWeaponList()
+            getDefenceList()
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -57,6 +76,8 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
 //            make.height.equalTo(60.0)
 //        }
         
+//        let submitButtonTitle = (game.joinedValue()) ? "Update" : "Submit"
+        
         let submitButton = UIButton(type: .Custom)
         submitButton.setTitle("Submit", forState: .Normal)
         submitButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
@@ -74,7 +95,7 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
     func getWeaponList() {
         DataManager.sharedManager.getWeaponsList({ (array) -> (Void) in
             self.weaponsList = array as! [Weapon]
-            self.getDefenceList()
+            self.tableView?.reloadData()
         }) { (errorString) -> (Void) in
             print(errorString)
         }
@@ -91,23 +112,35 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
     
     func joinGame() {
 
-        if chosenWeapons.count < Limits.maxWeapon && chosenDefences.count < Limits.maxDefence {
-            return
+        if game.joinedValue() {
+            
+            // update weapon or defence
+            
         }
-        
-        DataManager.sharedManager.joinGame(game,
-                                           weapons: chosenWeapons,
-                                           defences: chosenDefences,
-                                           successBlock: { (bool) -> (Void) in
-            if bool {
-                self.navigationController?.dismissViewControllerAnimated(true, completion: {
-                    
-                })
-                
+        else {
+            
+            if chosenWeapons.count < Limits.maxWeapon && chosenDefences.count < Limits.maxDefence {
+                return
             }
             
-        }) { (errorString) -> (Void) in
-            print(errorString)
+            DataManager.sharedManager.joinGame(game,
+                                               weapons: chosenWeapons,
+                                               defences: chosenDefences,
+                                               successBlock: { (bool) -> (Void) in
+                                                if bool {
+                                                    self.navigationController?.dismissViewControllerAnimated(true, completion: {
+                                                        
+                                                    })
+                                                    
+                                                }
+                                                else {
+                                                    print("Can not join game.")
+                                                }
+                                                
+            }) { (errorString) -> (Void) in
+                print(errorString)
+            }
+            
         }
         
     }
@@ -125,18 +158,19 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
     // MARK: - TableView DataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return weaponsList.count
+        
+        if isWeaponsSection(section) {
+            return self.weaponsList.count
         }
         return defenceList.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return (displayMode == .WeaponAndDefence) ? 2 : 1
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
+        if isWeaponsSection(section) {
             return "Weapons"
         }
         return "Defences"
@@ -146,7 +180,7 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.playerCellId, forIndexPath: indexPath)
         
         let row = indexPath.row
-        if indexPath.section == 0 {
+        if isWeaponsSection(indexPath.section) {
             let weapon = weaponsList[row]
             cell.textLabel?.text = weapon.weapon_name
             lookUpElement((weapon.weapon_id?.integerValue)!, inArray: chosenWeapons, onCell: cell)
@@ -180,7 +214,7 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
         
         if cell.accessoryType == .None {
             
-            if section == 0 {
+            if isWeaponsSection(section) {
                 if chosenWeapons.count < Limits.maxWeapon {
                     let weapon = weaponsList[row]
                     cell.accessoryType = .Checkmark
@@ -198,7 +232,7 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
         else {
             cell.accessoryType = .None
             
-            if section == 0 {
+            if isWeaponsSection(section) {
                 let weapon = weaponsList[row]
                 chosenWeapons = chosenWeapons.filter{$0 != (weapon.weapon_id?.integerValue)!}
             }
@@ -207,6 +241,10 @@ class ChooseWeaponDefenceViewController: BaseViewController, UITableViewDataSour
                 chosenDefences = chosenDefences.filter{$0 != (defence.defence_id?.integerValue)!}
             }
         }
+    }
+    
+    func isWeaponsSection(section: Int) -> Bool {
+        return section == 0 && (displayMode == .WeaponAndDefence || displayMode == .Weapon)
     }
 
 }

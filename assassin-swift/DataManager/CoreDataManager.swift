@@ -101,6 +101,21 @@ class CoreDataManager: NSObject {
         successBlock(player: Player.MR_findFirstByAttribute(PlayerAttributes.player_id.rawValue, withValue: playerId))
     }
     
+    func deletePlayerWithId(playerId: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            let player = Player.MR_findFirstByAttribute(PlayerAttributes.player_id.rawValue, withValue: playerId)
+            player?.MR_deleteEntityInContext(context)
+        }
+        
+        let player = Player.MR_findByAttribute(PlayerAttributes.player_id.rawValue, withValue: playerId)
+        if player == nil {
+            successBlock(bool: true)
+        }
+        else {
+            failureBlock(errorString: "Player \(playerId) not removed in context")
+        }
+    }
+    
     /*
      
      NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in

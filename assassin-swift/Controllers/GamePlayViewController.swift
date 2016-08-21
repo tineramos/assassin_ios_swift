@@ -16,8 +16,14 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     @IBOutlet weak var gameLocationLabel: UILabel?
     @IBOutlet weak var gameStatusLabel: UILabel?
     @IBOutlet weak var playersLabel: UILabel?
+    
+    @IBOutlet weak var tableViewHeader: UIView?
     @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var joinButton: UIButton?
+    @IBOutlet weak var leaveButton: UIButton?
+    
+    @IBOutlet weak var changeWeaponsButton: UIButton?
+    @IBOutlet weak var changeDefencesButton: UIButton?
     
     struct Constants {
         struct CellIdentifier {
@@ -27,6 +33,8 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         struct SegueIdentifier {
             static let joinGameSegue = "joinGameSegue"
             static let presentOptionSegue = "presentWeaponDefenceSegue"
+            static let presentWeaponOptionSegue = "presentWeaponSegue"
+            static let presentDefenceOptionSegue = "presentDefenceSegue"
         }
     }
     
@@ -51,26 +59,57 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let navigation = segue.destinationViewController as! UINavigationController
+        let chooseWeaponVC = navigation.viewControllers.first as! ChooseWeaponDefenceViewController
+        chooseWeaponVC.game = currentGame
+        
         if segue.identifier == Constants.SegueIdentifier.presentOptionSegue {
-            let navigation = segue.destinationViewController as! UINavigationController
-            let chooseWeaponVC = navigation.viewControllers.first as! ChooseWeaponDefenceViewController
-            chooseWeaponVC.game = currentGame
+            chooseWeaponVC.displayMode = DisplayMode.WeaponAndDefence
         }
-     }
+        else if segue.identifier == Constants.SegueIdentifier.presentWeaponOptionSegue {
+            chooseWeaponVC.displayMode = DisplayMode.Weapon
+        }
+        else if segue.identifier == Constants.SegueIdentifier.presentDefenceOptionSegue {
+            chooseWeaponVC.displayMode = DisplayMode.Defence
+        }
+    
+    }
     
     func setupViewForStatus() {
         
         let status = GameStatus(rawValue: currentGame.game_status!)!
+//        let isStatusOpen = (status == .Open)
         
         switch status {
         case .Open:
             tableView?.hidden = true
-            joinButton?.hidden = false
+            tableViewHeader?.hidden = true
+            
+            joinButton?.hidden = currentGame.joinedValue()
             joinButton?.setBorderColor(UIColor.blackColor().CGColor)
+            
+            leaveButton?.hidden = !currentGame.joinedValue()
+            leaveButton?.setBorderColor(UIColor.blackColor().CGColor)
+            
+//            changeWeaponsButton?.hidden = !currentGame.joinedValue
+//            changeWeaponsButton?.setBorderColor(UIColor.blackColor().CGColor)
+//            
+//            changeDefencesButton?.hidden = !currentGame.joinedValue
+//            changeDefencesButton?.setBorderColor(UIColor.blackColor().CGColor)
+            
             break
         default:
             tableView?.hidden =  false
+            tableViewHeader?.hidden = false
+            
             joinButton?.hidden = true
+            leaveButton?.hidden = true
+            
+            changeDefencesButton?.hidden = true
+            changeWeaponsButton?.hidden = true
+            
+            tableView?.reloadData()
             break
         }
         
@@ -109,6 +148,10 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         else {
             // display alert for max_players reached
         }
+        
+    }
+    
+    @IBAction func leaveGameButtonpressed() {
         
     }
     

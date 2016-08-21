@@ -128,6 +128,10 @@ public class Game: _Game {
         
     }
     
+    func joinedValue() -> Bool {
+        return (joined?.boolValue)!
+    }
+    
     func playerJoinedInt() -> Int {
         return (players_joined!.integerValue)
     }
