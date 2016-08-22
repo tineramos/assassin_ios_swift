@@ -39,4 +39,13 @@ class Helper: NSObject {
         
         return audioPlayer
     }
+    
+    class func isDeviceOrientationPortrait() -> Bool {
+        return (UIDevice.currentDevice().orientation == .Portrait)
+    }
+
+    class func isDeviceOrientationUpsideDown() -> Bool {
+        return (UIDevice.currentDevice().orientation == .PortraitUpsideDown)
+    }
+    
 }

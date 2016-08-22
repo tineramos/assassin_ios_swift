@@ -89,6 +89,7 @@
 		54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D3121D54290700546C46 /* RegisterButtonCell.xib */; };
 		54E508E91D5DB91A006005B5 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E508E81D5DB91A006005B5 /* Motion.swift */; };
 		54FBDB6A1D6A96D6000912D3 /* ProximityDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */; };
+		54FBDB6C1D6AABB1000912D3 /* PlaceOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */; };
 		BFB64711640762938976892B /* Pods_AssassinSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +167,7 @@
 		54D2D3121D54290700546C46 /* RegisterButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterButtonCell.xib; path = Controllers/RegisterButtonCell.xib; sourceTree = "<group>"; };
 		54E508E81D5DB91A006005B5 /* Motion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Motion.swift; path = Helpers/Motion.swift; sourceTree = "<group>"; };
 		54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProximityDetectorView.swift; path = Controllers/Defences/ProximityDetectorView.swift; sourceTree = "<group>"; };
+		54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceOfInterest.swift; path = Controllers/Defences/PlaceOfInterest.swift; sourceTree = "<group>"; };
 		D03D133BCF1FD3F319A6D566 /* Pods-AssassinSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssassinSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AssassinSwift/Pods-AssassinSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		DC838D579551675504E0EBC8 /* Pods_AssassinSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssassinSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -418,6 +420,7 @@
 			children = (
 				54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */,
 				54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */,
+				54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */,
 			);
 			name = "Defences Controller";
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				54A4E02D1D6987BA00AD6612 /* BombScene.swift in Sources */,
 				5491E86B1D586D0500BA7E8D /* Winner.swift in Sources */,
 				5491E85F1D586D0500BA7E8D /* _User.swift in Sources */,
+				54FBDB6C1D6AABB1000912D3 /* PlaceOfInterest.swift in Sources */,
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
 				54A44CAB1D668BA0007B0D6D /* PoisonScene.swift in Sources */,
 				5491E8681D586D0500BA7E8D /* Target.swift in Sources */,
