@@ -10,20 +10,26 @@ import UIKit
 
 enum DefenceType: Int {
     case Armour     = 201
-    case Shield     = 202
-    case GasMask    = 203
-    case hpPotion   = 204
-    case Detector   = 205
+    case GasMask    = 202
+    case Shield     = 203
+    case HPPotion   = 204
+    case Detector   = 205   //pARk
 }
 
 class DefencesViewController: UIViewController {
 
     var defencesList: [Defence] = []
+    var currentDefence: DefenceType?
+    
+    lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
+    
+    @IBOutlet weak var defenceView: UIView?
+    @IBOutlet weak var sceneView: SCNView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        registerSensors()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +37,13 @@ class DefencesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func registerSensors() {
+        
+        if sensingKit.isSensorAvailable(.DeviceMotion) {
+            sensingKit.registerSensor(.DeviceMotion)
+        }
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -41,5 +54,9 @@ class DefencesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func activateProximityDetector() {
+        
+    }
     
 }

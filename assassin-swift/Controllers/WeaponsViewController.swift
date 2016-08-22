@@ -27,13 +27,13 @@ class WeaponsViewController: BaseViewController {
     var currentWeapon: WeaponType?
         
     let captureSession = AVCaptureSession()
+    let captureViewTag: Int = 1024
     
     var captureDevice: AVCaptureDevice?
     var captureView: UIView!
     var captureLayer: AVCaptureVideoPreviewLayer!
-    
-    let captureViewTag: Int = 1024
-    
+    var cameraNode: SCNNode!
+
     lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
     
     @IBOutlet weak var weaponView: UIView?
@@ -41,9 +41,9 @@ class WeaponsViewController: BaseViewController {
     
     var lightsaberView: LightsaberView?
     
-    var cameraNode: SCNNode!
-    
-    var poisonScene = PoisonScene()
+    var nerfGunScene: NerfGunScene!
+    var poisonScene: PoisonScene!
+    var bombScene: BombScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +52,10 @@ class WeaponsViewController: BaseViewController {
         setupCamera()
         
         registerDeviceMotion()
+        
+        nerfGunScene = NerfGunScene.init() 
+        poisonScene = PoisonScene.init()
+        bombScene = BombScene.init()
         
 //        TODO: uncomment when bluetooth is available
 //        openiBeaconProximity()
@@ -154,6 +158,8 @@ class WeaponsViewController: BaseViewController {
         cleanWeaponView()
         cleanScene()
         
+        sceneView?.hidden = false
+        
         switch weaponTag {
         case .NerfGun:
             nerfGunSimulation()
@@ -162,6 +168,7 @@ class WeaponsViewController: BaseViewController {
             poisonSimulation()
             break
         case .Lightsaber:
+            sceneView?.hidden = true
             lightsaberSimulation()
             break
         case .Bomb:
@@ -177,12 +184,14 @@ class WeaponsViewController: BaseViewController {
     
     func nerfGunSimulation() {
         
-        sceneView?.hidden = false
-        
         let crosshairImageView = UIImageView.init(image: UIImage.init(named: "crosshair-nerfgun"))
         crosshairImageView.frame = CGRectMake(0, 0, 50, 50)
         crosshairImageView.center = (weaponView?.center)!
         weaponView!.addSubview(crosshairImageView)
+        
+        nerfGunScene.display()
+        nerfGunScene.rootNode.addChildNode(cameraNode)
+        sceneView?.scene = nerfGunScene
         
         // warning: uncomment when running in the device
 //        crosshairImageView.snp_makeConstraints { (make) in
@@ -207,8 +216,6 @@ class WeaponsViewController: BaseViewController {
     
     func lightsaberSimulation() {
         
-        sceneView?.hidden = true
-        
         if lightsaberView == nil {
             lightsaberView = LightsaberView.init(frame: weaponView!.frame)
         }
@@ -220,9 +227,13 @@ class WeaponsViewController: BaseViewController {
     // MARK: Bomb methods
     
     func bombSimulation() {
-        openLocation()
+//        openLocation()
         
         // when bomb is planted, send coordinates to game host
+        
+        bombScene?.display()
+        bombScene?.rootNode.addChildNode(cameraNode)
+        sceneView?.scene = bombScene
     }
     
     // MARK: Tripwire methods

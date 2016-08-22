@@ -12,19 +12,25 @@ class PoisonScene: SCNScene {
 
     let sensingKit = WeaponsViewController().sensingKit
     
+    override init() {
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     func display() {
         let geometry = SCNCylinder(radius: 1.3, height: 3.5)
-        geometry.materials.first?.diffuse.contents = UIColor.greenColor()
+        geometry.firstMaterial?.diffuse.contents = "poison-gas.jpg"
+        geometry.firstMaterial?.diffuse.mipFilter = .Linear
         
-        let cylinderNode = SCNNode(geometry: geometry)
-        cylinderNode.physicsBody = SCNPhysicsBody(type: .Static, shape: nil)
-        cylinderNode.position = SCNVector3(x: 2, y: 2.5, z: 0)
+//        geometry.materials.first?.diffuse.contents = UIColor.greenColor()
         
-        let label = UILabel()
-        label.textAlignment = .Center
-        label.text = "Poison Gas"
+        let cylinder = SCNNode(geometry: geometry)
+        cylinder.position = SCNVector3(x: 2, y: 2.5, z: 0)
         
-        rootNode.addChildNode(cylinderNode)
+        rootNode.addChildNode(cylinder)
     }
     
     func startSensorForPoison() {
