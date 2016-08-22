@@ -51,7 +51,7 @@ class WeaponsViewController: BaseViewController {
         setupSceneView()
         setupCamera()
         
-        registerDeviceMotion()
+        Helper.registerSensors()
         
         nerfGunScene = NerfGunScene.init() 
         poisonScene = PoisonScene.init()
@@ -88,7 +88,8 @@ class WeaponsViewController: BaseViewController {
         super.viewWillDisappear(animated)
         
         if sensingKit.isSensorSensing(.DeviceMotion) {
-            sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
+//            sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
+            sensingKit.stopContinuousSensingWithAllRegisteredSensors()
         }
     }
 
@@ -234,7 +235,7 @@ class WeaponsViewController: BaseViewController {
     // MARK: Bomb methods
     
     func bombSimulation() {
-//        openLocation()
+        openLocation()
         
         // when bomb is planted, send coordinates to game host
         
@@ -288,32 +289,18 @@ class WeaponsViewController: BaseViewController {
     }
     
     // MARK: Register Sensors
-    
-    func registerDeviceMotion() {
-        if sensingKit.isSensorAvailable(.DeviceMotion) {
-            let config: SKDeviceMotionConfiguration = SKDeviceMotionConfiguration.init()
-            config.sampleRate = Constants.eventFrequency
-            sensingKit.registerSensor(.DeviceMotion, withConfiguration: config)
-        }
-    }
-    
+
     func openLocation() {
         
-        if sensingKit.isSensorAvailable(.Location) {
+        if sensingKit.isSensorRegistered(.Location) {
             
-            sensingKit.registerSensor(.Location)
-            
-            if sensingKit.isSensorRegistered(.Location) {
+            sensingKit.subscribeToSensor(.Location, withHandler: { (sensorType, sensorData) in
                 
-                sensingKit.subscribeToSensor(.Location, withHandler: { (sensorType, sensorData) in
-                    
-                    let locationData = sensorData as! SKLocationData
-                    print("latitude: \(locationData.location.coordinate.latitude)")
-                    print("longitude: \(locationData.location.coordinate.longitude)")
-                    
-                })
+                let locationData = sensorData as! SKLocationData
+                print("latitude: \(locationData.location.coordinate.latitude)")
+                print("longitude: \(locationData.location.coordinate.longitude)")
                 
-            }
+            })
             
             sensingKit.startContinuousSensingWithSensor(.Location)
             
@@ -325,37 +312,21 @@ class WeaponsViewController: BaseViewController {
     
     func openiBeaconProximity() {
         
-        if sensingKit.isSensorAvailable(.iBeaconProximity) {
+        if sensingKit.isSensorRegistered(.iBeaconProximity) {
             
-            let uuid = NSUUID.init(UUIDString: Constants.kAssassinUUID)
-            
-            let config: SKiBeaconProximityConfiguration = SKiBeaconProximityConfiguration.init(UUID: uuid!)
-            config.mode = .ScanAndBroadcast
-            config.major = 1    //  game_id
-            config.minor = 1    //  player_id
-            
-            print("I has iBeaconProximity!!")
-            
-            sensingKit.registerSensor(.iBeaconProximity, withConfiguration: config)
-            
-            if sensingKit.isSensorRegistered(.iBeaconProximity) {
+            sensingKit.subscribeToSensor(.iBeaconProximity, withHandler: { (sensorType, sensorData) in
                 
-                sensingKit.subscribeToSensor(.iBeaconProximity, withHandler: { (sensorType, sensorData) in
-                    
-                    let iBeaconData = sensorData as! SKiBeaconDeviceData
-                    print("iBeaconData: \(iBeaconData.proximityString)")
-                    print("DATA: \(sensorData.dictionaryData)")
-                    
-                    // if minor == target_id
-                    
-                })
+                let iBeaconData = sensorData as! SKiBeaconDeviceData
+                print("iBeaconData: \(iBeaconData.proximityString)")
+                print("DATA: \(sensorData.dictionaryData)")
                 
-                sensingKit.startContinuousSensingWithSensor(.Location)
+                // if minor == target_id
                 
-            }
+            })
+            
+            sensingKit.startContinuousSensingWithSensor(.Location)
             
         }
-        
     }
     
     func stopCameraPreview() {

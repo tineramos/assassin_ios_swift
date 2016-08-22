@@ -27,10 +27,10 @@ class BombScene: SCNScene {
         geometry.firstMaterial?.fresnelExponent = 1.0
         
         let sphere = SCNNode(geometry: geometry)
-        sphere.position = SCNVector3(x: 3, y: 2, z: 0)
+        sphere.position = SCNVector3(x: 1, y: 2, z: 0)
         
-        sphere.physicsBody = SCNPhysicsBody.dynamicBody()
-        sphere.physicsBody!.restitution = 0.9
+//        sphere.physicsBody = SCNPhysicsBody.dynamicBody()
+//        sphere.physicsBody!.restitution = 0.9
         
         rootNode.addChildNode(sphere)
     }

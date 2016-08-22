@@ -47,7 +47,7 @@ class DefencesViewController: BaseViewController {
         setupSceneView()
         setupCamera()
         
-        registerSensors()
+        Helper.registerSensors()
     }
     
     func setupSceneView() {
@@ -70,7 +70,7 @@ class DefencesViewController: BaseViewController {
         super.viewWillDisappear(animated)
         
         if sensingKit.isSensorSensing(.DeviceMotion) {
-            sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
+            sensingKit.stopContinuousSensingWithAllRegisteredSensors()
         }
     }
 
@@ -83,16 +83,6 @@ class DefencesViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         setupCameraPreview()
-    }
-    
-    func registerSensors() {
-        if sensingKit.isSensorAvailable(.DeviceMotion) {
-            let config: SKDeviceMotionConfiguration = SKDeviceMotionConfiguration.init()
-            config.sampleRate = Constants.eventFrequency
-            sensingKit.registerSensor(.DeviceMotion, withConfiguration: config)
-        }
-        
-        // TODO: add more sensors here if needed
     }
     
     /*
@@ -115,14 +105,7 @@ class DefencesViewController: BaseViewController {
             return
         }
         
-        captureView.removeFromSuperview()
-        captureLayer?.removeFromSuperlayer()
-        captureSession.removeInput(deviceInput)
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            self.captureSession.stopRunning()
-        })
-        
+        resetCamera()
         currentDefence = defenceTag
         
         switch defenceTag {
@@ -134,12 +117,19 @@ class DefencesViewController: BaseViewController {
         case .Shield:
             break
         case .Detector:
-            activateProximityDetector()
+            getProximityCoordinates()
             break
         default:
             break
         }
         
+    }
+    
+    func resetCamera() {
+        captureView.removeFromSuperview()
+        captureLayer?.removeFromSuperlayer()
+        captureSession.removeInput(deviceInput)
+        captureSession.stopRunning()
     }
     
     // MARK: Camera Preview
@@ -288,10 +278,19 @@ class DefencesViewController: BaseViewController {
         })
     }
     
+    func getProximityCoordinates() {
+        
+        // add array of coordinates
+        
+        activateProximityDetector()
+        
+        
+    }
+    
     func activateProximityDetector() {
         setupBackCamera()
         
-//       TODO: setupARView
+        // TODO: setupARView
     }
     
     // MARK: GasMask
@@ -312,7 +311,5 @@ class DefencesViewController: BaseViewController {
         
         // TODO: add nodes
     }
-    
-    
     
 }

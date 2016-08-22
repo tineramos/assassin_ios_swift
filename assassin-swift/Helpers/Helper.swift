@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 
 class Helper: NSObject {
-
+    
     func isNull(obj: AnyObject?) -> Bool {
         let variable = obj
         return ((variable) != nil) ? true : false
@@ -46,6 +46,39 @@ class Helper: NSObject {
 
     class func isDeviceOrientationUpsideDown() -> Bool {
         return (UIDevice.currentDevice().orientation == .PortraitUpsideDown)
+    }
+    
+    class func registerSensors() {
+        
+        let sensingKit = SensingKitLib.sharedSensingKitLib()
+        
+        if sensingKit.isSensorAvailable(.DeviceMotion) && !sensingKit.isSensorRegistered(.DeviceMotion) {
+            let config: SKDeviceMotionConfiguration = SKDeviceMotionConfiguration.init()
+            config.sampleRate = Constants.eventFrequency
+            sensingKit.registerSensor(.DeviceMotion, withConfiguration: config)
+        }
+        
+        if sensingKit.isSensorAvailable(.Location) && !sensingKit.isSensorRegistered(.Location) {
+            let config: SKLocationConfiguration = SKLocationConfiguration.init()
+            config.locationAccuracy = .Best
+            config.locationAuthorization = .WhenInUse
+            sensingKit.registerSensor(.Location, withConfiguration: config)
+        }
+        
+        if sensingKit.isSensorAvailable(.iBeaconProximity) && !sensingKit.isSensorRegistered(.iBeaconProximity) {
+            
+            let uuid = NSUUID.init(UUIDString: Constants.kAssassinUUID)
+            
+            let config: SKiBeaconProximityConfiguration = SKiBeaconProximityConfiguration.init(UUID: uuid!)
+            config.mode = .ScanAndBroadcast
+            config.major = 1    //  game_id
+            config.minor = 1    //  player_id
+            
+            print("I has iBeaconProximity!!")
+            
+            sensingKit.registerSensor(.iBeaconProximity, withConfiguration: config)
+        }
+        
     }
     
 }

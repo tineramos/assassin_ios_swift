@@ -24,7 +24,6 @@
 		5410FA781D57272D0092D36F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410FA771D57272D0092D36F /* GameViewController.swift */; };
 		54507BDA1D5A24300030ECEA /* _Assassin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BD91D5A24300030ECEA /* _Assassin.swift */; };
 		54507BDC1D5A243C0030ECEA /* Assassin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDB1D5A243C0030ECEA /* Assassin.swift */; };
-		54507BDE1D5A3FCA0030ECEA /* DefencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */; };
 		54507BE01D5A3FD80030ECEA /* WeaponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */; };
 		545EC8441D63017F0045E067 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545EC8431D63017F0045E067 /* SceneKit.framework */; };
 		545EC8471D631B490045E067 /* saber-off.wav in Resources */ = {isa = PBXBuildFile; fileRef = 545EC8451D631B490045E067 /* saber-off.wav */; };
@@ -82,6 +81,7 @@
 		54ABC1EE1D55896A00182262 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1ED1D55896A00182262 /* MenuViewController.swift */; };
 		54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1EF1D5589D800182262 /* LoginViewController.swift */; };
 		54B6B6CB1D599B85001E7804 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6B6CA1D599B85001E7804 /* Parser.swift */; };
+		54BDB1D21D6B4D3500665B30 /* DefencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */; };
 		54D2D3041D541BA700546C46 /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3031D541BA700546C46 /* FXForms.m */; };
 		54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3061D541CD700546C46 /* RegistrationForm.swift */; };
 		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
@@ -98,7 +98,6 @@
 		5410FA771D57272D0092D36F /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Controllers/GameViewController.swift; sourceTree = "<group>"; };
 		54507BD91D5A24300030ECEA /* _Assassin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Assassin.swift; sourceTree = "<group>"; };
 		54507BDB1D5A243C0030ECEA /* Assassin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assassin.swift; sourceTree = "<group>"; };
-		54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefencesViewController.swift; path = Controllers/DefencesViewController.swift; sourceTree = "<group>"; };
 		54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeaponsViewController.swift; path = Controllers/WeaponsViewController.swift; sourceTree = "<group>"; };
 		545EC8431D63017F0045E067 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		545EC8451D631B490045E067 /* saber-off.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "saber-off.wav"; sourceTree = "<group>"; };
@@ -159,6 +158,7 @@
 		54ABC1ED1D55896A00182262 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controllers/MenuViewController.swift; sourceTree = "<group>"; };
 		54ABC1EF1D5589D800182262 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		54B6B6CA1D599B85001E7804 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Helpers/Parser.swift; sourceTree = "<group>"; };
+		54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefencesViewController.swift; path = Controllers/Defences/DefencesViewController.swift; sourceTree = "<group>"; };
 		54D2D3021D541BA700546C46 /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
 		54D2D3031D541BA700546C46 /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
 		54D2D3061D541CD700546C46 /* RegistrationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
@@ -418,7 +418,7 @@
 		54A480051D6A481100BD8A97 /* Defences Controller */ = {
 			isa = PBXGroup;
 			children = (
-				54507BDD1D5A3FCA0030ECEA /* DefencesViewController.swift */,
+				54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */,
 				54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */,
 				54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */,
 			);
@@ -642,12 +642,12 @@
 				5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */,
 				5491E86F1D587E5D00BA7E8D /* Blocks.swift in Sources */,
 				549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */,
-				54507BDE1D5A3FCA0030ECEA /* DefencesViewController.swift in Sources */,
 				54507BE01D5A3FD80030ECEA /* WeaponsViewController.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
 				5491E86A1D586D0500BA7E8D /* Weapon.swift in Sources */,
 				5491E85E1D586D0500BA7E8D /* _Target.swift in Sources */,
 				5491E85A1D586D0500BA7E8D /* _Player.swift in Sources */,
+				54BDB1D21D6B4D3500665B30 /* DefencesViewController.swift in Sources */,
 				5491E8691D586D0500BA7E8D /* User.swift in Sources */,
 				5491E8661D586D0500BA7E8D /* PlayerWeapons.swift in Sources */,
 				54A480041D6A154C00BD8A97 /* NerfGunScene.swift in Sources */,
