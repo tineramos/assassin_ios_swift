@@ -119,42 +119,43 @@ class DefencesViewController: UIViewController {
         hasDetectedPotion = false
         sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
         
-        analyseCollectedData()
+        analyseCollectedDataIfDrinkMotionIsDetected()
     }
     
-    func analyseCollectedData() {
+    func analyseCollectedDataIfDrinkMotionIsDetected() -> Bool {
         
         if shakeCoordinates.count > 0 {
             
-//            var didDrinkingMotionDetected: Bool = false
-            
             var compareY: Double = -1.0
+            var lastXValue: Double = 0.0
             var counter: Int = 0
             
             for acceleration in shakeCoordinates {
                 
                 if compareY <= acceleration.y {
                     compareY = acceleration.y
+                    lastXValue = acceleration.x
                     counter += 1
                 }
                 
             }
             
-            // check if last value of y is close to 1
-            if ceil(compareY) == 1.0 && counter > 10 {
-                print("drink motion detected bitch")
-            }
-            else {
-                print("nope. no drink motion!")
-            }
-            
             // clear all coordinates for next detection
             shakeCoordinates.removeAll()
             
+            // check if last value of y is close to 1
+            // add check for x coord to refine detection
+            // and check if we have enough correct data
+            if ceil(compareY) == 1.0 && floor(fabs(lastXValue)) == 0.0 && counter > 25 {
+                return true
+            }
+            else {
+                return false
+            }
+            
         }
-        else {
-            return
-        }
+        
+        return false
         
     }
     
