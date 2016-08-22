@@ -74,7 +74,6 @@ class WeaponsViewController: BaseViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "")
     }
     
@@ -83,6 +82,14 @@ class WeaponsViewController: BaseViewController {
         
         setupCameraPreview()
         openCameraPreview()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if sensingKit.isSensorSensing(.DeviceMotion) {
+            sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
+        }
     }
 
     override func didReceiveMemoryWarning() {

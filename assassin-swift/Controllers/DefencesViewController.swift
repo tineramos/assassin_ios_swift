@@ -18,7 +18,7 @@ enum DefenceType: Int {
     case Detector   = 205   //pARk
 }
 
-class DefencesViewController: UIViewController {
+class DefencesViewController: BaseViewController {
 
     var defencesList: [Defence] = []
     var currentDefence: DefenceType?
@@ -26,7 +26,7 @@ class DefencesViewController: UIViewController {
     let captureSession = AVCaptureSession()
     let captureViewTag: Int = 1024
     
-    var captureDevice: AVCaptureDevice?
+    var captureDevice: NSArray?
     var captureView: UIView!
     var captureLayer: AVCaptureVideoPreviewLayer!
     var cameraNode: SCNNode!
@@ -59,10 +59,30 @@ class DefencesViewController: UIViewController {
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y:5, z: 10)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if sensingKit.isSensorSensing(.DeviceMotion) {
+            sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setupCameraPreview()
+        openCameraPreview()
     }
     
     func registerSensors() {
@@ -84,6 +104,86 @@ class DefencesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: Options
+    
+    func defenceButtonPressed(sender: UIButton) {
+        
+        let defenceTag = DefenceType(rawValue: sender.tag)!
+        
+        if defenceTag == currentDefence {
+            return
+        }
+        
+        currentDefence = defenceTag
+        
+        switch defenceTag {
+        case .Armour:
+            break
+        case .GasMask:
+            break
+        case .Shield:
+            break
+        case .Detector:
+            break
+        default:
+            break
+        }
+        
+    }
+    
+    // MARK: Camera Preview
+    
+    func setupCameraPreview() {
+        
+        captureView = UIView.init(frame: defenceView!.frame)
+        captureView.bounds = defenceView!.bounds
+        captureView.tag = captureViewTag
+        defenceView!.addSubview(captureView)
+        defenceView!.sendSubviewToBack(captureView)
+        
+    }
+    
+    func openCameraPreview() {
+        
+        captureDevice = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+        
+        if captureDevice?.count == 0 {
+            return
+        }
+        
+        do {
+            
+            var tempCaptureDevice:AVCaptureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+            
+            for device in captureDevice! {
+                let device = device as! AVCaptureDevice
+                if device.position == AVCaptureDevicePosition.Front {
+                    tempCaptureDevice = device
+                    break
+                }
+            }
+            
+            captureSession.sessionPreset = AVCaptureSessionPresetHigh
+            
+            let deviceInput = try AVCaptureDeviceInput.init(device: tempCaptureDevice)
+            captureSession.addInput(deviceInput)
+            
+            captureLayer = AVCaptureVideoPreviewLayer.init(session: captureSession)
+            captureLayer.frame = captureView.bounds
+            captureLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            captureView.layer.addSublayer(captureLayer)
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                self.captureSession.startRunning()
+            })
+            
+        }
+        catch let error as NSError {
+            print("Error opening camera preview: \(error)")
+        }
+        
+    }
     
     // MARK: - Drinking Motion
     
@@ -177,6 +277,12 @@ class DefencesViewController: UIViewController {
     // MARK: Proximity Detector
     
     @IBAction func activateProximityDetector() {
+        
+    }
+    
+    // MARK: GasMask
+    
+    @IBAction func activateGasMask() {
         
     }
     
