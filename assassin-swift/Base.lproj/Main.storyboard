@@ -47,9 +47,6 @@
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="191" y="20" width="41" height="20"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -353,24 +350,36 @@
                                     <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5b-Ku-QHf">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" backgroundImage="defence-armour"/>
+                                        <connections>
+                                            <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="vQH-7N-91m"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiz-ac-AbY">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" backgroundImage="defence-gas-mask"/>
+                                        <connections>
+                                            <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="Mj0-bd-IQT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqd-2p-lPt">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" backgroundImage="defence-shield"/>
+                                        <connections>
+                                            <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="vnj-Fg-ENp"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jn-Cn-pyi">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" backgroundImage="defence-hp-potion"/>
+                                        <connections>
+                                            <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="gcJ-BQ-eiD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="205" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9Q-gc-xVP">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" backgroundImage="defence-detector"/>
                                         <connections>
-                                            <action selector="activateProximityDetector" destination="U3b-aB-JHp" eventType="touchUpInside" id="0vn-bP-NIN"/>
+                                            <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="5Kp-XD-d0U"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2048,7 +2057,7 @@
         <image name="weapon-tripwire" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2kE-xE-P55"/>
+        <segue reference="y35-0b-eKA"/>
         <segue reference="Scz-Al-76G"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -28,8 +28,9 @@ class DefencesViewController: BaseViewController {
     
     var captureDevice: NSArray?
     var captureView: UIView!
-    var captureLayer: AVCaptureVideoPreviewLayer!
+    var captureLayer: AVCaptureVideoPreviewLayer?
     var cameraNode: SCNNode!
+    var deviceInput: AVCaptureDeviceInput?
     
     lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
     
@@ -82,7 +83,6 @@ class DefencesViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         setupCameraPreview()
-        openCameraPreview()
     }
     
     func registerSensors() {
@@ -107,7 +107,7 @@ class DefencesViewController: BaseViewController {
     
     // MARK: Options
     
-    func defenceButtonPressed(sender: UIButton) {
+    @IBAction func defenceButtonPressed(sender: UIButton) {
         
         let defenceTag = DefenceType(rawValue: sender.tag)!
         
@@ -115,16 +115,26 @@ class DefencesViewController: BaseViewController {
             return
         }
         
+        captureView.removeFromSuperview()
+        captureLayer?.removeFromSuperlayer()
+        captureSession.removeInput(deviceInput)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.captureSession.stopRunning()
+        })
+        
         currentDefence = defenceTag
         
         switch defenceTag {
         case .Armour:
             break
         case .GasMask:
+            activateGasMask()
             break
         case .Shield:
             break
         case .Detector:
+            activateProximityDetector()
             break
         default:
             break
@@ -135,16 +145,12 @@ class DefencesViewController: BaseViewController {
     // MARK: Camera Preview
     
     func setupCameraPreview() {
-        
         captureView = UIView.init(frame: defenceView!.frame)
         captureView.bounds = defenceView!.bounds
         captureView.tag = captureViewTag
-        defenceView!.addSubview(captureView)
-        defenceView!.sendSubviewToBack(captureView)
-        
     }
     
-    func openCameraPreview() {
+    func openCameraPreviewInPosition(position: AVCaptureDevicePosition) {
         
         captureDevice = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
         
@@ -158,25 +164,20 @@ class DefencesViewController: BaseViewController {
             
             for device in captureDevice! {
                 let device = device as! AVCaptureDevice
-                if device.position == AVCaptureDevicePosition.Front {
+                if device.position == position {
                     tempCaptureDevice = device
                     break
                 }
             }
             
+            deviceInput = try AVCaptureDeviceInput.init(device: tempCaptureDevice)
+            captureSession.addInput(deviceInput)
             captureSession.sessionPreset = AVCaptureSessionPresetHigh
             
-            let deviceInput = try AVCaptureDeviceInput.init(device: tempCaptureDevice)
-            captureSession.addInput(deviceInput)
-            
             captureLayer = AVCaptureVideoPreviewLayer.init(session: captureSession)
-            captureLayer.frame = captureView.bounds
-            captureLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-            captureView.layer.addSublayer(captureLayer)
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                self.captureSession.startRunning()
-            })
+            captureLayer!.frame = captureView.bounds
+            captureLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
+            captureView.layer.addSublayer(captureLayer!)
             
         }
         catch let error as NSError {
@@ -276,14 +277,42 @@ class DefencesViewController: BaseViewController {
     
     // MARK: Proximity Detector
     
-    @IBAction func activateProximityDetector() {
+    func setupBackCamera() {
+        defenceView!.addSubview(captureView)
+        defenceView!.sendSubviewToBack(captureView)
         
+        openCameraPreviewInPosition(AVCaptureDevicePosition.Back)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.captureSession.startRunning()
+        })
+    }
+    
+    func activateProximityDetector() {
+        setupBackCamera()
+        
+//       TODO: setupARView
     }
     
     // MARK: GasMask
     
-    @IBAction func activateGasMask() {
+    func setupFrontCamera() {
+        defenceView!.addSubview(captureView)
+        defenceView!.sendSubviewToBack(captureView)
         
+        openCameraPreviewInPosition(AVCaptureDevicePosition.Front)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.captureSession.startRunning()
+        })
     }
+    
+    func activateGasMask() {
+        setupFrontCamera()
+        
+        // TODO: add nodes
+    }
+    
+    
     
 }
