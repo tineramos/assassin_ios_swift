@@ -85,4 +85,22 @@ class Helper: NSObject {
         
     }
     
+    class func stopSensors() {
+        
+        let sensingKit = SensingKitLib.sharedSensingKitLib()
+        
+        if sensingKit.isSensorSensing(.DeviceMotion) {
+            sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
+        }
+
+        if sensingKit.isSensorSensing(.Location) {
+            sensingKit.stopContinuousSensingWithSensor(.Location)
+        }
+        
+        if sensingKit.isSensorSensing(.iBeaconProximity) {
+            sensingKit.stopContinuousSensingWithSensor(.iBeaconProximity)
+        }
+    
+    }
+    
 }

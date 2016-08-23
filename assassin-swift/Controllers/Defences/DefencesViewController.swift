@@ -68,7 +68,7 @@ class DefencesViewController: BaseViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        sensingKit.stopContinuousSensingWithAllRegisteredSensors()
+        Helper.stopSensors()
     }
 
     override func didReceiveMemoryWarning() {

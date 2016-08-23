@@ -86,7 +86,7 @@ class WeaponsViewController: BaseViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        sensingKit.stopContinuousSensingWithAllRegisteredSensors()
+        Helper.stopSensors()
     }
 
     override func didReceiveMemoryWarning() {
@@ -240,12 +240,9 @@ class WeaponsViewController: BaseViewController {
         sceneView?.scene = bombScene
     }
     
-    // MARK: Tripwire methods
-    
-    func tripwireSimulation() {
-        openLocation()
+    // MARK: Knife methods
+    func knifeSimulation() {
         
-        // when tripwire is planted, send coordinates to game host
     }
     
     // MARK: Flash

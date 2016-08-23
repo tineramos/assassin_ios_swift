@@ -9,13 +9,7 @@
 import Foundation
 
 struct Constants {
-    
-    struct CoreDataModel {
-        
-        
-        
-    }
-    
+  
     static let fontCourierNewBold = "CourierNewPS-BoldMT"
     
     static let kAssassinUUID = "E7737784-23AB-41F7-8BCD-76C41978F0B7"
@@ -28,5 +22,19 @@ struct Constants {
     static let minor: UInt16 = (Helper.isIPhone() ? 4 : 5)
     
     static let target: UInt16 = (Helper.isIPhone() ? 5 : 4)
+    
+    static let kTotalHP = 100
+    
+    static let kYes = "YES"
+    static let kNo = "NO"
+    
+    /*
+     iBeacon Constants
+     */
+    
+    static let kCalibratedPower = -58
+    static let kRadNetworkConstantOne = 0.89976
+    static let kRadNetworkConstantTwo = 7.7095
+    static let kRadNetworkConstantThree = 0.111
     
 }

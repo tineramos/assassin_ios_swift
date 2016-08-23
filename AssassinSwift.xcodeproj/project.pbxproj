@@ -87,6 +87,7 @@
 		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
 		54D2D3111D54288800546C46 /* RegisterButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3101D54288800546C46 /* RegisterButtonCell.swift */; };
 		54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D3121D54290700546C46 /* RegisterButtonCell.xib */; };
+		54D76F311D6C985B00CE34A2 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D76F301D6C985A00CE34A2 /* MathHelper.swift */; };
 		54E508E91D5DB91A006005B5 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E508E81D5DB91A006005B5 /* Motion.swift */; };
 		54FBDB6A1D6A96D6000912D3 /* ProximityDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */; };
 		54FBDB6C1D6AABB1000912D3 /* PlaceOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */; };
@@ -165,6 +166,7 @@
 		54D2D30D1D541F3700546C46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54D2D3101D54288800546C46 /* RegisterButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterButtonCell.swift; path = Controllers/RegisterButtonCell.swift; sourceTree = "<group>"; };
 		54D2D3121D54290700546C46 /* RegisterButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterButtonCell.xib; path = Controllers/RegisterButtonCell.xib; sourceTree = "<group>"; };
+		54D76F301D6C985A00CE34A2 /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathHelper.swift; path = Helpers/MathHelper.swift; sourceTree = "<group>"; };
 		54E508E81D5DB91A006005B5 /* Motion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Motion.swift; path = Helpers/Motion.swift; sourceTree = "<group>"; };
 		54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProximityDetectorView.swift; path = Controllers/Defences/ProximityDetectorView.swift; sourceTree = "<group>"; };
 		54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceOfInterest.swift; path = Controllers/Defences/PlaceOfInterest.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				549964EF1D56F77000F574C4 /* UIViewExtension.swift */,
 				54B6B6CA1D599B85001E7804 /* Parser.swift */,
 				54E508E81D5DB91A006005B5 /* Motion.swift */,
+				54D76F301D6C985A00CE34A2 /* MathHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				5491E8361D58021500BA7E8D /* BaseViewController.swift in Sources */,
 				5491E8401D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift in Sources */,
 				54FBDB6A1D6A96D6000912D3 /* ProximityDetectorView.swift in Sources */,
+				54D76F311D6C985B00CE34A2 /* MathHelper.swift in Sources */,
 				549964FB1D56F7AE00F574C4 /* AssassinSwift.xcdatamodeld in Sources */,
 				549964F11D56F77000F574C4 /* Helper.swift in Sources */,
 				54507BDC1D5A243C0030ECEA /* Assassin.swift in Sources */,
