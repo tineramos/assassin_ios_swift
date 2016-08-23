@@ -40,6 +40,8 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView?.tableFooterView = UIView.init()
     }
 
     override func viewWillAppear(animated: Bool) {

@@ -24,4 +24,9 @@ struct Constants {
     
     static let userId: Int = 3
     
+    static let major: UInt16 = 4   // game id - open
+    static let minor: UInt16 = (Helper.isIPhone() ? 4 : 5)
+    
+    static let target: UInt16 = (Helper.isIPhone() ? 5 : 4)
+    
 }

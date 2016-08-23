@@ -40,6 +40,10 @@ class Helper: NSObject {
         return audioPlayer
     }
     
+    class func isIPhone() -> Bool {
+        return (UIDevice.currentDevice().userInterfaceIdiom == .Phone)
+    }
+    
     class func isDeviceOrientationPortrait() -> Bool {
         return (UIDevice.currentDevice().orientation == .Portrait)
     }
@@ -71,8 +75,8 @@ class Helper: NSObject {
             
             let config: SKiBeaconProximityConfiguration = SKiBeaconProximityConfiguration.init(UUID: uuid!)
             config.mode = .ScanAndBroadcast
-            config.major = 1    //  game_id
-            config.minor = 1    //  player_id
+            config.major = Constants.major    //  game_id
+            config.minor = Constants.minor    //  player_id
             
             print("I has iBeaconProximity!!")
             

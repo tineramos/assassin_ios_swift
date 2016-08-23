@@ -13,7 +13,7 @@ import AFNetworking
 class DataManager: AFHTTPSessionManager {
     
     struct DataManagerConstants {
-        let BASE_URL = "http://localhost:8000/api/v1/assassin/"
+        let BASE_URL = "http://192.168.0.6:8000/api/v1/assassin/"
     }
     
     static let sharedInstance = DataManager(baseURL: NSURL(string: DataManagerConstants().BASE_URL))
@@ -34,7 +34,7 @@ class DataManager: AFHTTPSessionManager {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     func signUp(params: NSDictionary, successBlock: VoidBlock, failureBlock: FailureBlock) {

@@ -33,6 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        // push notification
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        application.registerUserNotificationSettings(pushNotificationSettings)
+        application.registerForRemoteNotifications()
+        
         return true
     }
 
@@ -58,6 +64,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
         self.saveContext()
+    }
+    
+    // MARK: - Push Notification Methods
+    
+    // called when app successfully manages to register for PushNotif
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("DEVICE TOKEN: \(deviceToken)")
+    }
+    
+    // triggered when registering to push notif fails
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("FAIL TO REG: \(error)")
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print("NOTIF RECEIVED: \(userInfo)")
     }
 
     // MARK: - Core Data stack

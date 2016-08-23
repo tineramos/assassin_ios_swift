@@ -86,11 +86,7 @@ class WeaponsViewController: BaseViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        if sensingKit.isSensorSensing(.DeviceMotion) {
-//            sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
-            sensingKit.stopContinuousSensingWithAllRegisteredSensors()
-        }
+        sensingKit.stopContinuousSensingWithAllRegisteredSensors()
     }
 
     override func didReceiveMemoryWarning() {
