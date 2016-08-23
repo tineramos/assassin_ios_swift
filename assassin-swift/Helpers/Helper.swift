@@ -40,8 +40,12 @@ class Helper: NSObject {
         return audioPlayer
     }
     
-    class func isIPhone() -> Bool {
+    class func isiPhone() -> Bool {
         return (UIDevice.currentDevice().userInterfaceIdiom == .Phone)
+    }
+    
+    class func isiPad() -> Bool {
+        return (UIDevice.currentDevice().userInterfaceIdiom == .Pad)
     }
     
     class func isDeviceOrientationPortrait() -> Bool {
@@ -78,7 +82,7 @@ class Helper: NSObject {
             config.major = Constants.major    //  game_id
             config.minor = Constants.minor    //  player_id
             
-            print("I has iBeaconProximity!!")
+            print("I has iBeaconProximity with minor \(Constants.minor) and major \(Constants.major)!!")
             
             sensingKit.registerSensor(.iBeaconProximity, withConfiguration: config)
         }

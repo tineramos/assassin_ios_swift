@@ -26,6 +26,7 @@
 
 #import "SKSensorType.h"
 #import "NSString+SensorType.h"
+#import "SKProximityData.h"
 #import "SKSensorDataHandler.h"
 
 // Sensor Data

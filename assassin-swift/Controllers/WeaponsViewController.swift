@@ -18,7 +18,7 @@ enum WeaponType: Int {
     case Poison     = 102
     case Lightsaber = 103
     case Bomb       = 104
-    case Tripwire   = 105
+    case Knife      = 105
 }
 
 class WeaponsViewController: BaseViewController {
@@ -58,7 +58,7 @@ class WeaponsViewController: BaseViewController {
         bombScene = BombScene.init()
         
 //        TODO: uncomment when bluetooth is available
-//        openiBeaconProximity()
+        openiBeaconProximity()
     }
     
     func setupSceneView() {
@@ -178,8 +178,8 @@ class WeaponsViewController: BaseViewController {
         case .Bomb:
             bombSimulation()
             break
-        case .Tripwire:
-            tripwireSimulation()
+        case .Knife:
+            knifeSimulation()
             break
         }
     }
@@ -309,15 +309,33 @@ class WeaponsViewController: BaseViewController {
             
             sensingKit.subscribeToSensor(.iBeaconProximity, withHandler: { (sensorType, sensorData) in
                 
-                let iBeaconData = sensorData as! SKiBeaconDeviceData
-                print("iBeaconData: \(iBeaconData.proximityString)")
-                print("DATA: \(sensorData.dictionaryData)")
+                let proximityData = sensorData as! SKProximityData
                 
-                // if minor == target_id
+//                print("SENSOR DATA: \(sensorData)")
+//                print("SENSOR DATA: \(proximityData)")
                 
+                let devices = proximityData.devices as! [SKiBeaconDeviceData]
+                
+                for iBeaconData in devices {
+                    if iBeaconData.major == Constants.major && iBeaconData.minor == Constants.target {
+                        print("TARGET: \(iBeaconData.minor) detected!!")
+                    }
+                }
+                
+//                let devices = sensorData.dictionaryData["devices"] as! [AnyObject] // array of beacons available around
+//                let proximityData = devices.
+                
+//                
+//                    if iBeaconDeviceData == Constants.major && iBeaconDeviceData.minor == Constants.target {
+//                        print("iBeaconData: \(iBeaconDeviceData.proximityString)")
+//                        print("target_id \(iBeaconDeviceData.minor) detected!!!")
+//                    }
+                    
+//                }
+
             })
             
-            sensingKit.startContinuousSensingWithSensor(.Location)
+            sensingKit.startContinuousSensingWithSensor(.iBeaconProximity)
             
         }
     }
