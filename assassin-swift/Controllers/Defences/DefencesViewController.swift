@@ -18,12 +18,11 @@ enum DefenceType: Int {
     case Detector   = 205   //pARk
 }
 
-class DefencesViewController: BaseViewController {
+class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     var defencesList: [Defence] = []
     var currentDefence: DefenceType?
     
-    let captureSession = AVCaptureSession()
     let captureViewTag: Int = 1024
     
     var captureDevice: NSArray?
@@ -31,6 +30,9 @@ class DefencesViewController: BaseViewController {
     var captureLayer: AVCaptureVideoPreviewLayer?
     var cameraNode: SCNNode!
     var deviceInput: AVCaptureDeviceInput?
+    let videoOutput = AVCaptureVideoDataOutput()
+    
+    var faceDetector: CIDetector?
     
     lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
     
@@ -49,6 +51,12 @@ class DefencesViewController: BaseViewController {
         
         Helper.registerSensors()
     }
+    
+    lazy var cameraSession: AVCaptureSession = {
+        let s = AVCaptureSession()
+        s.sessionPreset = AVCaptureSessionPresetHigh
+        return s
+    }()
     
     func setupSceneView() {
         sceneView?.autoenablesDefaultLighting = true
@@ -109,6 +117,7 @@ class DefencesViewController: BaseViewController {
         case .Armour:
             break
         case .GasMask:
+            sceneView?.hidden = false
             activateGasMask()
             break
         case .Shield:
@@ -125,8 +134,10 @@ class DefencesViewController: BaseViewController {
     func resetCamera() {
         captureView.removeFromSuperview()
         captureLayer?.removeFromSuperlayer()
-        captureSession.removeInput(deviceInput)
-        captureSession.stopRunning()
+        cameraSession.removeInput(deviceInput)
+        cameraSession.stopRunning()
+        
+        sceneView?.hidden = false
     }
     
     // MARK: Camera Preview
@@ -157,14 +168,29 @@ class DefencesViewController: BaseViewController {
                 }
             }
             
-            deviceInput = try AVCaptureDeviceInput.init(device: tempCaptureDevice)
-            captureSession.addInput(deviceInput)
-            captureSession.sessionPreset = AVCaptureSessionPresetHigh
+            cameraSession.beginConfiguration()
             
-            captureLayer = AVCaptureVideoPreviewLayer.init(session: captureSession)
+            deviceInput = try AVCaptureDeviceInput.init(device: tempCaptureDevice)
+            cameraSession.addInput(deviceInput)
+            
+            if position == .Front && currentDefence == .GasMask {
+                videoOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(unsignedInt: kCMPixelFormat_32BGRA)]
+                videoOutput.alwaysDiscardsLateVideoFrames = true
+//                (videoOutput.connectionWithMediaType(AVMediaTypeVideo)).enabled = true
+                
+                if cameraSession.canAddOutput(videoOutput) == true {
+                    cameraSession.addOutput(videoOutput)
+                }
+            }
+            
+            captureLayer = AVCaptureVideoPreviewLayer.init(session: cameraSession)
             captureLayer!.frame = captureView.bounds
             captureLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
             captureView.layer.addSublayer(captureLayer!)
+            
+            cameraSession.commitConfiguration()
+            
+            videoOutput.setSampleBufferDelegate(self, queue: dispatch_queue_create("sample buffer delegate", DISPATCH_QUEUE_SERIAL))
             
         }
         catch let error as NSError {
@@ -271,16 +297,15 @@ class DefencesViewController: BaseViewController {
         openCameraPreviewInPosition(AVCaptureDevicePosition.Back)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            self.captureSession.startRunning()
+            self.cameraSession.startRunning()
         })
     }
     
     func getProximityCoordinates() {
         
         // add array of coordinates
-        
+
         activateProximityDetector()
-        
         
     }
     
@@ -292,21 +317,84 @@ class DefencesViewController: BaseViewController {
     
     // MARK: GasMask
     
-    func setupFrontCamera() {
+    func setupFrontCameraForMask() {
+        
+        let gasmask: UIImage = UIImage.init(named: "gasmask-view")!
+        let imageView: UIImageView = UIImageView.init(image: gasmask)
+        imageView.frame = CGRectMake(0, 0, 400, 600)
+        imageView.contentMode = .ScaleAspectFit
+        imageView.center = (defenceView?.center)!
+        defenceView!.addSubview(imageView)
+        
         defenceView!.addSubview(captureView)
         defenceView!.sendSubviewToBack(captureView)
         
         openCameraPreviewInPosition(AVCaptureDevicePosition.Front)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            self.captureSession.startRunning()
+            self.cameraSession.startRunning()
         })
     }
     
     func activateGasMask() {
-        setupFrontCamera()
+        setupFrontCameraForMask()
         
         // TODO: add nodes
+    }
+    
+    // CaptureOutput Delegate
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+        let cameraImage = CIImage(CVPixelBuffer: pixelBuffer!)
+        
+        let detectorOptions = [CIDetectorAccuracy:CIDetectorAccuracyHigh]
+        let detector = CIDetector.init(ofType: CIDetectorTypeFace, context: nil, options:detectorOptions)
+        let features = detector.featuresInImage(cameraImage, options: [CIDetectorImageOrientation: NSNumber.init(integer: 6)])  // to correctly detect face in portrait mode
+        
+        for f in features {
+            
+            let faceFeature: CIFaceFeature = f as! CIFaceFeature
+//            let faceWidth = faceFeature.bounds.size.width
+//            let faceHeight = faceFeature.bounds.size.height
+            
+            if faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition && faceFeature.hasMouthPosition {
+//                print("MOUTH POSITION") // interchange origin
+//                print("x: \(faceFeature.mouthPosition.y)")
+//                print("y: \(faceFeature.mouthPosition.x)")
+//                
+//                let mouthX = faceFeature.mouthPosition.y - faceWidth*0.2
+//                let mouthY = faceFeature.mouthPosition.x - faceHeight*0.2
+//                
+//                print("computed x: \(mouthX)")
+//                print("computed y: \(mouthY)")
+                
+                // get the clean aperture
+                // the clean aperture is a rectangle that defines the portion of the encoded pixel dimensions
+                // that represents image data valid for display.
+//                let fdesc: CMFormatDescriptionRef = CMSampleBufferGetFormatDescription(sampleBuffer)!
+//                let clap: CGRect = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/)
+                
+                // TODO: send gas mask
+                DataManager.sharedManager.putUpDefence(Int(Constants.minor), defenceId: 3, successBlock: { (bool) -> (Void) in
+                    
+                    if bool {
+                        // TODO: notify user that defence is activated
+                    }
+                    else {
+                        // TODO: notify user -- defence activiation failed
+                    }
+                    
+                    }, failureBlock: { (errorString) -> (Void) in
+                        // TODO: notify user -- defence activiation failed
+                        print("error: \(errorString)")
+                })
+                
+                self.cameraSession.stopRunning()
+                
+            }
+            
+        }
     }
     
 }

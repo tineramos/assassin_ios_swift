@@ -82,6 +82,7 @@
 		54ABC1F01D5589D800182262 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ABC1EF1D5589D800182262 /* LoginViewController.swift */; };
 		54B6B6CB1D599B85001E7804 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6B6CA1D599B85001E7804 /* Parser.swift */; };
 		54BDB1D21D6B4D3500665B30 /* DefencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */; };
+		54D062E51D6D122E00AA9B23 /* GasMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D062E41D6D122E00AA9B23 /* GasMaskView.swift */; };
 		54D2D3041D541BA700546C46 /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3031D541BA700546C46 /* FXForms.m */; };
 		54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3061D541CD700546C46 /* RegistrationForm.swift */; };
 		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
@@ -160,6 +161,7 @@
 		54ABC1EF1D5589D800182262 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		54B6B6CA1D599B85001E7804 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Helpers/Parser.swift; sourceTree = "<group>"; };
 		54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefencesViewController.swift; path = Controllers/Defences/DefencesViewController.swift; sourceTree = "<group>"; };
+		54D062E41D6D122E00AA9B23 /* GasMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GasMaskView.swift; path = Controllers/Defences/GasMaskView.swift; sourceTree = "<group>"; };
 		54D2D3021D541BA700546C46 /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
 		54D2D3031D541BA700546C46 /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
 		54D2D3061D541CD700546C46 /* RegistrationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */,
+				54D062E41D6D122E00AA9B23 /* GasMaskView.swift */,
 				54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */,
 				54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */,
 			);
@@ -677,6 +680,7 @@
 				5491E8601D586D0500BA7E8D /* _Weapon.swift in Sources */,
 				545EC84A1D6322600045E067 /* LightsaberView.swift in Sources */,
 				549964F21D56F77000F574C4 /* StringExtension.swift in Sources */,
+				54D062E51D6D122E00AA9B23 /* GasMaskView.swift in Sources */,
 				5491E8641D586D0500BA7E8D /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

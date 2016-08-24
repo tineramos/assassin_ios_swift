@@ -23,7 +23,7 @@ class NerfGunScene: SCNScene {
         
         let sphere = SCNNode(geometry: geometry)
         sphere.position = SCNVector3(x: 0, y: 0, z: 0)
-        sphere.physicsBody = SCNPhysicsBody.dynamicBody()
+//        sphere.physicsBody = SCNPhysicsBody.dynamicBody()
 //        sphere.physicsBody!.restitution = 0.9
         
         rootNode.addChildNode(sphere)

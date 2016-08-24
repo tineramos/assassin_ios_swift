@@ -183,6 +183,18 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
+    func putUpDefence(playerId: Int, defenceId: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
+        
+        let params: [String:Int] = [PlayerAttributes.player_id.rawValue: playerId, DefenceAttributes.defence_id.rawValue: defenceId]
+        
+        self.PUT("defend", parameters: params, success: { (task, response) in
+            
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
     func updateWeapons(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
        
         self.PUT("/player/changeWeapons/" + String(playerId), parameters: ["weapons": params], success: { (task, response) in
