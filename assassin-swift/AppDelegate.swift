@@ -36,8 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // push notification
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
         let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
-        application.registerUserNotificationSettings(pushNotificationSettings)
-        application.registerForRemoteNotifications()
+        application.registerUserNotificationSettings(pushNotificationSettings)  // local notif
+        application.registerForRemoteNotifications()    // remote notif
         
         return true
     }

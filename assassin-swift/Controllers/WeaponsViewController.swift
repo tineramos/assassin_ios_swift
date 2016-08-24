@@ -45,6 +45,8 @@ class WeaponsViewController: BaseViewController {
     var poisonScene: PoisonScene!
     var bombScene: BombScene!
     
+    var distanceToTarget: Double = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -316,8 +318,8 @@ class WeaponsViewController: BaseViewController {
                     if iBeaconData.major == Constants.major && iBeaconData.minor == Constants.target {
                         print("TARGET: \(iBeaconData.minor) detected!!")
                         
-                        let distance = MathHelper.calculateDistance(Double(iBeaconData.rssi))
-                        print("distance: \(distance)")
+                        self.distanceToTarget = MathHelper.calculateDistance(Double(iBeaconData.rssi))
+                        print("distance: \(self.distanceToTarget) metres")
                         // TODO: do something when target is detected
                     }
                 }
@@ -361,7 +363,7 @@ class WeaponsViewController: BaseViewController {
         print("position in view: \(positionInView)")
         
         if currentWeapon == WeaponType.NerfGun {
-            
+            nerfGunScene.shootGolfBall()
         }
         
     }

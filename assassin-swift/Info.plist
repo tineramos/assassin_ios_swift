@@ -38,9 +38,10 @@
 	<string>Assassin would like to use your Location.</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>App downloads content in response to push notifications</string>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
-		<string>App downloads content in response to push notifications</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -10,6 +10,8 @@ import SceneKit
 
 class NerfGunScene: SCNScene {
 
+    var golfBulletNode: SCNNode!
+    
     func display() {
         createGolfBullet()
     }
@@ -21,14 +23,17 @@ class NerfGunScene: SCNScene {
         geometry.firstMaterial?.reflective.contents = "ball_texture.jpg"
         geometry.firstMaterial?.fresnelExponent = 1.3
         
-        let sphere = SCNNode(geometry: geometry)
-        sphere.position = SCNVector3(x: 0, y: 0, z: 0)
+        golfBulletNode = SCNNode(geometry: geometry)
+        golfBulletNode.position = SCNVector3(x: 0, y: 0, z: 0)
 //        sphere.physicsBody = SCNPhysicsBody.dynamicBody()
 //        sphere.physicsBody!.restitution = 0.9
         
-        rootNode.addChildNode(sphere)
+        rootNode.addChildNode(golfBulletNode)
         
-        
+    }
+    
+    func shootGolfBall() {
+        print("do shooting action")
     }
     
 

@@ -83,6 +83,8 @@
 		54B6B6CB1D599B85001E7804 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6B6CA1D599B85001E7804 /* Parser.swift */; };
 		54BDB1D21D6B4D3500665B30 /* DefencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */; };
 		54D062E51D6D122E00AA9B23 /* GasMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D062E41D6D122E00AA9B23 /* GasMaskView.swift */; };
+		54D062E71D6D67EB00AA9B23 /* InternalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D062E61D6D67EB00AA9B23 /* InternalNotification.swift */; };
+		54D062E91D6D688100AA9B23 /* InternalNotificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D062E81D6D688100AA9B23 /* InternalNotificationList.swift */; };
 		54D2D3041D541BA700546C46 /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3031D541BA700546C46 /* FXForms.m */; };
 		54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2D3061D541CD700546C46 /* RegistrationForm.swift */; };
 		54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D2D30C1D541F2F00546C46 /* Localizable.strings */; };
@@ -162,6 +164,8 @@
 		54B6B6CA1D599B85001E7804 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Helpers/Parser.swift; sourceTree = "<group>"; };
 		54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefencesViewController.swift; path = Controllers/Defences/DefencesViewController.swift; sourceTree = "<group>"; };
 		54D062E41D6D122E00AA9B23 /* GasMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GasMaskView.swift; path = Controllers/Defences/GasMaskView.swift; sourceTree = "<group>"; };
+		54D062E61D6D67EB00AA9B23 /* InternalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalNotification.swift; sourceTree = "<group>"; };
+		54D062E81D6D688100AA9B23 /* InternalNotificationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalNotificationList.swift; sourceTree = "<group>"; };
 		54D2D3021D541BA700546C46 /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
 		54D2D3031D541BA700546C46 /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
 		54D2D3061D541CD700546C46 /* RegistrationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
@@ -452,6 +456,8 @@
 			isa = PBXGroup;
 			children = (
 				54D2D3061D541CD700546C46 /* RegistrationForm.swift */,
+				54D062E61D6D67EB00AA9B23 /* InternalNotification.swift */,
+				54D062E81D6D688100AA9B23 /* InternalNotificationList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -510,7 +516,12 @@
 				TargetAttributes = {
 					546D7D4F1D53D26D0031FF90 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = P77FGAZQUC;
+						DevelopmentTeam = 3637HQU9Z5;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					549964E71D56F66100F574C4 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -631,6 +642,7 @@
 				549964DB1D56AC4700F574C4 /* DataManager.swift in Sources */,
 				54A4E02D1D6987BA00AD6612 /* BombScene.swift in Sources */,
 				5491E86B1D586D0500BA7E8D /* Winner.swift in Sources */,
+				54D062E91D6D688100AA9B23 /* InternalNotificationList.swift in Sources */,
 				5491E85F1D586D0500BA7E8D /* _User.swift in Sources */,
 				54FBDB6C1D6AABB1000912D3 /* PlaceOfInterest.swift in Sources */,
 				54D2D3041D541BA700546C46 /* FXForms.m in Sources */,
@@ -655,6 +667,7 @@
 				5491E85E1D586D0500BA7E8D /* _Target.swift in Sources */,
 				5491E85A1D586D0500BA7E8D /* _Player.swift in Sources */,
 				54BDB1D21D6B4D3500665B30 /* DefencesViewController.swift in Sources */,
+				54D062E71D6D67EB00AA9B23 /* InternalNotification.swift in Sources */,
 				5491E8691D586D0500BA7E8D /* User.swift in Sources */,
 				5491E8661D586D0500BA7E8D /* PlayerWeapons.swift in Sources */,
 				54A480041D6A154C00BD8A97 /* NerfGunScene.swift in Sources */,
@@ -733,7 +746,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Christine Ramos (RP43N2UGM4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christine Ramos (RP43N2UGM4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -756,6 +770,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "4dae5f6f-bb90-4c32-94dc-bf274796421e";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -795,6 +810,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -806,7 +822,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Christine Ramos (RP43N2UGM4)";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -818,8 +834,9 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tine.assassin-swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tine.assassin;
 				PRODUCT_NAME = AssassinSwift;
+				PROVISIONING_PROFILE = "4dae5f6f-bb90-4c32-94dc-bf274796421e";
 				SWIFT_OBJC_BRIDGING_HEADER = "assassin-swift/AssassinSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -831,7 +848,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -843,8 +860,9 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tine.assassin-swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tine.assassin;
 				PRODUCT_NAME = AssassinSwift;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "assassin-swift/AssassinSwift-Bridging-Header.h";
 			};
 			name = Release;
