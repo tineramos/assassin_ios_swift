@@ -354,4 +354,16 @@ class WeaponsViewController: BaseViewController {
             node.removeFromParentNode()
         }
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch: UITouch = touches.first! as UITouch
+        let positionInView = touch.locationInView(sceneView)
+        print("position in view: \(positionInView)")
+        
+        if currentWeapon == WeaponType.NerfGun {
+            
+        }
+        
+    }
+    
 }
