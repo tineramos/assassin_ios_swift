@@ -33,6 +33,9 @@ class WeaponsViewController: BaseViewController {
     var captureView: UIView!
     var captureLayer: AVCaptureVideoPreviewLayer!
     var cameraNode: SCNNode!
+    
+    var hasDetectedTarget: Bool = false
+    var isOnAttack: Bool = false
 
     lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
     
@@ -314,9 +317,15 @@ class WeaponsViewController: BaseViewController {
                 
                 for iBeaconData in devices {
                     if iBeaconData.major == Constants.major && iBeaconData.minor == Constants.target {
-                        print("TARGET: \(iBeaconData.minor) detected!!")
                         
-                        self.distanceToTarget = MathHelper.calculateDistance(Double(iBeaconData.rssi))
+                        if self.hasDetectedTarget == false {
+                            self.targetDetected()
+                        }
+                        
+                        if self.isOnAttack {
+                            self.distanceToTarget = MathHelper.calculateDistance(Double(iBeaconData.rssi))
+                        }
+                        
                         // print("distance: \(self.distanceToTarget) metres")
                         // TODO: do something when target is detected
                     }
@@ -327,6 +336,23 @@ class WeaponsViewController: BaseViewController {
             sensingKit.startContinuousSensingWithSensor(.iBeaconProximity)
             
         }
+    }
+    
+    func targetDetected() {
+        
+        let alertController = UIAlertController.init(title: "", message: "target.detected".localized, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Attack", style: .Default) { (action) in
+            print("weapons enabled!!")
+            self.isOnAttack = true
+        }
+        alertController.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "Later", style: .Destructive) { (action) in
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func stopCameraPreview() {

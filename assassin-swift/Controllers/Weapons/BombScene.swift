@@ -9,15 +9,7 @@
 import SceneKit
 
 class BombScene: SCNScene {
-    
-    override init() {
-        super.init()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+
     func display() {
         
         let geometry = SCNSphere(radius: 1.5)

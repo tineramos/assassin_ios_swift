@@ -6,9 +6,7 @@
   Copyright © 2016 Queen Mary University of London. All rights reserved.
 */
 
-/*
- Registration Fields
- */
+// MARK: - Registration Fields
 
 "registration.header.account" = "Account";
 "registration.account.field.email" = "email";
@@ -26,17 +24,25 @@
 "registration.gender.options.male" = "Male";
 "registration.gender.options.female" = "Female";
 
-/*
- Page Titles
- */
+// MARK: - Page Titles
 
 "page.title.games" = "Games";
 "page.title.profile" = "Profile";
 "page.title.about" = "About";
 
-#pragma mark - ERRORS
+// MARK: - ERRORS
 
 "registration.error.invalid.emailformat" = "Invalid email format.";
 "registration.error.password.notmatch" = "Password does not match.";
 "registration.error.string.isempty" = "can not be empty.";
 "registration.error.int.iszero" = "can not be zero.";
+
+// MARK: - Attack/Defence
+
+"attack.title" = "Attack";
+"defend.title" = "Put up defence";
+
+"under.attack" = "You are under attack. Put up a defence";
+
+"target.title" = "Target";
+"target.detected" = "Target detected!! Weapons will be activated";

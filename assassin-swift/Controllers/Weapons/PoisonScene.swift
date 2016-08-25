@@ -11,15 +11,7 @@ import SceneKit
 class PoisonScene: SCNScene {
 
     let sensingKit = WeaponsViewController().sensingKit
-    
-    override init() {
-        super.init()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+
     func display() {
         let geometry = SCNCylinder(radius: 1.3, height: 3.5)
         geometry.firstMaterial?.diffuse.contents = "poison-gas.jpg"
