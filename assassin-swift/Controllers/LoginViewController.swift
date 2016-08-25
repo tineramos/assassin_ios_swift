@@ -10,6 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    // Private Constants
+    struct Constants {
+        struct SegueIdentifier {
+            static let pushGameDetailSegue = "showMenuSegue"
+        }
+    }
+    
+    @IBOutlet weak var codeNameTextField: UITextField?
+    @IBOutlet weak var passwordTextField: UITextField?
+    
     @IBOutlet weak var loginButton: UIButton?
     @IBOutlet weak var signupButton: UIButton?
     
@@ -42,6 +52,26 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login() {
+        
+        let codeName = codeNameTextField?.text
+        let password = passwordTextField?.text
+        
+        if codeName?.characters.count > 0 && password?.characters.count > 0 {
+            DataManager.sharedManager.loginUser(codeName!, password: password!, successBlock: { (bool) -> (Void) in
+                if bool {
+                    self.performSegueWithIdentifier(Constants.SegueIdentifier.pushGameDetailSegue, sender: nil)
+                } 
+            }) { (errorString) -> (Void) in
+                print(errorString)
+            }
+        }
+        else {
+            let alertController = UIAlertController(title: "", message: "login.error.empty.credentials".localized, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Ok", style: .Destructive) { (action) in
+            }
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
         
     }
 

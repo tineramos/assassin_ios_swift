@@ -32,6 +32,8 @@
 
 // MARK: - ERRORS
 
+"login.error.empty.credentials" = "Login credentials can not be blank";
+
 "registration.error.invalid.emailformat" = "Invalid email format.";
 "registration.error.password.notmatch" = "Password does not match.";
 "registration.error.string.isempty" = "can not be empty.";
@@ -41,6 +43,8 @@
 
 "attack.title" = "Attack";
 "defend.title" = "Put up defence";
+
+"later.title" = "Later";
 
 "under.attack" = "You are under attack. Put up a defence";
 

@@ -28,13 +28,17 @@ struct Constants {
     static let kYes = "YES"
     static let kNo = "NO"
     
-    /*
-     iBeacon Constants
-     */
+    
+    // MARK: - iBeacon Constants
     
     static let kCalibratedPower = -58
     static let kRadNetworkConstantOne = 0.89976
     static let kRadNetworkConstantTwo = 7.7095
     static let kRadNetworkConstantThree = 0.111
+    
+    
+    // MARK: - Weapons
+    
+    static let nerfGunDamage = 10
     
 }

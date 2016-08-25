@@ -9,7 +9,7 @@
 import SceneKit
 
 class NerfGunScene: SCNScene {
-
+    
     var sphereGeometry: SCNSphere!
     var golfBulletNode: SCNNode!
     

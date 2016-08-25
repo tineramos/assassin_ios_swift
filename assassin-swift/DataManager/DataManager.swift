@@ -14,8 +14,8 @@ class DataManager: AFHTTPSessionManager {
     
     struct DataManagerConstants {
 //        let BASE_URL = "http://192.168.0.6:8000/api/v1/assassin/"
-//        let BASE_URL = "http://Tine.local:8000/api/v1/assassin/"
-        let BASE_URL = "http://assassin.app:8000/api/v1/assassin/"
+        let BASE_URL = "http://Tine.local:8000/api/v1/assassin/"
+//        let BASE_URL = "http://assassin.app:8000/api/v1/assassin/"
     }
     
     static let sharedInstance = DataManager(baseURL: NSURL(string: DataManagerConstants().BASE_URL))
@@ -39,6 +39,8 @@ class DataManager: AFHTTPSessionManager {
         super.init(coder: aDecoder)
     }
     
+    // MARK: - User methods
+    
     func signUp(params: NSDictionary, successBlock: VoidBlock, failureBlock: FailureBlock) {
         
         self.POST("user", parameters: params, progress: nil, success: { (task, response) in
@@ -55,7 +57,33 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
-    // MARK: Games methods
+    func loginUser(codeName: String, password: String, successBlock: BoolBlock, failureBlock: FailureBlock) {
+        
+        let params = [UserAttributes.code_name.rawValue: codeName,
+                      UserAttributes.password.rawValue: password]
+        
+        self.POST("user/login", parameters: params, progress: nil, success: { (task, response) in
+            
+            let dictionary = response as! NSDictionary
+            
+            if let user = dictionary["success"] as? NSDictionary {
+                CoreDataManager.sharedManager.setCurrentActiveUser(["user":user], userBlock: { (user) -> (Void) in
+                    successBlock(bool: true)
+                    }, failureBlock: { (errorString) -> (Void) in
+                        failureBlock(errorString: errorString)
+                })
+            }
+            else {
+                failureBlock(errorString: "User not found.")
+            }
+            
+            }) { (task, error) in
+                failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
+    // MARK: - Games methods
     
     func getGamesList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
@@ -155,7 +183,7 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
-    // MARK: -
+    // MARK: - Weapons
     
     func getWeaponsList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
@@ -171,6 +199,19 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
+    func updateWeapons(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
+        
+        self.PUT("/player/changeWeapons/" + String(playerId), parameters: ["weapons": params], success: { (task, response) in
+            // TODO: save list of weapons in core data bitch
+            successBlock()
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
+    // MARK: - Defences
+    
     func getDefencesList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
         self.GET("defences", parameters: nil, progress: nil, success: { (task, response) in
@@ -184,6 +225,19 @@ class DataManager: AFHTTPSessionManager {
         }
         
     }
+    
+    func updateDefences(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
+        
+        self.PUT("/player/changeDefences/" + String(playerId), parameters: ["defences": params], success: { (task, response) in
+            // TODO: save list of defences in core data bitch
+            successBlock()
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
+    // MARK: - Attack
     
     func attack(assassinId: Int, targetId: Int, gameId: Int, weaponId: Int, damage: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
         
@@ -201,6 +255,8 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
+    // MARK: - Defend
+    
     func putUpDefence(playerId: Int, defenceId: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
         
         let params: [String:Int] = [PlayerAttributes.player_id.rawValue: playerId, DefenceAttributes.defence_id.rawValue: defenceId]
@@ -209,28 +265,6 @@ class DataManager: AFHTTPSessionManager {
             //
             }) { (task, error) in
                 failureBlock(errorString: error.localizedDescription)
-        }
-        
-    }
-    
-    func updateWeapons(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
-       
-        self.PUT("/player/changeWeapons/" + String(playerId), parameters: ["weapons": params], success: { (task, response) in
-            // TODO: save list of defences in core data bitch
-            successBlock()
-            }) { (task, error) in
-                failureBlock(errorString: error.localizedDescription)
-        }
-        
-    }
-    
-    func updateDefences(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
-        
-        self.PUT("/player/changeDefences/" + String(playerId), parameters: ["defences": params], success: { (task, response) in
-            // TODO: save list of defences in core data bitch
-            successBlock()
-        }) { (task, error) in
-            failureBlock(errorString: error.localizedDescription)
         }
         
     }

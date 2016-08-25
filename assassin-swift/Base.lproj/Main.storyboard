@@ -1895,7 +1895,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="A9X-XP-Bmz" kind="show" id="Scz-Al-76G"/>
+                                    <action selector="login" destination="G6m-6K-n5F" eventType="touchUpInside" id="03p-nh-Q4R"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1X-So-2Qj">
@@ -1997,8 +1997,11 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="codeNameTextField" destination="4Dq-fX-m3h" id="K72-6n-laf"/>
                         <outlet property="loginButton" destination="xAP-Ae-lU8" id="7qy-BS-6b3"/>
+                        <outlet property="passwordTextField" destination="jwc-KZ-WYm" id="xrT-Kc-OkF"/>
                         <outlet property="signupButton" destination="N1X-So-2Qj" id="eYu-mv-Jch"/>
+                        <segue destination="A9X-XP-Bmz" kind="show" identifier="showMenuSegue" id="i1a-nr-u7K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OlY-BQ-mYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2061,6 +2064,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y35-0b-eKA"/>
-        <segue reference="Scz-Al-76G"/>
+        <segue reference="i1a-nr-u7K"/>
     </inferredMetricsTieBreakers>
 </document>

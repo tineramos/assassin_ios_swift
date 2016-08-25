@@ -114,13 +114,11 @@ class WeaponsViewController: BaseViewController {
     // MARK: - Camera Preview
     
     func setupCameraPreview() {
-        
         captureView = UIView.init(frame: weaponView!.frame)
         captureView.bounds = weaponView!.bounds
         captureView.tag = captureViewTag
         weaponView!.addSubview(captureView)
         weaponView!.sendSubviewToBack(captureView)
-        
     }
     
     func openCameraPreview() {
@@ -189,6 +187,7 @@ class WeaponsViewController: BaseViewController {
             knifeSimulation()
             break
         }
+        
     }
     
     // MARK: - NerfGun methods
@@ -215,8 +214,8 @@ class WeaponsViewController: BaseViewController {
     
     func poisonSimulation() {
         sceneView?.scene = poisonScene
-        poisonScene.display()
         poisonScene.rootNode.addChildNode(cameraNode)
+        poisonScene.display()
     }
     
     // MARK: - Lightsaber methods
@@ -233,9 +232,9 @@ class WeaponsViewController: BaseViewController {
         
         // when bomb is planted, send coordinates to game host
         
-        bombScene.display()
-        bombScene.rootNode.addChildNode(cameraNode)
         sceneView!.scene = bombScene
+        bombScene.rootNode.addChildNode(cameraNode)
+        bombScene.display()
     }
     
     // MARK: - Knife methods
@@ -331,18 +330,19 @@ class WeaponsViewController: BaseViewController {
             sensingKit.startContinuousSensingWithSensor(.iBeaconProximity)
             
         }
+        
     }
     
     func targetDetected() {
         
         let alertController = UIAlertController.init(title: "", message: "target.detected".localized, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "Attack", style: .Default) { (action) in
+        let okAction = UIAlertAction(title: "attack.title".localized, style: .Default) { (action) in
             print("weapons enabled!!")
             self.isOnAttack = true
         }
         alertController.addAction(okAction)
         
-        let cancelAction = UIAlertAction(title: "Later", style: .Destructive) { (action) in
+        let cancelAction = UIAlertAction(title: "later.title".localized, style: .Destructive) { (action) in
             self.navigationController?.popViewControllerAnimated(true)
         }
         alertController.addAction(cancelAction)
@@ -353,11 +353,9 @@ class WeaponsViewController: BaseViewController {
     // MARK: - Clean-up Methods
     
     func stopCameraPreview() {
-        
         captureSession.stopRunning()
         captureLayer.removeFromSuperlayer()
         captureLayer = nil
-        
     }
     
     func cleanWeaponView() {
@@ -388,7 +386,6 @@ class WeaponsViewController: BaseViewController {
         if currentWeapon == WeaponType.NerfGun {
             nerfGunScene.shootGolfBall()
         }
-        
     }
     
 }

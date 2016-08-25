@@ -27,21 +27,20 @@ class CoreDataManager: NSObject {
     
     func setCurrentActiveUser(params: NSDictionary, userBlock: UserBlock, failureBlock: FailureBlock) {
 
-        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in
-            
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
             let newUser = User.init(managedObjectContext: context)
             
             if newUser != nil {
                 newUser!.populateUserWithDictionary(params["user"] as! NSDictionary)
             }
-            
-        }) { (success, error) in
-            if success {
-                userBlock(user: User.getUser())
-            }
-            else {
-                failureBlock(errorString: "User not saved")
-            }
+        }
+        
+        let user = User.getUser()
+        if user != nil {
+            userBlock(user: user)
+        }
+        else {
+            failureBlock(errorString: "User not created or found.")
         }
         
     }
@@ -49,6 +48,15 @@ class CoreDataManager: NSObject {
     class func hasUserLoggedIn(completion: BoolBlock) {
         let currentUser = User.getUser()
         completion(bool: (currentUser != nil))
+    }
+    
+    func logout() {
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            let allEntries: NSArray = (NSManagedObjectModel.MR_defaultManagedObjectModel()?.entities)!
+            allEntries.enumerateObjectsUsingBlock({ (entityDescription, index, stop) in
+                NSClassFromString(entityDescription.managedObjectClassName)?.MR_truncateAll()
+            })
+        }
     }
     
     // MARK: Games method
