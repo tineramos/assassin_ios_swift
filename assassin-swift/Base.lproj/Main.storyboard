@@ -634,29 +634,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3tX-rY-0pp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="code_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geb-hm-3hG">
-                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="cmU-gV-WHy"/>
-                                            <constraint firstAttribute="width" constant="170" id="vxX-Tb-iaw"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="cmU-gV-WHy"/>
-                                                <exclude reference="vxX-Tb-iaw"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="cmU-gV-WHy"/>
-                                                <include reference="vxX-Tb-iaw"/>
-                                            </mask>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="killed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G06-iy-Pzj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eliminated" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G06-iy-Pzj">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="HUa-Ub-JZN"/>
@@ -694,6 +672,28 @@
                                             </mask>
                                         </variation>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="code_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geb-hm-3hG">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="cmU-gV-WHy"/>
+                                            <constraint firstAttribute="width" constant="130" id="vxX-Tb-iaw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="cmU-gV-WHy"/>
+                                                <exclude reference="vxX-Tb-iaw"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="cmU-gV-WHy"/>
+                                                <include reference="vxX-Tb-iaw"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -709,9 +709,9 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
-                                        <exclude reference="geb-hm-3hG"/>
                                         <exclude reference="G06-iy-Pzj"/>
                                         <exclude reference="ILz-dt-PID"/>
+                                        <exclude reference="geb-hm-3hG"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="dct-Ax-60S"/>
@@ -727,9 +727,9 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
-                                        <include reference="geb-hm-3hG"/>
                                         <include reference="G06-iy-Pzj"/>
                                         <include reference="ILz-dt-PID"/>
+                                        <include reference="geb-hm-3hG"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="dct-Ax-60S"/>
@@ -757,7 +757,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="code_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URa-O6-Yuk">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="170" id="L1E-nl-XhU"/>
+                                                        <constraint firstAttribute="width" constant="130" id="L1E-nl-XhU"/>
                                                         <constraint firstAttribute="height" constant="25" id="nU5-JT-CvB"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
@@ -1427,67 +1427,15 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nz-HH-fDu">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="HsI-du-7vM"/>
-                                    <constraint firstAttribute="height" constant="50" id="jep-6w-QZZ"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="weapon-icon"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="HsI-du-7vM"/>
-                                        <exclude reference="jep-6w-QZZ"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="HsI-du-7vM"/>
-                                        <include reference="jep-6w-QZZ"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="goJ-Ut-ZzT" kind="show" id="79U-ek-LGU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sn5-Eb-Fbu">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="BoU-c0-hZ6"/>
-                                    <constraint firstAttribute="width" constant="50" id="mkO-6r-lxj"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="defence-icon"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="BoU-c0-hZ6"/>
-                                        <exclude reference="mkO-6r-lxj"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="BoU-c0-hZ6"/>
-                                        <include reference="mkO-6r-lxj"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="U3b-aB-JHp" kind="show" id="mMQ-wx-iqr"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6nz-HH-fDu" firstAttribute="top" secondItem="33z-8u-pkn" secondAttribute="bottom" constant="8" id="10k-H7-Lx3"/>
                             <constraint firstItem="33z-8u-pkn" firstAttribute="leading" secondItem="QIw-dG-XqY" secondAttribute="leadingMargin" constant="30" id="3Jf-LE-0zn"/>
-                            <constraint firstItem="6nz-HH-fDu" firstAttribute="leading" secondItem="33z-8u-pkn" secondAttribute="leading" id="SDz-HI-Q2z"/>
                             <constraint firstItem="3EC-SC-vM9" firstAttribute="top" secondItem="fs1-xZ-L4o" secondAttribute="bottom" constant="8" id="UUf-LM-Yp7"/>
-                            <constraint firstItem="sn5-Eb-Fbu" firstAttribute="top" secondItem="33z-8u-pkn" secondAttribute="bottom" constant="8" id="WOV-Nf-hmX"/>
                             <constraint firstItem="33z-8u-pkn" firstAttribute="top" secondItem="3EC-SC-vM9" secondAttribute="bottom" constant="14" id="hqi-2j-pF6"/>
                             <constraint firstItem="3EC-SC-vM9" firstAttribute="centerX" secondItem="fs1-xZ-L4o" secondAttribute="centerX" id="kFt-5l-hDa"/>
                             <constraint firstItem="fs1-xZ-L4o" firstAttribute="top" secondItem="23i-wy-NoL" secondAttribute="bottom" constant="50" id="kRA-FG-oOM"/>
                             <constraint firstItem="fs1-xZ-L4o" firstAttribute="centerX" secondItem="QIw-dG-XqY" secondAttribute="centerX" id="mZn-DY-mhB"/>
-                            <constraint firstItem="sn5-Eb-Fbu" firstAttribute="trailing" secondItem="33z-8u-pkn" secondAttribute="trailing" id="uUd-87-fAu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="33z-8u-pkn" secondAttribute="trailing" constant="30" id="zXc-uU-SG3"/>
                         </constraints>
                         <variation key="default">
@@ -1495,15 +1443,9 @@
                                 <exclude reference="fs1-xZ-L4o"/>
                                 <exclude reference="3EC-SC-vM9"/>
                                 <exclude reference="33z-8u-pkn"/>
-                                <exclude reference="6nz-HH-fDu"/>
-                                <exclude reference="sn5-Eb-Fbu"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="mZn-DY-mhB"/>
-                                <exclude reference="10k-H7-Lx3"/>
-                                <exclude reference="SDz-HI-Q2z"/>
-                                <exclude reference="WOV-Nf-hmX"/>
-                                <exclude reference="uUd-87-fAu"/>
                                 <exclude reference="UUf-LM-Yp7"/>
                                 <exclude reference="kFt-5l-hDa"/>
                                 <exclude reference="3Jf-LE-0zn"/>
@@ -1516,15 +1458,9 @@
                                 <include reference="fs1-xZ-L4o"/>
                                 <include reference="3EC-SC-vM9"/>
                                 <include reference="33z-8u-pkn"/>
-                                <include reference="6nz-HH-fDu"/>
-                                <include reference="sn5-Eb-Fbu"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="mZn-DY-mhB"/>
-                                <include reference="10k-H7-Lx3"/>
-                                <include reference="SDz-HI-Q2z"/>
-                                <include reference="WOV-Nf-hmX"/>
-                                <include reference="uUd-87-fAu"/>
                                 <include reference="UUf-LM-Yp7"/>
                                 <include reference="kFt-5l-hDa"/>
                                 <include reference="3Jf-LE-0zn"/>
@@ -2051,12 +1987,10 @@
         <image name="defence-detector" width="256" height="256"/>
         <image name="defence-gas-mask" width="435" height="474"/>
         <image name="defence-hp-potion" width="512" height="512"/>
-        <image name="defence-icon" width="512" height="512"/>
         <image name="defence-shield" width="256" height="256"/>
         <image name="login-logo" width="192" height="192"/>
         <image name="ninja-app-black-cut" width="192" height="151"/>
         <image name="weapon-bomb" width="160" height="160"/>
-        <image name="weapon-icon" width="160" height="160"/>
         <image name="weapon-knife" width="160" height="160"/>
         <image name="weapon-lightsaber" width="160" height="160"/>
         <image name="weapon-nerf" width="160" height="160"/>
