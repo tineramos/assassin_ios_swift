@@ -79,7 +79,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        print("NOTIF RECEIVED: \(userInfo)")
+        if let alert = userInfo.first?.1["alert"] {
+            
+            if application.applicationState == .Active {
+                let alertController = UIAlertController(title: alert as? String, message: "", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Put up defence!", style: .Default) { (action) in
+                    // add action
+                    })
+                alertController.addAction(UIAlertAction(title: "Oh no.", style: .Destructive) { (action) in })
+                application.keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+            }
+
+        }
+        else {
+            print("ERROR: No message extracted!!")
+        }
     }
 
     // MARK: - Core Data stack

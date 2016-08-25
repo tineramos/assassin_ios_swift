@@ -25,7 +25,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     @IBOutlet weak var changeWeaponsButton: UIButton?
     @IBOutlet weak var changeDefencesButton: UIButton?
     
-    struct Constants {
+    struct GPConstants {
         struct CellIdentifier {
             static let playerCellId = "playerCellId"
         }
@@ -36,12 +36,14 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
             static let presentWeaponOptionSegue = "presentWeaponSegue"
             static let presentDefenceOptionSegue = "presentDefenceSegue"
         }
+        
+        static let kFooterHeight: CGFloat = 60.0
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView?.tableFooterView = UIView.init()
+        tableView?.tableFooterView = createTableFooterView()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -66,13 +68,13 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         let chooseWeaponVC = navigation.viewControllers.first as! ChooseWeaponDefenceViewController
         chooseWeaponVC.game = currentGame
         
-        if segue.identifier == Constants.SegueIdentifier.presentOptionSegue {
+        if segue.identifier == GPConstants.SegueIdentifier.presentOptionSegue {
             chooseWeaponVC.displayMode = DisplayMode.WeaponAndDefence
         }
-        else if segue.identifier == Constants.SegueIdentifier.presentWeaponOptionSegue {
+        else if segue.identifier == GPConstants.SegueIdentifier.presentWeaponOptionSegue {
             chooseWeaponVC.displayMode = DisplayMode.Weapon
         }
-        else if segue.identifier == Constants.SegueIdentifier.presentDefenceOptionSegue {
+        else if segue.identifier == GPConstants.SegueIdentifier.presentDefenceOptionSegue {
             chooseWeaponVC.displayMode = DisplayMode.Defence
         }
     
@@ -145,7 +147,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         
         if ((currentGame.availableSlotsInt() > 0)) {
             // display weapon and defence options
-            performSegueWithIdentifier(Constants.SegueIdentifier.presentOptionSegue, sender: nil)
+            performSegueWithIdentifier(GPConstants.SegueIdentifier.presentOptionSegue, sender: nil)
         }
         else {
             // display alert for max_players reached
@@ -164,17 +166,42 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellIdentifier.playerCellId, forIndexPath: indexPath) as! PlayersTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(GPConstants.CellIdentifier.playerCellId, forIndexPath: indexPath) as! PlayersTableViewCell
         let playerList = currentGame?.players.allObjects as! [Player]
         cell.configureCellWithPlayer(playerList[indexPath.row])
         return cell
     }
     
-    // MARK: - TableView Delegate Methods
+    func createTableFooterView() -> UIView {
+        
+        // show play button only if player has joined the game and game is ongoing
+        if currentGame.joinedValue() && GameStatus(rawValue: currentGame.game_status!) == .Ongoing {
+            let footerView = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(tableView!.frame), GPConstants.kFooterHeight))
+            footerView.backgroundColor = UIColor.clearColor()
+            
+            let scanForTarget = UIButton(type:.Custom)
+            scanForTarget.setTitle("Play", forState: .Normal)
+            scanForTarget.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            scanForTarget.titleLabel?.font = UIFont.init(name: Constants.fontCourierNewBold, size: 17.0)
+            scanForTarget.setBorderColor(UIColor.blackColor().CGColor)
+            scanForTarget.addTarget(self, action: #selector(playButtonWasPressed), forControlEvents: .TouchUpInside)
+            footerView.addSubview(scanForTarget)
+            
+            scanForTarget.snp_makeConstraints(closure: { (make) in
+                make.width.equalTo(200)
+                make.height.equalTo(40)
+                make.center.equalTo(footerView.snp_center)
+            })
+            
+            return footerView
+        }
+        else {
+            return UIView.init()
+        }
+    }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO: if game status is open/cancelled, no action
-        // TODO: push GameDetail if finished or ongoing
+    func playButtonWasPressed() {
+        
     }
 
 }
