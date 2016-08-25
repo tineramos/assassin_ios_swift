@@ -10,20 +10,30 @@ import SceneKit
 
 class NerfGunScene: SCNScene {
 
+    var sphereGeometry: SCNSphere!
     var golfBulletNode: SCNNode!
     
+    var numberOfShots: Int = 10
+    
     func display() {
-        createGolfBullet()
+        
+        // TODO: fetch number of shots left
+        
+        sphereGeometry = SCNSphere(radius: 1.5)
+        sphereGeometry.firstMaterial?.diffuse.contents = UIColor.whiteColor()
+        sphereGeometry.firstMaterial?.diffuse.wrapS = .ClampToBorder
+        sphereGeometry.firstMaterial?.reflective.contents = "ball_texture.jpg"
+        sphereGeometry.firstMaterial?.fresnelExponent = 1.5
+        
+        if numberOfShots > 0 {
+            createGolfBullet()
+        }
+
     }
 
     func createGolfBullet() {
-        let geometry = SCNSphere(radius: 1.5)
-        geometry.firstMaterial?.diffuse.contents = UIColor.whiteColor()
-        geometry.firstMaterial?.diffuse.wrapS = .ClampToBorder
-        geometry.firstMaterial?.reflective.contents = "ball_texture.jpg"
-        geometry.firstMaterial?.fresnelExponent = 1.5
         
-        golfBulletNode = SCNNode(geometry: geometry)
+        golfBulletNode = SCNNode(geometry: sphereGeometry)
         golfBulletNode.position = SCNVector3(x: 0, y: 0, z: 0)
         golfBulletNode.physicsBody?.mass = 0.04593 // set mass of the golf ball; nerf bullet is 0.0015kg
         golfBulletNode.physicsBody?.affectedByGravity = true
@@ -41,6 +51,8 @@ class NerfGunScene: SCNScene {
         golfBulletNode.physicsBody?.velocity = SCNVector3Make(0, 0, -64)
         golfBulletNode.physicsBody?.applyForce(force, atPosition: SCNVector3Zero, impulse: true)    // apply force on center of the node
     
+        numberOfShots -= 1
+        
     }
 
 }

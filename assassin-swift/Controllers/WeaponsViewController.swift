@@ -22,9 +22,6 @@ enum WeaponType: Int {
 }
 
 class WeaponsViewController: BaseViewController {
-
-    var weaponsList: [Weapon] = []
-    var currentWeapon: WeaponType?
         
     let captureSession = AVCaptureSession()
     let captureViewTag: Int = 1024
@@ -32,49 +29,34 @@ class WeaponsViewController: BaseViewController {
     var captureDevice: AVCaptureDevice?
     var captureView: UIView!
     var captureLayer: AVCaptureVideoPreviewLayer!
-    var cameraNode: SCNNode!
-    
-    var hasDetectedTarget: Bool = false
-    var isOnAttack: Bool = false
-
-    lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
     
     @IBOutlet weak var weaponView: UIView?
     @IBOutlet weak var sceneView: SCNView?
     
-    var lightsaberView: LightsaberView?
+    lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
+    lazy var nerfGunScene: NerfGunScene = NerfGunScene.init()
+    lazy var poisonScene: PoisonScene = PoisonScene.init()
+    lazy var bombScene: BombScene = BombScene.init()
     
-    var nerfGunScene: NerfGunScene!
-    var poisonScene: PoisonScene!
-    var bombScene: BombScene!
-    
+    // handles the broadcasted estimated distance between beacons
     var distanceToTarget: Double = 0.0
+    
+    var weaponsList: [Weapon] = []  // handles the list of official weapons
+    var currentWeapon: WeaponType?
+    
+    var hasDetectedTarget: Bool = false
+    var isOnAttack: Bool = false
+    
+    // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSceneView()
-        setupCamera()
-        
+        // invoke centralised method to register sensors simultaneously
         Helper.registerSensors()
-        
-        nerfGunScene = NerfGunScene.init() 
-        poisonScene = PoisonScene.init()
-        bombScene = BombScene.init()
-        
-//        TODO: uncomment when bluetooth is available
+
+        setupSceneView()
         openiBeaconProximity()
-    }
-    
-    func setupSceneView() {
-        sceneView?.autoenablesDefaultLighting = true
-        sceneView?.playing = true
-    }
-    
-    func setupCamera() {
-        cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y:5, z: 10)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -93,11 +75,24 @@ class WeaponsViewController: BaseViewController {
         super.viewWillDisappear(animated)
         Helper.stopSensors()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Lazy Initialisation
+    
+    lazy var cameraNode: SCNNode = {
+        let node = SCNNode()
+        node.camera = SCNCamera()
+        node.position = SCNVector3(x: 0, y:5, z: 10)
+        return node
+    }()
+    
+    lazy var lightsaberView: LightsaberView = {
+        LightsaberView.init(frame: self.weaponView!.frame)
+    }()
     
     /*
      // MARK: - Navigation
@@ -108,6 +103,13 @@ class WeaponsViewController: BaseViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    // MARK: - Scene Setup
+    
+    func setupSceneView() {
+        sceneView?.autoenablesDefaultLighting = true
+        sceneView?.playing = true
+    }
     
     // MARK: - Camera Preview
     
@@ -194,8 +196,6 @@ class WeaponsViewController: BaseViewController {
     func nerfGunSimulation() {
         
         let crosshairImageView = UIImageView.init(image: UIImage.init(named: "crosshair-nerfgun"))
-        crosshairImageView.frame = CGRectMake(0, 0, 50, 50)
-        crosshairImageView.center = (weaponView?.center)!
         weaponView!.addSubview(crosshairImageView)
         
         sceneView?.scene = nerfGunScene
@@ -203,11 +203,11 @@ class WeaponsViewController: BaseViewController {
         nerfGunScene.display()
         
         // warning: uncomment when running in the device
-//        crosshairImageView.snp_makeConstraints { (make) in
-//            make.width.equalTo(50.0)
-//            make.height.equalTo(50.0)
-//            make.center.equalTo((weaponView?.snp_center)!)
-//        }
+        crosshairImageView.snp_makeConstraints { (make) in
+            make.width.equalTo(50.0)
+            make.height.equalTo(50.0)
+            make.center.equalTo((weaponView?.snp_center)!)
+        }
 
     }
     
@@ -222,13 +222,8 @@ class WeaponsViewController: BaseViewController {
     // MARK: - Lightsaber methods
     
     func lightsaberSimulation() {
-        
-        if lightsaberView == nil {
-            lightsaberView = LightsaberView.init(frame: weaponView!.frame)
-        }
-        
-        weaponView!.addSubview(lightsaberView!)
-        lightsaberView?.start()
+        weaponView!.addSubview(lightsaberView)
+        lightsaberView.start()
     }
     
     // MARK: - Bomb methods
@@ -238,9 +233,9 @@ class WeaponsViewController: BaseViewController {
         
         // when bomb is planted, send coordinates to game host
         
-        bombScene?.display()
-        bombScene?.rootNode.addChildNode(cameraNode)
-        sceneView?.scene = bombScene
+        bombScene.display()
+        bombScene.rootNode.addChildNode(cameraNode)
+        sceneView!.scene = bombScene
     }
     
     // MARK: - Knife methods
@@ -284,7 +279,7 @@ class WeaponsViewController: BaseViewController {
         captureDevice?.unlockForConfiguration()
     }
     
-    // MARK: - Register Sensors
+    // MARK: - Location Sensor Handler
 
     func openLocation() {
         
@@ -304,7 +299,7 @@ class WeaponsViewController: BaseViewController {
         
     }
     
-    // MARK: - iBeacon
+    // MARK: - iBeacon Sensor Handler
     
     func openiBeaconProximity() {
         
@@ -316,6 +311,7 @@ class WeaponsViewController: BaseViewController {
                 let devices = proximityData.devices as! [SKiBeaconDeviceData]
                 
                 for iBeaconData in devices {
+                    
                     if iBeaconData.major == Constants.major && iBeaconData.minor == Constants.target {
                         
                         if self.hasDetectedTarget == false {
@@ -326,9 +322,8 @@ class WeaponsViewController: BaseViewController {
                             self.distanceToTarget = MathHelper.calculateDistance(Double(iBeaconData.rssi))
                         }
                         
-                        // print("distance: \(self.distanceToTarget) metres")
-                        // TODO: do something when target is detected
                     }
+                    
                 }
 
             })
@@ -355,6 +350,8 @@ class WeaponsViewController: BaseViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - Clean-up Methods
+    
     func stopCameraPreview() {
         
         captureSession.stopRunning()
@@ -380,6 +377,8 @@ class WeaponsViewController: BaseViewController {
             node.removeFromParentNode()
         }
     }
+    
+    // MARK: - Handle Tap Interaction
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch: UITouch = touches.first! as UITouch
