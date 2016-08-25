@@ -58,10 +58,13 @@ public class Game: _Game {
         let gameDictionary = dictionary["game"] as! NSDictionary
         let game = Game.populateGameWithDictionary(gameDictionary, inContext: context)
         
-        let playerArray = dictionary["players"] as! NSArray
-        Game.populateGameWithPlayers(playerArray, inGame: game, inContext: context)
-        
+        print("joined: \(dictionary[GameAttributes.joined.rawValue])")
         game.joined = dictionary[GameAttributes.joined.rawValue] as! Bool
+        
+        if let playerArray = dictionary["players"] as? NSArray {
+            Game.populateGameWithPlayers(playerArray, inGame: game, inContext: context)
+        }
+        
         return game
         
     }

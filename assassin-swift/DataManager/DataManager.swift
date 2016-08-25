@@ -102,9 +102,9 @@ class DataManager: AFHTTPSessionManager {
     
     func getGameDetailOfId(gameId: Int, successBlock: GameBlock, failureBlock: FailureBlock) {
         
-//        let user = User.getUser()!
-//        let path = String(format: "game/gameId/\(gameId)/userId/\(user.user_id)")
-        let path = String(format: "game/gameId/\(gameId)/userId/\(Constants.userId)")
+        let user = User.getUser()!
+        let path = String(format: "game/gameId/\(gameId)/userId/\(user.user_id!)")
+//        let path = String(format: "game/gameId/\(gameId)/userId/\(Constants.userId)")
         
         self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
             CoreDataManager.sharedManager.saveGameInfo(response as! NSDictionary, successBlock: { (game) -> (Void) in
