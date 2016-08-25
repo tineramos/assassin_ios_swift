@@ -106,7 +106,7 @@ class WeaponsViewController: BaseViewController {
      }
      */
     
-    // MARK: Camera Preview
+    // MARK: - Camera Preview
     
     func setupCameraPreview() {
         
@@ -149,7 +149,7 @@ class WeaponsViewController: BaseViewController {
         
     }
     
-    // MARK: Weapon Selection
+    // MARK: - Weapon Selection
     
     @IBAction func weaponButtonPressed(sender: UIButton) {
         
@@ -186,7 +186,7 @@ class WeaponsViewController: BaseViewController {
         }
     }
     
-    // MARK: NerfGun methods
+    // MARK: - NerfGun methods
     
     func nerfGunSimulation() {
         
@@ -195,9 +195,9 @@ class WeaponsViewController: BaseViewController {
         crosshairImageView.center = (weaponView?.center)!
         weaponView!.addSubview(crosshairImageView)
         
-        nerfGunScene.display()
-        nerfGunScene.rootNode.addChildNode(cameraNode)
         sceneView?.scene = nerfGunScene
+        nerfGunScene.rootNode.addChildNode(cameraNode)
+        nerfGunScene.display()
         
         // warning: uncomment when running in the device
 //        crosshairImageView.snp_makeConstraints { (make) in
@@ -205,20 +205,18 @@ class WeaponsViewController: BaseViewController {
 //            make.height.equalTo(50.0)
 //            make.center.equalTo((weaponView?.snp_center)!)
 //        }
-//
-//        let nerfBullet = SCNMaterial.init()
-//        nerfBullet.diffuse.contents = UIImage.init(named: "")
+
     }
     
-    // MARK: Poison methods
+    // MARK: - Poison methods
     
     func poisonSimulation() {
+        sceneView?.scene = poisonScene
         poisonScene.display()
         poisonScene.rootNode.addChildNode(cameraNode)
-        sceneView?.scene = poisonScene
     }
     
-    // MARK: Lightsaber methods
+    // MARK: - Lightsaber methods
     
     func lightsaberSimulation() {
         
@@ -230,7 +228,7 @@ class WeaponsViewController: BaseViewController {
         lightsaberView?.start()
     }
     
-    // MARK: Bomb methods
+    // MARK: - Bomb methods
     
     func bombSimulation() {
         openLocation()
@@ -242,12 +240,12 @@ class WeaponsViewController: BaseViewController {
         sceneView?.scene = bombScene
     }
     
-    // MARK: Knife methods
+    // MARK: - Knife methods
     func knifeSimulation() {
         
     }
     
-    // MARK: Flash
+    // MARK: - Flash
     
     func turnOnFlash() {
         
@@ -283,7 +281,7 @@ class WeaponsViewController: BaseViewController {
         captureDevice?.unlockForConfiguration()
     }
     
-    // MARK: Register Sensors
+    // MARK: - Register Sensors
 
     func openLocation() {
         
@@ -303,7 +301,7 @@ class WeaponsViewController: BaseViewController {
         
     }
     
-    // MARK: iBeacon
+    // MARK: - iBeacon
     
     func openiBeaconProximity() {
         
@@ -319,7 +317,7 @@ class WeaponsViewController: BaseViewController {
                         print("TARGET: \(iBeaconData.minor) detected!!")
                         
                         self.distanceToTarget = MathHelper.calculateDistance(Double(iBeaconData.rssi))
-                        print("distance: \(self.distanceToTarget) metres")
+                        // print("distance: \(self.distanceToTarget) metres")
                         // TODO: do something when target is detected
                     }
                 }

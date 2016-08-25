@@ -19,9 +19,9 @@ struct Constants {
     static let userId: Int = 3
     
     static let major: UInt16 = 4   // game id - open
-    static let minor: UInt16 = 5    // iPad - 4 else 5
+    static let minor: UInt16 = 4    // iPad - 4 || iPhone - 5
     
-    static let target: UInt16 = 4   // iPad - 5 else 4
+    static let target: UInt16 = 5   // iPad - 5 || iPhone - 4
     
     static let kTotalHP = 100
     

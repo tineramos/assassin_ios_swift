@@ -13,7 +13,9 @@ import AFNetworking
 class DataManager: AFHTTPSessionManager {
     
     struct DataManagerConstants {
-        let BASE_URL = "http://192.168.0.6:8000/api/v1/assassin/"
+//        let BASE_URL = "http://192.168.0.6:8000/api/v1/assassin/"
+//        let BASE_URL = "http://Tine.local:8000/api/v1/assassin/"
+        let BASE_URL = "http://assassin.app:8000/api/v1/assassin/"
     }
     
     static let sharedInstance = DataManager(baseURL: NSURL(string: DataManagerConstants().BASE_URL))
@@ -153,7 +155,7 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
-    // MARK:
+    // MARK: -
     
     func getWeaponsList(successBlock: ArrayBlock, failureBlock: FailureBlock) {
         
@@ -183,14 +185,30 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
+    func attack(assassinId: Int, targetId: Int, gameId: Int, weaponId: Int, damage: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
+        
+        let params: [String: Int] = [AssassinAttributes.player_id.rawValue: assassinId,
+                                     TargetAttributes.target_id.rawValue: targetId,
+                                     GameAttributes.game_id.rawValue: gameId,
+                                     WeaponAttributes.weapon_id.rawValue: weaponId,
+                                     "damage": damage]
+        
+        self.PUT("attack", parameters: params, success: { (task, response) in
+            //
+            }) { (task, error) in
+                failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
     func putUpDefence(playerId: Int, defenceId: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
         
         let params: [String:Int] = [PlayerAttributes.player_id.rawValue: playerId, DefenceAttributes.defence_id.rawValue: defenceId]
         
         self.PUT("defend", parameters: params, success: { (task, response) in
-            
-        }) { (task, error) in
-            failureBlock(errorString: error.localizedDescription)
+            //
+            }) { (task, error) in
+                failureBlock(errorString: error.localizedDescription)
         }
         
     }
@@ -200,8 +218,8 @@ class DataManager: AFHTTPSessionManager {
         self.PUT("/player/changeWeapons/" + String(playerId), parameters: ["weapons": params], success: { (task, response) in
             // TODO: save list of defences in core data bitch
             successBlock()
-        }) { (task, error) in
-            failureBlock(errorString: error.localizedDescription)
+            }) { (task, error) in
+                failureBlock(errorString: error.localizedDescription)
         }
         
     }

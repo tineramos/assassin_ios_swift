@@ -40,6 +40,18 @@ class Helper: NSObject {
         return audioPlayer
     }
     
+    class func getWeaponsViewController() -> WeaponsViewController? {
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let navigationController = appDelegate.window?.rootViewController as! UINavigationController
+        for viewController in navigationController.viewControllers {
+            if viewController.isKindOfClass(WeaponsViewController) {
+                return (viewController as! WeaponsViewController)
+            }
+        }
+        
+        return nil
+    }
+    
     class func isiPhone() -> Bool {
         return (UIDevice.currentDevice().userInterfaceIdiom == .Phone)
     }

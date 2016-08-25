@@ -47,6 +47,9 @@
                                                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="191" y="20" width="41" height="20"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -180,7 +183,7 @@
                             </button>
                             <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfA-3W-dtm">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" backgroundImage="weapon-tripwire"/>
+                                <state key="normal" backgroundImage="weapon-knife"/>
                                 <connections>
                                     <action selector="weaponButtonPressed:" destination="goJ-Ut-ZzT" eventType="touchUpInside" id="9n7-Yu-SJc"/>
                                 </connections>
@@ -2051,10 +2054,10 @@
         <image name="ninja-app-black-cut" width="192" height="151"/>
         <image name="weapon-bomb" width="160" height="160"/>
         <image name="weapon-icon" width="160" height="160"/>
+        <image name="weapon-knife" width="160" height="160"/>
         <image name="weapon-lightsaber" width="160" height="160"/>
         <image name="weapon-nerf" width="160" height="160"/>
         <image name="weapon-poison" width="160" height="160"/>
-        <image name="weapon-tripwire" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y35-0b-eKA"/>

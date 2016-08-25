@@ -12,8 +12,8 @@ import AVFoundation
 
 enum DefenceType: Int {
     case Armour     = 201
-    case GasMask    = 202
-    case Shield     = 203
+    case Shield    = 202
+    case GasMask     = 203
     case HPPotion   = 204
     case Detector   = 205   //pARk
 }
@@ -116,11 +116,11 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
         switch defenceTag {
         case .Armour:
             break
+        case .Shield:
+            break
         case .GasMask:
             sceneView?.hidden = false
             activateGasMask()
-            break
-        case .Shield:
             break
         case .Detector:
             getProximityCoordinates()
@@ -380,6 +380,7 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
                     
                     if bool {
                         // TODO: notify user that defence is activated
+                        self.cameraSession.stopRunning()
                     }
                     else {
                         // TODO: notify user -- defence activiation failed
@@ -389,8 +390,6 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
                         // TODO: notify user -- defence activiation failed
                         print("error: \(errorString)")
                 })
-                
-                self.cameraSession.stopRunning()
                 
             }
             

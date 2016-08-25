@@ -69,6 +69,7 @@
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="code_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="device_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -95,8 +96,8 @@
         <element name="PlayerWeapons" positionX="90" positionY="50" width="128" height="103"/>
         <element name="Profile" positionX="-279" positionY="-22" width="128" height="118"/>
         <element name="Target" positionX="90" positionY="-117" width="128" height="148"/>
-        <element name="User" positionX="-452" positionY="-54" width="128" height="178"/>
+        <element name="User" positionX="-452" positionY="-54" width="128" height="193"/>
         <element name="Weapon" positionX="268" positionY="47" width="128" height="88"/>
-        <element name="Winner" positionX="-270" positionY="-180" width="128" height="88"/>
+        <element name="Winner" positionX="-270" positionY="-162" width="128" height="88"/>
     </elements>
 </model>

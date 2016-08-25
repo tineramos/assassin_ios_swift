@@ -33,6 +33,6 @@ class BombScene: SCNScene {
 //        sphere.physicsBody!.restitution = 0.9
         
         rootNode.addChildNode(sphere)
-    }
+    } 
 
 }

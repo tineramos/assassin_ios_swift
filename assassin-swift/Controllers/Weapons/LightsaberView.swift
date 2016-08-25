@@ -79,6 +79,15 @@ class LightsaberView: UIView {
                     self.swingSound?.volume = 0.5
                     self.swingSound?.play()
                     
+                    let distance = Helper.getWeaponsViewController()?.distanceToTarget
+                    let distanceEstimate: Int = Int(floor(distance!))
+                    
+                    if distance > 0.0 && distanceEstimate <= 1 {
+                        // TODO: send attack
+                    }
+                    
+//                    print("DISTANCE FROM LIGHTSABER VIEW: \(damage)")
+                    
 //                    WeaponsViewController().performSelector(#selector(WeaponsViewController().turnOffFlash), withObject: nil, afterDelay: 0.5)
                     
                 }
