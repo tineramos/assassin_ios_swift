@@ -16,8 +16,13 @@ class PlayingFieldViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        Helper.registerSensors()
+//        registerSensorsForDetectingPlayMode()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        Helper.stopSensors()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,27 +30,6 @@ class PlayingFieldViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func openSensingKit() {
-        
-        if sensingKit.isSensorAvailable(SKSensorType.Battery) {
-            
-            print("i has battery sensor hehehe ")
-            
-            sensingKit.registerSensor(SKSensorType.Battery)
-            
-            if sensingKit.isSensorRegistered(SKSensorType.Battery) {
-                sensingKit.subscribeToSensor(SKSensorType.Battery, withHandler: { (sensorType, sensorData) in
-                    let batteryData = sensorData as! SKBatteryData
-                    print("Battery Level: \(batteryData.level)")
-                })
-                
-                sensingKit.startContinuousSensingWithSensor(SKSensorType.Battery)
-            }
-            
-        }
-        
-    }
-
     /*
     // MARK: - Navigation
 
@@ -55,5 +39,29 @@ class PlayingFieldViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func registerSensorsForDetectingPlayMode() {
+        
+        if sensingKit.isSensorRegistered(.DeviceMotion) {
+            
+            sensingKit.subscribeToSensor(.DeviceMotion, withHandler: { (sensorType, sensorData) in
+                
+//                let data = sensorData as! SKDeviceMotionData
+                
+//                let accelerationX = data.userAcceleration.x
+//                let accelerationY = data.userAcceleration.y
+//                let accelerationZ = data.userAcceleration.z
+//                
+//                let attitude = data.attitude.roll
+//                let attitude = data.attitude.pitch
+//                let attitude = data.attitude.yaw
+                
+                
+                
+            })
+            
+        }
+        
+    }
 
 }

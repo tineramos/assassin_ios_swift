@@ -35,6 +35,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
             static let presentOptionSegue = "presentWeaponDefenceSegue"
             static let presentWeaponOptionSegue = "presentWeaponSegue"
             static let presentDefenceOptionSegue = "presentDefenceSegue"
+            static let pushPlayingFieldSegue = "pushPlayingFieldSegue"
         }
         
         static let kFooterHeight: CGFloat = 60.0
@@ -201,7 +202,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     func playButtonWasPressed() {
-        
+        performSegueWithIdentifier(GPConstants.SegueIdentifier.pushPlayingFieldSegue, sender: nil)
     }
 
 }

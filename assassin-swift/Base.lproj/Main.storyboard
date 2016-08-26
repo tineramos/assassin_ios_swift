@@ -1047,11 +1047,29 @@
                         <outlet property="tableView" destination="2V3-m1-EJd" id="VN5-Rq-MrR"/>
                         <outlet property="tableViewHeader" destination="3tX-rY-0pp" id="HmJ-XH-Yha"/>
                         <segue destination="ICO-xh-1kz" kind="presentation" identifier="presentWeaponDefenceSegue" id="ulD-ox-ii3"/>
+                        <segue destination="7xW-Nc-0nl" kind="show" identifier="pushPlayingFieldSegue" id="055-iO-S1L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zI2-Jy-PAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3000" y="992.25"/>
+        </scene>
+        <!--Playing Field View Controller-->
+        <scene sceneID="4ml-eb-K1Z">
+            <objects>
+                <viewController storyboardIdentifier="PlayingFieldViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7xW-Nc-0nl" customClass="PlayingFieldViewController" customModule="AssassinSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1N0-fW-bJ8"/>
+                        <viewControllerLayoutGuide type="bottom" id="uqG-oF-jS0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="taC-i0-CbZ">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPR-K8-whb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3000" y="1677"/>
         </scene>
         <!--Choose Weapon Defence View Controller-->
         <scene sceneID="37B-WE-Zwl">
@@ -1427,12 +1445,64 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wta-6s-pXW">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Ab6-jp-c9r"/>
+                                    <constraint firstAttribute="height" constant="80" id="Y7z-VI-DXu"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="weapon-icon"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ab6-jp-c9r"/>
+                                        <exclude reference="Y7z-VI-DXu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Ab6-jp-c9r"/>
+                                        <include reference="Y7z-VI-DXu"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="goJ-Ut-ZzT" kind="show" id="F2r-VG-kcY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBi-Rv-Not">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="fgF-GP-Jgr"/>
+                                    <constraint firstAttribute="width" constant="80" id="yX5-ab-PKD"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="defence-icon"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fgF-GP-Jgr"/>
+                                        <exclude reference="yX5-ab-PKD"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="fgF-GP-Jgr"/>
+                                        <include reference="yX5-ab-PKD"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="U3b-aB-JHp" kind="show" id="0ZU-EZ-i8W"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="33z-8u-pkn" firstAttribute="leading" secondItem="QIw-dG-XqY" secondAttribute="leadingMargin" constant="30" id="3Jf-LE-0zn"/>
+                            <constraint firstItem="Wta-6s-pXW" firstAttribute="leading" secondItem="33z-8u-pkn" secondAttribute="leading" id="6fC-GU-SH6"/>
+                            <constraint firstItem="Wta-6s-pXW" firstAttribute="top" secondItem="33z-8u-pkn" secondAttribute="bottom" constant="8" id="EEt-Hp-kaN"/>
+                            <constraint firstItem="cBi-Rv-Not" firstAttribute="trailing" secondItem="33z-8u-pkn" secondAttribute="trailing" id="M4b-ac-ht8"/>
                             <constraint firstItem="3EC-SC-vM9" firstAttribute="top" secondItem="fs1-xZ-L4o" secondAttribute="bottom" constant="8" id="UUf-LM-Yp7"/>
                             <constraint firstItem="33z-8u-pkn" firstAttribute="top" secondItem="3EC-SC-vM9" secondAttribute="bottom" constant="14" id="hqi-2j-pF6"/>
+                            <constraint firstItem="cBi-Rv-Not" firstAttribute="top" secondItem="33z-8u-pkn" secondAttribute="bottom" constant="8" id="jS7-CU-gdJ"/>
                             <constraint firstItem="3EC-SC-vM9" firstAttribute="centerX" secondItem="fs1-xZ-L4o" secondAttribute="centerX" id="kFt-5l-hDa"/>
                             <constraint firstItem="fs1-xZ-L4o" firstAttribute="top" secondItem="23i-wy-NoL" secondAttribute="bottom" constant="50" id="kRA-FG-oOM"/>
                             <constraint firstItem="fs1-xZ-L4o" firstAttribute="centerX" secondItem="QIw-dG-XqY" secondAttribute="centerX" id="mZn-DY-mhB"/>
@@ -1443,6 +1513,8 @@
                                 <exclude reference="fs1-xZ-L4o"/>
                                 <exclude reference="3EC-SC-vM9"/>
                                 <exclude reference="33z-8u-pkn"/>
+                                <exclude reference="Wta-6s-pXW"/>
+                                <exclude reference="cBi-Rv-Not"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="mZn-DY-mhB"/>
@@ -1451,6 +1523,10 @@
                                 <exclude reference="3Jf-LE-0zn"/>
                                 <exclude reference="hqi-2j-pF6"/>
                                 <exclude reference="zXc-uU-SG3"/>
+                                <exclude reference="6fC-GU-SH6"/>
+                                <exclude reference="EEt-Hp-kaN"/>
+                                <exclude reference="M4b-ac-ht8"/>
+                                <exclude reference="jS7-CU-gdJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1458,6 +1534,8 @@
                                 <include reference="fs1-xZ-L4o"/>
                                 <include reference="3EC-SC-vM9"/>
                                 <include reference="33z-8u-pkn"/>
+                                <include reference="Wta-6s-pXW"/>
+                                <include reference="cBi-Rv-Not"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="mZn-DY-mhB"/>
@@ -1466,6 +1544,10 @@
                                 <include reference="3Jf-LE-0zn"/>
                                 <include reference="hqi-2j-pF6"/>
                                 <include reference="zXc-uU-SG3"/>
+                                <include reference="6fC-GU-SH6"/>
+                                <include reference="EEt-Hp-kaN"/>
+                                <include reference="M4b-ac-ht8"/>
+                                <include reference="jS7-CU-gdJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -1987,10 +2069,12 @@
         <image name="defence-detector" width="256" height="256"/>
         <image name="defence-gas-mask" width="435" height="474"/>
         <image name="defence-hp-potion" width="512" height="512"/>
+        <image name="defence-icon" width="512" height="512"/>
         <image name="defence-shield" width="256" height="256"/>
         <image name="login-logo" width="192" height="192"/>
         <image name="ninja-app-black-cut" width="192" height="151"/>
         <image name="weapon-bomb" width="160" height="160"/>
+        <image name="weapon-icon" width="160" height="160"/>
         <image name="weapon-knife" width="160" height="160"/>
         <image name="weapon-lightsaber" width="160" height="160"/>
         <image name="weapon-nerf" width="160" height="160"/>

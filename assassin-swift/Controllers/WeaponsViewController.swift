@@ -47,6 +47,9 @@ class WeaponsViewController: BaseViewController {
     var hasDetectedTarget: Bool = false
     var isOnAttack: Bool = false
     
+    var previousTouch: UITouch?
+    var currentTouch: UITouch?
+    
     // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
@@ -228,7 +231,7 @@ class WeaponsViewController: BaseViewController {
     // MARK: - Bomb methods
     
     func bombSimulation() {
-        openLocation()
+//        openLocation()
         
         // when bomb is planted, send coordinates to game host
         
@@ -250,9 +253,7 @@ class WeaponsViewController: BaseViewController {
             
             do {
                 try self.captureDevice?.lockForConfiguration()
-                
                 self.captureDevice?.flashMode = AVCaptureFlashMode.On
-                
                 self.captureDevice?.torchMode = AVCaptureTorchMode.On
                 try self.captureDevice?.setTorchModeOnWithLevel(1.0)
             } catch let error as NSError {
@@ -264,17 +265,8 @@ class WeaponsViewController: BaseViewController {
     }
     
     func turnOffFlash() {
-        
-        do {
-            self.captureDevice?.flashMode = AVCaptureFlashMode.Off
-            
-            self.captureDevice?.torchMode = AVCaptureTorchMode.Off
-            try self.captureDevice?.setTorchModeOnWithLevel(0.0)
-        } catch let error as NSError {
-            print("Error opening camera flash: \(error)")
-        }
-        
-        
+        self.captureDevice?.flashMode = AVCaptureFlashMode.Off
+        self.captureDevice?.torchMode = AVCaptureTorchMode.Off
         captureDevice?.unlockForConfiguration()
     }
     
@@ -289,6 +281,8 @@ class WeaponsViewController: BaseViewController {
                 let locationData = sensorData as! SKLocationData
                 print("latitude: \(locationData.location.coordinate.latitude)")
                 print("longitude: \(locationData.location.coordinate.longitude)")
+                
+                // get long lat and send to API
                 
             })
             
@@ -385,6 +379,12 @@ class WeaponsViewController: BaseViewController {
         
         if currentWeapon == WeaponType.NerfGun {
             nerfGunScene.shootGolfBall()
+        }
+        else if currentWeapon == WeaponType.Bomb {
+            bombScene.throwBomb()
+        }
+        else if currentWeapon == WeaponType.Poison {
+            poisonScene.throwPoison()
         }
     }
     

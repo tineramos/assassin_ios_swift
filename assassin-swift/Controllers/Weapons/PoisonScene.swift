@@ -12,17 +12,29 @@ class PoisonScene: SCNScene {
 
     let sensingKit = WeaponsViewController().sensingKit
 
+    var cylinderGeometry: SCNCylinder!
+    var poisonNode: SCNNode!
+    
     func display() {
-        let geometry = SCNCylinder(radius: 1.3, height: 3.5)
-        geometry.firstMaterial?.diffuse.contents = "poison-gas.jpg"
-        geometry.firstMaterial?.diffuse.mipFilter = .Linear
+        cylinderGeometry = SCNCylinder(radius: 1.3, height: 3.5)
+        cylinderGeometry.firstMaterial?.diffuse.contents = "poison-gas.jpg"
+        cylinderGeometry.firstMaterial?.diffuse.mipFilter = .Linear
         
-//        geometry.materials.first?.diffuse.contents = UIColor.greenColor()
+        poisonNode = SCNNode(geometry: cylinderGeometry)
+        poisonNode.position = SCNVector3(x: 0, y: 2.5, z: 0)
         
-        let cylinder = SCNNode(geometry: geometry)
-        cylinder.position = SCNVector3(x: 2, y: 2.5, z: 0)
+        rootNode.addChildNode(poisonNode)
+    }
+    
+    func throwPoison() {
         
-        rootNode.addChildNode(cylinder)
+        let randomZ: Float = 11.0
+        let force = SCNVector3(x: 0, y: randomZ , z: -randomZ)
+        poisonNode.physicsBody = SCNPhysicsBody(type: .Dynamic, shape: nil)
+        poisonNode.physicsBody?.velocity = SCNVector3Make(0, 0, -30)
+        poisonNode.physicsBody?.applyForce(force, atPosition: SCNVector3Zero, impulse: true)    // apply force on center of the node
+    
+        // TODO: update CoreData of poison quantity
     }
     
     func startSensorForPoison() {
@@ -40,8 +52,6 @@ class PoisonScene: SCNScene {
 //                let rotationRateX = data.rotationRate.x
 //                let rotationRateY = data.rotationRate.y
 //                let rotationRateZ = data.rotationRate.z
-                
-                
                 
             })
             

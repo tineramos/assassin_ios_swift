@@ -65,7 +65,9 @@ class LightsaberView: UIView {
                 
                 if accelerationX > 0.5 {
                     
-//                    WeaponsViewController().turnOnFlash()
+                    let weaponsVC = Helper.getWeaponsViewController()
+                    
+                    weaponsVC!.turnOnFlash()
                     
                     if accelerationZ < -0.5 {
                         print("LEFT swing")
@@ -79,7 +81,7 @@ class LightsaberView: UIView {
                     self.swingSound?.volume = 0.5
                     self.swingSound?.play()
                     
-                    let distance = Helper.getWeaponsViewController()?.distanceToTarget
+                    let distance = weaponsVC?.distanceToTarget
                     let distanceEstimate: Int = Int(floor(distance!))
                     
                     if distance > 0.0 && distanceEstimate <= 1 {
@@ -88,7 +90,7 @@ class LightsaberView: UIView {
                     
 //                    print("DISTANCE FROM LIGHTSABER VIEW: \(damage)")
                     
-//                    WeaponsViewController().performSelector(#selector(WeaponsViewController().turnOffFlash), withObject: nil, afterDelay: 0.5)
+                    weaponsVC!.performSelector(#selector(WeaponsViewController().turnOffFlash), withObject: nil, afterDelay: 0.5)
                     
                 }
                 
