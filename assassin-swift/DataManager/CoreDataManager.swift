@@ -136,10 +136,10 @@ class CoreDataManager: NSObject {
         successBlock(assassin: Assassin.MR_findFirstWithPredicate(predicate))
     }
     
-    func saveTargetDetails(targetDictionary: NSDictionary, successBlock: TargetBlock, failureBlock: FailureBlock) {
+    func saveTargetDetails(targetDictionary: NSDictionary, ofAssassin assassin: Assassin, successBlock: TargetBlock, failureBlock: FailureBlock) {
         
         NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
-            Target.populateTargetWithDictionary(targetDictionary, inContext: context)
+            Target.populateTargetWithDictionary(targetDictionary, ofAssassin: assassin, inContext: context)
         }
         
         let targetId = targetDictionary[TargetAttributes.target_id.rawValue] as! Int

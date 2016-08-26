@@ -19,6 +19,7 @@ class PlayingFieldViewController: BaseViewController {
     var playerId: Int = 0
     var gameId: Int = 0
     
+    var assassin: Assassin!
     var target: Target!
 
     override func viewDidLoad() {
@@ -71,6 +72,7 @@ class PlayingFieldViewController: BaseViewController {
         CoreDataManager.sharedManager.getAssassinObject(gameId, playerId: playerId, successBlock: { (assassin) -> (Void) in
             
             if (assassin != nil) {
+                self.assassin = assassin
                 self.getTargetDetails()
             }
             else {
@@ -84,7 +86,7 @@ class PlayingFieldViewController: BaseViewController {
     
     func getTargetDetails() {
         
-        DataManager.sharedManager.getTargetDetails(playerId, successBlock: { (target) -> (Void) in
+        DataManager.sharedManager.getTargetDetails(playerId, ofAssassin: self.assassin, successBlock: { (target) -> (Void) in
             
             if target != nil {
                 self.target = target!

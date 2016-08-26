@@ -158,23 +158,6 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
-    func getTargetDetails(playerId: Int, successBlock: TargetBlock, failureBlock: FailureBlock) {
-        
-        let user = User.MR_findFirst() as User!
-        
-        let path = String(format: "target/userId/\(user.user_id!)/playerId/\(playerId)")
-        self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
-            CoreDataManager.sharedManager.saveTargetDetails(response as! NSDictionary, successBlock: { (target) -> (Void) in
-                successBlock(target: target)
-            }, failureBlock: { (errorString) -> (Void) in
-                failureBlock(errorString: errorString)
-            })
-        }) { (task, error) in
-            failureBlock(errorString: error.localizedDescription)
-        }
-        
-    }
-    
     func leaveGame(playerId: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
         
         self.DELETE("game/leave/\(playerId)", parameters: nil, success: { (task, response) in
@@ -254,6 +237,45 @@ class DataManager: AFHTTPSessionManager {
         
     }
     
+    // MARK: - GAMEPLAY
+    
+    func getTargetDetails(playerId: Int, ofAssassin assassin: Assassin, successBlock: TargetBlock, failureBlock: FailureBlock) {
+        
+        let user = User.MR_findFirst() as User!
+        
+        let path = String(format: "gameplay/target/userId/\(user.user_id!)/playerId/\(playerId)")
+        self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
+            CoreDataManager.sharedManager.saveTargetDetails(response as! NSDictionary, ofAssassin: assassin, successBlock: { (target) -> (Void) in
+                successBlock(target: target)
+                }, failureBlock: { (errorString) -> (Void) in
+                    failureBlock(errorString: errorString)
+            })
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
+    func getWeapons(playerId: Int, successBlock: ArrayBlock, failureBlock: FailureBlock) {
+        let path = String(format: "gameplay/getweapons/\(playerId)")
+        
+        self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
+            //
+            }) { (task, error) in
+                failureBlock(errorString: error.localizedDescription)
+        }
+    }
+    
+    func getDefences(playerId: Int, successBlock: ArrayBlock, failureBlock: FailureBlock) {
+        let path = String(format: "gameplay/getdefences/\(playerId)")
+        
+        self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
+            //
+            }) { (task, error) in
+                failureBlock(errorString: error.localizedDescription)
+        }
+    }
+    
     // MARK: - Attack
     
     func attack(assassinId: Int, targetId: Int, gameId: Int, weaponId: Int, damage: Int, successBlock: BoolBlock, failureBlock: FailureBlock) {
@@ -264,7 +286,7 @@ class DataManager: AFHTTPSessionManager {
                                      WeaponAttributes.weapon_id.rawValue: weaponId,
                                      "damage": damage]
         
-        self.PUT("attack", parameters: params, success: { (task, response) in
+        self.PUT("gameplay/attack", parameters: params, success: { (task, response) in
             //
             }) { (task, error) in
                 failureBlock(errorString: error.localizedDescription)
@@ -278,7 +300,7 @@ class DataManager: AFHTTPSessionManager {
         
         let params: [String:Int] = [PlayerAttributes.player_id.rawValue: playerId, DefenceAttributes.defence_id.rawValue: defenceId]
         
-        self.PUT("defend", parameters: params, success: { (task, response) in
+        self.PUT("gameplay/defend", parameters: params, success: { (task, response) in
             //
             }) { (task, error) in
                 failureBlock(errorString: error.localizedDescription)

@@ -22,7 +22,7 @@ public class Target: _Target {
         }
     }
     
-    class func populateTargetWithDictionary(dictionary: NSDictionary, inContext context: NSManagedObjectContext) -> Target {
+    class func populateTargetWithDictionary(dictionary: NSDictionary, ofAssassin assassin: Assassin, inContext context: NSManagedObjectContext) -> Target {
         
         let targetId = dictionary[TargetAttributes.target_id.rawValue] as! Int
         let targetObject = getTargetWithId(targetId, inContext: context)
@@ -36,6 +36,9 @@ public class Target: _Target {
             targetObject.setValue(value, forKey: key)
             
         }
+        
+        // add target-assassin relationship
+        targetObject.setValue(assassin, forKey: TargetRelationships.assassin.rawValue)
         
         return targetObject
         
