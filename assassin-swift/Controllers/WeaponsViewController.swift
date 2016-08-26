@@ -302,21 +302,34 @@ class WeaponsViewController: BaseViewController {
                 let proximityData = sensorData as! SKProximityData
                 let devices = proximityData.devices as! [SKiBeaconDeviceData]
                 
-                for iBeaconData in devices {
-                    
-                    if iBeaconData.major == Constants.major && iBeaconData.minor == Constants.target {
-                        
-                        if self.hasDetectedTarget == false {
-                            self.targetDetected()
-                        }
-                        
-                        if self.isOnAttack {
-                            self.distanceToTarget = MathHelper.calculateDistance(Double(iBeaconData.rssi))
-                        }
-                        
+                // with the detected beacons, filter the desired device using target_id and game_id as minor and major values respectively //
+                let targetBeacon = devices.filter {
+                    ($0.major == Constants.major && $0.minor == Constants.target)
+                }
+                
+                if targetBeacon.count > 0 {
+                    if self.hasDetectedTarget == false {
+                        self.hasDetectedTarget = true
+                        self.targetDetected(self.hasDetectedTarget)
                     }
                     
+                    if self.isOnAttack && self.hasDetectedTarget {
+                        let beacon = targetBeacon.first!
+                        self.distanceToTarget = MathHelper.calculateDistance(Double(beacon.rssi))
+                    }
                 }
+                else {
+                    // if target was previously detected but went out of range,
+                    // set distanceToTarget = -1
+                    // set hasDetected property to false
+                    // and display alert that target can not be detected
+                    if self.hasDetectedTarget == true {
+                        self.distanceToTarget = -1
+                        self.hasDetectedTarget = false
+                        self.targetDetected(self.hasDetectedTarget)
+                    }
+                }
+                
 
             })
             
@@ -326,20 +339,33 @@ class WeaponsViewController: BaseViewController {
         
     }
     
-    func targetDetected() {
-        
+    func targetDetected(detected: Bool) {
+        if detected {
+            showTargetDetectedAlert()
+        }
+        else {
+            targetGoneAlert()
+        }
+    }
+    
+    func showTargetDetectedAlert() {
         let alertController = UIAlertController.init(title: "", message: "target.detected".localized, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "attack.title".localized, style: .Default) { (action) in
+        alertController.addAction(UIAlertAction(title: "attack.title".localized, style: .Default) { (action) in
             print("weapons enabled!!")
             self.isOnAttack = true
-        }
-        alertController.addAction(okAction)
-        
-        let cancelAction = UIAlertAction(title: "later.title".localized, style: .Destructive) { (action) in
+            })
+        alertController.addAction(UIAlertAction(title: "later.title".localized, style: .Destructive) { (action) in
             self.navigationController?.popViewControllerAnimated(true)
-        }
-        alertController.addAction(cancelAction)
-        
+            })
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func targetGoneAlert() {
+        let alertController = UIAlertController.init(title: "", message: "target.gone".localized, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Default) { (action) in
+            print("weapons disabled!!")
+            self.isOnAttack = false
+            })
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -386,5 +412,9 @@ class WeaponsViewController: BaseViewController {
             poisonScene.throwPoison()
         }
     }
+    
+    // MARK: - Attack Methods
+    
+    
     
 }

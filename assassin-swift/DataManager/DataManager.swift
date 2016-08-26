@@ -218,7 +218,7 @@ class DataManager: AFHTTPSessionManager {
     
     func updateWeapons(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
         
-        self.PUT("/player/changeWeapons/" + String(playerId), parameters: ["weapons": params], success: { (task, response) in
+        self.PUT("player/changeWeapons/" + String(playerId), parameters: ["weapons": params], success: { (task, response) in
             // TODO: save list of weapons in core data bitch
             successBlock()
         }) { (task, error) in
@@ -245,7 +245,7 @@ class DataManager: AFHTTPSessionManager {
     
     func updateDefences(playerId: Int, params: NSArray, successBlock: VoidBlock, failureBlock: FailureBlock) {
         
-        self.PUT("/player/changeDefences/" + String(playerId), parameters: ["defences": params], success: { (task, response) in
+        self.PUT("player/changeDefences/" + String(playerId), parameters: ["defences": params], success: { (task, response) in
             // TODO: save list of defences in core data bitch
             successBlock()
         }) { (task, error) in

@@ -46,7 +46,8 @@
 
 "later.title" = "Later";
 
-"under.attack" = "You are under attack. Put up a defence";
+"under.attack" = "You are under attack. Put up a defence.";
 
-"target.title" = "Target";
-"target.detected" = "Target detected!! Weapons will be activated";
+"target.title"      = "Target";
+"target.detected"   = "Target detected!! Weapons will be activated.";
+"target.gone"       = "Target gone!! Weapons will be deactiviated.";

@@ -107,7 +107,6 @@ class PlayingFieldViewController: BaseViewController {
             self.showTargetDetails()
             })
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Destructive) { (action) in })
-        
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -115,7 +114,6 @@ class PlayingFieldViewController: BaseViewController {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .Default) { (action) in })
         self.presentViewController(alertController, animated: true, completion: nil)
-        
     }
     
     func showTargetDetails() {
