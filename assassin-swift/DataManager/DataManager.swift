@@ -243,7 +243,7 @@ class DataManager: AFHTTPSessionManager {
         
         let user = User.MR_findFirst() as User!
         
-        let path = String(format: "gameplay/target/userId/\(user.user_id!)/playerId/\(playerId)")
+        let path = String(format: "target/userId/\(user.user_id!)/playerId/\(playerId)")
         self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
             CoreDataManager.sharedManager.saveTargetDetails(response as! NSDictionary, ofAssassin: assassin, successBlock: { (target) -> (Void) in
                 successBlock(target: target)
@@ -254,6 +254,22 @@ class DataManager: AFHTTPSessionManager {
             failureBlock(errorString: error.localizedDescription)
         }
         
+    }
+    
+    func getAmmoForGameOfPlayer(playerId: Int, successBlock: VoidBlock, failureBlock: FailureBlock) {
+        let path = String(format: "gameplay/getammo/\(playerId)")
+        
+        self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
+            
+            CoreDataManager.sharedManager.saveAmmoForGameOfPlayer(playerId, ammoDictionary: response as! NSDictionary, successBlock: { () -> (Void) in
+                successBlock()
+                }, failureBlock: { (errorString) -> (Void) in
+                    failureBlock(errorString: errorString)
+            })
+            
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
     }
     
     func getWeapons(playerId: Int, successBlock: ArrayBlock, failureBlock: FailureBlock) {

@@ -37,8 +37,10 @@ public class Target: _Target {
             
         }
         
-        // add target-assassin relationship
-        targetObject.setValue(assassin, forKey: TargetRelationships.assassin.rawValue)
+        // set the target for the assassin
+        let assassinObject = Assassin.MR_findFirstByAttribute(AssassinAttributes.player_id.rawValue,
+                                                              withValue: assassin.player_id!, inContext: context) as Assassin!
+        targetObject.setValue(assassinObject, forKey: TargetRelationships.assassin.rawValue)
         
         return targetObject
         

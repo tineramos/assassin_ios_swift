@@ -80,7 +80,7 @@ class PlayingFieldViewController: BaseViewController {
             }
             
         }) { (errorString) -> (Void) in
-            self.showAlertErrorWithMessage(errorString)
+            self.showAlertErrorWithMessage("GET ASSASSIN \(errorString)")
         }
     }
     
@@ -90,15 +90,28 @@ class PlayingFieldViewController: BaseViewController {
             
             if target != nil {
                 self.target = target!
-                self.showAlertToShowTargetDetails()
+                self.getAmmoList()
             }
             else {
                 self.showAlertErrorWithMessage("Target not found.")
             }
             
         }) { (errorString) -> (Void) in
-            self.showAlertErrorWithMessage(errorString)
+            self.showAlertErrorWithMessage("TARGET DETAILS \(errorString)")
         }
+    }
+    
+    func getAmmoList() {
+        
+        DataManager.sharedManager.getAmmoForGameOfPlayer(playerId, successBlock: { (Void) -> (Void) in
+            
+            self.showAlertToShowTargetDetails()
+            self.showWeaponsAndDefencesView()
+            
+            }) { (errorString) -> (Void) in
+                self.showAlertErrorWithMessage("AMMO LIST \(errorString)")
+        }
+        
     }
     
     // MARK: - Alert methods
@@ -118,6 +131,8 @@ class PlayingFieldViewController: BaseViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - View setup
+    
     func showTargetDetails() {
         view.addSubview(targetView)
         targetView.showTargetView(target)
@@ -127,6 +142,10 @@ class PlayingFieldViewController: BaseViewController {
             make.height.equalTo(210.0)
             make.center.equalTo(view.snp_center)
         }
+    }
+    
+    func showWeaponsAndDefencesView() {
+        
     }
     
     // MARK: - Sensors

@@ -115,7 +115,7 @@ class CoreDataManager: NSObject {
             player?.MR_deleteEntityInContext(context)
         }
         
-        let player = Player.MR_findByAttribute(PlayerAttributes.player_id.rawValue, withValue: playerId)
+        let player = Player.MR_findFirstByAttribute(PlayerAttributes.player_id.rawValue, withValue: playerId)
         if player == nil {
             successBlock(bool: true)
         }
@@ -137,13 +137,21 @@ class CoreDataManager: NSObject {
     }
     
     func saveTargetDetails(targetDictionary: NSDictionary, ofAssassin assassin: Assassin, successBlock: TargetBlock, failureBlock: FailureBlock) {
-        
         NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
             Target.populateTargetWithDictionary(targetDictionary, ofAssassin: assassin, inContext: context)
         }
         
         let targetId = targetDictionary[TargetAttributes.target_id.rawValue] as! Int
         successBlock(target: Target.MR_findFirstByAttribute(TargetAttributes.target_id.rawValue, withValue: targetId))
+    }
+    
+    func saveAmmoForGameOfPlayer(playerId: Int, ammoDictionary: NSDictionary, successBlock: VoidBlock, failureBlock: FailureBlock) {
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            // we assume that an assassin object was created previously during downloading target details
+            let assassin = Assassin.MR_findFirstByAttribute(AssassinAttributes.player_id.rawValue, withValue: playerId, inContext: context) as Assassin!
+            assassin.populateWithAmmoDictionary(ammoDictionary, inContext: context)
+        }
+        successBlock()
     }
     
     /*
