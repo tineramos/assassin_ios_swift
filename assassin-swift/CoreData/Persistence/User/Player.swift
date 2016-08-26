@@ -18,7 +18,7 @@ public class Player: _Player {
             return player
         }
         else {
-            return Player.init(managedObjectContext: context)!
+            return Player.insertPlayerObjectWithId(playerId, inContext: context)
         }
     }
     

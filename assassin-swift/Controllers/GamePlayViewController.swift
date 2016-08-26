@@ -8,6 +8,8 @@
 
 import UIKit
 
+import MagicalRecord
+
 class GamePlayViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     var currentGame: Game!
@@ -46,7 +48,7 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         
         tableView?.tableFooterView = createTableFooterView()
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         showNavigationBarWithBackButtonType(BackButton.Black, andTitle: "")
@@ -58,33 +60,44 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let navigation = segue.destinationViewController as! UINavigationController
-        let chooseWeaponVC = navigation.viewControllers.first as! ChooseWeaponDefenceViewController
-        chooseWeaponVC.game = currentGame
+        if segue.identifier == GPConstants.SegueIdentifier.pushPlayingFieldSegue {
+            let playFieldVC = segue.destinationViewController as! PlayingFieldViewController
+            playFieldVC.gameId = currentGame.game_id!.integerValue
+            playFieldVC.playerId = getUserPlayerId()
+        }
+        else {
+            
+            let navigation = segue.destinationViewController as! UINavigationController
+            let chooseWeaponVC = navigation.viewControllers.first as! ChooseWeaponDefenceViewController
+            chooseWeaponVC.game = currentGame
+            
+            if segue.identifier == GPConstants.SegueIdentifier.presentOptionSegue {
+                chooseWeaponVC.displayMode = DisplayMode.WeaponAndDefence
+            }
+            else if segue.identifier == GPConstants.SegueIdentifier.presentWeaponOptionSegue {
+                chooseWeaponVC.displayMode = DisplayMode.Weapon
+            }
+            else if segue.identifier == GPConstants.SegueIdentifier.presentDefenceOptionSegue {
+                chooseWeaponVC.displayMode = DisplayMode.Defence
+            }
+            
+        }
         
-        if segue.identifier == GPConstants.SegueIdentifier.presentOptionSegue {
-            chooseWeaponVC.displayMode = DisplayMode.WeaponAndDefence
-        }
-        else if segue.identifier == GPConstants.SegueIdentifier.presentWeaponOptionSegue {
-            chooseWeaponVC.displayMode = DisplayMode.Weapon
-        }
-        else if segue.identifier == GPConstants.SegueIdentifier.presentDefenceOptionSegue {
-            chooseWeaponVC.displayMode = DisplayMode.Defence
-        }
-    
     }
+    
+    // MARK: - View setup
     
     func setupViewForStatus() {
         
         let status = GameStatus(rawValue: currentGame.game_status!)!
-//        let isStatusOpen = (status == .Open)
+        //        let isStatusOpen = (status == .Open)
         
         switch status {
         case .Open:
@@ -97,11 +110,11 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
             leaveButton?.hidden = !currentGame.joinedValue()
             leaveButton?.setBorderColor(UIColor.blackColor().CGColor)
             
-//            changeWeaponsButton?.hidden = !currentGame.joinedValue
-//            changeWeaponsButton?.setBorderColor(UIColor.blackColor().CGColor)
-//            
-//            changeDefencesButton?.hidden = !currentGame.joinedValue
-//            changeDefencesButton?.setBorderColor(UIColor.blackColor().CGColor)
+            //            changeWeaponsButton?.hidden = !currentGame.joinedValue
+            //            changeWeaponsButton?.setBorderColor(UIColor.blackColor().CGColor)
+            //
+            //            changeDefencesButton?.hidden = !currentGame.joinedValue
+            //            changeDefencesButton?.setBorderColor(UIColor.blackColor().CGColor)
             
             break
         default:
@@ -119,6 +132,8 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
         }
         
     }
+    
+    // MARK: - Data methods
     
     func getGameDetails() {
         
@@ -142,6 +157,12 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
             print("ERROR: \(errorString)")
         }
         
+    }
+    
+    func getUserPlayerId() -> Int {
+        let user = User.MR_findFirst() as User!
+        let player = Player.MR_findFirstByAttribute(PlayerAttributes.player_code_name.rawValue, withValue: user!.code_name!)
+        return (player?.player_id?.integerValue)!
     }
     
     @IBAction func joinGameButtonPressed() {
@@ -204,5 +225,5 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     func playButtonWasPressed() {
         performSegueWithIdentifier(GPConstants.SegueIdentifier.pushPlayingFieldSegue, sender: nil)
     }
-
+    
 }

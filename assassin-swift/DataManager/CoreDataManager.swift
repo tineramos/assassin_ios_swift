@@ -23,7 +23,7 @@ class CoreDataManager: NSObject {
         super.init()
     }
     
-    // MARK: User methods
+    // MARK: - User methods
     
     func setCurrentActiveUser(params: NSDictionary, userBlock: UserBlock, failureBlock: FailureBlock) {
 
@@ -59,7 +59,7 @@ class CoreDataManager: NSObject {
         }
     }
     
-    // MARK: Games method
+    // MARK: - Games method
     
     func saveGamesList(gamesList: NSArray, successBlock: ArrayBlock, failureBlock: FailureBlock) {
         NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
@@ -81,7 +81,7 @@ class CoreDataManager: NSObject {
         successBlock(game: gameDetail)
     }
     
-    // MARK: Weapons and Defences
+    // MARK: - Weapons and Defences
     
     func saveWeaponsList(weaponsList: NSArray, successBlock: ArrayBlock, failureBlock: FailureBlock) {
         NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
@@ -122,6 +122,28 @@ class CoreDataManager: NSObject {
         else {
             failureBlock(errorString: "Player \(playerId) not removed in context")
         }
+    }
+    
+    // MARK: - Game Play 
+    
+    func getAssassinObject(gameId: Int, playerId: Int, successBlock: AssassinBlock, failureBlock: FailureBlock) {
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            Assassin.getAssassinWithPlayerId(playerId, withGameId: gameId, inContext: context)
+        }
+        
+        let predicate = NSPredicate(format: "(%K = %@) AND (%K = %@)",
+                                    argumentArray: [AssassinAttributes.player_id.rawValue, playerId, AssassinAttributes.game_id.rawValue, gameId])
+        successBlock(assassin: Assassin.MR_findFirstWithPredicate(predicate))
+    }
+    
+    func saveTargetDetails(targetDictionary: NSDictionary, successBlock: TargetBlock, failureBlock: FailureBlock) {
+        
+        NSManagedObjectContext.MR_defaultContext().MR_saveWithBlockAndWait { (context) in
+            Target.populateTargetWithDictionary(targetDictionary, inContext: context)
+        }
+        
+        let targetId = targetDictionary[TargetAttributes.target_id.rawValue] as! Int
+        successBlock(target: Target.MR_findFirstByAttribute(TargetAttributes.target_id.rawValue, withValue: targetId))
     }
     
     /*

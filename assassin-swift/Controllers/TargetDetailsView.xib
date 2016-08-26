@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TargetDetailsView" customModule="AssassinSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="210"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Codename" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pj5-Ho-b1J">
+                    <rect key="frame" x="8" y="55" width="110" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="AoS-r5-vs1"/>
+                        <constraint firstAttribute="width" constant="110" id="Obi-jI-xSf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vK-85-gKt">
+                    <rect key="frame" x="126" y="55" width="166" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuG-2S-Lg5">
+                    <rect key="frame" x="8" y="84" width="110" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyC-qM-8wp">
+                    <rect key="frame" x="126" y="84" width="166" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrK-V4-OWh">
+                    <rect key="frame" x="8" y="113" width="110" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDw-tg-wxG">
+                    <rect key="frame" x="126" y="114" width="166" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3e2-kF-PcF">
+                    <rect key="frame" x="8" y="143" width="110" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgM-8n-eY8">
+                    <rect key="frame" x="126" y="143" width="166" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khv-0L-bJi">
+                    <rect key="frame" x="8" y="172" width="110" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0M-oi-LG6">
+                    <rect key="frame" x="126" y="172" width="166" height="21"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ob-aV-mQ4">
+                    <rect key="frame" x="8" y="8" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="BCr-GM-BJW"/>
+                        <constraint firstAttribute="width" constant="35" id="HUa-su-LNo"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="icon-close"/>
+                    <connections>
+                        <action selector="hideInView" destination="iN0-l3-epB" eventType="touchUpInside" id="3kz-ik-bio"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpV-9n-ZCW">
+                    <rect key="frame" x="110" y="15" width="80" height="22"/>
+                    <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="22"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="oDw-tg-wxG" firstAttribute="leading" secondItem="2vK-85-gKt" secondAttribute="leading" id="3s2-oL-1vR"/>
+                <constraint firstItem="Khv-0L-bJi" firstAttribute="top" secondItem="3e2-kF-PcF" secondAttribute="bottom" constant="8" id="52j-3G-EAu"/>
+                <constraint firstItem="qrK-V4-OWh" firstAttribute="width" secondItem="XuG-2S-Lg5" secondAttribute="width" id="77Z-wf-x8r"/>
+                <constraint firstItem="Khv-0L-bJi" firstAttribute="height" secondItem="XuG-2S-Lg5" secondAttribute="height" id="7Io-KP-70y"/>
+                <constraint firstItem="oDw-tg-wxG" firstAttribute="height" secondItem="iyC-qM-8wp" secondAttribute="height" id="8P2-l6-bcY"/>
+                <constraint firstItem="7Ob-aV-mQ4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="8sV-Xn-78L"/>
+                <constraint firstItem="7Ob-aV-mQ4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="9JT-jA-UDg"/>
+                <constraint firstItem="qrK-V4-OWh" firstAttribute="top" secondItem="XuG-2S-Lg5" secondAttribute="bottom" constant="8" id="B02-ZZ-DL9"/>
+                <constraint firstItem="qrK-V4-OWh" firstAttribute="height" secondItem="XuG-2S-Lg5" secondAttribute="height" id="E4q-Fh-IDd"/>
+                <constraint firstItem="XuG-2S-Lg5" firstAttribute="width" secondItem="pj5-Ho-b1J" secondAttribute="width" id="EB3-Qe-SEx"/>
+                <constraint firstItem="l0M-oi-LG6" firstAttribute="leading" secondItem="cgM-8n-eY8" secondAttribute="leading" id="Exh-A0-h8H"/>
+                <constraint firstItem="XuG-2S-Lg5" firstAttribute="top" secondItem="pj5-Ho-b1J" secondAttribute="bottom" constant="8" id="Ghc-HN-NQo"/>
+                <constraint firstItem="oDw-tg-wxG" firstAttribute="top" secondItem="iyC-qM-8wp" secondAttribute="bottom" constant="9" id="IcY-sU-bl7"/>
+                <constraint firstItem="3e2-kF-PcF" firstAttribute="top" secondItem="qrK-V4-OWh" secondAttribute="bottom" constant="9" id="KUZ-QY-kdW"/>
+                <constraint firstItem="XuG-2S-Lg5" firstAttribute="height" secondItem="pj5-Ho-b1J" secondAttribute="height" id="KYr-g4-rzS"/>
+                <constraint firstItem="iyC-qM-8wp" firstAttribute="leading" secondItem="2vK-85-gKt" secondAttribute="leading" id="P4x-vs-6ih"/>
+                <constraint firstItem="bpV-9n-ZCW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Q3l-Vy-dN3"/>
+                <constraint firstItem="pj5-Ho-b1J" firstAttribute="top" secondItem="bpV-9n-ZCW" secondAttribute="bottom" constant="18" id="Tqw-U8-HdN"/>
+                <constraint firstItem="cgM-8n-eY8" firstAttribute="leading" secondItem="oDw-tg-wxG" secondAttribute="leading" id="VFo-oC-OXm"/>
+                <constraint firstItem="Khv-0L-bJi" firstAttribute="width" secondItem="XuG-2S-Lg5" secondAttribute="width" id="WKv-IA-Aim"/>
+                <constraint firstItem="iyC-qM-8wp" firstAttribute="trailing" secondItem="2vK-85-gKt" secondAttribute="trailing" id="WWR-YK-QtF"/>
+                <constraint firstItem="l0M-oi-LG6" firstAttribute="height" secondItem="cgM-8n-eY8" secondAttribute="height" id="WvD-RF-QLG"/>
+                <constraint firstItem="XuG-2S-Lg5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="bxe-Zz-OXU"/>
+                <constraint firstItem="qrK-V4-OWh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cQ4-kD-Req"/>
+                <constraint firstItem="bpV-9n-ZCW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fs8-9S-X8L"/>
+                <constraint firstAttribute="trailing" secondItem="2vK-85-gKt" secondAttribute="trailing" constant="8" id="k2l-PS-Aej"/>
+                <constraint firstItem="l0M-oi-LG6" firstAttribute="top" secondItem="cgM-8n-eY8" secondAttribute="bottom" constant="8" id="kRh-UH-JCN"/>
+                <constraint firstItem="pj5-Ho-b1J" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="lWh-cw-SDE"/>
+                <constraint firstItem="oDw-tg-wxG" firstAttribute="trailing" secondItem="iyC-qM-8wp" secondAttribute="trailing" id="m6p-hg-z3T"/>
+                <constraint firstItem="iyC-qM-8wp" firstAttribute="height" secondItem="2vK-85-gKt" secondAttribute="height" id="nGV-Gc-m31"/>
+                <constraint firstItem="3e2-kF-PcF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="ovJ-wG-Xdi"/>
+                <constraint firstItem="cgM-8n-eY8" firstAttribute="height" secondItem="oDw-tg-wxG" secondAttribute="height" id="q2f-uH-KFW"/>
+                <constraint firstItem="3e2-kF-PcF" firstAttribute="height" secondItem="XuG-2S-Lg5" secondAttribute="height" id="tKs-dw-HFj"/>
+                <constraint firstItem="2vK-85-gKt" firstAttribute="height" secondItem="pj5-Ho-b1J" secondAttribute="height" id="uRA-hJ-cjN"/>
+                <constraint firstItem="Khv-0L-bJi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="ubL-ZL-bay"/>
+                <constraint firstItem="3e2-kF-PcF" firstAttribute="width" secondItem="XuG-2S-Lg5" secondAttribute="width" id="v84-aD-9X1"/>
+                <constraint firstItem="iyC-qM-8wp" firstAttribute="top" secondItem="2vK-85-gKt" secondAttribute="bottom" constant="8" id="wum-gC-fra"/>
+                <constraint firstItem="2vK-85-gKt" firstAttribute="leading" secondItem="pj5-Ho-b1J" secondAttribute="trailing" constant="8" id="wwZ-ZU-N0B"/>
+                <constraint firstItem="2vK-85-gKt" firstAttribute="top" secondItem="pj5-Ho-b1J" secondAttribute="top" id="y0z-p3-Ljq"/>
+                <constraint firstItem="l0M-oi-LG6" firstAttribute="trailing" secondItem="cgM-8n-eY8" secondAttribute="trailing" id="z5s-q8-phz"/>
+                <constraint firstItem="cgM-8n-eY8" firstAttribute="top" secondItem="oDw-tg-wxG" secondAttribute="bottom" constant="8" id="zmu-yC-adw"/>
+                <constraint firstItem="cgM-8n-eY8" firstAttribute="trailing" secondItem="oDw-tg-wxG" secondAttribute="trailing" id="zpF-bq-vZM"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="ageLabel" destination="cgM-8n-eY8" id="HRJ-ff-Mic"/>
+                <outlet property="codeNameLabel" destination="2vK-85-gKt" id="EVj-hd-XQJ"/>
+                <outlet property="courseLabel" destination="iyC-qM-8wp" id="9e4-II-bMj"/>
+                <outlet property="genderLabel" destination="oDw-tg-wxG" id="JKZ-cT-dcn"/>
+                <outlet property="heightLabel" destination="l0M-oi-LG6" id="4Kh-fY-4eg"/>
+            </connections>
+            <point key="canvasLocation" x="351" y="160"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon-close" width="32" height="32"/>
+    </resources>
+</document>

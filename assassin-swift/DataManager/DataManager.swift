@@ -120,10 +120,10 @@ class DataManager: AFHTTPSessionManager {
     
     func joinGame(game: Game, weapons: NSArray, defences: NSArray, successBlock: BoolBlock, failureBlock: FailureBlock) {
         
-//        let user = User.MR_findFirst() as User!
+        let user = User.MR_findFirst() as User!
         
         let params = [GameAttributes.game_id.rawValue: game.game_id!,
-                      UserAttributes.user_id.rawValue: Constants.userId,
+                      UserAttributes.user_id.rawValue: user.user_id!,
                       AssassinRelationships.weapons.rawValue: weapons,
                       AssassinRelationships.defences.rawValue: defences] as NSDictionary
         
@@ -152,6 +152,23 @@ class DataManager: AFHTTPSessionManager {
                 failureBlock(errorString: "Can not join game.")
             }
             
+        }) { (task, error) in
+            failureBlock(errorString: error.localizedDescription)
+        }
+        
+    }
+    
+    func getTargetDetails(playerId: Int, successBlock: TargetBlock, failureBlock: FailureBlock) {
+        
+        let user = User.MR_findFirst() as User!
+        
+        let path = String(format: "target/userId/\(user.user_id!)/playerId/\(playerId)")
+        self.GET(path, parameters: nil, progress: nil, success: { (task, response) in
+            CoreDataManager.sharedManager.saveTargetDetails(response as! NSDictionary, successBlock: { (target) -> (Void) in
+                successBlock(target: target)
+            }, failureBlock: { (errorString) -> (Void) in
+                failureBlock(errorString: errorString)
+            })
         }) { (task, error) in
             failureBlock(errorString: error.localizedDescription)
         }

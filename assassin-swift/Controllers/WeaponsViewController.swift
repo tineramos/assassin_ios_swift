@@ -204,7 +204,6 @@ class WeaponsViewController: BaseViewController {
         nerfGunScene.rootNode.addChildNode(cameraNode)
         nerfGunScene.display()
         
-        // warning: uncomment when running in the device
         crosshairImageView.snp_makeConstraints { (make) in
             make.width.equalTo(50.0)
             make.height.equalTo(50.0)
