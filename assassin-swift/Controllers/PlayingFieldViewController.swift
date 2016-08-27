@@ -165,6 +165,11 @@ class PlayingFieldViewController: BaseViewController {
     // MARK: - View setup
     
     @IBAction func showTargetDetails() {
+        
+        if view.subviews.contains(targetView) {
+            return
+        }
+        
         view.addSubview(targetView)
         targetView.showTargetView(target)
         
