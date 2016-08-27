@@ -22,7 +22,6 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
 
     var defencesList: [Defence] = []
     var currentDefence: DefenceType?
-    
     let captureViewTag: Int = 1024
     
     var captureDevice: NSArray?
@@ -111,6 +110,7 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
         }
         
         resetCamera()
+        cleanWeaponView()
         currentDefence = defenceTag
         
         switch defenceTag {
@@ -137,7 +137,15 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
         cameraSession.removeInput(deviceInput)
         cameraSession.stopRunning()
         
-        sceneView?.hidden = false
+        sceneView?.hidden = true
+    }
+    
+    func cleanWeaponView() {
+        defenceView?.subviews.forEach({
+            if $0.tag != captureViewTag {
+                $0.removeFromSuperview()
+            }
+        })
     }
     
     // MARK: Camera Preview
