@@ -159,28 +159,28 @@
                         <subviews>
                             <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6s-YP-ikG">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" backgroundImage="weapon-poison"/>
+                                <state key="normal" backgroundImage="weapon-2"/>
                                 <connections>
                                     <action selector="weaponButtonPressed:" destination="goJ-Ut-ZzT" eventType="touchUpInside" id="cL4-SE-My1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLs-cu-2vi">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" backgroundImage="weapon-lightsaber"/>
+                                <state key="normal" backgroundImage="weapon-3"/>
                                 <connections>
                                     <action selector="weaponButtonPressed:" destination="goJ-Ut-ZzT" eventType="touchUpInside" id="9wk-h8-F5Y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUT-27-4qI">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" backgroundImage="weapon-bomb"/>
+                                <state key="normal" backgroundImage="weapon-4"/>
                                 <connections>
                                     <action selector="weaponButtonPressed:" destination="goJ-Ut-ZzT" eventType="touchUpInside" id="OPl-1p-Rda"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfA-3W-dtm">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" backgroundImage="weapon-knife"/>
+                                <state key="normal" backgroundImage="weapon-5"/>
                                 <connections>
                                     <action selector="weaponButtonPressed:" destination="goJ-Ut-ZzT" eventType="touchUpInside" id="9n7-Yu-SJc"/>
                                 </connections>
@@ -195,7 +195,7 @@
                             </sceneKitView>
                             <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t25-p6-X3r">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" backgroundImage="weapon-nerf"/>
+                                <state key="normal" backgroundImage="weapon-1"/>
                                 <connections>
                                     <action selector="weaponButtonPressed:" destination="goJ-Ut-ZzT" eventType="touchUpInside" id="0rv-5m-Mt8"/>
                                 </connections>
@@ -349,35 +349,35 @@
                                 <subviews>
                                     <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5b-Ku-QHf">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" backgroundImage="defence-armour"/>
+                                        <state key="normal" backgroundImage="defence-1"/>
                                         <connections>
                                             <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="vQH-7N-91m"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiz-ac-AbY">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" backgroundImage="defence-gas-mask"/>
+                                        <state key="normal" backgroundImage="defence-2"/>
                                         <connections>
                                             <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="Mj0-bd-IQT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqd-2p-lPt">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" backgroundImage="defence-shield"/>
+                                        <state key="normal" backgroundImage="defence-3"/>
                                         <connections>
                                             <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="vnj-Fg-ENp"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jn-Cn-pyi">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" backgroundImage="defence-hp-potion"/>
+                                        <state key="normal" backgroundImage="defence-4"/>
                                         <connections>
                                             <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="gcJ-BQ-eiD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="205" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9Q-gc-xVP">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" backgroundImage="defence-detector"/>
+                                        <state key="normal" backgroundImage="defence-5"/>
                                         <connections>
                                             <action selector="defenceButtonPressed:" destination="U3b-aB-JHp" eventType="touchUpInside" id="5Kp-XD-d0U"/>
                                         </connections>
@@ -2276,21 +2276,21 @@
         </scene>
     </scenes>
     <resources>
-        <image name="defence-armour" width="512" height="512"/>
-        <image name="defence-detector" width="256" height="256"/>
-        <image name="defence-gas-mask" width="435" height="474"/>
-        <image name="defence-hp-potion" width="512" height="512"/>
+        <image name="defence-1" width="512" height="512"/>
+        <image name="defence-2" width="256" height="256"/>
+        <image name="defence-3" width="435" height="474"/>
+        <image name="defence-4" width="512" height="512"/>
+        <image name="defence-5" width="256" height="256"/>
         <image name="defence-icon" width="512" height="512"/>
-        <image name="defence-shield" width="256" height="256"/>
         <image name="login-logo" width="192" height="192"/>
         <image name="ninja-app-black-cut" width="192" height="151"/>
         <image name="target-person" width="256" height="256"/>
-        <image name="weapon-bomb" width="160" height="160"/>
+        <image name="weapon-1" width="160" height="160"/>
+        <image name="weapon-2" width="160" height="160"/>
+        <image name="weapon-3" width="160" height="160"/>
+        <image name="weapon-4" width="160" height="160"/>
+        <image name="weapon-5" width="160" height="160"/>
         <image name="weapon-icon" width="160" height="160"/>
-        <image name="weapon-knife" width="160" height="160"/>
-        <image name="weapon-lightsaber" width="160" height="160"/>
-        <image name="weapon-nerf" width="160" height="160"/>
-        <image name="weapon-poison" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y35-0b-eKA"/>
