@@ -30,7 +30,6 @@
 		545EC8481D631B490045E067 /* saber-on.wav in Resources */ = {isa = PBXBuildFile; fileRef = 545EC8461D631B490045E067 /* saber-on.wav */; };
 		545EC84A1D6322600045E067 /* LightsaberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EC8491D6322600045E067 /* LightsaberView.swift */; };
 		546D7D541D53D26D0031FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546D7D531D53D26D0031FF90 /* AppDelegate.swift */; };
-		546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D591D53D26E0031FF90 /* Main.storyboard */; };
 		546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5C1D53D26E0031FF90 /* Assets.xcassets */; };
 		546D7D601D53D26E0031FF90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546D7D5E1D53D26E0031FF90 /* LaunchScreen.storyboard */; };
 		546D7D6A1D53D2CF0031FF90 /* SensingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546D7D691D53D2CF0031FF90 /* SensingKit.framework */; };
@@ -93,6 +92,7 @@
 		54D76F311D6C985B00CE34A2 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D76F301D6C985A00CE34A2 /* MathHelper.swift */; };
 		54DE1D541D700C400077105F /* TargetDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE1D531D700C400077105F /* TargetDetailsView.swift */; };
 		54DE1D561D700C520077105F /* TargetDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54DE1D551D700C520077105F /* TargetDetailsView.xib */; };
+		54E1BF021D71266C00AA39B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E1BF011D71266C00AA39B4 /* Main.storyboard */; };
 		54E508E91D5DB91A006005B5 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E508E81D5DB91A006005B5 /* Motion.swift */; };
 		54FBDB6A1D6A96D6000912D3 /* ProximityDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */; };
 		54FBDB6C1D6AABB1000912D3 /* PlaceOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */; };
@@ -111,7 +111,6 @@
 		545EC8491D6322600045E067 /* LightsaberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightsaberView.swift; path = Controllers/Weapons/LightsaberView.swift; sourceTree = "<group>"; };
 		546D7D501D53D26D0031FF90 /* AssassinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssassinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546D7D531D53D26D0031FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		546D7D5A1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		546D7D5C1D53D26E0031FF90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		546D7D5F1D53D26E0031FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		546D7D611D53D26E0031FF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,6 +176,7 @@
 		54D76F301D6C985A00CE34A2 /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathHelper.swift; path = Helpers/MathHelper.swift; sourceTree = "<group>"; };
 		54DE1D531D700C400077105F /* TargetDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TargetDetailsView.swift; path = Controllers/TargetDetailsView.swift; sourceTree = "<group>"; };
 		54DE1D551D700C520077105F /* TargetDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TargetDetailsView.xib; path = Controllers/TargetDetailsView.xib; sourceTree = "<group>"; };
+		54E1BF011D71266C00AA39B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		54E508E81D5DB91A006005B5 /* Motion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Motion.swift; path = Helpers/Motion.swift; sourceTree = "<group>"; };
 		54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProximityDetectorView.swift; path = Controllers/Defences/ProximityDetectorView.swift; sourceTree = "<group>"; };
 		54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceOfInterest.swift; path = Controllers/Defences/PlaceOfInterest.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				546D7D531D53D26D0031FF90 /* AppDelegate.swift */,
-				546D7D591D53D26E0031FF90 /* Main.storyboard */,
+				54E1BF011D71266C00AA39B4 /* Main.storyboard */,
 				546D7D721D53FD580031FF90 /* Controllers */,
 				549964DE1D56AC6000F574C4 /* Data Managers */,
 				549964F81D56F7AE00F574C4 /* CoreData */,
@@ -560,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54D2D30A1D541F2F00546C46 /* Localizable.strings in Resources */,
+				54E1BF021D71266C00AA39B4 /* Main.storyboard in Resources */,
 				547BBD701D541222004D171B /* Podfile in Resources */,
 				546D7D601D53D26E0031FF90 /* LaunchScreen.storyboard in Resources */,
 				546D7D5D1D53D26E0031FF90 /* Assets.xcassets in Resources */,
@@ -568,7 +569,6 @@
 				54D2D3131D54290700546C46 /* RegisterButtonCell.xib in Resources */,
 				545EC8481D631B490045E067 /* saber-on.wav in Resources */,
 				545EC8471D631B490045E067 /* saber-off.wav in Resources */,
-				546D7D5B1D53D26E0031FF90 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,14 +709,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		546D7D591D53D26E0031FF90 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				546D7D5A1D53D26E0031FF90 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		546D7D5E1D53D26E0031FF90 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

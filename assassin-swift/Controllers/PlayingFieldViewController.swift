@@ -12,9 +12,9 @@ import SceneKit
 
 import SnapKit
 
-enum PlayMode {
-    case Attack
-    case Defend
+enum PlayMode : Int {
+    case Attack = 0
+    case Defend = 1
 }
 
 class PlayingFieldViewController: BaseViewController {
@@ -27,7 +27,7 @@ class PlayingFieldViewController: BaseViewController {
     var assassin: Assassin!
     var target: Target!
     
-    var playMode: PlayMode = .Attack
+    var playMode: PlayMode?
     var weaponsList: [PlayerWeapons] = []
     var defenceList: [PlayerDefences] = []
     
@@ -182,8 +182,6 @@ class PlayingFieldViewController: BaseViewController {
     
     func showWeaponsAndDefencesView() {
         
-        print("PLAYER DEFENCE")
-        
         weaponsList = self.assassin.weapons.allObjects as! [PlayerWeapons]
         defenceList = self.assassin.defences.allObjects as! [PlayerDefences]
         
@@ -200,13 +198,40 @@ class PlayingFieldViewController: BaseViewController {
         
         switch mode {
         case .Attack:
-            
+            switchToAttack()
             break
         case .Defend:
-            
+            switchToDefence()
             break
         }
         
+    }
+    
+    func switchToAttack() {
+        
+        for (index, button) in buttonArray.enumerate() {
+            let playerWeapon = weaponsList[index]
+            let imageName = String("weapon-\(playerWeapon.weapon!.weapon_id!)")
+            let image = UIImage.init(named: imageName)
+            button.setBackgroundImage(image, forState: .Normal)
+        }
+        
+    }
+    
+    func switchToDefence() {
+        
+        for (index, button) in buttonArray.enumerate() {
+            let playerDefence = defenceList[index]
+            let imageName = String("defence-\(playerDefence.defence!.defence_id!)")
+            let image = UIImage.init(named: imageName)
+            button.setBackgroundImage(image, forState: .Normal)
+        }
+
+    }
+    
+    @IBAction func segmentedControlValueChanged(segmentedControl: UISegmentedControl) {
+        let value = segmentedControl.selectedSegmentIndex
+        setPlayMode(PlayMode(rawValue: value)!)
     }
     
     // MARK: - Sensors
