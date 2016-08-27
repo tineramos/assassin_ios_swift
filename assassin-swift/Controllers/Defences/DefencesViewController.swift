@@ -109,9 +109,13 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
             return
         }
         
+        currentDefence = defenceTag
+        
         resetCamera()
         cleanWeaponView()
-        currentDefence = defenceTag
+        cleanScene()
+        
+        sceneView?.hidden = true
         
         switch defenceTag {
         case .Armour:
@@ -136,8 +140,6 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
         captureLayer?.removeFromSuperlayer()
         cameraSession.removeInput(deviceInput)
         cameraSession.stopRunning()
-        
-        sceneView?.hidden = true
     }
     
     func cleanWeaponView() {
@@ -146,6 +148,16 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
                 $0.removeFromSuperview()
             }
         })
+    }
+    
+    func cleanScene() {
+        if sceneView?.scene == nil {
+            return
+        }
+        
+        for node in (sceneView?.scene?.rootNode.childNodes)! {
+            node.removeFromParentNode()
+        }
     }
     
     // MARK: Camera Preview
@@ -227,7 +239,7 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
                     self.drinkingMotionInterrupted()
                 }
                 
-                print("start")
+//                print("start")
             })
             
             sensingKit.startContinuousSensingWithSensor(.DeviceMotion)
@@ -241,7 +253,13 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
         hasDetectedPotion = false
         sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
         
-        analyseCollectedDataIfDrinkMotionIsDetected()
+        if analyseCollectedDataIfDrinkMotionIsDetected() {
+            print("drinking motion!!")
+        }
+        else {
+            print("nope!!")
+        }
+        
     }
     
     func analyseCollectedDataIfDrinkMotionIsDetected() -> Bool {
