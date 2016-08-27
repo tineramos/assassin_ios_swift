@@ -1068,15 +1068,15 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TlX-gr-Ap4">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-mY-Z6b">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Button 1"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIf-sU-UDp">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Button 2"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-mY-Z6b">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Button 3"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1089,17 +1089,17 @@
                                     <constraint firstItem="Mvc-mY-Z6b" firstAttribute="top" secondItem="vuJ-0H-FML" secondAttribute="top" id="Pdx-tZ-Z82"/>
                                     <constraint firstItem="xIf-sU-UDp" firstAttribute="width" secondItem="TlX-gr-Ap4" secondAttribute="width" id="Ruq-Y9-rKq"/>
                                     <constraint firstAttribute="bottom" secondItem="TlX-gr-Ap4" secondAttribute="bottom" id="WUe-2E-nlb"/>
-                                    <constraint firstItem="xIf-sU-UDp" firstAttribute="leading" secondItem="TlX-gr-Ap4" secondAttribute="trailing" constant="40" id="ioY-UL-rZl"/>
+                                    <constraint firstItem="xIf-sU-UDp" firstAttribute="leading" secondItem="TlX-gr-Ap4" secondAttribute="trailing" constant="20" id="ioY-UL-rZl"/>
                                     <constraint firstItem="Mvc-mY-Z6b" firstAttribute="height" secondItem="xIf-sU-UDp" secondAttribute="height" id="q7C-Ax-Sii"/>
                                     <constraint firstItem="xIf-sU-UDp" firstAttribute="centerX" secondItem="vuJ-0H-FML" secondAttribute="centerX" id="qLB-Rw-7rL"/>
-                                    <constraint firstItem="Mvc-mY-Z6b" firstAttribute="leading" secondItem="xIf-sU-UDp" secondAttribute="trailing" constant="40" id="wa3-cu-U3R"/>
+                                    <constraint firstItem="Mvc-mY-Z6b" firstAttribute="leading" secondItem="xIf-sU-UDp" secondAttribute="trailing" constant="20" id="wa3-cu-U3R"/>
                                     <constraint firstItem="TlX-gr-Ap4" firstAttribute="top" secondItem="vuJ-0H-FML" secondAttribute="top" id="wk3-7C-T5g"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="TlX-gr-Ap4"/>
-                                        <exclude reference="Mvc-mY-Z6b"/>
                                         <exclude reference="xIf-sU-UDp"/>
+                                        <exclude reference="Mvc-mY-Z6b"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="FFi-JW-aWw"/>
@@ -1120,8 +1120,8 @@
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="TlX-gr-Ap4"/>
-                                        <include reference="Mvc-mY-Z6b"/>
                                         <include reference="xIf-sU-UDp"/>
+                                        <include reference="Mvc-mY-Z6b"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="FFi-JW-aWw"/>
@@ -1143,7 +1143,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jMN-c6-NIc">
                                 <rect key="frame" x="-60" y="-14" width="121" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="210" id="qWp-Fl-MHM"/>
+                                    <constraint firstAttribute="width" constant="190" id="qWp-Fl-MHM"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Attack"/>
@@ -1161,27 +1161,83 @@
                                     </mask>
                                 </variation>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xwy-m6-0QP">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GvS-yL-Swj">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </sceneKitView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MzI-CG-ZVb">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Kmy-Yz-URM"/>
+                                    <constraint firstAttribute="width" constant="40" id="fyK-HX-1Fd"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="target-person"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Kmy-Yz-URM"/>
+                                        <exclude reference="fyK-HX-1Fd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Kmy-Yz-URM"/>
+                                        <include reference="fyK-HX-1Fd"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="showTargetDetails" destination="7xW-Nc-0nl" eventType="touchUpInside" id="xqr-FR-yop"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vuJ-0H-FML" firstAttribute="leading" secondItem="taC-i0-CbZ" secondAttribute="leading" id="0ev-wR-Mdt"/>
+                            <constraint firstItem="vuJ-0H-FML" firstAttribute="top" secondItem="MzI-CG-ZVb" secondAttribute="bottom" constant="2" id="2dH-oe-VMq"/>
                             <constraint firstItem="vuJ-0H-FML" firstAttribute="top" secondItem="jMN-c6-NIc" secondAttribute="bottom" constant="8" id="4QG-Zr-6Lf"/>
                             <constraint firstItem="jMN-c6-NIc" firstAttribute="centerX" secondItem="taC-i0-CbZ" secondAttribute="centerX" id="76p-Yu-lYP"/>
+                            <constraint firstItem="Xwy-m6-0QP" firstAttribute="leading" secondItem="taC-i0-CbZ" secondAttribute="leading" id="7EE-Sq-Nt7"/>
+                            <constraint firstItem="jMN-c6-NIc" firstAttribute="top" secondItem="GvS-yL-Swj" secondAttribute="bottom" constant="8" id="Icc-Z6-4SO"/>
+                            <constraint firstItem="jMN-c6-NIc" firstAttribute="top" secondItem="Xwy-m6-0QP" secondAttribute="bottom" constant="8" id="RbK-Ld-6JH"/>
+                            <constraint firstAttribute="trailing" secondItem="GvS-yL-Swj" secondAttribute="trailing" id="XDd-Uq-kkF"/>
+                            <constraint firstItem="Xwy-m6-0QP" firstAttribute="top" secondItem="taC-i0-CbZ" secondAttribute="top" id="dwE-HF-LG9"/>
+                            <constraint firstItem="GvS-yL-Swj" firstAttribute="leading" secondItem="taC-i0-CbZ" secondAttribute="leading" id="f8d-vB-395"/>
+                            <constraint firstAttribute="trailing" secondItem="MzI-CG-ZVb" secondAttribute="trailing" constant="10" id="fF2-WL-JWT"/>
+                            <constraint firstAttribute="trailing" secondItem="Xwy-m6-0QP" secondAttribute="trailing" id="hjC-hK-3RM"/>
                             <constraint firstAttribute="trailing" secondItem="vuJ-0H-FML" secondAttribute="trailing" id="jtW-wj-Zgc"/>
+                            <constraint firstItem="GvS-yL-Swj" firstAttribute="top" secondItem="taC-i0-CbZ" secondAttribute="top" id="kgi-ig-3QI"/>
                             <constraint firstItem="uqG-oF-jS0" firstAttribute="top" secondItem="vuJ-0H-FML" secondAttribute="bottom" id="maq-yy-DYl"/>
+                            <constraint firstItem="MzI-CG-ZVb" firstAttribute="top" secondItem="GvS-yL-Swj" secondAttribute="bottom" constant="2" id="pnz-lL-9MN"/>
                             <constraint firstItem="vuJ-0H-FML" firstAttribute="height" secondItem="taC-i0-CbZ" secondAttribute="width" multiplier="0.2" id="wkA-YT-1zH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="vuJ-0H-FML"/>
                                 <exclude reference="jMN-c6-NIc"/>
+                                <exclude reference="Xwy-m6-0QP"/>
+                                <exclude reference="GvS-yL-Swj"/>
+                                <exclude reference="MzI-CG-ZVb"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="XDd-Uq-kkF"/>
+                                <exclude reference="f8d-vB-395"/>
+                                <exclude reference="kgi-ig-3QI"/>
+                                <exclude reference="7EE-Sq-Nt7"/>
+                                <exclude reference="dwE-HF-LG9"/>
+                                <exclude reference="hjC-hK-3RM"/>
                                 <exclude reference="76p-Yu-lYP"/>
+                                <exclude reference="Icc-Z6-4SO"/>
+                                <exclude reference="RbK-Ld-6JH"/>
                                 <exclude reference="0ev-wR-Mdt"/>
+                                <exclude reference="2dH-oe-VMq"/>
                                 <exclude reference="4QG-Zr-6Lf"/>
                                 <exclude reference="jtW-wj-Zgc"/>
                                 <exclude reference="wkA-YT-1zH"/>
+                                <exclude reference="fF2-WL-JWT"/>
+                                <exclude reference="pnz-lL-9MN"/>
                                 <exclude reference="maq-yy-DYl"/>
                             </mask>
                         </variation>
@@ -1189,17 +1245,38 @@
                             <mask key="subviews">
                                 <include reference="vuJ-0H-FML"/>
                                 <include reference="jMN-c6-NIc"/>
+                                <include reference="Xwy-m6-0QP"/>
+                                <include reference="GvS-yL-Swj"/>
+                                <include reference="MzI-CG-ZVb"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="XDd-Uq-kkF"/>
+                                <include reference="f8d-vB-395"/>
+                                <include reference="kgi-ig-3QI"/>
+                                <include reference="7EE-Sq-Nt7"/>
+                                <include reference="dwE-HF-LG9"/>
+                                <include reference="hjC-hK-3RM"/>
                                 <include reference="76p-Yu-lYP"/>
+                                <include reference="Icc-Z6-4SO"/>
+                                <include reference="RbK-Ld-6JH"/>
                                 <include reference="0ev-wR-Mdt"/>
+                                <include reference="2dH-oe-VMq"/>
                                 <include reference="4QG-Zr-6Lf"/>
                                 <include reference="jtW-wj-Zgc"/>
                                 <include reference="wkA-YT-1zH"/>
+                                <include reference="fF2-WL-JWT"/>
+                                <include reference="pnz-lL-9MN"/>
                                 <include reference="maq-yy-DYl"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="playingView" destination="Xwy-m6-0QP" id="70o-Zi-WXb"/>
+                        <outlet property="sceneView" destination="GvS-yL-Swj" id="tqb-bp-TaK"/>
+                        <outletCollection property="buttonArray" destination="TlX-gr-Ap4" collectionClass="NSMutableArray" id="UFp-BM-Vdv"/>
+                        <outletCollection property="buttonArray" destination="xIf-sU-UDp" collectionClass="NSMutableArray" id="Zx9-Np-1Qz"/>
+                        <outletCollection property="buttonArray" destination="Mvc-mY-Z6b" collectionClass="NSMutableArray" id="Uof-XG-t5K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPR-K8-whb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2207,6 +2284,7 @@
         <image name="defence-shield" width="256" height="256"/>
         <image name="login-logo" width="192" height="192"/>
         <image name="ninja-app-black-cut" width="192" height="151"/>
+        <image name="target-person" width="256" height="256"/>
         <image name="weapon-bomb" width="160" height="160"/>
         <image name="weapon-icon" width="160" height="160"/>
         <image name="weapon-knife" width="160" height="160"/>

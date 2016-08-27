@@ -12,6 +12,11 @@ import SceneKit
 
 import SnapKit
 
+enum PlayMode {
+    case Attack
+    case Defend
+}
+
 class PlayingFieldViewController: BaseViewController {
     
     lazy var sensingKit = SensingKitLib.sharedSensingKitLib()
@@ -21,6 +26,14 @@ class PlayingFieldViewController: BaseViewController {
     
     var assassin: Assassin!
     var target: Target!
+    
+    var playMode: PlayMode = .Attack
+    var weaponsList: [PlayerWeapons] = []
+    var defenceList: [PlayerDefences] = []
+    
+    @IBOutlet weak var playingView: UIView?
+    @IBOutlet weak var sceneView: SCNView?
+    @IBOutlet var buttonArray: [UIButton]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +103,7 @@ class PlayingFieldViewController: BaseViewController {
             
             if target != nil {
                 self.target = target!
-                self.getAmmoList()
+                self.getWeaponList()
             }
             else {
                 self.showAlertErrorWithMessage("Target not found.")
@@ -98,6 +111,24 @@ class PlayingFieldViewController: BaseViewController {
             
         }) { (errorString) -> (Void) in
             self.showAlertErrorWithMessage("TARGET DETAILS \(errorString)")
+        }
+    }
+    
+    func getWeaponList() {
+        DataManager.sharedManager.getWeaponsList({ (array) -> (Void) in
+            self.getDefenceList()
+        }) { (errorString) -> (Void) in
+            print(errorString)
+            self.showAlertErrorWithMessage("WEAPONLIST: \(errorString)")
+        }
+    }
+    
+    func getDefenceList() {
+        DataManager.sharedManager.getDefencesList({ (array) -> (Void) in
+            self.getAmmoList()
+        }) { (errorString) -> (Void) in
+            print(errorString)
+            self.showAlertErrorWithMessage("DEFENCELIST: \(errorString)")
         }
     }
     
@@ -133,18 +164,43 @@ class PlayingFieldViewController: BaseViewController {
     
     // MARK: - View setup
     
-    func showTargetDetails() {
+    @IBAction func showTargetDetails() {
         view.addSubview(targetView)
         targetView.showTargetView(target)
         
         targetView.snp_makeConstraints { (make) in
-            make.width.equalTo(300.0)
+            make.width.equalTo(280.0)
             make.height.equalTo(210.0)
-            make.center.equalTo(view.snp_center)
+            make.center.equalTo(playingView!.snp_center)
         }
     }
     
     func showWeaponsAndDefencesView() {
+        
+        print("PLAYER DEFENCE")
+        
+        weaponsList = self.assassin.weapons.allObjects as! [PlayerWeapons]
+        defenceList = self.assassin.defences.allObjects as! [PlayerDefences]
+        
+        setPlayMode(.Attack)
+    }
+    
+    func setPlayMode(mode: PlayMode) {
+        
+        if playMode == mode {
+            return
+        }
+        
+        playMode = mode
+        
+        switch mode {
+        case .Attack:
+            
+            break
+        case .Defend:
+            
+            break
+        }
         
     }
     
