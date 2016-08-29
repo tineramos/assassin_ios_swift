@@ -13,6 +13,8 @@ class BombScene: SCNScene {
     var sphereGeometry: SCNSphere!
     var bombNode: SCNNode!
     
+    let sensingKit = PlayingFieldViewController().sensingKit
+    
     func display() {
         
         sphereGeometry = SCNSphere(radius: 1.5)
@@ -35,7 +37,35 @@ class BombScene: SCNScene {
         bombNode.physicsBody?.velocity = SCNVector3Make(0, 0, -10)
         bombNode.physicsBody?.applyForce(force, atPosition: SCNVector3Zero, impulse: true)    // apply force on center of the node
         
-        // TODO: update CoreData of bomb quantity
+       startSensingForLocation()
+        
+    }
+    
+    func startSensingForLocation() {
+        
+        // MARK: - Location Sensor Handler
+        
+        if sensingKit.isSensorRegistered(.Location) {
+            
+            sensingKit.subscribeToSensor(.Location, withHandler: { (sensorType, sensorData) in
+                
+                let locationData = sensorData as! SKLocationData
+                print("latitude: \(locationData.location.coordinate.latitude)")
+                print("longitude: \(locationData.location.coordinate.longitude)")
+                
+                // get long lat and send to API
+                let latitude = locationData.location.coordinate.latitude
+                let longitude = locationData.location.coordinate.longitude
+                
+                // once sent, stop the sensing to save battery
+                self.sensingKit.stopContinuousSensingWithSensor(.Location)
+                
+            })
+            
+            sensingKit.startContinuousSensingWithSensor(.Location)
+            
+        }
+        
     }
 
 }

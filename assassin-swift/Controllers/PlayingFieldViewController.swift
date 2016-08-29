@@ -47,6 +47,8 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     var captureLayer: AVCaptureVideoPreviewLayer!
     
     let captureViewTag: Int = 1024
+    let weaponTag: Int = 100
+    let defenceTag: Int = 200
     
     // ** ** //
     
@@ -85,6 +87,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     
     // ** DEFENCES ** //
     var hasDetectedPotion: Bool = false
+    var shakeCoordinates: [CMAcceleration] = []
     
     let videoOutput = AVCaptureVideoDataOutput()
     var faceDetector: CIDetector?
@@ -152,6 +155,10 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         LightsaberView.init(frame: self.playingView!.frame)
     }()
     
+    lazy var knifeView: KnifeView = {
+        KnifeView.init(frame: self.playingView!.frame)
+    }()
+    
     /*
     // MARK: - Navigation
 
@@ -199,12 +206,13 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
             cameraSession.beginConfiguration()
             
             deviceInput = try AVCaptureDeviceInput.init(device: captureDevice)
-            cameraSession.addInput(deviceInput)
+            if cameraSession.canAddInput(deviceInput) {
+                cameraSession.addInput(deviceInput)
+            }
             
             if position == .Front && currentDefence == .GasMask && playMode == .Defend {
                 videoOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(unsignedInt: kCMPixelFormat_32BGRA)]
                 videoOutput.alwaysDiscardsLateVideoFrames = true
-                //                (videoOutput.connectionWithMediaType(AVMediaTypeVideo)).enabled = true
                 
                 if cameraSession.canAddOutput(videoOutput) == true {
                     cameraSession.addOutput(videoOutput)
@@ -384,7 +392,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
             let imageName = String("weapon-\(weaponId)")
             let image = UIImage.init(named: imageName)
             button.hidden = false
-            button.tag = weaponId.integerValue + 100
+            button.tag = weaponId.integerValue + weaponTag
             button.setBackgroundImage(image, forState: .Normal)
             button.addTarget(self, action: #selector(weaponButtonPressed), forControlEvents: .TouchUpInside)
         }
@@ -399,7 +407,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
             let imageName = String("defence-\(defenceId)")
             let image = UIImage.init(named: imageName)
             button.hidden = false
-            button.tag = defenceId.integerValue + 200
+            button.tag = defenceId.integerValue + defenceTag
             button.setBackgroundImage(image, forState: .Normal)
             button.addTarget(self, action: #selector(defenceButtonPressed), forControlEvents: .TouchUpInside)
         }
@@ -538,6 +546,12 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     // MARK: - Knife methods
     func knifeSimulation() {
         
+        playingView!.addSubview(knifeView)
+        knifeView.display()
+        
+        let alertController = UIAlertController(title: "Knife", message: "Use device as a knife by making a stabbing motion.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Got it", style: .Default) { (action) in })
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Clean-up Methods
@@ -597,28 +611,6 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         }
     }
     
-    // MARK: - Location Sensor Handler
-    
-    func openLocation() {
-        
-        if sensingKit.isSensorRegistered(.Location) {
-            
-            sensingKit.subscribeToSensor(.Location, withHandler: { (sensorType, sensorData) in
-                
-                let locationData = sensorData as! SKLocationData
-                print("latitude: \(locationData.location.coordinate.latitude)")
-                print("longitude: \(locationData.location.coordinate.longitude)")
-                
-                // get long lat and send to API
-                
-            })
-            
-            sensingKit.startContinuousSensingWithSensor(.Location)
-            
-        }
-        
-    }
-    
     // MARK: - Sensors
     // MARK: iBeacon Handler
     
@@ -658,7 +650,6 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
                         self.targetDetected(self.hasDetectedTarget)
                     }
                 }
-                
                 
             })
             
@@ -722,6 +713,118 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         
     }
     */
+    
+    // MARK: - Drinking Motion
+    
+    func startSensingSequenceForPotion() {
+        startDeviceMotionForPotion()
+    }
+    
+    func startDeviceMotionForPotion() {
+        if sensingKit.isSensorRegistered(.DeviceMotion) {
+            sensingKit.subscribeToSensor(.DeviceMotion, withHandler: { (sensorType, sensorData) in
+                let data = sensorData as! SKDeviceMotionData
+                let gravity = data.gravity as CMAcceleration
+                
+                // check z-axis if 0 since it's assume z-axis always approach 0
+                if floor(fabs(gravity.z)) == 0 {
+                    self.shakeCoordinates.append(gravity)
+                }
+                else {
+                    self.drinkingMotionInterrupted()
+                }
+                
+                //                print("start")
+            })
+            
+            sensingKit.startContinuousSensingWithSensor(.DeviceMotion)
+        }
+    }
+    
+    func drinkingMotionInterrupted() {
+        
+        print("stahp")
+        
+        hasDetectedPotion = false
+        sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
+        
+        if analyseCollectedDataIfDrinkMotionIsDetected() {
+            print("drinking motion!!")
+        }
+        else {
+            print("nope!!")
+        }
+        
+    }
+    
+    func analyseCollectedDataIfDrinkMotionIsDetected() -> Bool {
+        
+        if shakeCoordinates.count > 0 {
+            
+            var compareY: Double = -1.0
+            var lastXValue: Double = 0.0
+            var counter: Int = 0
+            
+            for acceleration in shakeCoordinates {
+                
+                if compareY <= acceleration.y {
+                    compareY = acceleration.y
+                    lastXValue = acceleration.x
+                    counter += 1
+                }
+                
+            }
+            
+            // clear all coordinates for next detection
+            shakeCoordinates.removeAll()
+            
+            // check if last value of y is close to 1
+            // add check for x coord to refine detection
+            // and check if we have enough correct data
+            if ceil(compareY) == 1.0 && floor(fabs(lastXValue)) == 0.0 && counter > 25 {
+                return true
+            }
+            else {
+                return false
+            }
+            
+        }
+        
+        return false
+        
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake && isDeviceReadyForDrinkingMotion() {
+            print("shake triggered")
+            hasDetectedPotion = true
+            startSensingSequenceForPotion()
+            
+            // stop DeviceMotion sensor - just give it sometime to collect data
+            performSelector(#selector(drinkingMotionInterrupted), withObject: nil, afterDelay: 2.0)
+        }
+    }
+    
+    func isDeviceReadyForDrinkingMotion() -> Bool {
+        return Helper.isDeviceOrientationPortrait() && !hasDetectedPotion && stillHasPotion()
+    }
+    
+    func stillHasPotion() -> Bool {
+        
+//        check database if player still has drinking potion - checking the quantity and filtering the potion object by id
+        
+        let listCopy = playerDefenceList as [PlayerDefences]
+        let potion = listCopy.filter {
+            ($0.quantity?.integerValue > 0) &&
+            ($0.defence?.defence_id == DefenceType.HPPotion.rawValue - defenceTag)
+        }
+        
+        if potion.count > 0 {
+            return true
+        }
+        
+        return false
+    }
     
     // MARK: - Send attack
     

@@ -154,6 +154,14 @@ class CoreDataManager: NSObject {
         successBlock()
     }
     
+    func decrementQuantityOfWeapon(weaponId: Int, inPlayerWeaponObject object:PlayerWeapons, successBlock: BoolBlock, failureBlock: FailureBlock) {
+        
+    }
+    
+    func decrementQuantityOfDefence(defenceId: Int, inPlayerDefenceObject object:PlayerDefences, successBlock: BoolBlock, failureBlock: FailureBlock) {
+        
+    }
+    
     /*
      
      NSManagedObjectContext.MR_defaultContext().MR_saveWithBlock({ (context) in
