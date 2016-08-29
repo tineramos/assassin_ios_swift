@@ -40,12 +40,12 @@ class Helper: NSObject {
         return audioPlayer
     }
     
-    class func getWeaponsViewController() -> WeaponsViewController? {
+    class func getPlayingFieldViewController() -> PlayingFieldViewController? {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let navigationController = appDelegate.window?.rootViewController as! UINavigationController
         for viewController in navigationController.viewControllers {
-            if viewController.isKindOfClass(WeaponsViewController) {
-                return (viewController as! WeaponsViewController)
+            if viewController.isKindOfClass(PlayingFieldViewController) {
+                return (viewController as! PlayingFieldViewController)
             }
         }
         
@@ -85,20 +85,25 @@ class Helper: NSObject {
             sensingKit.registerSensor(.Location, withConfiguration: config)
         }
         
+    }
+    
+    class func registerBeaconWithMajor(major: Int, andMinor minor: Int) {
+        
+        let sensingKit = SensingKitLib.sharedSensingKitLib()
+        
         if sensingKit.isSensorAvailable(.iBeaconProximity) && !sensingKit.isSensorRegistered(.iBeaconProximity) {
             
             let uuid = NSUUID.init(UUIDString: Constants.kAssassinUUID)
             
             let config: SKiBeaconProximityConfiguration = SKiBeaconProximityConfiguration.init(UUID: uuid!)
             config.mode = .ScanAndBroadcast
-            config.major = Constants.major    //  game_id
-            config.minor = Constants.minor    //  player_id
+            config.major = UInt16(major)    //  game_id
+            config.minor = UInt16(minor)    //  player_id
             
-            print("I has iBeaconProximity with minor \(Constants.minor) and major \(Constants.major)!!")
+            print("I has iBeaconProximity with major \(major) and minor \(minor)!!")
             
             sensingKit.registerSensor(.iBeaconProximity, withConfiguration: config)
         }
-        
     }
     
     class func stopSensors() {

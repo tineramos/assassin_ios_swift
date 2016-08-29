@@ -59,8 +59,12 @@ class DataManager: AFHTTPSessionManager {
     
     func loginUser(codeName: String, password: String, successBlock: BoolBlock, failureBlock: FailureBlock) {
         
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let deviceToken = userDefaults.objectForKey(Constants.DEVICE_TOKEN) as! String
+        
         let params = [UserAttributes.code_name.rawValue: codeName,
-                      UserAttributes.password.rawValue: password]
+                      UserAttributes.password.rawValue: password,
+                      "device_token": deviceToken]
         
         self.POST("user/login", parameters: params, progress: nil, success: { (task, response) in
             
@@ -303,7 +307,7 @@ class DataManager: AFHTTPSessionManager {
                                      "damage": damage]
         
         self.PUT("gameplay/attack", parameters: params, success: { (task, response) in
-            //
+            successBlock(bool: true)
             }) { (task, error) in
                 failureBlock(errorString: error.localizedDescription)
         }

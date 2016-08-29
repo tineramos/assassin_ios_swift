@@ -10,18 +10,13 @@ import Foundation
 
 struct Constants {
   
+    static let DEVICE_TOKEN = "devicetoken"
+    
     static let fontCourierNewBold = "CourierNewPS-BoldMT"
     
     static let kAssassinUUID = "E7737784-23AB-41F7-8BCD-76C41978F0B7"
     
     static let eventFrequency: UInt = 45
-    
-    static let userId: Int = 3
-    
-    static let major: UInt16 = 4   // game id - open
-    static let minor: UInt16 = 4    // iPad - 4 || iPhone - 5
-    
-    static let target: UInt16 = 5   // iPad - 5 || iPhone - 4
     
     static let kTotalHP = 100
     
@@ -39,6 +34,11 @@ struct Constants {
     
     // MARK: - Weapons
     
-    static let nerfGunDamage = 10
+    struct Damage {
+        static let nerfGun      = 10
+        static let lightsaber   = 10
+        static let poisonGas    = 7
+        static let bomb         = 50
+    }
     
 }

@@ -1163,10 +1163,11 @@
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xwy-m6-0QP">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GvS-yL-Swj">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </sceneKitView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MzI-CG-ZVb">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1656,30 +1657,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wta-6s-pXW">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="Ab6-jp-c9r"/>
-                                    <constraint firstAttribute="height" constant="80" id="Y7z-VI-DXu"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="weapon-icon"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Ab6-jp-c9r"/>
-                                        <exclude reference="Y7z-VI-DXu"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Ab6-jp-c9r"/>
-                                        <include reference="Y7z-VI-DXu"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="goJ-Ut-ZzT" kind="show" id="F2r-VG-kcY"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBi-Rv-Not">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1708,8 +1685,6 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="33z-8u-pkn" firstAttribute="leading" secondItem="QIw-dG-XqY" secondAttribute="leadingMargin" constant="30" id="3Jf-LE-0zn"/>
-                            <constraint firstItem="Wta-6s-pXW" firstAttribute="leading" secondItem="33z-8u-pkn" secondAttribute="leading" id="6fC-GU-SH6"/>
-                            <constraint firstItem="Wta-6s-pXW" firstAttribute="top" secondItem="33z-8u-pkn" secondAttribute="bottom" constant="8" id="EEt-Hp-kaN"/>
                             <constraint firstItem="cBi-Rv-Not" firstAttribute="trailing" secondItem="33z-8u-pkn" secondAttribute="trailing" id="M4b-ac-ht8"/>
                             <constraint firstItem="3EC-SC-vM9" firstAttribute="top" secondItem="fs1-xZ-L4o" secondAttribute="bottom" constant="8" id="UUf-LM-Yp7"/>
                             <constraint firstItem="33z-8u-pkn" firstAttribute="top" secondItem="3EC-SC-vM9" secondAttribute="bottom" constant="14" id="hqi-2j-pF6"/>
@@ -1724,13 +1699,10 @@
                                 <exclude reference="fs1-xZ-L4o"/>
                                 <exclude reference="3EC-SC-vM9"/>
                                 <exclude reference="33z-8u-pkn"/>
-                                <exclude reference="Wta-6s-pXW"/>
                                 <exclude reference="cBi-Rv-Not"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="mZn-DY-mhB"/>
-                                <exclude reference="6fC-GU-SH6"/>
-                                <exclude reference="EEt-Hp-kaN"/>
                                 <exclude reference="M4b-ac-ht8"/>
                                 <exclude reference="jS7-CU-gdJ"/>
                                 <exclude reference="UUf-LM-Yp7"/>
@@ -1745,13 +1717,10 @@
                                 <include reference="fs1-xZ-L4o"/>
                                 <include reference="3EC-SC-vM9"/>
                                 <include reference="33z-8u-pkn"/>
-                                <include reference="Wta-6s-pXW"/>
                                 <include reference="cBi-Rv-Not"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="mZn-DY-mhB"/>
-                                <include reference="6fC-GU-SH6"/>
-                                <include reference="EEt-Hp-kaN"/>
                                 <include reference="M4b-ac-ht8"/>
                                 <include reference="jS7-CU-gdJ"/>
                                 <include reference="UUf-LM-Yp7"/>
@@ -2290,7 +2259,6 @@
         <image name="weapon-3" width="160" height="160"/>
         <image name="weapon-4" width="160" height="160"/>
         <image name="weapon-5" width="160" height="160"/>
-        <image name="weapon-icon" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y35-0b-eKA"/>

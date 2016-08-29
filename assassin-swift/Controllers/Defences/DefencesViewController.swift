@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import AVFoundation
 
-enum DefenceType: Int {
+enum DefenceType1: Int {
     case Armour     = 201
     case Shield    = 202
     case GasMask     = 203
@@ -19,13 +19,14 @@ enum DefenceType: Int {
 }
 
 class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-
-    var defencesList: [Defence] = []
-    var currentDefence: DefenceType?
+    
+    var captureView: UIView!
     let captureViewTag: Int = 1024
     
+    var defencesList: [Defence] = []
+    var currentDefence: DefenceType1?
+    
     var captureDevice: NSArray?
-    var captureView: UIView!
     var captureLayer: AVCaptureVideoPreviewLayer?
     var cameraNode: SCNNode!
     var deviceInput: AVCaptureDeviceInput?
@@ -103,7 +104,7 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
     
     @IBAction func defenceButtonPressed(sender: UIButton) {
         
-        let defenceTag = DefenceType(rawValue: sender.tag)!
+        let defenceTag = DefenceType1(rawValue: sender.tag)!
         
         if defenceTag == currentDefence {
             return
@@ -401,8 +402,8 @@ class DefencesViewController: BaseViewController, AVCaptureVideoDataOutputSample
 //                let fdesc: CMFormatDescriptionRef = CMSampleBufferGetFormatDescription(sampleBuffer)!
 //                let clap: CGRect = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/)
                 
-                // TODO: send gas mask
-                DataManager.sharedManager.putUpDefence(Int(Constants.minor), defenceId: 3, successBlock: { (bool) -> (Void) in
+                // TODO: send gas mask - get player id
+                DataManager.sharedManager.putUpDefence(Int(4), defenceId: 3, successBlock: { (bool) -> (Void) in
                     
                     if bool {
                         // TODO: notify user that defence is activated

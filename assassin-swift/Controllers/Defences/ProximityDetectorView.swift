@@ -19,7 +19,7 @@ class ProximityDetectorView: UIView {
     var cameraTransform: mat4f_t = []
     var placesOfInterestCoordinates: vec4f_t = []
     
-    let sensingKit = WeaponsViewController().sensingKit
+    let sensingKit = PlayingFieldViewController().sensingKit
     
     /*
     // Only override drawRect: if you perform custom drawing.

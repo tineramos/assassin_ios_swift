@@ -10,7 +10,7 @@ import SceneKit
 
 class PoisonScene: SCNScene {
 
-    let sensingKit = WeaponsViewController().sensingKit
+    let sensingKit = PlayingFieldViewController().sensingKit
 
     var cylinderGeometry: SCNCylinder!
     var poisonNode: SCNNode!
@@ -35,6 +35,9 @@ class PoisonScene: SCNScene {
         poisonNode.physicsBody?.applyForce(force, atPosition: SCNVector3Zero, impulse: true)    // apply force on center of the node
     
         // TODO: update CoreData of poison quantity
+        
+        let playFieldVC = Helper.getPlayingFieldViewController()
+        playFieldVC?.attackWithDamage(Constants.Damage.nerfGun)
     }
     
     func startSensorForPoison() {

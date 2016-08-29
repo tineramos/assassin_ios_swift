@@ -69,8 +69,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Push Notification Methods
     
     // called when app successfully manages to register for PushNotif
+    // convert nsdata to string: http://stackoverflow.com/a/24979960/6687252
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        print("DEVICE TOKEN: \(deviceToken)")
+        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+        var tokenString = ""
+        
+        for i in 0..<deviceToken.length {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        
+        print("tokenString: \(tokenString)")
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject(tokenString, forKey: Constants.DEVICE_TOKEN)
+        
     }
     
     // triggered when registering to push notif fails

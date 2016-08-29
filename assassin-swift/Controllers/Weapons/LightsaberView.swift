@@ -24,7 +24,7 @@ class LightsaberView: UIView {
     
     var isLsOn: Bool!
     
-    let sensingKit = WeaponsViewController().sensingKit
+    let sensingKit = PlayingFieldViewController().sensingKit
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -65,9 +65,9 @@ class LightsaberView: UIView {
                 
                 if accelerationX > 0.5 {
                     
-                    let weaponsVC = Helper.getWeaponsViewController()
+                    let playFieldVC = Helper.getPlayingFieldViewController()
                     
-                    weaponsVC!.turnOnFlash()
+                    playFieldVC!.turnOnFlash()
                     
                     if accelerationZ < -0.5 {
                         print("LEFT swing")
@@ -81,16 +81,16 @@ class LightsaberView: UIView {
                     self.swingSound?.volume = 0.5
                     self.swingSound?.play()
                     
-                    let distance = weaponsVC?.distanceToTarget
+                    let distance = playFieldVC?.distanceToTarget
                     let distanceEstimate: Int = Int(floor(distance!))
                     
-                    if distance > 0.0 && distanceEstimate <= 1 {
-                        // TODO: send attack
+                    if distance >= 0.0 && distanceEstimate <= 1 {
+                        playFieldVC!.attackWithDamage(Constants.Damage.lightsaber)
                     }
                     
 //                    print("DISTANCE FROM LIGHTSABER VIEW: \(damage)")
                     
-                    weaponsVC!.performSelector(#selector(WeaponsViewController().turnOffFlash), withObject: nil, afterDelay: 0.5)
+                    playFieldVC!.performSelector(#selector(PlayingFieldViewController().turnOffFlash), withObject: nil, afterDelay: 0.5)
                     
                 }
                 

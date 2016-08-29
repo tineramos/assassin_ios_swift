@@ -24,7 +24,6 @@
 		5410FA781D57272D0092D36F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410FA771D57272D0092D36F /* GameViewController.swift */; };
 		54507BDA1D5A24300030ECEA /* _Assassin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BD91D5A24300030ECEA /* _Assassin.swift */; };
 		54507BDC1D5A243C0030ECEA /* Assassin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDB1D5A243C0030ECEA /* Assassin.swift */; };
-		54507BE01D5A3FD80030ECEA /* WeaponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */; };
 		545EC8441D63017F0045E067 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545EC8431D63017F0045E067 /* SceneKit.framework */; };
 		545EC8471D631B490045E067 /* saber-off.wav in Resources */ = {isa = PBXBuildFile; fileRef = 545EC8451D631B490045E067 /* saber-off.wav */; };
 		545EC8481D631B490045E067 /* saber-on.wav in Resources */ = {isa = PBXBuildFile; fileRef = 545EC8461D631B490045E067 /* saber-on.wav */; };
@@ -104,7 +103,6 @@
 		5410FA771D57272D0092D36F /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Controllers/GameViewController.swift; sourceTree = "<group>"; };
 		54507BD91D5A24300030ECEA /* _Assassin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Assassin.swift; sourceTree = "<group>"; };
 		54507BDB1D5A243C0030ECEA /* Assassin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assassin.swift; sourceTree = "<group>"; };
-		54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeaponsViewController.swift; path = Controllers/WeaponsViewController.swift; sourceTree = "<group>"; };
 		545EC8431D63017F0045E067 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		545EC8451D631B490045E067 /* saber-off.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "saber-off.wav"; sourceTree = "<group>"; };
 		545EC8461D631B490045E067 /* saber-on.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "saber-on.wav"; sourceTree = "<group>"; };
@@ -207,18 +205,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5423B70D1D5AD9DF0042BAB6 /* Weapons Controller */ = {
-			isa = PBXGroup;
-			children = (
-				54507BDF1D5A3FD80030ECEA /* WeaponsViewController.swift */,
-				54A480031D6A154C00BD8A97 /* NerfGunScene.swift */,
-				54A44CAA1D668BA0007B0D6D /* PoisonScene.swift */,
-				545EC8491D6322600045E067 /* LightsaberView.swift */,
-				54A4E02C1D6987BA00AD6612 /* BombScene.swift */,
-			);
-			name = "Weapons Controller";
-			sourceTree = "<group>";
-		};
 		546D7D471D53D26D0031FF90 = {
 			isa = PBXGroup;
 			children = (
@@ -284,7 +270,6 @@
 				549964AC1D569A8B00F574C4 /* AboutViewController.swift */,
 				54D2D3141D54291100546C46 /* Registration Controller */,
 				5491E8391D5816B500BA7E8D /* Profile Controller */,
-				5423B70D1D5AD9DF0042BAB6 /* Weapons Controller */,
 				54A480051D6A481100BD8A97 /* Defences Controller */,
 				549964B21D569FC600F574C4 /* Games Controller */,
 			);
@@ -361,6 +346,8 @@
 				549964F41D56F78300F574C4 /* GamePlayViewController.swift */,
 				5491E83F1D58403800BA7E8D /* ChooseWeaponDefenceViewController.swift */,
 				549964F51D56F78300F574C4 /* PlayingFieldViewController.swift */,
+				54C197571D742702001286BC /* Weapons */,
+				54C197581D74270E001286BC /* Defences */,
 				549964E21D56BB7600F574C4 /* Game Views */,
 			);
 			name = "Games Controller";
@@ -434,11 +421,29 @@
 			isa = PBXGroup;
 			children = (
 				54BDB1D11D6B4D3500665B30 /* DefencesViewController.swift */,
+			);
+			name = "Defences Controller";
+			sourceTree = "<group>";
+		};
+		54C197571D742702001286BC /* Weapons */ = {
+			isa = PBXGroup;
+			children = (
+				54A480031D6A154C00BD8A97 /* NerfGunScene.swift */,
+				54A44CAA1D668BA0007B0D6D /* PoisonScene.swift */,
+				545EC8491D6322600045E067 /* LightsaberView.swift */,
+				54A4E02C1D6987BA00AD6612 /* BombScene.swift */,
+			);
+			name = Weapons;
+			sourceTree = "<group>";
+		};
+		54C197581D74270E001286BC /* Defences */ = {
+			isa = PBXGroup;
+			children = (
 				54D062E41D6D122E00AA9B23 /* GasMaskView.swift */,
 				54FBDB691D6A96D6000912D3 /* ProximityDetectorView.swift */,
 				54FBDB6B1D6AABB1000912D3 /* PlaceOfInterest.swift */,
 			);
-			name = "Defences Controller";
+			name = Defences;
 			sourceTree = "<group>";
 		};
 		54D2D3001D541BA700546C46 /* Vendors */ = {
@@ -669,7 +674,6 @@
 				5491E8381D5816AF00BA7E8D /* ProfileGameTableViewCell.swift in Sources */,
 				5491E86F1D587E5D00BA7E8D /* Blocks.swift in Sources */,
 				549964B01D569FC000F574C4 /* GamesTableViewCell.swift in Sources */,
-				54507BE01D5A3FD80030ECEA /* WeaponsViewController.swift in Sources */,
 				54D2D3071D541CD700546C46 /* RegistrationForm.swift in Sources */,
 				5491E86A1D586D0500BA7E8D /* Weapon.swift in Sources */,
 				5491E85E1D586D0500BA7E8D /* _Target.swift in Sources */,

@@ -53,6 +53,13 @@ class NerfGunScene: SCNScene {
     
         numberOfShots -= 1
         
+        let playFieldVC = Helper.getPlayingFieldViewController()
+        let distance = playFieldVC!.distanceToTarget
+        let distanceEstimate = Int(floor(distance))
+        playFieldVC?.attackWithDamage(Constants.Damage.nerfGun / distanceEstimate)
+        
+        performSelector(#selector(display), withObject: nil, afterDelay: 2.0)
+        
     }
 
 }
