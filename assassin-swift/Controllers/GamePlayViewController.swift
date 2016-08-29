@@ -45,8 +45,6 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView?.tableFooterView = createTableFooterView()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -150,6 +148,8 @@ class GamePlayViewController: BaseViewController, UITableViewDataSource, UITable
             self.gameStatusLabel?.text = status
             self.gameStatusLabel?.textColor = game?.getStatusColor()
             self.playersLabel?.text = game?.getPlayersTitle()
+            
+            self.tableView?.tableFooterView = self.createTableFooterView()
             
             self.setupViewForStatus()
             

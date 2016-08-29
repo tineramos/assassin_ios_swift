@@ -50,4 +50,4 @@
 
 "target.title"      = "Target";
 "target.detected"   = "Target detected!! Weapons will be activated.";
-"target.gone"       = "Target gone!! Weapons will be deactiviated.";
+"target.gone"       = "Target gone!! Weapons will be deactivated.";

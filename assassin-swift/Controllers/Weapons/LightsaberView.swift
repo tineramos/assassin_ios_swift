@@ -69,11 +69,11 @@ class LightsaberView: UIView {
                     
                     playFieldVC!.turnOnFlash()
                     
-                    if accelerationZ < -0.5 {
+                    if accelerationZ < -0.1 {
                         print("LEFT swing")
                         print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
                     }
-                    else if accelerationY > 0.5 {
+                    else if accelerationY > 1 {
                         print("RIGHT swing")
                         print("Acceleration: \(accelerationX), \(accelerationY), \(accelerationZ)")
                     }

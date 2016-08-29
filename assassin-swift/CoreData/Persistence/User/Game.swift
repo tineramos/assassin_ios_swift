@@ -132,6 +132,9 @@ public class Game: _Game {
     }
     
     func joinedValue() -> Bool {
+        if joined == nil {
+            return false
+        }
         return (joined?.boolValue)!
     }
     

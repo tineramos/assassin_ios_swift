@@ -15,8 +15,9 @@ import AVFoundation
 import SnapKit
 
 enum PlayMode : Int {
-    case Attack = 0
-    case Defend = 1
+    case Attack     = 0
+    case Defend     = 1
+    case NoTarget   = 2
 }
 
 enum WeaponType: Int {
@@ -42,10 +43,17 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     // ** capture session** //
     let captureSession = AVCaptureSession()
     var captureDevice: AVCaptureDevice?
+    var captureDeviceList: NSArray?
     var captureLayer: AVCaptureVideoPreviewLayer!
     
-    var captureView: UIView!
     let captureViewTag: Int = 1024
+    
+    // ** ** //
+    
+//    var captureLayer: AVCaptureVideoPreviewLayer?
+    var deviceInput: AVCaptureDeviceInput?
+    
+    // ** ** //
     
     var playerId: Int = 0
     var gameId: Int = 0
@@ -69,28 +77,27 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     // handles the broadcasted estimated distance between beacons
     var distanceToTarget: Double = 0.0
     
-//    var weaponsList: [Weapon] = []  // handles the list of official weapons
     var currentWeapon: WeaponType?
+    var currentDefence: DefenceType?
     
     var hasDetectedTarget: Bool = false
     var isOnAttack: Bool = false
     
     // ** DEFENCES ** //
+    var hasDetectedPotion: Bool = false
     
     let videoOutput = AVCaptureVideoDataOutput()
     var faceDetector: CIDetector?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Helper.registerSensors()
-//        registerSensorsForDetectingPlayMode()
         
         getAssassinObject()
         
         setupSceneView()
         
+        Helper.registerSensors()
         Helper.registerBeaconWithMajor(gameId, andMinor: playerId)
-        openiBeaconProximity()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -106,7 +113,6 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         setupCameraPreview()
-        openCameraPreview()
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,6 +126,13 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         let s = AVCaptureSession()
         s.sessionPreset = AVCaptureSessionPresetHigh
         return s
+    }()
+    
+    lazy var captureView: UIView = {
+        let view = UIView.init(frame: self.playingView!.frame)
+        view.bounds = self.playingView!.bounds
+        view.tag = self.captureViewTag
+        return view
     }()
     
     lazy var cameraNode: SCNNode = {
@@ -159,42 +172,70 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     // MARK: - Camera Preview
     
     func setupCameraPreview() {
-        captureView = UIView.init(frame: playingView!.frame)
-        captureView.bounds = playingView!.bounds
-        captureView.tag = captureViewTag
+        captureDeviceList = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+        
         playingView!.addSubview(captureView)
         playingView!.sendSubviewToBack(captureView)
     }
     
-    func openCameraPreview() {
+    func openCameraPreviewInPosition(position: AVCaptureDevicePosition) {
         
-        captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        
-        if captureDevice == nil {
+        if captureDeviceList!.count == 0 {
             return
         }
         
         do {
             
-            captureSession.sessionPreset = AVCaptureSessionPresetHigh
+            captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
             
-            let deviceInput = try AVCaptureDeviceInput.init(device: captureDevice)
-            captureSession.addInput(deviceInput)
+            for device in captureDeviceList! {
+                let device = device as! AVCaptureDevice
+                if device.position == position {
+                    captureDevice = device
+                    break
+                }
+            }
             
-            captureLayer = AVCaptureVideoPreviewLayer.init(session: captureSession)
+            cameraSession.beginConfiguration()
+            
+            deviceInput = try AVCaptureDeviceInput.init(device: captureDevice)
+            cameraSession.addInput(deviceInput)
+            
+            if position == .Front && currentDefence == .GasMask && playMode == .Defend {
+                videoOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(unsignedInt: kCMPixelFormat_32BGRA)]
+                videoOutput.alwaysDiscardsLateVideoFrames = true
+                //                (videoOutput.connectionWithMediaType(AVMediaTypeVideo)).enabled = true
+                
+                if cameraSession.canAddOutput(videoOutput) == true {
+                    cameraSession.addOutput(videoOutput)
+                }
+                
+                videoOutput.setSampleBufferDelegate(self, queue: dispatch_queue_create("sample buffer delegate", DISPATCH_QUEUE_SERIAL))
+            }
+            
+            captureLayer = AVCaptureVideoPreviewLayer.init(session: cameraSession)
             captureLayer.frame = captureView.bounds
             captureLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
             captureView.layer.addSublayer(captureLayer)
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                self.captureSession.startRunning()
-            })
+            cameraSession.commitConfiguration()
             
         }
         catch let error as NSError {
             print("Error opening camera preview: \(error)")
         }
         
+    }
+    
+    func setupBackCamera() {
+        playingView!.addSubview(captureView)
+        playingView!.sendSubviewToBack(captureView)
+        
+        openCameraPreviewInPosition(AVCaptureDevicePosition.Back)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.cameraSession.startRunning()
+        })
     }
     
     // MARK: - Data methods
@@ -221,6 +262,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
             
             if target != nil {
                 self.target = target!
+                self.openiBeaconProximity()
                 self.getWeaponList()
             }
             else {
@@ -254,8 +296,9 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         
         DataManager.sharedManager.getAmmoForGameOfPlayer(playerId, successBlock: { (Void) -> (Void) in
             
-            self.showAlertToShowTargetDetails()
-            self.showWeaponsAndDefencesView()
+//            self.showAlertToShowTargetDetails()
+//            self.showWeaponsAndDefencesView()
+            //
             
             }) { (errorString) -> (Void) in
                 self.showAlertErrorWithMessage("AMMO LIST \(errorString)")
@@ -314,6 +357,8 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         
         playMode = mode
         
+        resetCamera()
+        
         switch mode {
         case .Attack:
             switchToAttack()
@@ -321,17 +366,24 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         case .Defend:
             switchToDefence()
             break
+        case .NoTarget:
+            hideWeaponsNoTarget()
+            break
         }
         
     }
     
     func switchToAttack() {
         
+//        openCameraPreviewInPosition(.Back)
+        setupBackCamera()
+        
         for (index, button) in buttonArray.enumerate() {
             let playerWeapon = playerWeaponsList[index]
             let weaponId = playerWeapon.weapon!.weapon_id!
             let imageName = String("weapon-\(weaponId)")
             let image = UIImage.init(named: imageName)
+            button.hidden = false
             button.tag = weaponId.integerValue + 100
             button.setBackgroundImage(image, forState: .Normal)
             button.addTarget(self, action: #selector(weaponButtonPressed), forControlEvents: .TouchUpInside)
@@ -346,11 +398,18 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
             let defenceId = playerDefence.defence!.defence_id!
             let imageName = String("defence-\(defenceId)")
             let image = UIImage.init(named: imageName)
+            button.hidden = false
             button.tag = defenceId.integerValue + 200
             button.setBackgroundImage(image, forState: .Normal)
-//            button.addTarget(self, action: #selector(defenceButtonPressed:), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(defenceButtonPressed), forControlEvents: .TouchUpInside)
         }
 
+    }
+    
+    func hideWeaponsNoTarget() {
+        for button in buttonArray {
+            button.hidden = true
+        }
     }
     
     @IBAction func segmentedControlValueChanged(segmentedControl: UISegmentedControl) {
@@ -370,7 +429,8 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         
         currentWeapon = weaponTag
         
-        cleanWeaponView()
+        // TODO: add camera again
+        cleanPlayingView()
         cleanScene()
         
         sceneView?.hidden = false
@@ -391,6 +451,39 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
             break
         case .Knife:
             knifeSimulation()
+            break
+        }
+        
+    }
+    
+    func defenceButtonPressed(sender: UIButton) {
+        
+        let defenceTag = DefenceType(rawValue: sender.tag)!
+        
+        if defenceTag == currentDefence {
+            return
+        }
+        
+        currentDefence = defenceTag
+        
+        cleanPlayingView()
+        cleanScene()
+        
+        sceneView?.hidden = true
+        
+        switch defenceTag {
+        case .Armour:
+            break
+        case .Shield:
+            break
+        case .GasMask:
+            sceneView?.hidden = false
+//            activateGasMask()
+            break
+        case .Detector:
+//            getProximityCoordinates()
+            break
+        default:
             break
         }
         
@@ -449,13 +542,14 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     
     // MARK: - Clean-up Methods
     
-    func stopCameraPreview() {
-        captureSession.stopRunning()
-        captureLayer.removeFromSuperlayer()
-        captureLayer = nil
+    func resetCamera() {
+        captureView.removeFromSuperview()
+        captureLayer?.removeFromSuperlayer()
+        cameraSession.removeInput(deviceInput)
+        cameraSession.stopRunning()
     }
     
-    func cleanWeaponView() {
+    func cleanPlayingView() {
         playingView?.subviews.forEach({
             if $0.tag != captureViewTag {
                 $0.removeFromSuperview()
@@ -476,7 +570,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     // MARK: - Flash
     
     func turnOnFlash() {
-        
+       
         if self.captureDevice!.hasTorch && self.captureDevice!.hasFlash {
             
             do {
@@ -493,9 +587,14 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     }
     
     func turnOffFlash() {
-        self.captureDevice?.flashMode = AVCaptureFlashMode.Off
-        self.captureDevice?.torchMode = AVCaptureTorchMode.Off
-        captureDevice?.unlockForConfiguration()
+        
+        if self.captureDevice!.hasTorch && self.captureDevice!.hasFlash {
+        
+            self.captureDevice?.flashMode = AVCaptureFlashMode.Off
+            self.captureDevice?.torchMode = AVCaptureTorchMode.Off
+            captureDevice?.unlockForConfiguration()
+            
+        }
     }
     
     // MARK: - Location Sensor Handler
@@ -582,6 +681,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         let alertController = UIAlertController.init(title: "", message: "target.detected".localized, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "attack.title".localized, style: .Default) { (action) in
             print("weapons enabled!!")
+            self.showWeaponsAndDefencesView()
             self.isOnAttack = true
             })
         alertController.addAction(UIAlertAction(title: "later.title".localized, style: .Destructive) { (action) in
@@ -637,6 +737,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
                 self.showAlertErrorWithMessage(errorString)
         }
     }
+    
     // MARK: - Handle Tap Interaction
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -644,15 +745,18 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         let positionInView = touch.locationInView(sceneView)
         print("position in view: \(positionInView)")
         
-        if currentWeapon == WeaponType.NerfGun {
-            nerfGunScene.shootGolfBall()
+        if isOnAttack {
+            if currentWeapon == WeaponType.NerfGun {
+                nerfGunScene.shootGolfBall()
+            }
+            else if currentWeapon == WeaponType.Bomb {
+                bombScene.throwBomb()
+            }
+            else if currentWeapon == WeaponType.Poison {
+                poisonScene.throwPoison()
+            }
         }
-        else if currentWeapon == WeaponType.Bomb {
-            bombScene.throwBomb()
-        }
-        else if currentWeapon == WeaponType.Poison {
-            poisonScene.throwPoison()
-        }
+        
     }
 
 }
