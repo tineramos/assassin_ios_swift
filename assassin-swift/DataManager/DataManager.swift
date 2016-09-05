@@ -14,8 +14,10 @@ class DataManager: AFHTTPSessionManager {
     
     struct DataManagerConstants {
 //        let BASE_URL = "http://192.168.0.6:8000/api/v1/assassin/"
-        let BASE_URL = "http://Tine.local:8000/api/v1/assassin/"
+//        let BASE_URL = "http://Tine.local:8000/api/v1/assassin/"
 //        let BASE_URL = "http://assassin.app:8000/api/v1/assassin/"
+//        let BASE_URL = "http://10.153.125.148:8000/api/v1/assassin/"    // -> home
+        let BASE_URL = "http://161.23.61.174:8000/api/v1/assassin/" // qmul
     }
     
     static let sharedInstance = DataManager(baseURL: NSURL(string: DataManagerConstants().BASE_URL))
@@ -321,7 +323,7 @@ class DataManager: AFHTTPSessionManager {
         let params: [String:Int] = [PlayerAttributes.player_id.rawValue: playerId, DefenceAttributes.defence_id.rawValue: defenceId]
         
         self.PUT("gameplay/defend", parameters: params, success: { (task, response) in
-            //
+            successBlock(bool: true)
             }) { (task, error) in
                 failureBlock(errorString: error.localizedDescription)
         }

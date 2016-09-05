@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
     <entity name="Assassin" representedClassName="Assassin" syncable="YES">
         <attribute name="game_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="health_points" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="player_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="defences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlayerDefences" inverseName="player" inverseEntity="PlayerDefences" syncable="YES"/>
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="assassin" inverseEntity="Profile" syncable="YES"/>
@@ -88,7 +89,7 @@
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="winner" inverseEntity="Game" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Assassin" positionX="-101" positionY="-72" width="128" height="133"/>
+        <element name="Assassin" positionX="-101" positionY="-72" width="128" height="148"/>
         <element name="Defence" positionX="270" positionY="-241" width="128" height="88"/>
         <element name="Game" positionX="-450" positionY="-346" width="128" height="240"/>
         <element name="Player" positionX="-270" positionY="-310" width="128" height="133"/>

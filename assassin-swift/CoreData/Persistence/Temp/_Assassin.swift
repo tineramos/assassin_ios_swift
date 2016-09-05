@@ -6,6 +6,7 @@ import CoreData
 
 public enum AssassinAttributes: String {
     case game_id = "game_id"
+    case health_points = "health_points"
     case player_id = "player_id"
 }
 
@@ -43,6 +44,9 @@ public class _Assassin: NSManagedObject {
 
     @NSManaged public
     var game_id: NSNumber?
+
+    @NSManaged public
+    var health_points: NSNumber?
 
     @NSManaged public
     var player_id: NSNumber?

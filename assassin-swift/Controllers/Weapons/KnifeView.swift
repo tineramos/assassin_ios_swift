@@ -30,11 +30,11 @@ class KnifeView: UIView {
     
     func display() {
         let knifeImageView = UIImageView.init(image: UIImage(named: "knife"))
+        knifeImageView.contentMode = UIViewContentMode.ScaleAspectFit
         addSubview(knifeImageView)
         
         knifeImageView.snp_makeConstraints { (make) in
-            make.top.equalTo(self).offset(10)
-            make.bottom.equalTo(self).offset(10)
+            make.height.equalTo(CGRectGetHeight(self.frame) - 20.0)
             make.width.equalTo(50.0)
             make.center.equalTo(self.center)
         }
@@ -54,6 +54,9 @@ class KnifeView: UIView {
                 let accelerationY = data.userAcceleration.y
                 let accelerationZ = data.userAcceleration.z
                 
+                if accelerationY < -3 {
+                    
+                }
                 
             })
             

@@ -91,6 +91,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
+        print("userInfo: \(userInfo)")
+        
         if let alert = userInfo.first?.1["alert"] {
             
             if application.applicationState == .Active {

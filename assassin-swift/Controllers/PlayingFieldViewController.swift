@@ -67,6 +67,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     var playerWeaponsList: [PlayerWeapons] = []
     var playerDefenceList: [PlayerDefences] = []
     
+    @IBOutlet weak var hpLabel: UILabel?
     @IBOutlet weak var playingView: UIView?
     @IBOutlet weak var sceneView: SCNView?
     @IBOutlet var buttonArray: [UIButton]!
@@ -253,6 +254,7 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
             
             if (assassin != nil) {
                 self.assassin = assassin
+                self.updateHealthPointsLabel()
                 self.getTargetDetails()
             }
             else {
@@ -381,9 +383,12 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         
     }
     
+    func updateHealthPointsLabel() {
+        hpLabel?.text = "\(assassin.health_points?.floatValue)"
+    }
+    
     func switchToAttack() {
         
-//        openCameraPreviewInPosition(.Back)
         setupBackCamera()
         
         for (index, button) in buttonArray.enumerate() {
@@ -464,39 +469,6 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         
     }
     
-    func defenceButtonPressed(sender: UIButton) {
-        
-        let defenceTag = DefenceType(rawValue: sender.tag)!
-        
-        if defenceTag == currentDefence {
-            return
-        }
-        
-        currentDefence = defenceTag
-        
-        cleanPlayingView()
-        cleanScene()
-        
-        sceneView?.hidden = true
-        
-        switch defenceTag {
-        case .Armour:
-            break
-        case .Shield:
-            break
-        case .GasMask:
-            sceneView?.hidden = false
-//            activateGasMask()
-            break
-        case .Detector:
-//            getProximityCoordinates()
-            break
-        default:
-            break
-        }
-        
-    }
-
     // MARK: - NerfGun methods
     
     func nerfGunSimulation() {
@@ -552,6 +524,62 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         let alertController = UIAlertController(title: "Knife", message: "Use device as a knife by making a stabbing motion.", preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Got it", style: .Default) { (action) in })
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func defenceButtonPressed(sender: UIButton) {
+        
+        let defenceTag = DefenceType(rawValue: sender.tag)!
+        
+        if defenceTag == currentDefence {
+            return
+        }
+        
+        currentDefence = defenceTag
+        
+        cleanPlayingView()
+        cleanScene()
+        
+        sceneView?.hidden = true
+        
+        switch defenceTag {
+        case .Armour:
+            break
+        case .Shield:
+            break
+        case .GasMask:
+            sceneView?.hidden = false
+            activateGasMask()
+            break
+        case .Detector:
+            //            getProximityCoordinates()
+            break
+        default:
+            break
+        }
+        
+    }
+    
+    func activateGasMask() {
+        setupFrontCameraForMask()
+    }
+    
+    func setupFrontCameraForMask() {
+        
+        let gasmask: UIImage = UIImage.init(named: "gasmask-view")!
+        let imageView: UIImageView = UIImageView.init(image: gasmask)
+        imageView.frame = CGRectMake(0, 0, 400, 600)
+        imageView.contentMode = .ScaleAspectFit
+        imageView.center = (playingView?.center)!
+        playingView!.addSubview(imageView)
+        
+        playingView!.addSubview(captureView)
+        playingView!.sendSubviewToBack(captureView)
+        
+        openCameraPreviewInPosition(AVCaptureDevicePosition.Front)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.cameraSession.startRunning()
+        })
     }
     
     // MARK: - Clean-up Methods
@@ -690,30 +718,6 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    /*
-    func registerSensorsForDetectingPlayMode() {
-        
-        if sensingKit.isSensorRegistered(.DeviceMotion) {
-            
-            sensingKit.subscribeToSensor(.DeviceMotion, withHandler: { (sensorType, sensorData) in
-                
-                let data = sensorData as! SKDeviceMotionData
-                
-                let accelerationX = data.userAcceleration.x
-                let accelerationY = data.userAcceleration.y
-                let accelerationZ = data.userAcceleration.z
-                
-                let attitude = data.attitude.roll
-                let attitude = data.attitude.pitch
-                let attitude = data.attitude.yaw
-     
-            })
-            
-        }
-        
-    }
-    */
-    
     // MARK: - Drinking Motion
     
     func startSensingSequenceForPotion() {
@@ -734,7 +738,6 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
                     self.drinkingMotionInterrupted()
                 }
                 
-                //                print("start")
             })
             
             sensingKit.startContinuousSensingWithSensor(.DeviceMotion)
@@ -742,14 +745,12 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
     }
     
     func drinkingMotionInterrupted() {
-        
-        print("stahp")
-        
         hasDetectedPotion = false
         sensingKit.stopContinuousSensingWithSensor(.DeviceMotion)
         
         if analyseCollectedDataIfDrinkMotionIsDetected() {
-            print("drinking motion!!")
+            print("drinking motion detected")
+// TODO:            CoreDataManager.sharedManager.decrementQuantityOfDefence(Int, inPlayerDefenceObject: <#T##PlayerDefences#>, successBlock: <#T##BoolBlock##BoolBlock##(bool: Bool) -> (Void)#>, failureBlock: <#T##FailureBlock##FailureBlock##(errorString: String) -> (Void)#>)
         }
         else {
             print("nope!!")
@@ -792,6 +793,32 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
         
         return false
         
+    }
+    
+    func getPlayerWeaponOfId(weaponId: Int) -> PlayerWeapons? {
+        let listCopy = playerWeaponsList
+        let weapons = listCopy.filter { (player) -> Bool in
+            player.weapon?.weapon_id == weaponId
+        }
+        if weapons.count > 0 {
+            return weapons.first!
+        }
+        else {
+            return nil
+        }
+    }
+    
+    func getPlayerDefenceOfId(defenceId: Int) -> PlayerDefences? {
+        let listCopy = playerDefenceList
+        let defences = listCopy.filter { (player) -> Bool in
+            player.defence?.defence_id == defenceId
+        }
+        if defences.count > 0 {
+            return defences.first!
+        }
+        else {
+            return nil
+        }
     }
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
@@ -860,6 +887,43 @@ class PlayingFieldViewController: BaseViewController, AVCaptureVideoDataOutputSa
             }
         }
         
+    }
+    
+    // MARK: - CaptureOutput Delegate
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+        let cameraImage = CIImage(CVPixelBuffer: pixelBuffer!)
+        
+        let detectorOptions = [CIDetectorAccuracy:CIDetectorAccuracyHigh]
+        let detector = CIDetector.init(ofType: CIDetectorTypeFace, context: nil, options:detectorOptions)
+        let features = detector.featuresInImage(cameraImage, options: [CIDetectorImageOrientation: NSNumber.init(integer: 6)])  // to correctly detect face in portrait mode
+        
+        for f in features {
+            
+            let faceFeature: CIFaceFeature = f as! CIFaceFeature
+            
+            if faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition && faceFeature.hasMouthPosition {
+                
+                // TODO: send gas mask - get player id
+                DataManager.sharedManager.putUpDefence((assassin.player_id?.integerValue)!, defenceId: 3, successBlock: { (bool) -> (Void) in
+                    
+                    if bool {
+                        // TODO: notify user that defence is activated
+                        self.cameraSession.stopRunning()
+                    }
+                    else {
+                        // TODO: notify user -- defence activiation failed
+                    }
+                    
+                    }, failureBlock: { (errorString) -> (Void) in
+                        // TODO: notify user -- defence activiation failed
+                        print("error: \(errorString)")
+                })
+                
+            }
+            
+        }
     }
 
 }
